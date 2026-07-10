@@ -15,6 +15,7 @@ export function useZodForm<TValues extends FieldValues>(
   options?: Omit<UseFormProps<TValues>, 'resolver'>,
 ): UseFormReturn<TValues> {
   return useForm<TValues>({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: zodResolver(schema as any),
     mode: 'onTouched',
     ...options,
