@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent, CardHeader } from '@/components/layout/card';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { Badge } from '@/components/ui/badge';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -82,8 +83,12 @@ export function NewsDetailPage({ id }: { id: string }) {
         <div className="space-y-6">
           {news.cover_media ? (
             <Card className="overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={news.cover_media.url} alt={news.cover_media.alt_text ?? news.title_en} className="aspect-video w-full object-cover" />
+              <AuthenticatedMediaImage
+                media={news.cover_media}
+                variant="card"
+                alt={news.cover_media.alt_text ?? news.title_en}
+                className="aspect-video w-full object-cover"
+              />
             </Card>
           ) : null}
 

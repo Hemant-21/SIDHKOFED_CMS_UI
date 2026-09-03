@@ -16,6 +16,13 @@ export interface MediaItem {
   url: string;
   file_name: string;
   mime_type: string;
+  variants?: Partial<Record<'thumb' | 'card' | 'hero', {
+    url: string;
+    mime_type: string;
+    file_size: number;
+    width: number;
+    height: number;
+  }>> | null;
   title: string | null;
   alt_text: string | null;
   caption: string | null;

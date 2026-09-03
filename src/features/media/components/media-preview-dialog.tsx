@@ -16,8 +16,15 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Can } from '@/components/auth';
+import {
+  AuthenticatedMediaImage,
+  adminMediaFilePath,
+  useAuthenticatedMediaObjectUrl,
+} from '@/components/media/authenticated-media-image';
 import { useArchive, useRestore } from '@/hooks/crud';
 import { useConfirmDialog } from '@/hooks/use-confirm-dialog';
+import { getBlob } from '@/lib/api/http';
+import { downloadBlob } from '@/utils/browser';
 import { formatFileSize, humanize } from '@/utils/format';
 import { formatDate } from '@/utils/date';
 import { MEDIA_RESOURCE, MEDIA_ROLES, useMediaUsages, useReplaceMediaFile, useUpdateMediaMeta } from '../api';
@@ -57,6 +64,11 @@ export function MediaPreviewDialog({ asset, open, onClose }: MediaPreviewDialogP
     await replace.mutateAsync({ id: asset.id, file });
   };
 
+  const onDownload = async () => {
+    const blob = await getBlob(adminMediaFilePath(asset.id));
+    downloadBlob(blob, asset.file_name);
+  };
+
   return (
     <Dialog open={open} onClose={onClose} title={asset.title ?? asset.file_name} size="xl" dismissible={!replace.isPending}>
       <div className="grid gap-5 md:grid-cols-2">
@@ -72,10 +84,8 @@ export function MediaPreviewDialog({ asset, open, onClose }: MediaPreviewDialogP
             <Meta label="Added">{formatDate(asset.created_at)}</Meta>
           </dl>
           <div className="flex flex-wrap gap-2">
-            <Button asChild size="sm" variant="outline">
-              <a href={asset.url} download={asset.file_name} target="_blank" rel="noreferrer">
-                <Download className="h-4 w-4" aria-hidden="true" /> Download
-              </a>
+            <Button size="sm" variant="outline" onClick={() => void onDownload()}>
+              <Download className="h-4 w-4" aria-hidden="true" /> Download
             </Button>
             <Can role={MEDIA_ROLES}>
               <label className="inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm hover:bg-muted">
@@ -170,14 +180,29 @@ export function MediaPreviewDialog({ asset, open, onClose }: MediaPreviewDialogP
 
 function MediaPreview({ asset }: { asset: MediaAsset }) {
   if (isImage(asset)) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={asset.url} alt={asset.alt_text ?? asset.title ?? asset.file_name} className="max-h-[22rem] w-full object-contain" />;
+    return <AuthenticatedMediaImage media={asset} variant="hero" className="max-h-[22rem] w-full object-contain" />;
+  }
+  return <NonImageMediaPreview asset={asset} />;
+}
+
+function NonImageMediaPreview({ asset }: { asset: MediaAsset }) {
+  const original = useAuthenticatedMediaObjectUrl(asset.id);
+
+  if (original.failed) {
+    return (
+      <div className="flex h-48 w-full flex-col items-center justify-center gap-2 text-muted-foreground">
+        <span className="text-sm">Preview unavailable</span>
+      </div>
+    );
+  }
+  if (!original.src) {
+    return <div className="h-48 w-full animate-pulse bg-muted" aria-label="Loading media preview" />;
   }
   if (asset.mime_type.startsWith('video/')) {
-    return <video src={asset.url} controls className="max-h-[22rem] w-full" aria-label={asset.title ?? asset.file_name} />;
+    return <video src={original.src} controls className="max-h-[22rem] w-full" aria-label={asset.title ?? asset.file_name} />;
   }
   if (asset.mime_type === 'application/pdf') {
-    return <iframe src={asset.url} title={asset.title ?? asset.file_name} className="h-[22rem] w-full" />;
+    return <iframe src={original.src} title={asset.title ?? asset.file_name} className="h-[22rem] w-full" />;
   }
   return (
     <div className="flex h-48 w-full flex-col items-center justify-center gap-2 text-muted-foreground">

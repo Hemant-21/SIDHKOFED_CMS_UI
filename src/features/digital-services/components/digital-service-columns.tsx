@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Home, ExternalLink, AppWindow } from 'lucide-react';
 import type { ColumnDef } from '@/types/table';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
 import { formatRelative } from '@/utils/date';
 import { ROUTES } from '@/constants/routes';
@@ -22,8 +23,7 @@ export function digitalServiceColumns(
       cell: (s) => (
         <div className="flex min-w-0 items-center gap-2">
           {s.icon?.url ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={s.icon.url} alt="" className="h-6 w-6 shrink-0 rounded object-cover" />
+            <AuthenticatedMediaImage media={s.icon} variant="thumb" className="h-6 w-6 shrink-0 rounded object-cover" />
           ) : (
             <AppWindow className="h-5 w-5 shrink-0 text-muted-foreground" aria-hidden="true" />
           )}

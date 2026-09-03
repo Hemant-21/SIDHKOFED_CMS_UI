@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { ExternalLink, FileText, Images, Newspaper } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent, CardHeader } from '@/components/layout/card';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { Badge } from '@/components/ui/badge';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -150,9 +151,9 @@ export function EventDetailPage({ id }: { id: string }) {
         <div className="space-y-6">
           {event.cover_media ? (
             <Card className="overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={event.cover_media.url}
+              <AuthenticatedMediaImage
+                media={event.cover_media}
+                variant="card"
                 alt={event.cover_media.alt_text ?? event.title_en}
                 className="aspect-video w-full object-cover"
               />

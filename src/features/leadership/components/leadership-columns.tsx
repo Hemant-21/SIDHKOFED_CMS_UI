@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { UserRound } from 'lucide-react';
 import type { ColumnDef } from '@/types/table';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
 import { formatRelative } from '@/utils/date';
 import { ROUTES } from '@/constants/routes';
@@ -21,8 +22,7 @@ export function leadershipColumns(
       cell: (s) => (
         <div className="flex min-w-0 items-center gap-2">
           {s.photo?.url ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={s.photo.url} alt="" className="h-6 w-6 shrink-0 rounded-full object-cover" />
+            <AuthenticatedMediaImage media={s.photo} variant="thumb" className="h-6 w-6 shrink-0 rounded-full object-cover" />
           ) : (
             <UserRound className="h-5 w-5 shrink-0 text-muted-foreground" aria-hidden="true" />
           )}

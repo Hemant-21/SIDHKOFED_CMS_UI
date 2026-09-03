@@ -7,6 +7,7 @@
 import { UserRound } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent, CardHeader } from '@/components/layout/card';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { Badge } from '@/components/ui/badge';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -57,9 +58,9 @@ export function LeadershipDetailPage({ id }: { id: string }) {
             <CardContent>
               <div className="flex items-start gap-4">
                 {leader.photo?.url ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={leader.photo.url}
+                  <AuthenticatedMediaImage
+                    media={leader.photo}
+                    variant="thumb"
                     alt={leader.photo.alt_text ?? ''}
                     className="h-16 w-16 rounded-full border border-border object-cover"
                   />

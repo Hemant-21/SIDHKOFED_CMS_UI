@@ -21,6 +21,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { EmptyState } from '@/components/feedback/empty-state';
 import { Can } from '@/components/auth';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { MediaPickerDialog, type MediaItem } from '@/components/relationships';
 import { useConfirmDialog } from '@/hooks/use-confirm-dialog';
 import { useUpdateMediaMeta } from '@/features/media/api';
@@ -108,13 +109,12 @@ export function GalleryImageManager({ gallery }: { gallery: GalleryDetail }) {
           {images.map((image, index) => (
             <li key={image.id} className="overflow-hidden rounded-lg border border-border bg-card">
               <div className="aspect-video w-full bg-muted">
-                {image.media.url ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={image.media.url}
+                {image.media.id ? (
+                  <AuthenticatedMediaImage
+                    media={image.media}
+                    variant="thumb"
                     alt={image.media.alt_text ?? image.caption_en ?? ''}
                     className="h-full w-full object-cover"
-                    loading="lazy"
                   />
                 ) : (
                   <span className="flex h-full w-full items-center justify-center text-muted-foreground">

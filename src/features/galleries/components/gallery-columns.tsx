@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Home, Images } from 'lucide-react';
 import type { ColumnDef } from '@/types/table';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { StatusBadge } from '@/components/ui/status-badge';
 import { formatRelative } from '@/utils/date';
 import { ROUTES } from '@/constants/routes';
@@ -21,13 +22,7 @@ export function galleryColumns(
       cell: (g) => (
         <div className="flex min-w-0 items-center gap-3">
           {g.cover_media?.url ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={g.cover_media.url}
-              alt=""
-              className="h-10 w-14 shrink-0 rounded object-cover"
-              loading="lazy"
-            />
+            <AuthenticatedMediaImage media={g.cover_media} variant="thumb" className="h-10 w-14 shrink-0 rounded object-cover" />
           ) : (
             <span className="flex h-10 w-14 shrink-0 items-center justify-center rounded bg-muted text-muted-foreground">
               <Images className="h-4 w-4" aria-hidden="true" />

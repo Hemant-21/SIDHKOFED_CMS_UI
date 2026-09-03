@@ -9,6 +9,7 @@
 import { ExternalLink } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent, CardHeader } from '@/components/layout/card';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { Badge } from '@/components/ui/badge';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -108,9 +109,9 @@ export function ProgrammeDetailPage({ id }: { id: string }) {
             <Card>
               <CardHeader title="Cover image" />
               <CardContent>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={programme.cover_media.url}
+                <AuthenticatedMediaImage
+                  media={programme.cover_media}
+                  variant="card"
                   alt={programme.cover_media.alt_text ?? programme.title_en}
                   className="w-full rounded-md object-cover"
                 />

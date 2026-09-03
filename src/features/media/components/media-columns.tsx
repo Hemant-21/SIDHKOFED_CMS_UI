@@ -1,6 +1,7 @@
 import { FileText } from 'lucide-react';
 import type { ColumnDef } from '@/types/table';
 import { Badge } from '@/components/ui/badge';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { formatFileSize } from '@/utils/format';
 import { formatDate } from '@/utils/date';
 import { isImage, type MediaAsset } from '../types';
@@ -19,8 +20,7 @@ export function mediaColumns(actions?: (row: MediaAsset) => React.ReactNode): Co
       cell: (m) => (
         <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded bg-muted">
           {isImage(m) ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={m.url} alt={m.alt_text ?? m.file_name} className="h-full w-full object-cover" loading="lazy" />
+            <AuthenticatedMediaImage media={m} variant="thumb" className="h-full w-full object-cover" />
           ) : (
             <FileText className="h-5 w-5 text-muted-foreground" aria-hidden="true" />
           )}

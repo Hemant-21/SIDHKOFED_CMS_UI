@@ -10,6 +10,7 @@
 import { ExternalLink, Building2, Mail, Phone, MapPin } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent, CardHeader } from '@/components/layout/card';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { Badge } from '@/components/ui/badge';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -104,9 +105,9 @@ export function InstitutionDetailPage({ id }: { id: string }) {
             <CardHeader title="Logo" />
             <CardContent>
               {institution.logo?.url ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={institution.logo.url}
+                <AuthenticatedMediaImage
+                  media={institution.logo}
+                  variant="card"
                   alt={institution.logo.alt_text ?? `${institution.name_en} logo`}
                   className="max-h-32 w-auto object-contain"
                 />

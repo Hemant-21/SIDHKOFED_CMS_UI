@@ -9,6 +9,7 @@
 import { ExternalLink } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent, CardHeader } from '@/components/layout/card';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { Badge } from '@/components/ui/badge';
 import { StatusBadge } from '@/components/ui/status-badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -88,9 +89,9 @@ export function GalleryDetailPage({ id }: { id: string }) {
             <CardHeader title="Cover image" />
             <CardContent>
               {gallery.cover_media?.url ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={gallery.cover_media.url}
+                <AuthenticatedMediaImage
+                  media={gallery.cover_media}
+                  variant="card"
                   alt={gallery.cover_media.alt_text ?? ''}
                   className="w-full rounded-md border border-border object-cover"
                 />

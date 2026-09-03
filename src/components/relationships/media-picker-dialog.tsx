@@ -19,6 +19,7 @@ import { ImageUpload } from '@/components/ui/image-upload';
 import { Skeleton } from '@/components/feedback/skeleton';
 import { EmptyState } from '@/components/feedback/empty-state';
 import { ErrorState } from '@/components/feedback/error-state';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { useDebounce } from '@/hooks/use-debounce';
 import { useToast } from '@/hooks/use-toast';
 import { errorMessage } from '@/lib/api/server-errors';
@@ -102,12 +103,10 @@ export function MediaPickerDialog({ open, onClose, onSelect, title = 'Select ima
                       )}
                       title={m.title ?? m.file_name}
                     >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={m.url}
-                        alt={m.alt_text ?? m.title ?? m.file_name}
+                      <AuthenticatedMediaImage
+                        media={m}
+                        variant="thumb"
                         className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
-                        loading="lazy"
                       />
                       <span className="absolute inset-0 hidden items-center justify-center bg-primary/40 group-hover:flex">
                         <Check className="h-6 w-6 text-white" aria-hidden="true" />

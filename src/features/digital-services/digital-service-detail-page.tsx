@@ -9,6 +9,7 @@
 import { ExternalLink, AppWindow } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent, CardHeader } from '@/components/layout/card';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { Badge } from '@/components/ui/badge';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -60,9 +61,9 @@ export function DigitalServiceDetailPage({ id }: { id: string }) {
             <CardContent>
               <div className="flex items-start gap-4">
                 {service.icon?.url ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={service.icon.url}
+                  <AuthenticatedMediaImage
+                    media={service.icon}
+                    variant="thumb"
                     alt={service.icon.alt_text ?? ''}
                     className="h-16 w-16 rounded-lg border border-border object-cover"
                   />

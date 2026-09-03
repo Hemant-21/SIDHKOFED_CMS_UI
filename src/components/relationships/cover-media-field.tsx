@@ -11,6 +11,7 @@ import { useState, type ReactNode } from 'react';
 import type { FieldValues, Path } from 'react-hook-form';
 import { ImageIcon, RefreshCw, X } from 'lucide-react';
 import { FormField } from '@/components/form/form-field';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { Button } from '@/components/ui/button';
 import { MediaPickerDialog } from './media-picker-dialog';
 import type { MediaItem } from './media-api';
@@ -47,11 +48,11 @@ export function CoverMediaField<T extends FieldValues>({
       className={className}
       render={({ field, invalid }) => {
         // Preview URL: a freshly picked image wins, else the initial media if its id still matches.
-        const previewUrl =
+        const previewMedia =
           picked && picked.id === field.value
-            ? picked.url
+            ? picked
             : initialMedia && initialMedia.id === field.value
-              ? initialMedia.url
+              ? initialMedia
               : null;
         const alt = picked?.alt_text ?? initialMedia?.alt_text ?? 'Selected cover image';
 
@@ -66,13 +67,12 @@ export function CoverMediaField<T extends FieldValues>({
 
         return (
           <div>
-            {field.value && previewUrl ? (
+            {field.value && previewMedia ? (
               <div
                 className="relative inline-block overflow-hidden rounded-lg border border-border"
                 aria-invalid={invalid || undefined}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={previewUrl} alt={alt} className="h-40 w-auto object-cover" />
+                <AuthenticatedMediaImage media={previewMedia} variant="card" alt={alt} className="h-40 w-auto object-cover" />
                 {!disabled ? (
                   <div className="absolute right-2 top-2 flex gap-1.5">
                     <button

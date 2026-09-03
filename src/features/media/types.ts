@@ -11,6 +11,13 @@ export interface MediaAsset {
   file_name: string;
   extension: string | null;
   mime_type: string;
+  variants?: Partial<Record<'thumb' | 'card' | 'hero', {
+    url: string;
+    mime_type: string;
+    file_size: number;
+    width: number;
+    height: number;
+  }>> | null;
   file_size: number;
   width: number | null;
   height: number | null;

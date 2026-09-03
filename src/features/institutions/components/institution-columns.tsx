@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Home, Building2 } from 'lucide-react';
 import type { ColumnDef } from '@/types/table';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
 import { formatRelative } from '@/utils/date';
 import { ROUTES } from '@/constants/routes';
@@ -21,8 +22,7 @@ export function institutionColumns(actions?: (row: InstitutionSummary) => React.
       cell: (i) => (
         <div className="flex min-w-0 items-center gap-2.5">
           {i.logo?.url ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={i.logo.url} alt="" className="h-8 w-8 shrink-0 rounded object-contain" />
+            <AuthenticatedMediaImage media={i.logo} variant="thumb" className="h-8 w-8 shrink-0 rounded object-contain" />
           ) : (
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-muted text-muted-foreground">
               <Building2 className="h-4 w-4" aria-hidden="true" />

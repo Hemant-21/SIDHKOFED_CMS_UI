@@ -9,6 +9,7 @@
 import { memo } from 'react';
 import { FileText, Check } from 'lucide-react';
 import { cn } from '@/utils/cn';
+import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { formatFileSize } from '@/utils/format';
 import { formatDate } from '@/utils/date';
 import { isImage, type MediaAsset } from '../types';
@@ -58,12 +59,10 @@ function MediaCardImpl({ asset, selectable, selected, onToggleSelect, onOpen }: 
       >
         <div className="flex aspect-video items-center justify-center bg-muted">
           {isImage(asset) ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={asset.url}
-              alt={asset.alt_text ?? asset.title ?? asset.file_name}
+            <AuthenticatedMediaImage
+              media={asset}
+              variant="card"
               className="h-full w-full object-cover transition-transform group-hover:scale-105"
-              loading="lazy"
             />
           ) : (
             <div className="flex flex-col items-center gap-1 text-muted-foreground">
