@@ -14,8 +14,16 @@ import type { Permission } from '@/types/auth';
 import { useAuth } from '@/hooks/use-auth';
 import { usePermissions } from '@/hooks/use-permissions';
 import { ROUTES } from '@/constants/routes';
+import { env } from '@/config/env';
 import { FullPageLoader } from '@/components/feedback/full-page-loader';
 import { ForbiddenState } from '@/components/feedback/forbidden-state';
+
+function stripDeployBasePath(path: string): string {
+  if (!env.basePath) return path;
+  if (path === env.basePath) return '/';
+  if (path.startsWith(`${env.basePath}/`)) return path.slice(env.basePath.length);
+  return path;
+}
 
 /** Wrap any authenticated area. While restoring the session, shows a loader. */
 export function ProtectedRoute({ children }: { children: ReactNode }) {
@@ -26,7 +34,7 @@ export function ProtectedRoute({ children }: { children: ReactNode }) {
     if (!isLoading && !isAuthenticated) {
       const next =
         typeof window !== 'undefined'
-          ? encodeURIComponent(window.location.pathname + window.location.search)
+          ? encodeURIComponent(stripDeployBasePath(window.location.pathname) + window.location.search)
           : '';
       router.replace(next ? `${ROUTES.login}?next=${next}` : ROUTES.login);
     }
@@ -46,7 +54,7 @@ export function GuestRoute({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
       const next = params.get('next');
-      router.replace(next ? decodeURIComponent(next) : ROUTES.dashboard);
+      router.replace(next ? stripDeployBasePath(decodeURIComponent(next)) : ROUTES.dashboard);
     }
   }, [isAuthenticated, isLoading, params, router]);
 

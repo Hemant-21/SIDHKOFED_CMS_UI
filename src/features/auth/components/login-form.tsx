@@ -13,6 +13,7 @@ import { useZodForm, Form, TextField } from '@/components/form';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/use-auth';
 import { ROUTES } from '@/constants/routes';
+import { env } from '@/config/env';
 import { emailSchema } from '@/lib/validation';
 
 const loginSchema = z.object({
@@ -21,6 +22,13 @@ const loginSchema = z.object({
 });
 
 type LoginValues = z.infer<typeof loginSchema>;
+
+function stripDeployBasePath(path: string): string {
+  if (!env.basePath) return path;
+  if (path === env.basePath) return '/';
+  if (path.startsWith(`${env.basePath}/`)) return path.slice(env.basePath.length);
+  return path;
+}
 
 export function LoginForm() {
   const router = useRouter();
@@ -36,7 +44,7 @@ export function LoginForm() {
     // Throws ApiError on failure → mapped onto fields / banner by <Form>.
     await login(values);
     const next = params.get('next');
-    router.replace(next ? decodeURIComponent(next) : ROUTES.dashboard);
+    router.replace(next ? stripDeployBasePath(decodeURIComponent(next)) : ROUTES.dashboard);
   };
 
   return (

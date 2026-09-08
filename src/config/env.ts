@@ -12,6 +12,8 @@ function readPublic(key: string, fallback: string): string {
 export const env = {
   /** API base path as seen by the browser. Immutable backend contract: /api/v1. */
   apiBaseUrl: readPublic('NEXT_PUBLIC_API_BASE_URL', '/api/v1'),
+  /** Optional deployment base path, for hosting the CMS below a single-domain prefix. */
+  basePath: readPublic('NEXT_PUBLIC_BASE_PATH', ''),
   /** Default UI language. English primary, Hindi optional (codex §10). */
   defaultLanguage: readPublic('NEXT_PUBLIC_DEFAULT_LANGUAGE', 'en') as 'en' | 'hi',
 } as const;

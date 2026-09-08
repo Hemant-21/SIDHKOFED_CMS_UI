@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { cn } from '@/utils/cn';
 import { ROUTES } from '@/constants/routes';
 import { APP } from '@/constants/app';
+import { env } from '@/config/env';
+
+const logoSrc = `${env.basePath}/logo-sidhkofed.png`;
 
 export function Brand({ collapsed = false }: { collapsed?: boolean }) {
   return (
@@ -12,12 +15,13 @@ export function Brand({ collapsed = false }: { collapsed?: boolean }) {
       aria-label={`${APP.name} home`}
     >
       <Image
-        src="/logo-sidhkofed.png"
+        src={logoSrc}
         alt="SIDHKOFED"
         width={32}
         height={32}
         className="shrink-0 rounded-sm"
         priority
+        unoptimized
       />
       {!collapsed ? (
         <span className={cn('flex flex-col leading-none')}>

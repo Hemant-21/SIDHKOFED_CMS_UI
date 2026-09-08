@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === 'production';
+const enableHttpsHeaders = process.env.ENABLE_HTTPS_HEADERS === 'true';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 /**
  * Content Security Policy (Phase 17.1 security remediation) for the admin CMS shell.
@@ -25,12 +27,14 @@ const csp = [
   "media-src 'self' blob:",
   "manifest-src 'self'",
   "worker-src 'self' blob:",
-  ...(isProd ? ['upgrade-insecure-requests'] : []),
+  ...(enableHttpsHeaders ? ['upgrade-insecure-requests'] : []),
 ].join('; ');
 
 const securityHeaders = [
   { key: 'Content-Security-Policy', value: csp },
-  { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+  ...(enableHttpsHeaders
+    ? [{ key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' }]
+    : []),
   { key: 'X-Frame-Options', value: 'DENY' },
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
@@ -43,6 +47,7 @@ const nextConfig = {
   poweredByHeader: false,
   // Enable standalone output for Docker — produces a self-contained server
   // bundle under .next/standalone that does not require node_modules at runtime.
+  ...(basePath ? { basePath } : {}),
   output: 'standalone',
   // The admin app is a SPA-style CMS shell that talks to the Express backend
   // (/api/v1/*). In dev we proxy /api to the backend so the browser keeps the
