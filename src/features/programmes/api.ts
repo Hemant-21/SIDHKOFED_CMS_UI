@@ -7,13 +7,6 @@
  * resource key and the module-specific permission set.
  */
 
-import { adminResource } from '@/constants/api-endpoints';
-import { get } from '@/lib/api/http';
-import type { ProgrammeDetail } from './types';
-
 export const PROGRAMMES_RESOURCE = 'programmes';
 
 export { PROGRAMME_PERMS } from './permissions';
-
-/** Re-export a typed detail fetch for any caller that needs it outside the CRUD hook. */
-export const fetchProgramme = (id: string) => get<ProgrammeDetail>(adminResource(PROGRAMMES_RESOURCE).detail(id));

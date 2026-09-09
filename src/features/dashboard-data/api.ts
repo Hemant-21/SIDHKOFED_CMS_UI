@@ -12,7 +12,7 @@
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { adminResource, DASHBOARD_ENDPOINTS } from '@/constants/api-endpoints';
-import { get, getList, post, patch, del, uploadFile, type PaginatedResult } from '@/lib/api/http';
+import { get, getList, post, patch, del, uploadFile } from '@/lib/api/http';
 import { errorMessage } from '@/lib/api/server-errors';
 import { useToast } from '@/hooks/use-toast';
 import type { ListQuery } from '@/types/api';
@@ -209,5 +209,3 @@ export function useReportPreview(
     staleTime: 60_000,
   });
 }
-
-export type { PaginatedResult };

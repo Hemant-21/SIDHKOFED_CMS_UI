@@ -39,12 +39,6 @@ export interface UpdateUserPayload {
   password?: string;
 }
 
-/** A compact role reference returned within the user. */
-export interface RoleRef {
-  id: string;
-  key: string;
-  name: string;
-}
 
 /** Filter keys accepted by the admin users list. */
 export const USER_FILTER_KEYS = ['search', 'is_active', 'role'] as const;

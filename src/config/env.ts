@@ -16,6 +16,10 @@ export const env = {
   basePath: readPublic('NEXT_PUBLIC_BASE_PATH', ''),
   /** Default UI language. English primary, Hindi optional (codex §10). */
   defaultLanguage: readPublic('NEXT_PUBLIC_DEFAULT_LANGUAGE', 'en') as 'en' | 'hi',
+  /**
+   * Public website origin (no trailing slash). The admin console and the public site are
+   * separate apps on separate origins, but the backend returns `public_url` as a site-relative
+   * path (e.g. `/events/slug`) — resolve it against this origin, not the admin's own.
+   */
+  websiteUrl: readPublic('NEXT_PUBLIC_WEBSITE_URL', 'http://localhost:3002'),
 } as const;
-
-export type AppEnv = typeof env;

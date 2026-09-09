@@ -56,11 +56,6 @@ export function Section({
   );
 }
 
-/** Simple bordered panel (lighter than Card; for grouping form fields, etc.). */
-export function Panel({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn('rounded-lg border border-border bg-background p-4', className)} {...props} />;
-}
-
 /** Responsive auto-fit grid. */
 export function GridLayout({
   className,

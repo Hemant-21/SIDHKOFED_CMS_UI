@@ -49,9 +49,6 @@ export const ROUTES = {
   communications: '/official-communications',
   tenders: '/tenders',
   procurement: '/procurement-updates',
-  successStories: '/success-stories',
-  pages: '/pages',
-  menus: '/menus',
   media: '/media',
   galleries: '/galleries',
   videos: '/videos',
@@ -68,8 +65,3 @@ export const ROUTES = {
   settings: '/settings',
   profile: '/profile',
 } as const;
-
-export type RouteKey = keyof typeof ROUTES;
-
-/** Routes reachable without authentication (guest-only). */
-export const GUEST_ROUTES: string[] = [ROUTES.login];

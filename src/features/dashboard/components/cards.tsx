@@ -9,7 +9,7 @@
  */
 
 import type { LucideIcon } from 'lucide-react';
-import { AlertTriangle, Info } from 'lucide-react';
+import { Info } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { Card, CardContent } from '@/components/layout';
 import { Skeleton } from '@/components/feedback/skeleton';
@@ -143,19 +143,6 @@ export function InfoCard({ title, children }: { title?: string; children: ReactN
   return (
     <div className="flex gap-3 rounded-lg border border-info/30 bg-info/5 px-4 py-3 text-sm">
       <Info className="mt-0.5 h-4 w-4 shrink-0 text-info" aria-hidden="true" />
-      <div className="min-w-0">
-        {title ? <p className="font-medium text-foreground">{title}</p> : null}
-        <div className="text-muted-foreground">{children}</div>
-      </div>
-    </div>
-  );
-}
-
-/** Warning note card — draws attention to something the admin may need to act on. */
-export function WarningCard({ title, children }: { title?: string; children: ReactNode }) {
-  return (
-    <div role="status" className="flex gap-3 rounded-lg border border-warning/30 bg-warning/5 px-4 py-3 text-sm">
-      <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-warning" aria-hidden="true" />
       <div className="min-w-0">
         {title ? <p className="font-medium text-foreground">{title}</p> : null}
         <div className="text-muted-foreground">{children}</div>

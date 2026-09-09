@@ -7,5 +7,4 @@
 export { LeadershipListPage } from './leadership-list-page';
 export { LeadershipFormPage } from './leadership-form-page';
 export { LeadershipDetailPage } from './leadership-detail-page';
-export { LEADERSHIP_RESOURCE } from './api';
 export * from './types';

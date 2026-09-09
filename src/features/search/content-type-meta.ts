@@ -14,7 +14,6 @@ import {
   Megaphone,
   Gavel,
   ShoppingCart,
-  FileStack,
   type LucideIcon,
 } from 'lucide-react';
 import { ROUTES } from '@/constants/routes';
@@ -49,7 +48,6 @@ export const CONTENT_TYPE_META: Record<ContentType, ContentTypeMeta> = {
     icon: ShoppingCart,
     route: ROUTES.procurement,
   },
-  page: { type: 'page', label: 'Page', labelPlural: 'Pages', icon: FileStack, route: ROUTES.pages },
 };
 
 /** The admin deep-link for a single result. Detail pages land in later module phases. */

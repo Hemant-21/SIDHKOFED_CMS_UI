@@ -35,16 +35,6 @@ export function formatDateTime(value: string | Date | null | undefined, fallback
   return d ? DISPLAY_DATETIME.format(d) : fallback;
 }
 
-/** Convert any date input to the API `YYYY-MM-DD` form (or null). */
-export function toApiDate(value: string | Date | null | undefined): string | null {
-  const d = toDate(value);
-  if (!d) return null;
-  const yyyy = d.getFullYear();
-  const mm = String(d.getMonth() + 1).padStart(2, '0');
-  const dd = String(d.getDate()).padStart(2, '0');
-  return `${yyyy}-${mm}-${dd}`;
-}
-
 /** Compact relative time (e.g. "3 days ago"); falls back to absolute date. */
 export function formatRelative(value: string | Date | null | undefined): string {
   const d = toDate(value);

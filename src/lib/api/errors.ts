@@ -105,5 +105,3 @@ export function normalizeError(error: unknown): ApiError {
     status: null,
   });
 }
-
-export { DEFAULT_MESSAGES as ERROR_MESSAGES };

@@ -7,7 +7,7 @@
 
 import type { DatasetSource, Metric, MetricWriteInput } from './types';
 
-export type MetricValueKind = 'number' | 'text';
+type MetricValueKind = 'number' | 'text';
 
 export interface MetricFormValues {
   metric_key: string;

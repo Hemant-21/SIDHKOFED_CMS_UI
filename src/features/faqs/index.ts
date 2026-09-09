@@ -5,5 +5,4 @@
 export { FaqListPage } from './faq-list-page';
 export { FaqFormPage } from './faq-form-page';
 export { FaqDetailPage } from './faq-detail-page';
-export { FAQS_RESOURCE } from './api';
 export * from './types';

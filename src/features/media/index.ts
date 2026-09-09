@@ -5,5 +5,4 @@
  * endpoints (API spec §6/§7). Linked media cannot be hard-deleted (codex §5.1).
  */
 export { MediaLibraryPage } from './media-library-page';
-export { MEDIA_RESOURCE } from './api';
 export * from './types';

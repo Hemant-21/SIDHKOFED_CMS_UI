@@ -5,5 +5,4 @@
 export { NewsListPage } from './news-list-page';
 export { NewsDetailPage } from './news-detail-page';
 export { NewsEditPage } from './news-edit-page';
-export { NEWS_RESOURCE } from './api';
 export * from './types';

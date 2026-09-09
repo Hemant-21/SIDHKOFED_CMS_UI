@@ -9,7 +9,7 @@
  */
 
 /** Canonical lifecycle/action verbs used across modules (mirrors backend keys). */
-export const ACTIONS = {
+const ACTIONS = {
   view: 'view',
   create: 'create',
   update: 'update',
@@ -20,10 +20,10 @@ export const ACTIONS = {
   restore: 'restore',
 } as const;
 
-export type PermissionAction = (typeof ACTIONS)[keyof typeof ACTIONS] | (string & {});
+type PermissionAction = (typeof ACTIONS)[keyof typeof ACTIONS] | (string & {});
 
 /** Build a `module.action` permission key, e.g. `permission('events','publish')`. */
-export function permission(module: string, action: PermissionAction): string {
+function permission(module: string, action: PermissionAction): string {
   return `${module}.${action}`;
 }
 

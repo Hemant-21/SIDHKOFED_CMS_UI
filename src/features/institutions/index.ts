@@ -6,5 +6,4 @@
 export { InstitutionListPage } from './institution-list-page';
 export { InstitutionFormPage } from './institution-form-page';
 export { InstitutionDetailPage } from './institution-detail-page';
-export { INSTITUTIONS_RESOURCE } from './api';
 export * from './types';

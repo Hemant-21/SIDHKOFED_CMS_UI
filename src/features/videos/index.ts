@@ -7,5 +7,4 @@
 export { VideoListPage } from './video-list-page';
 export { VideoFormPage } from './video-form-page';
 export { VideoDetailPage } from './video-detail-page';
-export { VIDEOS_RESOURCE } from './api';
 export * from './types';

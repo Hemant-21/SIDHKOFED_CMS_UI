@@ -6,15 +6,6 @@
 /** Pagination: backend default 20, cap 100 (API spec §1.4). */
 export const PAGE_SIZE_DEFAULT = 20;
 export const PAGE_SIZE_MAX = 100;
-export const PAGE_SIZE_OPTIONS = [10, 20, 50, 100] as const;
-
-/** Date/time display formats (Intl-based; see utils/date.ts). */
-export const DATE_FORMATS = {
-  /** API transport: YYYY-MM-DD (API spec §0). */
-  apiDate: 'yyyy-MM-dd',
-  display: 'dd MMM yyyy',
-  displayWithTime: 'dd MMM yyyy, HH:mm',
-} as const;
 
 /** Validation regex (frontend pre-checks; backend remains authoritative). */
 export const REGEX = {
@@ -28,14 +19,6 @@ export const REGEX = {
 
 /** Debounce defaults (search inputs, etc.), in milliseconds. */
 export const DEBOUNCE_MS = 300;
-
-/** Responsive breakpoints (px) — kept in sync with Tailwind defaults. */
-export const BREAKPOINTS = {
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280,
-} as const;
 
 export const APP = {
   name: 'SIDHKOFED CMS',

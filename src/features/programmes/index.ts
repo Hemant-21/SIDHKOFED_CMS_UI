@@ -6,5 +6,4 @@
 export { ProgrammeListPage } from './programme-list-page';
 export { ProgrammeFormPage } from './programme-form-page';
 export { ProgrammeDetailPage } from './programme-detail-page';
-export { PROGRAMMES_RESOURCE } from './api';
 export * from './types';

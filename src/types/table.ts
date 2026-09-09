@@ -6,7 +6,7 @@
 
 import type { ReactNode } from 'react';
 
-export type SortDirection = 'asc' | 'desc';
+type SortDirection = 'asc' | 'desc';
 
 /** Column definition. `accessor` is a key of the row or a render function. */
 export interface ColumnDef<TRow> {
@@ -32,17 +32,6 @@ export interface ColumnDef<TRow> {
 export interface SortState {
   field: string;
   direction: SortDirection;
-}
-
-/** The full controlled state of a DataTable. */
-export interface TableState {
-  page: number;
-  pageSize: number;
-  search: string;
-  sort: SortState | null;
-  filters: Record<string, string | number | boolean | undefined>;
-  hiddenColumns: string[];
-  selectedRowIds: string[];
 }
 
 /** What a DataTable needs to render one page of server data. */

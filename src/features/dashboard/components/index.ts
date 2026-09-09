@@ -4,15 +4,6 @@
  * future module needing a KPI/status/activity surface.
  */
 
-export {
-  StatCard,
-  DashboardCard,
-  StatusRow,
-  InfoCard,
-  WarningCard,
-  type StatCardProps,
-  type DashboardCardProps,
-} from './cards';
 export { ContentKpiGrid, HeadlineKpiGrid } from './kpi-section';
 export { QuickActions } from './quick-actions';
 export { RecentActivity } from './recent-activity';

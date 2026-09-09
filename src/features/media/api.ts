@@ -13,15 +13,14 @@
 
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import { adminResource } from '@/constants/api-endpoints';
-import { get, getList, patch, uploadFile, uploadFiles } from '@/lib/api/http';
+import { get, patch, uploadFile } from '@/lib/api/http';
 import { apiClient } from '@/lib/api/client';
 import type { ApiSingleResponse } from '@/types/api';
 import { invalidateResource, invalidateDetail } from '@/lib/query';
-import type { ListQuery } from '@/types/api';
 import { errorMessage } from '@/lib/api/server-errors';
 import { useToast } from '@/hooks/use-toast';
 import { ROLE_KEYS } from '@/constants/permissions';
-import type { MediaAsset, MediaBulkUploadResult, MediaMetaInput, MediaReplaceResult, MediaUsage } from './types';
+import type { MediaAsset, MediaMetaInput, MediaReplaceResult, MediaUsage } from './types';
 
 export const MEDIA_RESOURCE = 'media';
 
@@ -41,15 +40,6 @@ export function useUploadMedia() {
       if (meta?.caption) fields.caption = meta.caption;
       return uploadFile<MediaAsset>(adminResource(MEDIA_RESOURCE).create, file, fields, onProgress);
     },
-    onSuccess: () => void invalidateResource(queryClient, MEDIA_RESOURCE),
-  });
-}
-
-/** Upload many files in one request (POST /admin/media/bulk-upload). */
-export function useBulkUploadMedia() {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: (files: File[]) => uploadFiles<MediaBulkUploadResult>(`${adminResource(MEDIA_RESOURCE).list}/bulk-upload`, files),
     onSuccess: () => void invalidateResource(queryClient, MEDIA_RESOURCE),
   });
 }
@@ -103,6 +93,3 @@ export function useMediaUsages(id: string | undefined, enabled = true) {
     staleTime: 30_000,
   });
 }
-
-/** Recent media for previews etc. (re-export for callers that prefer the raw fetch). */
-export const fetchMediaPage = (query?: ListQuery) => getList<MediaAsset>(adminResource(MEDIA_RESOURCE).list, query);

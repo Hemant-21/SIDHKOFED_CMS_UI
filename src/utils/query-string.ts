@@ -10,7 +10,7 @@ import type { ListQuery } from '@/types/api';
 export type QueryValue = string | number | boolean | null | undefined | Array<string | number>;
 
 /** Serialize a flat object into a `URLSearchParams`. Arrays → comma-joined. */
-export function toSearchParams(params: Record<string, QueryValue>): URLSearchParams {
+function toSearchParams(params: Record<string, QueryValue>): URLSearchParams {
   const sp = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
     if (value === undefined || value === null || value === '') continue;
@@ -25,7 +25,7 @@ export function toSearchParams(params: Record<string, QueryValue>): URLSearchPar
 }
 
 /** Build a `?a=1&b=2` string (empty string when no params). */
-export function buildQueryString(params: Record<string, QueryValue> | undefined): string {
+function buildQueryString(params: Record<string, QueryValue> | undefined): string {
   if (!params) return '';
   const sp = toSearchParams(params);
   const s = sp.toString();
@@ -37,16 +37,6 @@ export function withQuery(path: string, params?: Record<string, QueryValue>): st
   const qs = buildQueryString(params);
   if (!qs) return path;
   return path.includes('?') ? `${path}&${qs.slice(1)}` : `${path}${qs}`;
-}
-
-/** Parse a `URLSearchParams`/string into a plain object (single values). */
-export function parseSearchParams(input: URLSearchParams | string): Record<string, string> {
-  const sp = typeof input === 'string' ? new URLSearchParams(input) : input;
-  const out: Record<string, string> = {};
-  sp.forEach((value, key) => {
-    out[key] = value;
-  });
-  return out;
 }
 
 /** Normalize a ListQuery into a cache-stable params object (drops empties). */

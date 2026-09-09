@@ -58,7 +58,7 @@ const PERIOD_TYPE_LABEL: Record<string, string> = {
   cumulative: 'Cumulative',
 };
 
-export function periodTypeLabel(periodType: string): string {
+function periodTypeLabel(periodType: string): string {
   return PERIOD_TYPE_LABEL[periodType] ?? periodType;
 }
 

@@ -13,7 +13,7 @@
 import type { MasterRef, MediaRef, HighlightType, PublicationState } from '@/types/common';
 
 /** Compact programme reference (toolkits.dto.ts → ProgrammeRef). */
-export interface ProgrammeRef {
+interface ProgrammeRef {
   id: string;
   slug: string;
   title_en: string;
@@ -124,7 +124,7 @@ export interface ToolkitItemWriteInput {
 // `GET /public/toolkits/{slug}/distribution-summary` (toolkit-distributions.dto.ts →
 // PublicDistributionSummaryDto). Summary figures only — never beneficiary-level data.
 
-export interface PublicDistributionItemSummary {
+interface PublicDistributionItemSummary {
   id: string; // toolkit_item_id
   name_en: string;
   name_hi: string | null;

@@ -6,5 +6,4 @@
 export { TenderListPage } from './tender-list-page';
 export { TenderFormPage } from './tender-form-page';
 export { TenderDetailPage } from './tender-detail-page';
-export { TENDERS_RESOURCE } from './api';
 export * from './types';

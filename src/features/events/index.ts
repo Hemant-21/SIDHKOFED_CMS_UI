@@ -6,5 +6,4 @@
 export { EventListPage } from './event-list-page';
 export { EventFormPage } from './event-form-page';
 export { EventDetailPage } from './event-detail-page';
-export { EVENTS_RESOURCE, NEWS_RESOURCE } from './api';
 export * from './types';

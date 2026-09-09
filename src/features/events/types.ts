@@ -12,7 +12,7 @@ export type EventStatus = 'scheduled' | 'ongoing' | 'completed' | 'postponed' | 
 export type DateMode = 'single' | 'range' | 'multi_day';
 
 /** Backend dynamic-field data types (events.dynamic-fields.ts) — exactly these six. */
-export type FieldDataType = 'text' | 'textarea' | 'number' | 'date' | 'boolean' | 'select';
+type FieldDataType = 'text' | 'textarea' | 'number' | 'date' | 'boolean' | 'select';
 
 /** One active controlled field for an event type (GET /admin/event-types/{id}/field-definitions). */
 export interface EventFieldDefinition {
@@ -29,7 +29,7 @@ export interface EventFieldDefinition {
 }
 
 // ── Compact link refs (as returned in event detail) ─────────────────────────────
-export interface EventDocumentLink {
+interface EventDocumentLink {
   id: string;
   slug: string;
   title_en: string;
@@ -38,14 +38,14 @@ export interface EventDocumentLink {
   file_url: string;
   language: string;
 }
-export interface EventGalleryLink {
+interface EventGalleryLink {
   id: string;
   slug: string;
   title_en: string;
   cover_media: MediaRef | null;
   image_count: number;
 }
-export interface EventNewsLink {
+interface EventNewsLink {
   id: string;
   slug: string;
   title_en: string;
@@ -53,14 +53,14 @@ export interface EventNewsLink {
   news_published_at: string | null;
   public_url: string;
 }
-export interface ProgrammeRef {
+interface ProgrammeRef {
   id: string;
   slug: string;
   title_en: string;
   title_hi: string | null;
   short_code: string | null;
 }
-export interface InstitutionRef {
+interface InstitutionRef {
   id: string;
   slug: string;
   name_en: string;

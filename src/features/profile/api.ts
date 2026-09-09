@@ -4,14 +4,9 @@
  * is sourced from the auth context at call time.
  */
 
-import { get, patch } from '@/lib/api/http';
+import { patch } from '@/lib/api/http';
 import type { AuthUser } from '@/types/auth';
 import type { ChangePasswordPayload, UpdateProfilePayload } from './types';
-
-/** Read the current user's full profile (matches AuthUserDto). */
-export async function fetchMe(): Promise<AuthUser> {
-  return get<AuthUser>('/auth/me');
-}
 
 /** Update profile fields (name, preferred_language) for a given user ID. */
 export async function updateProfile(id: string, payload: UpdateProfilePayload): Promise<AuthUser> {

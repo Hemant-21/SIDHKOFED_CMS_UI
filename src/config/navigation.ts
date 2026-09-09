@@ -24,9 +24,6 @@ import {
   Library,
   Gavel,
   ShoppingCart,
-  Trophy,
-  FileStack,
-  Menu as MenuIcon,
   Images,
   GalleryHorizontalEnd,
   Video,
@@ -80,7 +77,6 @@ export const NAVIGATION: NavSection[] = [
       { key: 'programmes', label: 'Programmes & Schemes', href: ROUTES.programmes, icon: BookOpen },
       { key: 'toolkits', label: 'Toolkits', href: ROUTES.toolkits, icon: Wrench },
       { key: 'institutions', label: 'Partners & Institutions', href: ROUTES.institutions, icon: Building2 },
-      { key: 'success-stories', label: 'Success Stories', href: ROUTES.successStories, icon: Trophy },
     ],
   },
   {
@@ -98,8 +94,6 @@ export const NAVIGATION: NavSection[] = [
     key: 'site',
     label: 'Site Structure',
     items: [
-      { key: 'pages', label: 'Pages', href: ROUTES.pages, icon: FileStack },
-      { key: 'menus', label: 'Menus', href: ROUTES.menus, icon: MenuIcon },
       { key: 'faqs', label: 'FAQs', href: ROUTES.faqs, icon: HelpCircle },
       { key: 'digital-services', label: 'Digital Services', href: ROUTES.digitalServices, icon: AppWindow },
       { key: 'leadership', label: 'Leadership', href: ROUTES.leadership, icon: Users },

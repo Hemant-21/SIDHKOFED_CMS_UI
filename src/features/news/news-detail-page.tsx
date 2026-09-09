@@ -6,9 +6,9 @@
  */
 
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent, CardHeader } from '@/components/layout/card';
+import { PublicUrlLink } from '@/components/layout/public-url-card';
 import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { Badge } from '@/components/ui/badge';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
@@ -107,12 +107,7 @@ export function NewsDetailPage({ id }: { id: string }) {
               <Row label="Created" value={formatDateTime(news.created_at)} />
               <Row label="Updated" value={formatDateTime(news.updated_at)} />
               <Row label="Published" value={news.published_at ? formatDateTime(news.published_at) : '—'} />
-              <div>
-                <p className="text-muted-foreground">Public URL</p>
-                <a href={news.public_url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 break-all text-primary hover:underline">
-                  {news.public_url} <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-                </a>
-              </div>
+              <PublicUrlLink path={news.public_url} />
             </CardContent>
           </Card>
         </div>

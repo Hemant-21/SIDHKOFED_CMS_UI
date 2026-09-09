@@ -13,5 +13,4 @@ export { MetricsLandingPage } from './metrics-landing-page';
 export { DatasetsLandingPage } from './datasets-landing-page';
 export { DatasetDetailPage } from './dataset-detail-page';
 export { DashboardImportPage } from './dashboard-import-page';
-export { REPORTS_RESOURCE } from './api';
 export * from './types';

@@ -8,7 +8,7 @@
 import type { MasterRef, DocumentRef, HighlightType, PublicationState } from '@/types/common';
 
 /** Compact programme/scheme reference (content record — title-based; backend ProgrammeRef). */
-export interface ProgrammeRef {
+interface ProgrammeRef {
   id: string;
   slug: string;
   title_en: string;

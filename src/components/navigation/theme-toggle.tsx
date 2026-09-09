@@ -9,7 +9,7 @@ export function ThemeToggle() {
   const { theme, toggle } = useTheme();
   const isDark = theme === 'dark';
   return (
-    <Tooltip content={isDark ? 'Switch to light mode' : 'Switch to dark mode'}>
+    <Tooltip content={isDark ? 'Switch to light mode' : 'Switch to dark mode'} side="bottom">
       <button
         type="button"
         onClick={toggle}

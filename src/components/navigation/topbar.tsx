@@ -1,13 +1,11 @@
 'use client';
 
 /**
- * Top navigation bar: mobile menu toggle, global search (Ctrl/Cmd+K), language +
- * notifications placeholders, theme toggle, and the user/account menu. The search
- * affordance opens the global command palette owned by SearchProvider; language and
- * notifications remain foundation seams for later phases.
+ * Top navigation bar: mobile menu toggle, global search (Ctrl/Cmd+K), theme toggle,
+ * and the user/account menu. Search opens the global command palette.
  */
 
-import { Bell, Globe, Menu, PanelLeftClose, PanelLeft, Search } from 'lucide-react';
+import { Menu, PanelLeftClose, PanelLeft, Search } from 'lucide-react';
 import { Tooltip } from '@/components/ui/tooltip';
 import { useGlobalSearch } from '@/features/search/search-provider';
 import { ThemeToggle } from './theme-toggle';
@@ -36,7 +34,7 @@ export function Topbar({ onMenuClick, onCollapseToggle, collapsed }: TopbarProps
       </button>
 
       {/* Desktop collapse toggle */}
-      <Tooltip content={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}>
+      <Tooltip content={collapsed ? 'Expand sidebar' : 'Collapse sidebar'} side="bottom">
         <button
           type="button"
           onClick={onCollapseToggle}
@@ -76,27 +74,10 @@ export function Topbar({ onMenuClick, onCollapseToggle, collapsed }: TopbarProps
       </button>
 
       <div className="ml-auto flex items-center gap-1">
-        <PlaceholderButton icon={Globe} label="Language (coming soon)" />
-        <PlaceholderButton icon={Bell} label="Notifications (coming soon)" />
         <ThemeToggle />
         <div className="mx-1 h-6 w-px bg-border" aria-hidden="true" />
         <UserMenu />
       </div>
     </header>
-  );
-}
-
-function PlaceholderButton({ icon: Icon, label }: { icon: typeof Bell; label: string }) {
-  return (
-    <Tooltip content={label}>
-      <button
-        type="button"
-        disabled
-        aria-label={label}
-        className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-      >
-        <Icon className="h-5 w-5" aria-hidden="true" />
-      </button>
-    </Tooltip>
   );
 }

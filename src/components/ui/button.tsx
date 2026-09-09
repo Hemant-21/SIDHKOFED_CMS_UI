@@ -12,7 +12,7 @@ export type ButtonVariant =
   | 'ghost'
   | 'danger'
   | 'link';
-export type ButtonSize = 'sm' | 'md' | 'lg' | 'icon';
+type ButtonSize = 'sm' | 'md' | 'lg' | 'icon';
 
 const VARIANTS: Record<ButtonVariant, string> = {
   primary: 'bg-primary text-primary-foreground hover:bg-primary/90',

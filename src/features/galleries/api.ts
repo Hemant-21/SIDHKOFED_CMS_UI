@@ -10,7 +10,7 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { adminResource } from '@/constants/api-endpoints';
-import { get, post, patch, del } from '@/lib/api/http';
+import { post, patch, del } from '@/lib/api/http';
 import { queryKeys } from '@/constants/query-keys';
 import { invalidateResource } from '@/lib/query';
 import { errorMessage } from '@/lib/api/server-errors';
@@ -29,9 +29,6 @@ export { GALLERY_PERMS } from './permissions';
 const base = adminResource(GALLERIES_RESOURCE);
 const imagesPath = (id: string) => `${base.detail(id)}/images`;
 const imagePath = (id: string, imageId: string) => `${imagesPath(id)}/${encodeURIComponent(imageId)}`;
-
-/** Typed detail fetch for callers outside the CRUD hook. */
-export const fetchGallery = (id: string) => get<GalleryDetail>(base.detail(id));
 
 /** Shared cache wiring for every image mutation: seed detail + invalidate lists. */
 function useImageMutation<TVars>(

@@ -3,20 +3,16 @@
 /**
  * Route guards. `ProtectedRoute` blocks unauthenticated access (redirect to
  * /login with a `next` param); `GuestRoute` keeps authenticated users out of
- * /login; `RequirePermission` gates a protected page on a permission and renders
- * the 403 affordance otherwise. These are the building blocks the (admin) layout
- * and future module pages compose — no page re-implements auth gating.
+ * /login. These are the building blocks the (admin) layout and future module
+ * pages compose — no page re-implements auth gating.
  */
 
 import { useEffect, type ReactNode } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import type { Permission } from '@/types/auth';
 import { useAuth } from '@/hooks/use-auth';
-import { usePermissions } from '@/hooks/use-permissions';
 import { ROUTES } from '@/constants/routes';
 import { env } from '@/config/env';
 import { FullPageLoader } from '@/components/feedback/full-page-loader';
-import { ForbiddenState } from '@/components/feedback/forbidden-state';
 
 function stripDeployBasePath(path: string): string {
   if (!env.basePath) return path;
@@ -60,23 +56,5 @@ export function GuestRoute({ children }: { children: ReactNode }) {
 
   if (isLoading) return <FullPageLoader label="Loading…" />;
   if (isAuthenticated) return <FullPageLoader label="Redirecting…" />;
-  return <>{children}</>;
-}
-
-/** Gate a page (or section) on a permission. Renders 403 if not allowed. */
-export function RequirePermission({
-  permission,
-  anyOf,
-  children,
-  fallback,
-}: {
-  permission?: Permission;
-  anyOf?: Permission[];
-  children: ReactNode;
-  fallback?: ReactNode;
-}) {
-  const { can, canAny } = usePermissions();
-  const allowed = permission ? can(permission) : anyOf ? canAny(anyOf) : true;
-  if (!allowed) return <>{fallback ?? <ForbiddenState />}</>;
   return <>{children}</>;
 }

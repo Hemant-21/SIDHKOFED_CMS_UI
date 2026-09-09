@@ -27,7 +27,7 @@ export interface MasterPayload {
 }
 
 /** Whether a master type allows full CRUD or is seeded/read-only. */
-export type MasterEditMode = 'full' | 'seeded';
+type MasterEditMode = 'full' | 'seeded';
 
 /** Configuration for each known master type. */
 export interface MasterTypeConfig {
@@ -187,6 +187,3 @@ export function findMasterType(key: string): MasterTypeConfig | undefined {
 
 /** Default master type key (first non-seeded type). */
 export const DEFAULT_MASTER_KEY = 'event-types';
-
-/** Filter keys accepted by the master list endpoint. */
-export const MASTER_FILTER_KEYS = ['search'] as const;

@@ -18,8 +18,6 @@ import type {
 
 export type {
   DashboardReportSummary,
-  FinancialYearRef,
-  ReportingPeriodRef,
   PublicReportDetail,
   PublicMetric,
 } from '@/types/dashboard';
@@ -187,7 +185,7 @@ export interface DatasetPreviewResult {
 }
 
 /** Import result — dataset persisted + metrics created/updated (DatasetImportResult). */
-export interface DatasetImportResult {
+interface DatasetImportResult {
   dataset: Dataset;
   metrics_created: number;
   metrics_updated: number;

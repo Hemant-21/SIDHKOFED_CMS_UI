@@ -7,5 +7,4 @@
 export { CommunicationListPage } from './communication-list-page';
 export { CommunicationFormPage } from './communication-form-page';
 export { CommunicationDetailPage } from './communication-detail-page';
-export { COMMUNICATIONS_RESOURCE } from './api';
 export * from './types';

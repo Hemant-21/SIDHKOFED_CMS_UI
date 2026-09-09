@@ -6,5 +6,4 @@
 export { MembershipListPage } from './membership-list-page';
 export { MembershipFormPage } from './membership-form-page';
 export { MembershipDetailPage } from './membership-detail-page';
-export { MEMBERSHIPS_RESOURCE } from './api';
 export * from './types';

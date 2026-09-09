@@ -6,11 +6,4 @@
 
 export { DashboardPage } from './dashboard-page';
 export * from './components';
-export {
-  useDashboardKpis,
-  useDashboardReports,
-  useRecentActivity,
-  useContentCount,
-  useContentCounts,
-  type ContentCountSpec,
-} from './hooks';
+export { useDashboardReports } from './hooks';

@@ -11,14 +11,7 @@
  * than redefined.
  */
 
-import { adminResource } from '@/constants/api-endpoints';
-import { get } from '@/lib/api/http';
-import type { InstitutionDetail } from './types';
-
 export const INSTITUTIONS_RESOURCE = 'institutions';
 
 /** Institutions reuse the shared content RBAC keys (institutions.routes.ts maps to `content.*`). */
 export { CONTENT_PERMS } from '@/features/events/permissions';
-
-/** Re-export a typed detail fetch for any caller that needs it outside the CRUD hook. */
-export const fetchInstitution = (id: string) => get<InstitutionDetail>(adminResource(INSTITUTIONS_RESOURCE).detail(id));

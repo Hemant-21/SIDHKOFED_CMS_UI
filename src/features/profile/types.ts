@@ -5,11 +5,6 @@
  * Types mirror the backend user DTO exactly (API spec §6 / auth.dto.ts).
  */
 
-import type { AuthUser } from '@/types/auth';
-
-/** Re-export for feature-local clarity. */
-export type { AuthUser };
-
 /** Fields editable via `PATCH /admin/users/:id` (profile subset). */
 export interface UpdateProfilePayload {
   full_name?: string;

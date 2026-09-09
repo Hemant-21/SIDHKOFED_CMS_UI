@@ -19,7 +19,7 @@
 import type { MasterRef, HighlightType, PublicationState } from '@/types/common';
 
 /** Compact institution reference (memberships.dto.ts → InstitutionRef). */
-export interface InstitutionRef {
+interface InstitutionRef {
   id: string;
   slug: string;
   name_en: string;

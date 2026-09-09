@@ -9,5 +9,4 @@ export { ToolkitListPage } from './toolkit-list-page';
 export { ToolkitFormPage } from './toolkit-form-page';
 export { ToolkitDetailPage } from './toolkit-detail-page';
 export { ToolkitDistributionsPage } from './toolkit-distributions-page';
-export { TOOLKITS_RESOURCE } from './api';
 export * from './types';

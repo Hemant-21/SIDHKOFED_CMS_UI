@@ -10,7 +10,6 @@
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { adminResource } from '@/constants/api-endpoints';
-import { queryKeys } from '@/constants/query-keys';
 import { get, post } from '@/lib/api/http';
 import { invalidateDetail, invalidateResource } from '@/lib/query';
 import { errorMessage } from '@/lib/api/server-errors';
@@ -24,7 +23,7 @@ import type {
 } from './types';
 
 export const EVENTS_RESOURCE = 'events';
-export const NEWS_RESOURCE = 'news';
+const NEWS_RESOURCE = 'news';
 
 const eventPath = (id: string, action: string) => `${adminResource(EVENTS_RESOURCE).detail(id)}/${action}`;
 
@@ -79,6 +78,3 @@ export function usePublishAsNews() {
     onError: (error) => toast.error(errorMessage(error)),
   });
 }
-
-/** Re-export the cache key factory for callers that prefetch event detail. */
-export const eventQueryKeys = queryKeys.resource(EVENTS_RESOURCE);

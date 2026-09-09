@@ -7,5 +7,4 @@
 export { GalleryListPage } from './gallery-list-page';
 export { GalleryFormPage } from './gallery-form-page';
 export { GalleryDetailPage } from './gallery-detail-page';
-export { GALLERIES_RESOURCE } from './api';
 export * from './types';

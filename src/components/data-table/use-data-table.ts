@@ -51,5 +51,3 @@ export function useDataTable(options: UseDataTableOptions = {}) {
     setHiddenColumns,
   };
 }
-
-export type DataTableController = ReturnType<typeof useDataTable>;

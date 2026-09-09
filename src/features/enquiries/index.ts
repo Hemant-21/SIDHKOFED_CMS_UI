@@ -6,5 +6,4 @@
  */
 export { EnquiryListPage } from './enquiry-list-page';
 export { EnquiryDetailPage } from './enquiry-detail-page';
-export { ENQUIRIES_RESOURCE, ENQUIRY_ROLES, exportEnquiries } from './api';
 export * from './types';

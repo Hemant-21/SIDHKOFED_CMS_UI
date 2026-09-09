@@ -6,9 +6,9 @@
  * compact references the backend returns. Loading/error states are the shared components.
  */
 
-import { ExternalLink } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent, CardHeader } from '@/components/layout/card';
+import { PublicUrlCard } from '@/components/layout/public-url-card';
 import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { Badge } from '@/components/ui/badge';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
@@ -119,19 +119,7 @@ export function ProgrammeDetailPage({ id }: { id: string }) {
             </Card>
           ) : null}
 
-          <Card>
-            <CardContent className="text-sm">
-              <p className="text-muted-foreground">Public URL</p>
-              <a
-                href={programme.public_url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1 break-all text-primary hover:underline"
-              >
-                {programme.public_url} <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-              </a>
-            </CardContent>
-          </Card>
+          <PublicUrlCard path={programme.public_url} />
         </div>
       </div>
     </div>

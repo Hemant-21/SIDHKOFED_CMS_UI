@@ -39,12 +39,6 @@ export interface MediaUsage {
   created_at: string;
 }
 
-/** Result of POST /admin/media/bulk-upload (media.service.ts → BulkUploadResult). */
-export interface MediaBulkUploadResult {
-  accepted: MediaAsset[];
-  rejected: Array<{ file_name: string; error: string }>;
-}
-
 /** Result of POST /admin/media/{id}/replace-file (media.service.ts → replaceFile()). */
 export interface MediaReplaceResult {
   old: MediaAsset;

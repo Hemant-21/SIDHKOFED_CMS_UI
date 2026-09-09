@@ -4,7 +4,7 @@ import { humanize } from '@/utils/format';
 import { AUDIT_ACTION_LABEL, type AuditAction } from '../types';
 
 /** Tone for an audit action (consistent with the dashboard Recent Activity styling). */
-export function auditActionTone(action: string): StatusTone {
+function auditActionTone(action: string): StatusTone {
   if (/publish|create|restore/i.test(action)) return 'success';
   if (/unpublish|archive/i.test(action)) return 'warning';
   if (/delete|fail/i.test(action)) return 'danger';

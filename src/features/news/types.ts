@@ -7,7 +7,7 @@
 
 import type { MediaRef, PublicationState, HighlightType } from '@/types/common';
 
-export interface NewsSourceEvent {
+interface NewsSourceEvent {
   id: string;
   slug: string;
   title_en: string;

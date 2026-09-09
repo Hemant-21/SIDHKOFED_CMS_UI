@@ -44,20 +44,6 @@ export function useRecentActivity(query?: ListQuery, enabled = true) {
   });
 }
 
-/** A single backend-computed content total (one resource + optional filters). */
-export function useContentCount(
-  resource: string,
-  filters?: Record<string, string | number | boolean | undefined>,
-  enabled = true,
-) {
-  return useQuery({
-    queryKey: queryKeys.dashboard.contentCount(resource, filters),
-    queryFn: () => fetchContentCount(resource, filters),
-    enabled,
-    staleTime: 60_000,
-  });
-}
-
 /** One KPI descriptor: a label + the resource/filters whose backend total it shows. */
 export interface ContentCountSpec {
   key: string;

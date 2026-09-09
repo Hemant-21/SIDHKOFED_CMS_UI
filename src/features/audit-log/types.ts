@@ -3,7 +3,7 @@
  * append-only: the admin surface lists and inspects entries; it never mutates them.
  */
 
-export interface AuditLogActor {
+interface AuditLogActor {
   id: string;
   email: string;
   full_name: string;

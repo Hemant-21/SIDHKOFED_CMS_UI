@@ -128,12 +128,6 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     [show, dismiss, promise, helpers],
   );
 
-  // Register a module-level handler so non-React code (interceptors) can toast.
-  useEffect(() => {
-    registerToastHandler(value);
-    return () => registerToastHandler(null);
-  }, [value]);
-
   // Clear any pending timers on unmount.
   useEffect(() => {
     const map = timers.current;
@@ -181,15 +175,4 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       </div>
     </ToastContext.Provider>
   );
-}
-
-// ── Module-level bridge for non-component callers (e.g. global error handling) ─
-let externalHandler: ToastContextValue | null = null;
-function registerToastHandler(handler: ToastContextValue | null): void {
-  externalHandler = handler;
-}
-
-/** Raise a toast from outside React (interceptors, query error handler). No-op if unmounted. */
-export function notify(variant: ToastVariant, input: ToastInput | string): void {
-  externalHandler?.[variant](input);
 }

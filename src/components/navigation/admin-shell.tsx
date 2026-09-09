@@ -11,6 +11,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { STORAGE_KEYS } from '@/constants/app';
 import { useBoolean } from '@/hooks/use-boolean';
 import { SearchProvider } from '@/features/search/search-provider';
+import { ErrorBoundary } from '@/components/feedback/error-boundary';
 import { Sidebar } from './sidebar';
 import { MobileDrawer } from './mobile-drawer';
 import { Topbar } from './topbar';
@@ -51,7 +52,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
         <div className="flex min-w-0 flex-1 flex-col">
           <Topbar onMenuClick={drawer.setTrue} onCollapseToggle={toggleCollapse} collapsed={collapsed} />
           <main id="main-content" className="flex-1 p-6 focus:outline-none" tabIndex={-1}>
-            {children}
+            <ErrorBoundary>{children}</ErrorBoundary>
           </main>
         </div>
       </div>

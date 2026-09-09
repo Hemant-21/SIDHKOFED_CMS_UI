@@ -10,7 +10,6 @@
 import {
   createContext,
   useCallback,
-  useContext,
   useMemo,
   useRef,
   useState,
@@ -68,10 +67,4 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
       {count > 0 ? <FullPageLoader label={label} overlay /> : null}
     </LoadingContext.Provider>
   );
-}
-
-export function useLoading(): LoadingContextValue {
-  const ctx = useContext(LoadingContext);
-  if (!ctx) throw new Error('useLoading must be used within <LoadingProvider>.');
-  return ctx;
 }

@@ -12,13 +12,13 @@
 import type { MasterRef, HighlightType, PublicationState, Language } from '@/types/common';
 
 /** Compact financial-year reference (documents.dto.ts → `{ id, label }`). */
-export interface FinancialYearRef {
+interface FinancialYearRef {
   id: string;
   label: string;
 }
 
 /** Public-safe view of the linked file asset (documents.dto.ts → DocumentFileRef). */
-export interface DocumentFileRef {
+interface DocumentFileRef {
   id: string;
   file_url: string;
   file_name: string;

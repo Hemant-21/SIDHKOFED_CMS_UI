@@ -7,7 +7,6 @@ import type { ListQuery } from '@/types/api';
 import type { MasterPayload } from './types';
 import {
   listMasters,
-  getMaster,
   createMaster,
   updateMaster,
   activateMaster,
@@ -27,13 +26,6 @@ export function useMasterList(key: string, query?: ListQuery, enabled = true) {
   });
 }
 
-export function useMasterDetail(key: string, id: string, enabled = true) {
-  return useQuery({
-    queryKey: masterKey(key, id),
-    queryFn: () => getMaster(key, id),
-    enabled: enabled && Boolean(id),
-  });
-}
 
 export function useCreateMaster(key: string) {
   const qc = useQueryClient();

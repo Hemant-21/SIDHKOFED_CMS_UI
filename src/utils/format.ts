@@ -18,12 +18,6 @@ export function formatNumber(value: number | null | undefined): string {
   return new Intl.NumberFormat('en-IN').format(value);
 }
 
-/** Truncate with an ellipsis, never mid-cut past the limit. */
-export function truncate(text: string, max: number): string {
-  if (text.length <= max) return text;
-  return `${text.slice(0, Math.max(0, max - 1)).trimEnd()}…`;
-}
-
 /** Initials for an avatar fallback: "Anant Kumar" → "AK". */
 export function initials(name: string): string {
   const parts = name.trim().split(/\s+/).filter(Boolean);

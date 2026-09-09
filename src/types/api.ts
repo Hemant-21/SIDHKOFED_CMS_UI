@@ -5,7 +5,7 @@
  */
 
 /** Present on every response. */
-export interface ResponseMeta {
+interface ResponseMeta {
   request_id?: string;
   message?: string;
   [key: string]: unknown;
@@ -60,14 +60,6 @@ export interface ApiErrorBody {
   fields?: FieldErrors;
 }
 
-/** Failure — any 4xx/5xx (or synthesized client error). */
-export interface ApiErrorResponse {
-  success: false;
-  error: ApiErrorBody;
-  meta: ResponseMeta;
-}
-
-export type ApiResponse<T> = ApiSingleResponse<T> | ApiListResponse<T> | ApiErrorResponse;
 
 /** Standard list query the API layer understands across modules. */
 export interface ListQuery {

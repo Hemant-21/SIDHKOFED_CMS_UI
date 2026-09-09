@@ -17,7 +17,7 @@ export const SPAM_STATE_LABEL: Record<SpamState, string> = {
   spam: 'Spam',
 };
 
-export interface MasterRef {
+interface MasterRef {
   id: string;
   slug: string;
   name_en: string;
@@ -53,6 +53,3 @@ export interface EnquiryAnnotateInput {
   internal_notes?: string | null;
   spam_state?: SpamState;
 }
-
-/** Allowed ordering fields for the admin list (enquiries.types.ts → ENQUIRY_ORDERING_FIELDS). */
-export const ENQUIRY_ORDERING_FIELDS = ['submitted_at', 'created_at'] as const;

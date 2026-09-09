@@ -6,8 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import type { FilterController } from '@/types/crud';
 
-export const USER_FILTER_KEYS = ['search', 'is_active', 'role'];
-
 const STATUS_OPTIONS = [
   { value: '', label: 'All users' },
   { value: 'true', label: 'Active' },

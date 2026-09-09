@@ -43,7 +43,7 @@ export const AUDIT_ACTION_LABEL: Record<AuditAction, string> = {
 };
 
 /** Compact actor reference embedded in an audit row (or null for system/anonymous actions). */
-export interface AuditUserRef {
+interface AuditUserRef {
   id: string;
   email: string;
   full_name: string;

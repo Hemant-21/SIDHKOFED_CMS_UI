@@ -19,7 +19,6 @@ export const CONTENT_TYPES = [
   'official_communication',
   'tender',
   'procurement_update',
-  'page',
 ] as const;
 
 export type ContentType = (typeof CONTENT_TYPES)[number];
@@ -30,7 +29,6 @@ export function isContentType(value: string): value is ContentType {
 
 /** Query-length bounds enforced by the backend (API spec §1.5: 2–120 chars). */
 export const MIN_QUERY_LENGTH = 2;
-export const MAX_QUERY_LENGTH = 120;
 
 /** One lightweight search result (reference object only — never a full entity). */
 export interface SearchResult {

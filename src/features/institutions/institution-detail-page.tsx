@@ -10,6 +10,7 @@
 import { ExternalLink, Building2, Mail, Phone, MapPin } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent, CardHeader } from '@/components/layout/card';
+import { PublicUrlLink } from '@/components/layout/public-url-card';
 import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { Badge } from '@/components/ui/badge';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
@@ -134,17 +135,7 @@ export function InstitutionDetailPage({ id }: { id: string }) {
                   </a>
                 </div>
               ) : null}
-              <div>
-                <p className="text-muted-foreground">Public URL</p>
-                <a
-                  href={institution.public_url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 break-all text-primary hover:underline"
-                >
-                  {institution.public_url} <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-                </a>
-              </div>
+              <PublicUrlLink path={institution.public_url} />
               {institution.display_order != null ? (
                 <div>
                   <p className="text-muted-foreground">Display order</p>

@@ -4,5 +4,4 @@
  * backend contract.
  */
 export { AuditLogPage } from './audit-log-page';
-export { AUDIT_RESOURCE } from './api';
 export * from './types';

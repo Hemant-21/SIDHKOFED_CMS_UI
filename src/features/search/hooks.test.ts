@@ -32,11 +32,11 @@ describe('groupResultsByType', () => {
       result('document', '1'),
       result('event', '1'),
       result('document', '2'),
-      result('page', '1'),
+      result('tender', '1'),
     ];
     const groups = groupResultsByType(results);
 
-    expect(groups.map((g) => g.type)).toEqual(['event', 'document', 'page']);
+    expect(groups.map((g) => g.type)).toEqual(['event', 'document', 'tender']);
     expect(groups[0]!.results).toHaveLength(1); // event
     expect(groups[1]!.results.map((r) => r.id)).toEqual(['1', '2']); // documents, ranking order kept
   });
@@ -52,6 +52,6 @@ describe('groupResultsByType', () => {
   });
 
   it('the canonical order covers every searchable content type', () => {
-    expect(CONTENT_TYPE_ORDER).toHaveLength(8);
+    expect(CONTENT_TYPE_ORDER).toHaveLength(7);
   });
 });

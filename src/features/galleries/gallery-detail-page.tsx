@@ -6,9 +6,9 @@
  * tabs.
  */
 
-import { ExternalLink } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent, CardHeader } from '@/components/layout/card';
+import { PublicUrlCard } from '@/components/layout/public-url-card';
 import { AuthenticatedMediaImage } from '@/components/media/authenticated-media-image';
 import { Badge } from '@/components/ui/badge';
 import { StatusBadge } from '@/components/ui/status-badge';
@@ -101,19 +101,7 @@ export function GalleryDetailPage({ id }: { id: string }) {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="text-sm">
-              <p className="text-muted-foreground">Public URL</p>
-              <a
-                href={`/galleries/${gallery.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 break-all text-primary hover:underline"
-              >
-                /galleries/{gallery.slug} <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-              </a>
-            </CardContent>
-          </Card>
+          <PublicUrlCard path={`/galleries/${gallery.slug}`} />
         </div>
       </div>
     </div>

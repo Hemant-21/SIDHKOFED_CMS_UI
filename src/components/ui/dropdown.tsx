@@ -22,7 +22,7 @@ import { cn } from '@/utils/cn';
 import { useClickOutside } from '@/hooks/use-click-outside';
 import { Slot } from './slot';
 
-export interface DropdownItem {
+interface DropdownItem {
   /** Optional — omitted for `separator` items. */
   label?: ReactNode;
   onSelect?: () => void;

@@ -11,7 +11,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ApiError } from '@/lib/api/errors';
 
-export function makeQueryClient(): QueryClient {
+function makeQueryClient(): QueryClient {
   return new QueryClient({
     defaultOptions: {
       queries: {

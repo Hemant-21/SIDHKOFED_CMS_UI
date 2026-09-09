@@ -54,7 +54,7 @@ export function usePublish<TDetail = unknown>(
   return useActionMutation<TDetail>(resource, (a) => a.publish, 'Published.', options);
 }
 
-export function useUnpublish<TDetail = unknown>(
+function useUnpublish<TDetail = unknown>(
   resource: string,
   options: CrudMutationOptions<TDetail, string> = {},
 ) {

@@ -34,15 +34,6 @@ export function adminResource(resource: string) {
   };
 }
 
-/** Public list/detail pattern (API spec §5). Details are addressed by slug. */
-export function publicResource(resource: string) {
-  const base = `/public/${resource}`;
-  return {
-    list: base,
-    detail: (slug: string) => `${base}/${encodeURIComponent(slug)}`,
-  };
-}
-
 /** Master-data routes (API spec §4). `master_key` is kebab-case, e.g. `event-types`. */
 export const MASTERS = {
   admin: (key: string) => `/admin/masters/${key}`,

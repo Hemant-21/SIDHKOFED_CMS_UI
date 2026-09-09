@@ -11,7 +11,7 @@ import type { Language } from './common';
 export type Permission = string;
 
 /** A role key, e.g. `super_admin`, `content_editor`, `publisher`. */
-export type Role = string;
+type Role = string;
 
 /** The authenticated user (matches backend AuthUserDto). */
 export interface AuthUser {

@@ -18,7 +18,7 @@ import {
 import { cn } from '@/utils/cn';
 import { Label } from '@/components/ui/label';
 
-export interface FieldRenderProps<TValues extends FieldValues> {
+interface FieldRenderProps<TValues extends FieldValues> {
   field: ControllerRenderProps<TValues, Path<TValues>>;
   /** Wire onto the control: `aria-invalid` + `aria-describedby`. */
   controlProps: { id: string; 'aria-invalid'?: boolean; 'aria-describedby'?: string };

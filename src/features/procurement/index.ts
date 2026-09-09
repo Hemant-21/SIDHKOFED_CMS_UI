@@ -6,5 +6,4 @@
 export { ProcurementListPage } from './procurement-list-page';
 export { ProcurementFormPage } from './procurement-form-page';
 export { ProcurementDetailPage } from './procurement-detail-page';
-export { PROCUREMENT_RESOURCE } from './api';
 export * from './types';

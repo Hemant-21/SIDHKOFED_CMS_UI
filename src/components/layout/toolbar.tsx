@@ -18,26 +18,3 @@ export function Toolbar({
     </div>
   );
 }
-
-/** Sticky action bar that pins to the bottom of a scroll area (e.g. form save). */
-export function ActionBar({
-  children,
-  className,
-  sticky = false,
-}: {
-  children: ReactNode;
-  className?: string;
-  sticky?: boolean;
-}) {
-  return (
-    <div
-      className={cn(
-        'flex items-center justify-end gap-2 border-t border-border bg-surface px-4 py-3',
-        sticky && 'sticky bottom-0 z-10',
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-}

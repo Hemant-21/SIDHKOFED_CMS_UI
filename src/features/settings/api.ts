@@ -15,11 +15,6 @@ export async function fetchSettings(): Promise<SettingsGroupsResponse> {
   return get<SettingsGroupsResponse>(BASE);
 }
 
-/** Fetch a single setting by key. */
-export async function fetchSetting(key: string): Promise<SettingRecord> {
-  return get<SettingRecord>(`${BASE}/${encodeURIComponent(key)}`);
-}
-
 /** Update a setting value. Body `{ value }` — backend validates. */
 export async function updateSetting(key: string, value: unknown): Promise<SettingRecord> {
   return put<SettingRecord, { value: unknown }>(`${BASE}/${encodeURIComponent(key)}`, { value });

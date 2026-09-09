@@ -14,7 +14,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
 import { adminResource, MASTERS } from '@/constants/api-endpoints';
-import { get, getList, post } from '@/lib/api/http';
+import { getList, post } from '@/lib/api/http';
 import { invalidateDetail, invalidateResource } from '@/lib/query';
 import { errorMessage } from '@/lib/api/server-errors';
 import { useToast } from '@/hooks/use-toast';
@@ -68,6 +68,3 @@ export function useFinancialYearOptions(): { options: SelectOption[]; isLoading:
   }));
   return { options, isLoading: query.isLoading };
 }
-
-/** Re-export a typed detail fetch for any caller that needs it outside the CRUD hook. */
-export const fetchDocument = (id: string) => get<DocumentDetail>(adminResource(DOCUMENTS_RESOURCE).detail(id));

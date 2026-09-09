@@ -99,23 +99,6 @@ export async function uploadFile<T>(
   return res.data.data;
 }
 
-/** Upload many files in one request (bulk-upload endpoints). */
-export async function uploadFiles<T>(
-  url: string,
-  files: File[],
-  fields?: Record<string, string | Blob>,
-): Promise<T> {
-  const form = new FormData();
-  files.forEach((f) => form.append('files', f));
-  if (fields) {
-    for (const [key, value] of Object.entries(fields)) form.append(key, value);
-  }
-  const res = await apiClient.post<ApiSingleResponse<T>>(url, form, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  });
-  return res.data.data;
-}
-
 /** Fetch a binary payload (e.g. enquiry XLSX export). Returns the Blob. */
 export async function getBlob(url: string, config?: AxiosRequestConfig): Promise<Blob> {
   const res = await rawRequest<Blob>({ ...config, url, method: 'GET', responseType: 'blob' });

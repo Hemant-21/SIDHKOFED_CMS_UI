@@ -46,8 +46,3 @@ export function usePermissions(): PermissionsApi {
     };
   }, [user]);
 }
-
-/** Convenience single-permission hook: `const canPublish = useCan('events.publish');`. */
-export function useCan(permission: Permission): boolean {
-  return usePermissions().can(permission);
-}

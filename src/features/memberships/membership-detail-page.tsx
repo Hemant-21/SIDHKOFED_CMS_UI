@@ -6,9 +6,9 @@
  * (codex §4.15). Internal notes are shown to admins but never appear on the public directory.
  */
 
-import { ExternalLink } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent, CardHeader } from '@/components/layout/card';
+import { PublicUrlCard } from '@/components/layout/public-url-card';
 import { Badge } from '@/components/ui/badge';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -124,20 +124,7 @@ export function MembershipDetailPage({ id }: { id: string }) {
         </div>
 
         <div className="space-y-6">
-          <Card>
-            <CardContent className="text-sm">
-              <p className="text-muted-foreground">Public directory URL</p>
-              <a
-                href={`/memberships/${membership.slug}`}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1 break-all text-primary hover:underline"
-              >
-                /memberships/{membership.slug}{' '}
-                <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-              </a>
-            </CardContent>
-          </Card>
+          <PublicUrlCard path={`/memberships/${membership.slug}`} label="Public directory URL" />
         </div>
       </div>
     </div>

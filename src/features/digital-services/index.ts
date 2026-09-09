@@ -7,5 +7,4 @@
 export { DigitalServiceListPage } from './digital-service-list-page';
 export { DigitalServiceFormPage } from './digital-service-form-page';
 export { DigitalServiceDetailPage } from './digital-service-detail-page';
-export { DIGITAL_SERVICES_RESOURCE } from './api';
 export * from './types';

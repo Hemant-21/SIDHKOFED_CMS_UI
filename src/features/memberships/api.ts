@@ -9,19 +9,15 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { adminResource } from '@/constants/api-endpoints';
-import { get, post } from '@/lib/api/http';
+import { post } from '@/lib/api/http';
 import { invalidateResource } from '@/lib/query';
 import { errorMessage } from '@/lib/api/server-errors';
 import { useToast } from '@/hooks/use-toast';
-import type { MembershipDetail, MembershipBulkRow, MembershipBulkUploadResult } from './types';
+import type { MembershipBulkRow, MembershipBulkUploadResult } from './types';
 
 export const MEMBERSHIPS_RESOURCE = 'memberships';
 
 export { MEMBERSHIP_PERMS } from './permissions';
-
-/** Typed detail fetch for callers outside the CRUD hook. */
-export const fetchMembership = (id: string) =>
-  get<MembershipDetail>(adminResource(MEMBERSHIPS_RESOURCE).detail(id));
 
 const bulkUploadPath = `${adminResource(MEMBERSHIPS_RESOURCE).list}/bulk-upload`;
 

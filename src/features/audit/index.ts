@@ -6,5 +6,4 @@
  */
 export { AuditListPage } from './audit-list-page';
 export { AuditDetailPage } from './audit-detail-page';
-export { AUDIT_RESOURCE } from './types';
 export * from './types';

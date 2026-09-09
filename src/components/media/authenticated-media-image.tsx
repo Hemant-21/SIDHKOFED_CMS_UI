@@ -6,7 +6,7 @@ import { getBlob } from '@/lib/api/http';
 
 export type MediaVariantName = 'thumb' | 'card' | 'hero';
 
-export interface AuthenticatedMediaRef {
+interface AuthenticatedMediaRef {
   id: string;
   file_name?: string | null;
   title?: string | null;

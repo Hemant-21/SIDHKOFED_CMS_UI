@@ -4,7 +4,7 @@
  * so callers never hand-craft URLs.
  */
 
-import { get, getList, post, patch } from '@/lib/api/http';
+import { getList, post, patch } from '@/lib/api/http';
 import { MASTERS } from '@/constants/api-endpoints';
 import type { MasterRecord, MasterPayload } from './types';
 import type { PaginatedResult } from '@/lib/api/http';
@@ -15,10 +15,6 @@ export async function listMasters(
   query?: ListQuery,
 ): Promise<PaginatedResult<MasterRecord>> {
   return getList<MasterRecord>(MASTERS.admin(key), query);
-}
-
-export async function getMaster(key: string, id: string): Promise<MasterRecord> {
-  return get<MasterRecord>(MASTERS.adminItem(key, id));
 }
 
 export async function createMaster(key: string, body: MasterPayload): Promise<MasterRecord> {
