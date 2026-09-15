@@ -55,20 +55,6 @@ export const SEARCH_ENDPOINTS = {
   public: '/public/search',
 } as const;
 
-/**
- * Dashboard routes (API spec §5/§6). The Admin Dashboard composes:
- *  - the public KPI subset (`/public/dashboard/kpis`) for headline figures, and
- *  - the admin report catalog (`/admin/dashboard/reports`) for report status.
- * Reports are a FIXED set (no builder) — these endpoints read, never define.
- */
-export const DASHBOARD_ENDPOINTS = {
-  adminReports: '/admin/dashboard/reports',
-  adminReportDetail: (id: string) => `/admin/dashboard/reports/${encodeURIComponent(id)}`,
-  publicKpis: '/public/dashboard/kpis',
-  publicDashboard: '/public/dashboard',
-  publicReport: (key: string) => `/public/dashboard/${encodeURIComponent(key)}`,
-} as const;
-
 /** Audit log routes (API spec §6). Read-only; Super Admin only. Drives Recent Activity. */
 export const AUDIT_ENDPOINTS = {
   list: '/admin/audit-logs',

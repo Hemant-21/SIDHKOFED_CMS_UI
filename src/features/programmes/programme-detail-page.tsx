@@ -99,7 +99,6 @@ export function ProgrammeDetailPage({ id }: { id: string }) {
             <CardHeader title="Relationships" />
             <CardContent className="space-y-4">
               <RefList label="Commodities" items={programme.commodities.map((c) => c.name_en)} />
-              <RefList label="Permitted training types" items={programme.permitted_training_types.map((t) => t.name_en)} />
             </CardContent>
           </Card>
         </div>

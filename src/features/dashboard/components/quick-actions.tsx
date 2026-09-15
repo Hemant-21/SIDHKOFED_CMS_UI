@@ -16,12 +16,12 @@ import {
   BookPlus,
   Building2,
   Images,
-  BarChart3,
+  FileBarChart2,
   type LucideIcon,
 } from 'lucide-react';
 import { EmptyState } from '@/components/feedback/empty-state';
 import { ROUTES } from '@/constants/routes';
-import { CONTENT_PERMISSIONS, DASHBOARD_PERMISSIONS, ROLE_KEYS } from '@/constants/permissions';
+import { CONTENT_PERMISSIONS, ROLE_KEYS } from '@/constants/permissions';
 import { usePermissions } from '@/hooks/use-permissions';
 import { cn } from '@/utils/cn';
 
@@ -75,11 +75,13 @@ const QUICK_ACTIONS: QuickAction[] = [
     roles: ALL_CMS_ROLES,
   },
   {
-    key: 'dashboard-data',
-    label: 'Dashboard Data',
-    href: ROUTES.dashboardData,
-    icon: BarChart3,
-    anyOf: [DASHBOARD_PERMISSIONS.manageData],
+    // Legacy Figures (manual Metrics/Datasets/Excel Import over dummy data) was removed entirely;
+    // this shortcut now points at the live-calculated Generate Reports surface instead.
+    key: 'generate-reports',
+    label: 'Generate Reports',
+    href: ROUTES.dashboardGenerateReports,
+    icon: FileBarChart2,
+    anyOf: ['operational_reports.view'],
   },
 ];
 

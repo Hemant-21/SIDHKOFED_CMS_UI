@@ -3,37 +3,24 @@
  * they consume EXISTING backend endpoints only and never compute a KPI in the
  * frontend (codex §13: backend is the source of truth).
  *
- *  - `fetchKpis`            → GET /public/dashboard/kpis (resolved headline figures)
- *  - `fetchReports`         → GET /admin/dashboard/reports (fixed report catalog + state)
  *  - `fetchRecentActivity`  → GET /admin/audit-logs (Super Admin only)
  *  - `fetchContentCount`    → GET /admin/{resource}?page_size=1 (reads backend `pagination.total_items`)
  *
  * The content-count fetcher returns the BACKEND-computed total for a resource +
  * filter set. It requests a single row and reads `pagination.total_items`; the
  * count is the server's, not a client aggregation of records.
+ *
+ * `fetchKpis` (`/public/dashboard/kpis`) and `fetchReports` (`/admin/dashboard/reports`)
+ * used to live here too. The backend retired the fixed "Dashboard Reports" concept
+ * entirely — every `/public/dashboard*` route, the admin report-definition routes,
+ * and the underlying rows are gone — so both fetchers were removed. See the
+ * Dashboard Reports removal note in `../dashboard-data`.
  */
 
-import { get, getList, type PaginatedResult } from '@/lib/api/http';
-import { adminResource, DASHBOARD_ENDPOINTS, AUDIT_ENDPOINTS } from '@/constants/api-endpoints';
+import { getList, type PaginatedResult } from '@/lib/api/http';
+import { adminResource, AUDIT_ENDPOINTS } from '@/constants/api-endpoints';
 import type { ListQuery } from '@/types/api';
-import type {
-  AuditLogEntry,
-  DashboardKpisResponse,
-  DashboardPeriodFilters,
-  DashboardReportSummary,
-} from '@/types/dashboard';
-
-/** Headline KPI figures — the homepage-safe resolved metric subset. */
-export function fetchKpis(period?: DashboardPeriodFilters): Promise<DashboardKpisResponse> {
-  return get<DashboardKpisResponse>(DASHBOARD_ENDPOINTS.publicKpis, {
-    params: period ?? {},
-  });
-}
-
-/** The fixed report catalog with publication state + visibility (management view). */
-export function fetchReports(query?: ListQuery): Promise<PaginatedResult<DashboardReportSummary>> {
-  return getList<DashboardReportSummary>(DASHBOARD_ENDPOINTS.adminReports, query);
-}
+import type { AuditLogEntry } from '@/types/dashboard';
 
 /** Recent administrative actions (audit log). Filterable by module/action/date. */
 export function fetchRecentActivity(query?: ListQuery): Promise<PaginatedResult<AuditLogEntry>> {

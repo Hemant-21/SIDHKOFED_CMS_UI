@@ -11,9 +11,18 @@ import {
   defaultMasterSchema,
   financialYearSchema,
   commodityMasterSchema,
+  buildEventTypeMasterPayload,
+  eventTypeMasterSchema,
+  buildProcurementUpdateTypeMasterPayload,
+  procurementUpdateTypeMasterSchema,
+  buildDocumentTypeMasterPayload,
+  documentTypeMasterSchema,
   emptyDefaultMasterForm,
   emptyFinancialYearForm,
   emptyCommodityMasterForm,
+  emptyEventTypeMasterForm,
+  emptyProcurementUpdateTypeMasterForm,
+  emptyDocumentTypeMasterForm,
   type DefaultMasterValues,
 } from './master-form-payload';
 import { MASTER_TYPES, findMasterType } from './types';
@@ -187,11 +196,106 @@ describe('emptyCommodityMasterForm', () => {
   });
 });
 
+describe('eventTypeMasterSchema / buildEventTypeMasterPayload', () => {
+  it('requires an event_category_id', () => {
+    const result = eventTypeMasterSchema.safeParse({ ...emptyEventTypeMasterForm(), name_en: 'Seminar' });
+    expect(result.success).toBe(false);
+  });
+
+  it('builds a payload including the category id', () => {
+    const out = buildEventTypeMasterPayload({
+      name_en: 'Seminar', name_hi: '', display_order: '3', event_category_id: 'cat-1',
+    });
+    expect(out).toEqual({ name_en: 'Seminar', name_hi: null, display_order: 3, event_category_id: 'cat-1' });
+  });
+});
+
+describe('procurementUpdateTypeMasterSchema / buildProcurementUpdateTypeMasterPayload', () => {
+  it('requires a procurement_update_category_id', () => {
+    const result = procurementUpdateTypeMasterSchema.safeParse({
+      ...emptyProcurementUpdateTypeMasterForm(), name_en: 'Bonus Rate',
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('builds a payload including the category id', () => {
+    const out = buildProcurementUpdateTypeMasterPayload({
+      name_en: 'Bonus Rate', name_hi: '', display_order: '3', procurement_update_category_id: 'cat-1',
+    });
+    expect(out).toEqual({ name_en: 'Bonus Rate', name_hi: null, display_order: 3, procurement_update_category_id: 'cat-1' });
+  });
+});
+
+describe('documentTypeMasterSchema / buildDocumentTypeMasterPayload', () => {
+  it('requires a parent_id', () => {
+    const result = documentTypeMasterSchema.safeParse({ ...emptyDocumentTypeMasterForm(), name_en: 'Notice' });
+    expect(result.success).toBe(false);
+  });
+
+  it('accepts a valid knowledge_category family selection', () => {
+    const result = documentTypeMasterSchema.safeParse({
+      name_en: 'Notice', name_hi: '', display_order: '',
+      document_family: 'knowledge_category', parent_id: 'kc-1',
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it('builds a payload that sends knowledge_category_id and nulls communication_type_id for the knowledge_category family', () => {
+    const out = buildDocumentTypeMasterPayload({
+      name_en: 'Notice', name_hi: '', display_order: '3',
+      document_family: 'knowledge_category', parent_id: 'kc-1',
+    });
+    expect(out).toEqual({
+      name_en: 'Notice', name_hi: null, display_order: 3,
+      knowledge_category_id: 'kc-1', communication_type_id: null,
+    });
+  });
+
+  it('builds a payload that sends communication_type_id and nulls knowledge_category_id for the communication_type family', () => {
+    const out = buildDocumentTypeMasterPayload({
+      name_en: 'Circular', name_hi: '', display_order: '',
+      document_family: 'communication_type', parent_id: 'ct-1',
+    });
+    expect(out).toEqual({
+      name_en: 'Circular', name_hi: null, display_order: null,
+      knowledge_category_id: null, communication_type_id: 'ct-1',
+    });
+  });
+});
+
+describe('emptyDocumentTypeMasterForm', () => {
+  it('defaults to the knowledge_category family with an empty parent', () => {
+    expect(emptyDocumentTypeMasterForm()).toEqual({
+      name_en: '', name_hi: '', display_order: '', document_family: 'knowledge_category', parent_id: '',
+    });
+  });
+});
+
 // ── MASTER_TYPES config contract ──────────────────────────────────────────────
 
 describe('MASTER_TYPES configuration', () => {
   it('has exactly 16 master types', () => {
     expect(MASTER_TYPES).toHaveLength(16);
+  });
+
+  it('event-types uses the event-type form variant and filters by category', () => {
+    const eventTypes = findMasterType('event-types')!;
+    expect(eventTypes.formVariant).toBe('event-type');
+    expect(eventTypes.filterKeys).toEqual(['event_category_id']);
+  });
+
+  it('procurement-update-types uses the procurement-update-type form variant and filters by category', () => {
+    const procurementUpdateTypes = findMasterType('procurement-update-types')!;
+    expect(procurementUpdateTypes.formVariant).toBe('procurement-update-type');
+    expect(procurementUpdateTypes.filterKeys).toEqual(['procurement_update_category_id']);
+  });
+
+  it('document-types uses the document-type form variant and filters by section/parent', () => {
+    const documentTypes = findMasterType('document-types')!;
+    expect(documentTypes.formVariant).toBe('document-type');
+    expect(documentTypes.filterKeys).toEqual(
+      expect.arrayContaining(['document_section', 'knowledge_category_id', 'communication_type_id']),
+    );
   });
 
   it('financial-years uses the financial-year form variant and has no display_order', () => {

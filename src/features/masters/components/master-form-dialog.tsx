@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Dialog } from '@/components/ui/dialog';
 import { Form } from '@/components/form/form';
 import { TextField, TextareaField, SelectField, DateField } from '@/components/form/fields';
 import { FormSection } from '@/components/form/form-section';
 import { Button } from '@/components/ui/button';
 import { useZodForm } from '@/components/form/use-zod-form';
-import { CoverMediaField } from '@/components/relationships';
+import { CoverMediaField, useMasterOptions } from '@/components/relationships';
 import { useCreateMaster, useUpdateMaster } from '../hooks';
 import type { MasterRecord, MasterPayload, MasterTypeConfig } from '../types';
 import {
@@ -21,6 +21,16 @@ import {
   type CommodityMasterValues,
   buildCommodityMasterPayload,
   COMMODITY_CATEGORY_OPTIONS,
+  eventTypeMasterSchema,
+  type EventTypeMasterValues,
+  buildEventTypeMasterPayload,
+  procurementUpdateTypeMasterSchema,
+  type ProcurementUpdateTypeMasterValues,
+  buildProcurementUpdateTypeMasterPayload,
+  documentTypeMasterSchema,
+  type DocumentTypeMasterValues,
+  type DocumentFamily,
+  buildDocumentTypeMasterPayload,
 } from '../master-form-payload';
 
 // ── Default form (name_en / name_hi / display_order) ─────────────────────────
@@ -283,6 +293,312 @@ function CommodityMasterForm({
   );
 }
 
+// ── Event Type form (name / display_order / required event category) ─────────
+
+function EventTypeMasterForm({
+  config,
+  record,
+  onClose,
+}: {
+  config: MasterTypeConfig;
+  record?: MasterRecord;
+  onClose: () => void;
+}) {
+  const isEdit = Boolean(record);
+  const categories = useMasterOptions('event-categories');
+  const initialCategoryId = (record?.event_category_id as string | null) ?? '';
+
+  const form = useZodForm<EventTypeMasterValues>(eventTypeMasterSchema, {
+    defaultValues: {
+      name_en: record?.name_en ?? '',
+      name_hi: (record?.name_hi as string | null) ?? '',
+      display_order: record?.display_order != null ? String(record.display_order) : '',
+      event_category_id: initialCategoryId,
+    },
+  });
+
+  useEffect(() => {
+    form.reset({
+      name_en: record?.name_en ?? '',
+      name_hi: (record?.name_hi as string | null) ?? '',
+      display_order: record?.display_order != null ? String(record.display_order) : '',
+      event_category_id: initialCategoryId,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [record]);
+
+  const create = useCreateMaster(config.key);
+  const update = useUpdateMaster(config.key, record?.id ?? '');
+  const saving = create.isPending || update.isPending;
+
+  const onSubmit = async (values: EventTypeMasterValues) => {
+    const payload = buildEventTypeMasterPayload(values);
+    if (isEdit && record) {
+      await update.mutateAsync(payload as unknown as Partial<MasterPayload>);
+    } else {
+      await create.mutateAsync(payload as unknown as MasterPayload);
+    }
+    onClose();
+  };
+
+  return (
+    <Form form={form} onSubmit={onSubmit} className="space-y-4">
+      <FormSection>
+        <SelectField<EventTypeMasterValues>
+          name="event_category_id"
+          label="Event category"
+          required
+          options={[{ value: '', label: 'Select category…' }, ...categories.options]}
+        />
+        <TextField<EventTypeMasterValues>
+          name="name_en"
+          label="Name (English)"
+          required
+          placeholder="e.g. Training"
+        />
+        <TextField<EventTypeMasterValues>
+          name="name_hi"
+          label="नाम (Hindi)"
+          placeholder="e.g. प्रशिक्षण"
+        />
+        {config.hasDisplayOrder !== false && (
+          <TextField<EventTypeMasterValues>
+            name="display_order"
+            label="Display order"
+            type="number"
+            placeholder="0"
+          />
+        )}
+      </FormSection>
+      <div className="flex items-center justify-end gap-2">
+        <Button type="button" variant="ghost" onClick={onClose} disabled={saving}>
+          Cancel
+        </Button>
+        <Button type="submit" variant="primary" isLoading={saving}>
+          {isEdit ? 'Save changes' : 'Add record'}
+        </Button>
+      </div>
+    </Form>
+  );
+}
+
+// ── Procurement Update Type form (name / display_order / required category) ──
+
+function ProcurementUpdateTypeMasterForm({
+  config,
+  record,
+  onClose,
+}: {
+  config: MasterTypeConfig;
+  record?: MasterRecord;
+  onClose: () => void;
+}) {
+  const isEdit = Boolean(record);
+  const categories = useMasterOptions('procurement-update-categories');
+  const initialCategoryId = (record?.procurement_update_category_id as string | null) ?? '';
+
+  const form = useZodForm<ProcurementUpdateTypeMasterValues>(procurementUpdateTypeMasterSchema, {
+    defaultValues: {
+      name_en: record?.name_en ?? '',
+      name_hi: (record?.name_hi as string | null) ?? '',
+      display_order: record?.display_order != null ? String(record.display_order) : '',
+      procurement_update_category_id: initialCategoryId,
+    },
+  });
+
+  useEffect(() => {
+    form.reset({
+      name_en: record?.name_en ?? '',
+      name_hi: (record?.name_hi as string | null) ?? '',
+      display_order: record?.display_order != null ? String(record.display_order) : '',
+      procurement_update_category_id: initialCategoryId,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [record]);
+
+  const create = useCreateMaster(config.key);
+  const update = useUpdateMaster(config.key, record?.id ?? '');
+  const saving = create.isPending || update.isPending;
+
+  const onSubmit = async (values: ProcurementUpdateTypeMasterValues) => {
+    const payload = buildProcurementUpdateTypeMasterPayload(values);
+    if (isEdit && record) {
+      await update.mutateAsync(payload as unknown as Partial<MasterPayload>);
+    } else {
+      await create.mutateAsync(payload as unknown as MasterPayload);
+    }
+    onClose();
+  };
+
+  return (
+    <Form form={form} onSubmit={onSubmit} className="space-y-4">
+      <FormSection>
+        <SelectField<ProcurementUpdateTypeMasterValues>
+          name="procurement_update_category_id"
+          label="Procurement update category"
+          required
+          options={[{ value: '', label: 'Select category…' }, ...categories.options]}
+        />
+        <TextField<ProcurementUpdateTypeMasterValues>
+          name="name_en"
+          label="Name (English)"
+          required
+          placeholder="e.g. Procurement Rate"
+        />
+        <TextField<ProcurementUpdateTypeMasterValues>
+          name="name_hi"
+          label="नाम (Hindi)"
+          placeholder="e.g. खरीद दर"
+        />
+        {config.hasDisplayOrder !== false && (
+          <TextField<ProcurementUpdateTypeMasterValues>
+            name="display_order"
+            label="Display order"
+            type="number"
+            placeholder="0"
+          />
+        )}
+      </FormSection>
+      <div className="flex items-center justify-end gap-2">
+        <Button type="button" variant="ghost" onClick={onClose} disabled={saving}>
+          Cancel
+        </Button>
+        <Button type="submit" variant="primary" isLoading={saving}>
+          {isEdit ? 'Save changes' : 'Add record'}
+        </Button>
+      </div>
+    </Form>
+  );
+}
+
+// ── Document Type form (name / display_order / family + parent) ──────────────
+//
+// A Document Type parents to exactly one Knowledge Category (Publications) or Communication
+// Type (Notifications). The family select swaps the dependent parent options; the payload
+// builder always sends both `knowledge_category_id` and `communication_type_id` so a family
+// switch resolves unambiguously.
+
+const DOCUMENT_FAMILY_SELECT_OPTIONS = [
+  { value: 'knowledge_category', label: 'Publications (Knowledge Category)' },
+  { value: 'communication_type', label: 'Notifications (Communication Type)' },
+];
+
+function DocumentTypeMasterForm({
+  config,
+  record,
+  onClose,
+}: {
+  config: MasterTypeConfig;
+  record?: MasterRecord;
+  onClose: () => void;
+}) {
+  const isEdit = Boolean(record);
+  const initialFamily: DocumentFamily = record?.communication_type_id ? 'communication_type' : 'knowledge_category';
+  const initialParentId =
+    ((initialFamily === 'knowledge_category' ? record?.knowledge_category_id : record?.communication_type_id) as
+      | string
+      | null
+      | undefined) ?? '';
+
+  const form = useZodForm<DocumentTypeMasterValues>(documentTypeMasterSchema, {
+    defaultValues: {
+      name_en: record?.name_en ?? '',
+      name_hi: (record?.name_hi as string | null) ?? '',
+      display_order: record?.display_order != null ? String(record.display_order) : '',
+      document_family: initialFamily,
+      parent_id: initialParentId,
+    },
+  });
+
+  useEffect(() => {
+    form.reset({
+      name_en: record?.name_en ?? '',
+      name_hi: (record?.name_hi as string | null) ?? '',
+      display_order: record?.display_order != null ? String(record.display_order) : '',
+      document_family: initialFamily,
+      parent_id: initialParentId,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [record]);
+
+  const family = form.watch('document_family');
+  const knowledgeCategories = useMasterOptions('knowledge-categories', { enabled: family === 'knowledge_category' });
+  const communicationTypes = useMasterOptions('communication-types', { enabled: family === 'communication_type' });
+  const parentOptions = family === 'knowledge_category' ? knowledgeCategories.options : communicationTypes.options;
+
+  // Reset the dependent parent select whenever the family changes (a fresh choice, not the
+  // initial hydration from `record`) so a stale id from the other family can't be submitted.
+  const isFirstFamilyRender = useRef(true);
+  useEffect(() => {
+    if (isFirstFamilyRender.current) {
+      isFirstFamilyRender.current = false;
+      return;
+    }
+    form.setValue('parent_id', '');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [family]);
+
+  const create = useCreateMaster(config.key);
+  const update = useUpdateMaster(config.key, record?.id ?? '');
+  const saving = create.isPending || update.isPending;
+
+  const onSubmit = async (values: DocumentTypeMasterValues) => {
+    const payload = buildDocumentTypeMasterPayload(values);
+    if (isEdit && record) {
+      await update.mutateAsync(payload as unknown as Partial<MasterPayload>);
+    } else {
+      await create.mutateAsync(payload as unknown as MasterPayload);
+    }
+    onClose();
+  };
+
+  return (
+    <Form form={form} onSubmit={onSubmit} className="space-y-4">
+      <FormSection>
+        <SelectField<DocumentTypeMasterValues>
+          name="document_family"
+          label="Destination"
+          required
+          options={DOCUMENT_FAMILY_SELECT_OPTIONS}
+        />
+        <SelectField<DocumentTypeMasterValues>
+          name="parent_id"
+          label={family === 'knowledge_category' ? 'Knowledge category' : 'Communication type'}
+          required
+          options={[{ value: '', label: 'Select…' }, ...parentOptions]}
+        />
+        <TextField<DocumentTypeMasterValues>
+          name="name_en"
+          label="Name (English)"
+          required
+          placeholder="e.g. Notice"
+        />
+        <TextField<DocumentTypeMasterValues>
+          name="name_hi"
+          label="नाम (Hindi)"
+          placeholder="e.g. सूचना"
+        />
+        {config.hasDisplayOrder !== false && (
+          <TextField<DocumentTypeMasterValues>
+            name="display_order"
+            label="Display order"
+            type="number"
+            placeholder="0"
+          />
+        )}
+      </FormSection>
+      <div className="flex items-center justify-end gap-2">
+        <Button type="button" variant="ghost" onClick={onClose} disabled={saving}>
+          Cancel
+        </Button>
+        <Button type="submit" variant="primary" isLoading={saving}>
+          {isEdit ? 'Save changes' : 'Add record'}
+        </Button>
+      </div>
+    </Form>
+  );
+}
+
 // ── Outer dialog ──────────────────────────────────────────────────────────────
 
 export interface MasterFormDialogProps {
@@ -295,6 +611,9 @@ export interface MasterFormDialogProps {
 export function MasterFormDialog({ open, onClose, config, record }: MasterFormDialogProps) {
   const isFy = config.formVariant === 'financial-year';
   const isCommodity = config.formVariant === 'commodity';
+  const isEventType = config.formVariant === 'event-type';
+  const isProcurementUpdateType = config.formVariant === 'procurement-update-type';
+  const isDocumentType = config.formVariant === 'document-type';
   return (
     <Dialog
       open={open}
@@ -304,6 +623,8 @@ export function MasterFormDialog({ open, onClose, config, record }: MasterFormDi
       description={
         isFy
           ? 'Financial year periods are used for reporting and document classification.'
+          : isDocumentType
+          ? 'Every document type belongs to exactly one destination — Publications (Knowledge Category) or Notifications (Communication Type).'
           : 'Names are shown across the public site. Use English as the primary language.'
       }
     >
@@ -311,6 +632,12 @@ export function MasterFormDialog({ open, onClose, config, record }: MasterFormDi
         <FinancialYearForm config={config} record={record} onClose={onClose} />
       ) : isCommodity ? (
         <CommodityMasterForm config={config} record={record} onClose={onClose} />
+      ) : isEventType ? (
+        <EventTypeMasterForm config={config} record={record} onClose={onClose} />
+      ) : isProcurementUpdateType ? (
+        <ProcurementUpdateTypeMasterForm config={config} record={record} onClose={onClose} />
+      ) : isDocumentType ? (
+        <DocumentTypeMasterForm config={config} record={record} onClose={onClose} />
       ) : (
         <DefaultMasterForm config={config} record={record} onClose={onClose} />
       )}

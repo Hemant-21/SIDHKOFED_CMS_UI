@@ -48,8 +48,8 @@ import { DynamicFields } from './dynamic-fields';
 /** Core client-side schema (the backend remains authoritative; dynamic values pass through). */
 const schema = z
   .object({
+    event_category_id: z.string().min(1, 'Event category is required.'),
     event_type_id: z.string().min(1, 'Event type is required.'),
-    training_type_id: z.string(),
     title_en: z.string().trim().min(1, 'English title is required.').max(255),
     title_hi: z.string().max(255),
     summary_en: z.string(),
@@ -114,14 +114,15 @@ export function EventForm({ event }: EventFormProps) {
     defaultValues: event ? eventToForm(event) : emptyEventForm(),
   });
 
+  const eventCategoryId = form.watch('event_category_id');
   const eventTypeId = form.watch('event_type_id');
   const districtId = form.watch('district_id');
   const dateMode = form.watch('date_mode');
   const highlightType = form.watch('highlight_type');
 
   // Option sources (reused relationship hooks).
-  const eventTypes = useMasterOptions('event-types');
-  const trainingTypes = useMasterOptions('training-types');
+  const eventCategories = useMasterOptions('event-categories');
+  const eventTypes = useMasterOptions('event-types', { categoryId: eventCategoryId || null, enabled: Boolean(eventCategoryId) });
   const districts = useMasterOptions('districts');
   const blocks = useMasterOptions('blocks', { districtId: districtId || null, enabled: Boolean(districtId) });
   const commodities = useMasterOptions('commodities');
@@ -171,18 +172,21 @@ export function EventForm({ event }: EventFormProps) {
       {/* Classification */}
       <FormSection title="Classification" columns={2}>
         <SelectField<EventFormValues>
+          name="event_category_id"
+          label="Event category"
+          required
+          placeholder="Select event category"
+          options={eventCategories.options}
+        />
+        <SelectField<EventFormValues>
           name="event_type_id"
           label="Event type"
           required
-          placeholder="Select event type"
+          placeholder={eventCategoryId ? 'Select event type' : 'Select a category first'}
+          disabled={!eventCategoryId}
           options={eventTypes.options}
         />
-        <SelectField<EventFormValues>
-          name="training_type_id"
-          label="Training type"
-          placeholder="Not applicable"
-          options={[{ value: '', label: 'None' }, ...trainingTypes.options]}
-        />
+        
       </FormSection>
 
       {/* Bilingual content */}

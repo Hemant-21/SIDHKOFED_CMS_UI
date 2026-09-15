@@ -5,34 +5,19 @@
  * endpoint with the standard caching/retry/refresh policy. They expose loading,
  * error, and refetch so every card renders skeleton → data → error → retry without
  * bespoke fetch logic (reuses the Phase-15.1 query stack).
+ *
+ * `useDashboardKpis` and `useDashboardReports` used to live here too, backing the
+ * headline-figures grid and the report-status/system-status widgets. The backend
+ * retired the fixed "Dashboard Reports" concept entirely (every `/public/dashboard*`
+ * route and the admin report-definition routes are gone), so both hooks were
+ * removed along with the widgets that used them. See the Dashboard Reports removal
+ * note in `../dashboard-data`.
  */
 
-import { keepPreviousData, useQueries, useQuery } from '@tanstack/react-query';
+import { useQueries, useQuery } from '@tanstack/react-query';
 import { queryKeys } from '@/constants/query-keys';
 import type { ListQuery } from '@/types/api';
-import type { DashboardPeriodFilters } from '@/types/dashboard';
-import { fetchContentCount, fetchKpis, fetchRecentActivity, fetchReports } from './api';
-
-/** Headline KPI figures (public dashboard subset). Cached a minute; manual refresh supported. */
-export function useDashboardKpis(period?: DashboardPeriodFilters, enabled = true) {
-  return useQuery({
-    queryKey: queryKeys.dashboard.kpis(period),
-    queryFn: () => fetchKpis(period),
-    enabled,
-    staleTime: 60_000,
-  });
-}
-
-/** The fixed report catalog with publication state (drives Report Status + System Status). */
-export function useDashboardReports(query?: ListQuery, enabled = true) {
-  return useQuery({
-    queryKey: queryKeys.dashboard.reports(query),
-    queryFn: () => fetchReports(query),
-    enabled,
-    staleTime: 60_000,
-    placeholderData: keepPreviousData,
-  });
-}
+import { fetchContentCount, fetchRecentActivity } from './api';
 
 /** Recent administrative activity (audit log; Super Admin only — gate the call with `enabled`). */
 export function useRecentActivity(query?: ListQuery, enabled = true) {

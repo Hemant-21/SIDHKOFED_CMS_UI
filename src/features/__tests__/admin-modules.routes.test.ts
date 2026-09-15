@@ -1,6 +1,8 @@
 /**
  * Route-level tests for the Administration / Engagement modules added in the Phase-16 readiness
- * remediation (memberships, dashboard-data, masters, users, audit-log, settings).
+ * remediation (memberships, masters, users, audit-log, settings). The legacy `dashboard-data`
+ * ("Legacy Figures") route was removed entirely (dummy/test data cutover) and is no longer covered
+ * here.
  *
  * Verifies:
  *  - every navigation item points at a path declared in ROUTES (no dangling menu items),
@@ -21,7 +23,6 @@ import MembershipsRoute from '@/app/(admin)/memberships/page';
 import NewMembershipRoute from '@/app/(admin)/memberships/new/page';
 import MembershipDetailRoute from '@/app/(admin)/memberships/[id]/page';
 import EditMembershipRoute from '@/app/(admin)/memberships/[id]/edit/page';
-import DashboardDataRoute from '@/app/(admin)/dashboard-data/page';
 import MastersRoute from '@/app/(admin)/masters/page';
 import UsersRoute from '@/app/(admin)/users/page';
 import NewUserRoute from '@/app/(admin)/users/new/page';
@@ -40,8 +41,8 @@ describe('navigation reachability', () => {
     }
   });
 
-  it('exposes the six remediated module routes', () => {
-    for (const key of ['memberships', 'dashboardData', 'masters', 'users', 'auditLog', 'settings'] as const) {
+  it('exposes the remediated module routes', () => {
+    for (const key of ['memberships', 'masters', 'users', 'auditLog', 'settings'] as const) {
       expect(ROUTES[key]).toBeTruthy();
     }
   });
@@ -53,7 +54,6 @@ describe('module route pages exist and export a component', () => {
     ['memberships/new', NewMembershipRoute],
     ['memberships/[id]', MembershipDetailRoute],
     ['memberships/[id]/edit', EditMembershipRoute],
-    ['dashboard-data', DashboardDataRoute],
     ['masters', MastersRoute],
     ['users', UsersRoute],
     ['users/new', NewUserRoute],

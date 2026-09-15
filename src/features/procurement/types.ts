@@ -23,6 +23,8 @@ export interface ProcurementSummary {
   title_hi: string | null;
   summary_en: string | null;
   procurement_update_type: MasterRef | null;
+  /** Derived read-only via the update's type; never chosen or submitted directly. */
+  procurement_update_category: MasterRef | null;
   commodity: MasterRef | null;
   district: MasterRef | null;
   block: MasterRef | null;

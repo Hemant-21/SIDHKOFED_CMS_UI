@@ -52,9 +52,12 @@ export function DocumentDetailPage({ id }: { id: string }) {
         <StatusBadge state={document.publication_state} />
         <Badge tone="default">{document.document_type.name_en}</Badge>
         <Badge tone="default">{document.language.toUpperCase()}</Badge>
-        {document.show_in_knowledge_centre && document.knowledge_category ? (
-          <Badge tone="info">Knowledge Centre · {document.knowledge_category.name_en}</Badge>
-        ) : null}
+        <Badge tone={document.document_section === 'notifications' ? 'info' : 'default'}>
+          {document.document_section === 'notifications' ? 'Notifications' : 'Publications'}
+          {(document.document_section === 'notifications' ? document.communication_type : document.knowledge_category)
+            ? ` · ${(document.document_section === 'notifications' ? document.communication_type : document.knowledge_category)!.name_en}`
+            : ''}
+        </Badge>
         {document.highlight_type ? <HighlightBadge highlight={document.highlight_type} /> : null}
         {document.show_on_homepage ? <Badge tone="info">Homepage</Badge> : null}
         {!document.is_public ? <Badge tone="warning">Not public</Badge> : null}
@@ -97,7 +100,6 @@ export function DocumentDetailPage({ id }: { id: string }) {
             <CardContent className="space-y-4">
               <RefList label="Commodities" items={document.commodities.map((c) => c.name_en)} />
               <RefList label="Districts" items={document.districts.map((x) => x.name_en)} />
-              <RefList label="Tags" items={document.tags.map((t) => t.name_en)} />
             </CardContent>
           </Card>
         </div>

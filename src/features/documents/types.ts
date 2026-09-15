@@ -27,6 +27,9 @@ interface DocumentFileRef {
   title: string | null;
 }
 
+/** Document section derived from the document's type (sole classification authority). */
+export type DocumentSection = 'publications' | 'notifications';
+
 /** Admin list summary (DocumentSummaryDto). */
 export interface DocumentSummary {
   id: string;
@@ -34,11 +37,17 @@ export interface DocumentSummary {
   title_en: string;
   title_hi: string | null;
   document_type: MasterRef;
+  /** Derived from document_type; kept for backwards compatibility. */
   knowledge_category: MasterRef | null;
+  /** Derived from document_type (new). */
+  communication_type: MasterRef | null;
+  /** Derived from document_type (new): which section this document belongs to. */
+  document_section: DocumentSection;
   financial_year: FinancialYearRef | null;
   language: string;
   publication_date: string | null;
   is_public: boolean;
+  /** Derived boolean, kept for backwards compatibility. */
   show_in_knowledge_centre: boolean;
   file: DocumentFileRef;
   publication_state: PublicationState;
@@ -58,7 +67,6 @@ export interface DocumentDetail extends DocumentSummary {
   description_hi: string | null;
   commodities: MasterRef[];
   districts: MasterRef[];
-  tags: MasterRef[];
   publish_start_at: string | null;
   highlight_start_at: string | null;
   highlight_end_at: string | null;
@@ -71,6 +79,12 @@ export interface DocumentDetail extends DocumentSummary {
  * Create/Update body — only the model-backed fields + relation arrays + workflow fields the
  * backend validator accepts (documents.validators.ts). Server-managed fields (slug, state,
  * *_by, published_at) are never produced.
+ *
+ * `document_type_id` is now the sole classification input — the backend derives
+ * `knowledge_category`/`communication_type`/`document_section`/`show_in_knowledge_centre` from
+ * it. The legacy `knowledge_category_id`/`show_in_knowledge_centre` write fields are deprecated
+ * (accepted only when they agree with what the type derives) and are deliberately NOT part of
+ * this write shape — the CMS never sends them.
  */
 export interface DocumentWriteInput {
   title_en?: string;
@@ -82,12 +96,9 @@ export interface DocumentWriteInput {
   publication_date?: string | null;
   language?: Language;
   is_public?: boolean;
-  show_in_knowledge_centre?: boolean;
-  knowledge_category_id?: string | null;
   financial_year_id?: string | null;
   commodity_ids?: string[];
   district_ids?: string[];
-  tag_ids?: string[];
   // workflow
   public_visibility?: boolean;
   publish_start_at?: string | null;

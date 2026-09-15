@@ -10,6 +10,8 @@ const row: DocumentSummary = {
   title_hi: null,
   document_type: { id: 'dt', slug: 'report', name_en: 'Report', name_hi: null },
   knowledge_category: { id: 'kc', slug: 'reports', name_en: 'Research and Reports', name_hi: null },
+  communication_type: null,
+  document_section: 'publications',
   financial_year: { id: 'fy', label: 'FY 2025-26' },
   language: 'en',
   publication_date: '2026-05-01',
@@ -32,7 +34,7 @@ describe('documentColumns', () => {
     const cols = documentColumns();
     const ids = cols.map((c) => c.id);
     expect(ids).toEqual(
-      expect.arrayContaining(['title', 'document_type', 'knowledge_category', 'language', 'publication_date', 'publication_state', 'highlight', 'show_on_homepage', 'updated_at']),
+      expect.arrayContaining(['title', 'document_type', 'language', 'publication_date', 'publication_state', 'highlight', 'show_on_homepage', 'updated_at']),
     );
     expect(cols.find((c) => c.id === 'title')?.sortField).toBe('title_en');
     expect(cols.find((c) => c.id === 'publication_date')?.sortField).toBe('publication_date');
@@ -43,10 +45,25 @@ describe('documentColumns', () => {
     expect(documentColumns(() => null).some((c) => c.isActionColumn)).toBe(true);
   });
 
-  it('shows the knowledge category only when the doc is in the Knowledge Centre', () => {
-    const col = documentColumns().find((c) => c.id === 'knowledge_category')!;
+  it('merges type + resolved parent + section badge into the document_type column', () => {
+    const col = documentColumns().find((c) => c.id === 'document_type')!;
     render(<>{col.cell(row)}</>);
+    expect(screen.getByText('Report')).toBeInTheDocument();
+    expect(screen.getByText('Publications')).toBeInTheDocument();
     expect(screen.getByText('Research and Reports')).toBeInTheDocument();
+  });
+
+  it('shows the communication type and Notifications badge for a notifications-section document', () => {
+    const notifRow: DocumentSummary = {
+      ...row,
+      knowledge_category: null,
+      communication_type: { id: 'ct', slug: 'circular', name_en: 'Circular', name_hi: null },
+      document_section: 'notifications',
+    };
+    const col = documentColumns().find((c) => c.id === 'document_type')!;
+    render(<>{col.cell(notifRow)}</>);
+    expect(screen.getByText('Notifications')).toBeInTheDocument();
+    expect(screen.getByText('Circular')).toBeInTheDocument();
   });
 
   it('renders the publication state badge', () => {

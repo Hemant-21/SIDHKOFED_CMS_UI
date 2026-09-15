@@ -10,6 +10,7 @@ const row: EventSummary = {
   title_hi: null,
   summary_en: null,
   event_type: { id: 't', slug: 'training', name_en: 'Training', name_hi: null },
+  event_category: { id: 'c', slug: 'trainings', name_en: 'Trainings', name_hi: null },
   event_status: 'scheduled',
   date_mode: 'single',
   start_date: '2026-07-15',

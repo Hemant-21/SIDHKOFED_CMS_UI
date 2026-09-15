@@ -90,7 +90,7 @@ describe('eventToForm / emptyEventForm', () => {
   it('hydrates from an event detail (ids + relation arrays)', () => {
     const detail = {
       event_type: { id: 'et1', slug: 't', name_en: 'Training', name_hi: null },
-      training_type: null,
+      event_category: { id: 'ec1', slug: 'trainings', name_en: 'Trainings', name_hi: null },
       title_en: 'Lac',
       title_hi: 'लाख',
       summary_en: 'S',
@@ -121,6 +121,7 @@ describe('eventToForm / emptyEventForm', () => {
     } as unknown as EventDetail;
     const f = eventToForm(detail);
     expect(f.event_type_id).toBe('et1');
+    expect(f.event_category_id).toBe('ec1');
     expect(f.date_mode).toBe('range');
     expect(f.commodity_ids).toEqual(['c1']);
     expect(f.programme_ids).toEqual(['p1']);

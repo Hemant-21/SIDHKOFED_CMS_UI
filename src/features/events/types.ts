@@ -75,6 +75,7 @@ export interface EventSummary {
   title_hi: string | null;
   summary_en: string | null;
   event_type: MasterRef;
+  event_category: MasterRef;
   event_status: EventStatus;
   date_mode: DateMode;
   start_date: string;
@@ -98,7 +99,6 @@ export interface EventDetail extends EventSummary {
   summary_hi: string | null;
   description_en: string | null;
   description_hi: string | null;
-  training_type: MasterRef | null;
   block: MasterRef | null;
   status_override: boolean;
   cancellation_reason: string | null;
@@ -133,7 +133,6 @@ export interface EventDetail extends EventSummary {
 /** Create/Update body — only model-backed fields + relation arrays + workflow fields. */
 export interface EventWriteInput {
   event_type_id?: string;
-  training_type_id?: string | null;
   title_en?: string;
   title_hi?: string | null;
   summary_en?: string | null;

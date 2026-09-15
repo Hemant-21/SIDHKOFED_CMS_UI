@@ -2,7 +2,9 @@
 
 /**
  * FAQ list filter bar. Exposes exactly the backend's allow-listed admin filters (faqs.query.ts):
- * faq_category, publication_state, show_on_homepage, plus search. All filtering is server-side.
+ * page_key, publication_state, plus search. All filtering is server-side. Selecting a page also
+ * switches the list's ordering to that page's own assignment order (server-side, faqs.repository
+ * `list()`), which is what lets `FaqPageOrderPanel` reorder it.
  */
 
 import { Select } from '@/components/ui/select';
@@ -10,7 +12,7 @@ import { SearchInput } from '@/components/ui/search-input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import type { FilterController } from '@/types/crud';
-import { useMasterOptions } from '@/components/relationships';
+import { useFaqPageOptions } from '../api';
 
 const PUBLICATION_STATES = [
   { value: 'draft', label: 'Draft' },
@@ -19,16 +21,12 @@ const PUBLICATION_STATES = [
   { value: 'archived', label: 'Archived' },
 ];
 
-const HOMEPAGE_OPTIONS = [
-  { value: 'true', label: 'On homepage' },
-  { value: 'false', label: 'Not on homepage' },
-];
-
-export const FAQ_FILTER_KEYS = ['faq_category', 'publication_state', 'show_on_homepage'];
+export const FAQ_FILTER_KEYS = ['page_key', 'publication_state'];
 
 export function FaqFilters({ filters }: { filters: FilterController }) {
   const f = filters;
-  const categories = useMasterOptions('faq-categories');
+  const pages = useFaqPageOptions();
+  const pageOptions = (pages.data ?? []).map((p) => ({ value: p.page_key, label: p.label_en }));
   const sel = (key: string) => f.filters[key] ?? '';
 
   return (
@@ -49,11 +47,11 @@ export function FaqFilters({ filters }: { filters: FilterController }) {
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <FilterSelect
-          label="Category"
-          id="faq-filter-category"
-          value={sel('faq_category')}
-          onChange={(v) => f.setFilter('faq_category', v)}
-          options={categories.options}
+          label="Page"
+          id="faq-filter-page"
+          value={sel('page_key')}
+          onChange={(v) => f.setFilter('page_key', v)}
+          options={pageOptions}
         />
         <FilterSelect
           label="State"
@@ -61,13 +59,6 @@ export function FaqFilters({ filters }: { filters: FilterController }) {
           value={sel('publication_state')}
           onChange={(v) => f.setFilter('publication_state', v)}
           options={PUBLICATION_STATES}
-        />
-        <FilterSelect
-          label="Homepage"
-          id="faq-filter-homepage"
-          value={sel('show_on_homepage')}
-          onChange={(v) => f.setFilter('show_on_homepage', v)}
-          options={HOMEPAGE_OPTIONS}
         />
       </div>
     </div>

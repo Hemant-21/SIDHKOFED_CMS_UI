@@ -1,11 +1,12 @@
 'use client';
 
 /**
- * Knowledge Centre — a curated reader over Documents tagged with `show_in_knowledge_centre=true`,
- * grouped by knowledge category (codex §4.5). It is NOT a separate backend entity: it reuses the
- * `documents` resource with the `knowledge_centre=true` filter + `knowledge_category` navigation,
- * the shared DataTable, the shared filter framework, and the document columns. Categories and
- * counts come from the backend (knowledge-categories master + per-category list totals).
+ * Knowledge Centre — a curated reader over Documents whose document type resolves to the
+ * "publications" section (grouped by knowledge category — codex §4.5). It is NOT a separate
+ * backend entity: it reuses the `documents` resource with the `document_section=publications`
+ * filter + `knowledge_category` navigation, the shared DataTable, the shared filter framework, and
+ * the document columns. Categories and counts come from the backend (knowledge-categories master +
+ * per-category list totals).
  */
 
 import { useMemo } from 'react';
@@ -47,11 +48,11 @@ export function KnowledgeCentrePage() {
 
   const activeCategory = filters.filters.knowledge_category ?? '';
 
-  // Always scope to Knowledge-Centre documents; layer the category + state filters on top.
+  // Always scope to Publications documents; layer the category + state filters on top.
   const query = useMemo(
     () => ({
       ...filters.query,
-      knowledge_centre: 'true',
+      document_section: 'publications',
       page: filters.page,
       ordering: table.ordering ?? filters.query.ordering,
     }),
@@ -201,7 +202,7 @@ function KnowledgeCount({ categoryId }: { categoryId: string | undefined }) {
   const { data } = useCrudList<DocumentSummary>(
     DOCUMENTS_RESOURCE,
     {
-      knowledge_centre: 'true',
+      document_section: 'publications',
       page_size: 1,
       ...(categoryId ? { knowledge_category: categoryId } : {}),
     },

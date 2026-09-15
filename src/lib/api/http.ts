@@ -104,3 +104,17 @@ export async function getBlob(url: string, config?: AxiosRequestConfig): Promise
   const res = await rawRequest<Blob>({ ...config, url, method: 'GET', responseType: 'blob' });
   return res.data;
 }
+
+/**
+ * POST a JSON body and receive a binary payload back (e.g. operational-report XLSX export,
+ * whose filters/period are too large/structured for a query string). Same shape as
+ * {@link getBlob}; only the verb + body differ.
+ */
+export async function postBlob<B = unknown>(
+  url: string,
+  body?: B,
+  config?: AxiosRequestConfig,
+): Promise<Blob> {
+  const res = await rawRequest<Blob>({ ...config, url, method: 'POST', data: body, responseType: 'blob' });
+  return res.data;
+}

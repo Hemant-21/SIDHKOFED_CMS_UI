@@ -18,6 +18,7 @@ import { useZodForm } from '@/components/form/use-zod-form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Badge } from '@/components/ui/badge';
 import { useMasterOptions } from '@/components/relationships';
 import { HIGHLIGHT_LABEL } from '@/constants/status';
 import { ROUTES } from '@/constants/routes';
@@ -27,41 +28,27 @@ import type { DocumentDetail } from '../types';
 import { buildDocumentPayload, documentToForm, emptyDocumentForm, type DocumentFormValues } from '../document-form-payload';
 import { DocumentFileField } from './document-file-field';
 
-const schema = z
-  .object({
-    title_en: z.string().trim().min(1, 'English title is required.').max(255),
-    title_hi: z.string().max(255),
-    description_en: z.string(),
-    description_hi: z.string(),
-    document_type_id: z.string().min(1, 'Document type is required.'),
-    file_asset_id: z.string().min(1, 'An attachment is required.'),
-    language: z.enum(['en', 'hi']),
-    publication_date: z.string(),
-    is_public: z.boolean(),
-    show_in_knowledge_centre: z.boolean(),
-    knowledge_category_id: z.string(),
-    financial_year_id: z.string(),
-    commodity_ids: z.array(z.string()),
-    district_ids: z.array(z.string()),
-    tag_ids: z.array(z.string()),
-    public_visibility: z.boolean(),
-    show_on_homepage: z.boolean(),
-    highlight_type: z.string(),
-    highlight_start_at: z.string(),
-    highlight_end_at: z.string(),
-    display_order: z.string(),
-    publish_start_at: z.string(),
-  })
-  .superRefine((v, ctx) => {
-    // Mirror the backend: a Knowledge Centre document needs a category (codex §4.5 / API spec §6).
-    if (v.show_in_knowledge_centre && !v.knowledge_category_id) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ['knowledge_category_id'],
-        message: 'A knowledge category is required when the document is in the Knowledge Centre.',
-      });
-    }
-  });
+const schema = z.object({
+  title_en: z.string().trim().min(1, 'English title is required.').max(255),
+  title_hi: z.string().max(255),
+  description_en: z.string(),
+  description_hi: z.string(),
+  document_type_id: z.string().min(1, 'Document type is required.'),
+  file_asset_id: z.string().min(1, 'An attachment is required.'),
+  language: z.enum(['en', 'hi']),
+  publication_date: z.string(),
+  is_public: z.boolean(),
+  financial_year_id: z.string(),
+  commodity_ids: z.array(z.string()),
+  district_ids: z.array(z.string()),
+  public_visibility: z.boolean(),
+  show_on_homepage: z.boolean(),
+  highlight_type: z.string(),
+  highlight_start_at: z.string(),
+  highlight_end_at: z.string(),
+  display_order: z.string(),
+  publish_start_at: z.string(),
+});
 
 const HIGHLIGHT_OPTIONS = [
   { value: '', label: 'No highlight' },
@@ -85,15 +72,15 @@ export function DocumentForm({ document }: DocumentFormProps) {
     defaultValues: document ? documentToForm(document) : emptyDocumentForm(),
   });
 
-  const inKnowledgeCentre = form.watch('show_in_knowledge_centre');
   const highlightType = form.watch('highlight_type');
+  const selectedDocumentTypeId = form.watch('document_type_id');
 
   const documentTypes = useMasterOptions('document-types');
-  const knowledgeCategories = useMasterOptions('knowledge-categories');
   const commodities = useMasterOptions('commodities');
   const districts = useMasterOptions('districts');
-  const tags = useMasterOptions('tags');
   const financialYears = useFinancialYearOptions();
+
+  const selectedDocumentType = documentTypes.items?.find((t) => t.id === selectedDocumentTypeId);
 
   const createMutation = useCrudCreate<ReturnType<typeof buildDocumentPayload>, DocumentDetail>(DOCUMENTS_RESOURCE);
   const updateMutation = useCrudUpdate<ReturnType<typeof buildDocumentPayload>, DocumentDetail>(DOCUMENTS_RESOURCE);
@@ -156,23 +143,29 @@ export function DocumentForm({ document }: DocumentFormProps) {
         />
       </FormSection>
 
-      <FormSection title="Knowledge Centre">
-        <SwitchField<DocumentFormValues> name="show_in_knowledge_centre" label="Show in Knowledge Centre" />
-        {inKnowledgeCentre ? (
-          <SelectField<DocumentFormValues>
-            name="knowledge_category_id"
-            label="Knowledge category"
-            required
-            placeholder="Select a category"
-            options={knowledgeCategories.options}
-          />
-        ) : null}
+      <FormSection
+        title="Destination"
+        description="Determined entirely by the selected document type — pick the document type above to change it."
+      >
+        {selectedDocumentType ? (
+          <div className="flex items-center gap-2">
+            <Badge tone={selectedDocumentType.document_section === 'notifications' ? 'info' : 'default'} dot>
+              {selectedDocumentType.document_section === 'notifications' ? 'Notifications' : 'Publications'}
+            </Badge>
+            <span className="text-sm text-muted-foreground">
+              {(selectedDocumentType.document_section === 'notifications'
+                ? selectedDocumentType.communication_type?.name_en
+                : selectedDocumentType.knowledge_category?.name_en) ?? '—'}
+            </span>
+          </div>
+        ) : (
+          <p className="text-sm text-muted-foreground">Select a document type to see its destination.</p>
+        )}
       </FormSection>
 
       <FormSection title="Relationships" description="Linked master data and reusable records." columns={2}>
         <MultiSelectField<DocumentFormValues> name="commodity_ids" label="Commodities" options={commodities.options} />
         <MultiSelectField<DocumentFormValues> name="district_ids" label="Districts" options={districts.options} />
-        <MultiSelectField<DocumentFormValues> name="tag_ids" label="Tags" options={tags.options} className="sm:col-span-2" />
       </FormSection>
 
       <FormSection title="Visibility & scheduling" columns={2}>

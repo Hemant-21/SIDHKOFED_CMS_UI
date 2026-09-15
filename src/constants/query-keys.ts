@@ -26,8 +26,6 @@ export const queryKeys = {
   /** Admin Dashboard (Phase 15.2). Each surface reads an existing backend endpoint. */
   dashboard: {
     all: ['dashboard'] as const,
-    kpis: (period?: object) => ['dashboard', 'kpis', period ?? {}] as const,
-    reports: (query?: ListQuery) => ['dashboard', 'reports', query ?? {}] as const,
     /** Backend-computed total for one resource + filter set (read from `pagination`). */
     contentCount: (resource: string, filters?: Record<string, unknown>) =>
       ['dashboard', 'content-count', resource, filters ?? {}] as const,

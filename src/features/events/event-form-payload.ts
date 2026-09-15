@@ -9,8 +9,9 @@ import type { HighlightType } from '@/types/common';
 import type { EventDetail, EventFieldDefinition, EventWriteInput, DateMode } from './types';
 
 export interface EventFormValues {
+  /** Form-only scoping field — not part of EventWriteInput; the event stores only event_type_id. */
+  event_category_id: string;
   event_type_id: string;
-  training_type_id: string;
   title_en: string;
   title_hi: string;
   summary_en: string;
@@ -45,8 +46,8 @@ const dateToIso = (v: string): string | null => (v ? `${v}T00:00:00.000Z` : null
 /** Default (empty) form values for the create route. */
 export function emptyEventForm(): EventFormValues {
   return {
+    event_category_id: '',
     event_type_id: '',
-    training_type_id: '',
     title_en: '',
     title_hi: '',
     summary_en: '',
@@ -79,8 +80,8 @@ export function emptyEventForm(): EventFormValues {
 /** Hydrate the form from an existing event (edit route). */
 export function eventToForm(e: EventDetail): EventFormValues {
   return {
+    event_category_id: e.event_category.id,
     event_type_id: e.event_type.id,
-    training_type_id: e.training_type?.id ?? '',
     title_en: e.title_en,
     title_hi: e.title_hi ?? '',
     summary_en: e.summary_en ?? '',
@@ -151,7 +152,6 @@ export function buildEventPayload(
 
   return {
     event_type_id: v.event_type_id,
-    training_type_id: blank(v.training_type_id),
     title_en: v.title_en.trim(),
     title_hi: blank(v.title_hi),
     summary_en: blank(v.summary_en),

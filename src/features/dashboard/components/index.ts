@@ -4,10 +4,9 @@
  * future module needing a KPI/status/activity surface.
  */
 
-export { ContentKpiGrid, HeadlineKpiGrid } from './kpi-section';
+export { ContentKpiGrid } from './kpi-section';
 export { QuickActions } from './quick-actions';
 export { RecentActivity } from './recent-activity';
 export { ContentStateSummary } from './content-state-summary';
-export { ReportStatus } from './report-status';
 export { SystemStatus } from './system-status';
 export { SearchShortcut } from './search-shortcut';

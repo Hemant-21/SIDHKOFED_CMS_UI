@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Home } from 'lucide-react';
 import type { ColumnDef } from '@/types/table';
+import { Badge } from '@/components/ui/badge';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
 import { formatRelative } from '@/utils/date';
 import { ROUTES } from '@/constants/routes';
@@ -30,9 +30,20 @@ export function faqColumns(actions?: (row: FaqSummary) => React.ReactNode): Colu
       ),
     },
     {
-      id: 'faq_category',
-      header: 'Category',
-      cell: (f) => <span className="text-muted-foreground">{f.faq_category?.name_en ?? '—'}</span>,
+      id: 'page_assignments',
+      header: 'Pages',
+      cell: (f) =>
+        f.page_assignments.length === 0 ? (
+          <span className="text-muted-foreground">—</span>
+        ) : (
+          <div className="flex flex-wrap gap-1">
+            {f.page_assignments.map((a) => (
+              <Badge key={a.page_key} tone="info">
+                {a.page_key}
+              </Badge>
+            ))}
+          </div>
+        ),
     },
     {
       id: 'publication_state',
@@ -58,18 +69,6 @@ export function faqColumns(actions?: (row: FaqSummary) => React.ReactNode): Colu
       sortField: 'display_order',
       defaultHidden: true,
       cell: (f) => <span className="text-muted-foreground">{f.display_order ?? '—'}</span>,
-    },
-    {
-      id: 'show_on_homepage',
-      header: 'Home',
-      align: 'center',
-      defaultHidden: true,
-      cell: (f) =>
-        f.show_on_homepage ? (
-          <Home className="mx-auto h-4 w-4 text-primary" aria-label="Shown on homepage" />
-        ) : (
-          <span className="sr-only">Not on homepage</span>
-        ),
     },
     {
       id: 'updated_at',

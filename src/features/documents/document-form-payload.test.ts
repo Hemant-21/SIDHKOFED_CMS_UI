@@ -18,13 +18,10 @@ describe('buildDocumentPayload', () => {
     expect(buildDocumentPayload(values({ publication_date: '' })).publication_date).toBeNull();
   });
 
-  it('only sends knowledge_category_id when in the Knowledge Centre', () => {
-    const out = buildDocumentPayload(values({ show_in_knowledge_centre: false, knowledge_category_id: 'kc1' }));
-    expect(out.show_in_knowledge_centre).toBe(false);
-    expect(out.knowledge_category_id).toBeNull();
-
-    const inKc = buildDocumentPayload(values({ show_in_knowledge_centre: true, knowledge_category_id: 'kc1' }));
-    expect(inKc.knowledge_category_id).toBe('kc1');
+  it('never sends the deprecated knowledge_category_id/show_in_knowledge_centre write fields (document_type_id is the sole classification input)', () => {
+    const p = buildDocumentPayload(values()) as Record<string, unknown>;
+    expect(p.knowledge_category_id).toBeUndefined();
+    expect(p.show_in_knowledge_centre).toBeUndefined();
   });
 
   it('drops the highlight window without a highlight', () => {
@@ -33,10 +30,11 @@ describe('buildDocumentPayload', () => {
     expect(p.highlight_start_at).toBeNull();
   });
 
-  it('never sends programme_ids/institution_ids (backend does not accept them)', () => {
+  it('never sends programme_ids/institution_ids/tag_ids (backend does not accept them)', () => {
     const p = buildDocumentPayload(values()) as Record<string, unknown>;
     expect(p.programme_ids).toBeUndefined();
     expect(p.institution_ids).toBeUndefined();
+    expect(p.tag_ids).toBeUndefined();
   });
 
   it('coerces display_order to a number or null', () => {
@@ -62,7 +60,6 @@ describe('documentToForm', () => {
       file: { id: 'fa1', file_name: 'r.pdf', file_url: 'u', mime_type: 'application/pdf', file_size: 10, title: null },
       commodities: [{ id: 'c1', slug: 'lac', name_en: 'Lac', name_hi: null }],
       districts: [{ id: 'd1', slug: 'gumla', name_en: 'Gumla', name_hi: null }],
-      tags: [{ id: 't1', slug: 'tag', name_en: 'Tag', name_hi: null }],
       highlight_type: null,
       highlight_start_at: null,
       highlight_end_at: null,
@@ -75,9 +72,7 @@ describe('documentToForm', () => {
     expect(f.file_asset_id).toBe('fa1');
     expect(f.language).toBe('hi');
     expect(f.publication_date).toBe('2026-05-01');
-    expect(f.knowledge_category_id).toBe('kc1');
     expect(f.commodity_ids).toEqual(['c1']);
-    expect(f.tag_ids).toEqual(['t1']);
     expect(f.display_order).toBe('2');
   });
 });

@@ -48,6 +48,14 @@ export function procurementColumns(
       ),
     },
     {
+      id: 'procurement_update_category',
+      header: 'Category',
+      defaultHidden: true,
+      cell: (p) => (
+        <span className="text-muted-foreground">{p.procurement_update_category?.name_en ?? '—'}</span>
+      ),
+    },
+    {
       id: 'commodity',
       header: 'Commodity',
       cell: (p) => (

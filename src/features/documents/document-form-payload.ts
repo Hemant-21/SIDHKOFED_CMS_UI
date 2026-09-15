@@ -19,12 +19,9 @@ export interface DocumentFormValues {
   language: Language;
   publication_date: string;
   is_public: boolean;
-  show_in_knowledge_centre: boolean;
-  knowledge_category_id: string;
   financial_year_id: string;
   commodity_ids: string[];
   district_ids: string[];
-  tag_ids: string[];
   public_visibility: boolean;
   show_on_homepage: boolean;
   highlight_type: string;
@@ -49,12 +46,9 @@ export function emptyDocumentForm(): DocumentFormValues {
     language: 'en',
     publication_date: '',
     is_public: true,
-    show_in_knowledge_centre: false,
-    knowledge_category_id: '',
     financial_year_id: '',
     commodity_ids: [],
     district_ids: [],
-    tag_ids: [],
     public_visibility: false,
     show_on_homepage: false,
     highlight_type: '',
@@ -77,12 +71,9 @@ export function documentToForm(d: DocumentDetail): DocumentFormValues {
     language: (d.language === 'hi' ? 'hi' : 'en') as Language,
     publication_date: d.publication_date ? d.publication_date.slice(0, 10) : '',
     is_public: d.is_public,
-    show_in_knowledge_centre: d.show_in_knowledge_centre,
-    knowledge_category_id: d.knowledge_category?.id ?? '',
     financial_year_id: d.financial_year?.id ?? '',
     commodity_ids: d.commodities.map((c) => c.id),
     district_ids: d.districts.map((x) => x.id),
-    tag_ids: d.tags.map((t) => t.id),
     public_visibility: d.public_visibility,
     show_on_homepage: d.show_on_homepage,
     highlight_type: d.highlight_type ?? '',
@@ -93,10 +84,15 @@ export function documentToForm(d: DocumentDetail): DocumentFormValues {
   };
 }
 
-/** Convert form values → the API write payload. Used for both create and PATCH. */
+/**
+ * Convert form values → the API write payload. Used for both create and PATCH.
+ * `document_type_id` is the sole classification input — the backend derives
+ * knowledge_category/communication_type/document_section/show_in_knowledge_centre from it, so
+ * this payload deliberately never sends the deprecated `knowledge_category_id` /
+ * `show_in_knowledge_centre` write fields.
+ */
 export function buildDocumentPayload(v: DocumentFormValues): DocumentWriteInput {
   const highlight = blank(v.highlight_type) as HighlightType | null;
-  const inKnowledgeCentre = v.show_in_knowledge_centre;
   return {
     title_en: v.title_en.trim(),
     title_hi: blank(v.title_hi),
@@ -107,13 +103,9 @@ export function buildDocumentPayload(v: DocumentFormValues): DocumentWriteInput 
     language: v.language,
     publication_date: blank(v.publication_date),
     is_public: v.is_public,
-    show_in_knowledge_centre: inKnowledgeCentre,
-    // Category is only meaningful (and required) when the doc is in the Knowledge Centre.
-    knowledge_category_id: inKnowledgeCentre ? blank(v.knowledge_category_id) : null,
     financial_year_id: blank(v.financial_year_id),
     commodity_ids: v.commodity_ids,
     district_ids: v.district_ids,
-    tag_ids: v.tag_ids,
     public_visibility: v.public_visibility,
     show_on_homepage: v.show_on_homepage,
     highlight_type: highlight,

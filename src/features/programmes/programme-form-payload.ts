@@ -30,7 +30,6 @@ export interface ProgrammeFormValues {
   end_date: string;
   cover_media_id: string | null;
   commodity_ids: string[];
-  permitted_training_type_ids: string[];
   public_visibility: boolean;
   show_on_homepage: boolean;
   highlight_type: string;
@@ -67,7 +66,6 @@ export function emptyProgrammeForm(): ProgrammeFormValues {
     end_date: '',
     cover_media_id: null,
     commodity_ids: [],
-    permitted_training_type_ids: [],
     public_visibility: false,
     show_on_homepage: false,
     highlight_type: '',
@@ -101,7 +99,6 @@ export function programmeToForm(p: ProgrammeDetail): ProgrammeFormValues {
     end_date: p.end_date ? p.end_date.slice(0, 10) : '',
     cover_media_id: p.cover_media?.id ?? null,
     commodity_ids: p.commodities.map((c) => c.id),
-    permitted_training_type_ids: p.permitted_training_types.map((t) => t.id),
     public_visibility: p.public_visibility,
     show_on_homepage: p.show_on_homepage,
     highlight_type: p.highlight_type ?? '',
@@ -136,7 +133,6 @@ export function buildProgrammePayload(v: ProgrammeFormValues): ProgrammeWriteInp
     end_date: dateOnly(v.end_date),
     cover_media_id: v.cover_media_id ?? null,
     commodity_ids: v.commodity_ids,
-    permitted_training_type_ids: v.permitted_training_type_ids,
     public_visibility: v.public_visibility,
     show_on_homepage: v.show_on_homepage,
     highlight_type: highlight,

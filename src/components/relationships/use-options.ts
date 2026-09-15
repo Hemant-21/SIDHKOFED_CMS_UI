@@ -27,34 +27,47 @@ export interface OptionsResult {
   isLoading: boolean;
   isError: boolean;
   refetch: () => void;
+  /** The raw records behind `options`, for callers that need more than {value,label}. */
+  items?: MasterRecord[];
 }
 
-interface MasterRecord {
+export interface MasterRecord {
   id: string;
   slug: string;
   name_en: string;
   name_hi: string | null;
   is_active?: boolean;
   district_id?: string | null;
+  event_category_id?: string | null;
+  procurement_update_category_id?: string | null;
+  procurement_update_category?: { id: string; slug: string; name_en: string; name_hi: string | null } | null;
+  /** Document-types only: the derived parent references and section (see backend contract). */
+  knowledge_category?: { id: string; slug: string; name_en: string; name_hi: string | null } | null;
+  communication_type?: { id: string; slug: string; name_en: string; name_hi: string | null } | null;
+  document_section?: 'publications' | 'notifications';
 }
 
 /**
  * Active-master options for a kebab-case master key (e.g. `event-types`, `commodities`).
  * Deactivated values are kept but disabled so historical links still display.
  * `districtId` filters blocks to a district (block list supports `district_id` — API spec §4).
+ * `categoryId` filters a type master to its parent category, using `categoryParam` as the query
+ * key (defaults to `event_category_id` — API spec §16; pass `procurement_update_category_id` to
+ * scope `procurement-update-types` to a `procurement-update-categories` id).
  */
 export function useMasterOptions(
   key: string,
-  opts: { districtId?: string | null; enabled?: boolean } = {},
+  opts: { districtId?: string | null; categoryId?: string | null; categoryParam?: string; enabled?: boolean } = {},
 ): OptionsResult {
-  const { districtId, enabled = true } = opts;
+  const { districtId, categoryId, categoryParam = 'event_category_id', enabled = true } = opts;
   const query = useQuery({
-    queryKey: ['master', key, { district_id: districtId ?? null }],
+    queryKey: ['master', key, { district_id: districtId ?? null, [categoryParam]: categoryId ?? null }],
     queryFn: () =>
       getList<MasterRecord>(MASTERS.admin(key), {
         page_size: PAGE_SIZE_MAX,
         ordering: 'display_order',
         ...(districtId ? { district_id: districtId } : {}),
+        ...(categoryId ? { [categoryParam]: categoryId } : {}),
       }),
     enabled,
     staleTime: 5 * 60_000, // masters change rarely — cache aggressively
@@ -66,5 +79,11 @@ export function useMasterOptions(
     disabled: m.is_active === false,
   }));
 
-  return { options, isLoading: query.isLoading, isError: query.isError, refetch: query.refetch };
+  return {
+    options,
+    isLoading: query.isLoading,
+    isError: query.isError,
+    refetch: query.refetch,
+    items: query.data?.items ?? [],
+  };
 }

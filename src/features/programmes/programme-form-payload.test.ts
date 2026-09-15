@@ -19,7 +19,6 @@ describe('buildProgrammePayload', () => {
     expect(payload.end_date).toBeNull();
     expect(payload.cover_media_id).toBeNull();
     expect(payload.commodity_ids).toEqual([]);
-    expect(payload.permitted_training_type_ids).toEqual([]);
   });
 
   it('sends start/end as calendar dates (not ISO timestamps)', () => {
@@ -56,13 +55,11 @@ describe('programmeToForm', () => {
     const detail = {
       ...emptyDetail(),
       commodities: [{ id: 'c1', slug: 'lac', name_en: 'Lac', name_hi: null }],
-      permitted_training_types: [{ id: 't1', slug: 'skill', name_en: 'Skill', name_hi: null }],
       start_date: '2026-04-01',
       end_date: '2027-03-31',
     } as ProgrammeDetail;
     const form = programmeToForm(detail);
     expect(form.commodity_ids).toEqual(['c1']);
-    expect(form.permitted_training_type_ids).toEqual(['t1']);
     expect(form.start_date).toBe('2026-04-01');
     expect(form.end_date).toBe('2027-03-31');
   });
@@ -101,7 +98,6 @@ function emptyDetail(): ProgrammeDetail {
     application_process_en: null,
     application_process_hi: null,
     commodities: [],
-    permitted_training_types: [],
     publish_start_at: null,
     highlight_start_at: null,
     highlight_end_at: null,

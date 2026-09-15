@@ -44,7 +44,7 @@ export interface MasterTypeConfig {
   /** Default sort field sent to the API. Defaults to 'display_order'. */
   defaultSort?: string;
   /** Use a specialised form dialog instead of the generic name/order form. */
-  formVariant?: 'financial-year' | 'commodity';
+  formVariant?: 'financial-year' | 'commodity' | 'event-type' | 'document-type' | 'procurement-update-type';
   /** Extra filter keys sent to the backend list endpoint (URL-synced via useFilters). */
   filterKeys?: string[];
 }
@@ -52,17 +52,20 @@ export interface MasterTypeConfig {
 /** All 18 master types defined in the CMS requirements (codex §6). */
 export const MASTER_TYPES: MasterTypeConfig[] = [
   {
+    key: 'event-categories',
+    label: 'Event Categories',
+    description: 'Top-level groupings for event types (Trainings, Workshops & Awareness, Institutional Activities).',
+    editMode: 'full',
+  },
+  {
     key: 'event-types',
     label: 'Event Types',
     description: 'Categories for all institutional activities (Training, Workshop, MoU Signing, etc.).',
     editMode: 'full',
+    formVariant: 'event-type',
+    filterKeys: ['event_category_id'],
   },
-  {
-    key: 'training-types',
-    label: 'Training Types',
-    description: 'Sub-classifications for training events.',
-    editMode: 'full',
-  },
+
   {
     key: 'commodities',
     label: 'Commodities',
@@ -79,8 +82,10 @@ export const MASTER_TYPES: MasterTypeConfig[] = [
   {
     key: 'document-types',
     label: 'Document Types',
-    description: 'Document classification (Notice, Circular, MoU, Report, etc.).',
+    description: 'Document classification (Notice, Circular, MoU, Report, etc.). Each type parents to exactly one Knowledge Category (Publications) or Communication Type (Notifications).',
     editMode: 'full',
+    formVariant: 'document-type',
+    filterKeys: ['document_section', 'knowledge_category_id', 'communication_type_id'],
   },
   {
     key: 'knowledge-categories',
@@ -101,27 +106,23 @@ export const MASTER_TYPES: MasterTypeConfig[] = [
     editMode: 'full',
   },
   {
+    key: 'procurement-update-categories',
+    label: 'Procurement Update Categories',
+    description: 'Top-level groupings for procurement update types (Rates & Trade, Announcements & Schedules, Achievements).',
+    editMode: 'full',
+  },
+  {
     key: 'procurement-update-types',
     label: 'Procurement Update Types',
     description: 'Sub-types for procurement updates (Rate, Announcement, Schedule, etc.).',
     editMode: 'full',
+    formVariant: 'procurement-update-type',
+    filterKeys: ['procurement_update_category_id'],
   },
   {
     key: 'enquiry-types',
     label: 'Enquiry Types',
     description: 'Public enquiry categories used on the contact form.',
-    editMode: 'full',
-  },
-  {
-    key: 'faq-categories',
-    label: 'FAQ Categories',
-    description: 'Groupings for Frequently Asked Questions.',
-    editMode: 'full',
-  },
-  {
-    key: 'tags',
-    label: 'Tags',
-    description: 'Internal document classification tags.',
     editMode: 'full',
   },
   {
@@ -160,7 +161,7 @@ export const MASTER_TYPES: MasterTypeConfig[] = [
 export const MASTER_GROUPS: Array<{ label: string; keys: string[] }> = [
   {
     label: 'Content Classification',
-    keys: ['event-types', 'training-types', 'commodities', 'institution-types'],
+    keys: ['event-categories', 'event-types', 'commodities', 'institution-types'],
   },
   {
     label: 'Documents & Communications',
@@ -168,7 +169,7 @@ export const MASTER_GROUPS: Array<{ label: string; keys: string[] }> = [
   },
   {
     label: 'Governance',
-    keys: ['tender-types', 'procurement-update-types', 'enquiry-types', 'faq-categories', 'tags'],
+    keys: ['tender-types', 'procurement-update-categories', 'procurement-update-types', 'enquiry-types'],
   },
   {
     label: 'Geography',

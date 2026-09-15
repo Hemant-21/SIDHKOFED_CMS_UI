@@ -34,6 +34,7 @@ const HOMEPAGE_OPTIONS = [
 
 export const PROCUREMENT_FILTER_KEYS = [
   'publication_state',
+  'procurement_update_category',
   'procurement_update_type',
   'commodity',
   'programme',
@@ -45,7 +46,13 @@ export const PROCUREMENT_FILTER_KEYS = [
 
 export function ProcurementFilters({ filters }: { filters: FilterController }) {
   const f = filters;
-  const procTypes = useMasterOptions('procurement-update-types');
+  const procurementCategories = useMasterOptions('procurement-update-categories');
+  const selectedCategoryId = f.filters.procurement_update_category ?? '';
+  const procTypes = useMasterOptions('procurement-update-types', {
+    categoryId: selectedCategoryId || null,
+    categoryParam: 'procurement_update_category_id',
+    enabled: Boolean(selectedCategoryId),
+  });
   const commodities = useMasterOptions('commodities');
 
   const sel = (key: string) => f.filters[key] ?? '';
@@ -73,6 +80,17 @@ export function ProcurementFilters({ filters }: { filters: FilterController }) {
           value={sel('publication_state')}
           onChange={(v) => f.setFilter('publication_state', v)}
           options={PUBLICATION_STATES}
+        />
+        <FilterSelect
+          label="Category"
+          id="proc-filter-category"
+          value={sel('procurement_update_category')}
+          onChange={(v) => {
+            f.setFilter('procurement_update_category', v);
+            // A category change invalidates a previously selected cross-category type.
+            f.setFilter('procurement_update_type', undefined);
+          }}
+          options={procurementCategories.options}
         />
         <FilterSelect
           label="Update type"

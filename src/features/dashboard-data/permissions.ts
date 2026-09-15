@@ -1,27 +1,22 @@
 /**
  * Permission keys for the Dashboard Data module (dashboard.permissions.ts).
  *
- * The dashboard reuses the project's existing RBAC — no new authorization system:
- *   - Report DEFINITION + layout (create/PATCH) is Super Admin only (gated at the route with a role
- *     check; there is no report-builder permission). The UI affordance uses the `super_admin` role.
- *   - Report public LIFECYCLE (publish/unpublish/archive/restore) uses the dedicated `dashboard.*`
- *     keys (Publisher by default).
- *   - Metrics + datasets + Excel import are the "dashboard data" surface, gated by the
- *     module-specific permission `dashboard.manage_data` (Publisher by default; Content Editor by
- *     explicit grant; Super Admin via wildcard).
+ * The dashboard reuses the project's existing RBAC — no new authorization system.
  *
- * These keys only MIRROR the seeded backend keys; the backend remains the security boundary.
+ * `publish`/`unpublish`/`archive`/`restore` and `REPORT_DEFINITION_ROLES` used to gate the fixed
+ * "Dashboard Reports" report-DEFINITION lifecycle (create/PATCH was Super-Admin-only via
+ * `REPORT_DEFINITION_ROLES`; the public lifecycle actions used the `dashboard.*` permission keys
+ * below). The backend retired that feature entirely (its admin routes, services, and rows are
+ * gone), and its only CMS consumer (`report-lifecycle-actions.tsx` / `report-list-page.tsx` /
+ * `report-form-page.tsx`) was removed with it, so those exports were removed here too.
+ *
+ * `manageData` (`dashboard.manage_data`) is kept even though nothing in this feature calls it
+ * operationally any more (it previously gated the already-removed legacy Metrics/Datasets/Excel
+ * Import UI) — `src/features/roles/types.ts`'s permission catalogue for the Roles management UI
+ * still lists `dashboard.manage_data` as an assignable backend permission, and that catalogue is a
+ * legitimate reason to keep the string constant mirrored here even with no active CMS route using it.
  */
 
-import { ROLE_KEYS } from '@/constants/permissions';
-
 export const DASHBOARD_PERMS = {
-  publish: 'dashboard.publish',
-  unpublish: 'dashboard.unpublish',
-  archive: 'dashboard.archive',
-  restore: 'dashboard.restore',
   manageData: 'dashboard.manage_data',
 } as const;
-
-/** Report definition create/PATCH is Super Admin only (route-level role check). */
-export const REPORT_DEFINITION_ROLES: string[] = [ROLE_KEYS.superAdmin];

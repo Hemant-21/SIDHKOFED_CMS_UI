@@ -28,10 +28,28 @@ export function MasterList({ config }: MasterListProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editRecord, setEditRecord] = useState<MasterRecord | undefined>();
 
+  const categoryActionsDisabled = [
+    'event-categories',
+    'knowledge-categories',
+    'communication-types',
+    'procurement-update-categories',
+  ].includes(config.key);
   const isBlocks = config.key === 'blocks';
+  const isEventTypes = config.key === 'event-types';
+  const isProcurementUpdateTypes = config.key === 'procurement-update-types';
+  const isDocumentTypes = config.key === 'document-types';
   const defaultSort = config.defaultSort ?? 'display_order';
   const filters = useFilters({ keys: config.filterKeys ?? [] });
   const districts = useMasterOptions('districts', { enabled: isBlocks });
+  const eventCategories = useMasterOptions('event-categories', { enabled: isEventTypes });
+  const procurementUpdateCategories = useMasterOptions('procurement-update-categories', { enabled: isProcurementUpdateTypes });
+  const documentSection = filters.filters.document_section ?? '';
+  const knowledgeCategories = useMasterOptions('knowledge-categories', {
+    enabled: isDocumentTypes && documentSection !== 'notifications',
+  });
+  const communicationTypes = useMasterOptions('communication-types', {
+    enabled: isDocumentTypes && documentSection === 'notifications',
+  });
   const table = useDataTable({ initialSort: { field: defaultSort, direction: 'asc' } });
 
   const query = useMemo(
@@ -98,6 +116,42 @@ export function MasterList({ config }: MasterListProps) {
           return <span className="text-sm text-muted-foreground">{d?.name_en ?? '—'}</span>;
         },
       }] : []),
+      ...(isEventTypes ? [{
+        id: 'event_category',
+        header: 'Category',
+        sortField: 'event_category_id',
+        cell: (r: MasterRecord) => {
+          const c = r.event_category as { name_en?: string } | undefined;
+          return <span className="text-sm text-muted-foreground">{c?.name_en ?? '—'}</span>;
+        },
+      }] : []),
+      ...(isProcurementUpdateTypes ? [{
+        id: 'procurement_update_category',
+        header: 'Category',
+        sortField: 'procurement_update_category_id',
+        cell: (r: MasterRecord) => {
+          const c = r.procurement_update_category as { name_en?: string } | undefined;
+          return <span className="text-sm text-muted-foreground">{c?.name_en ?? '—'}</span>;
+        },
+      }] : []),
+      ...(isDocumentTypes ? [{
+        id: 'document_section',
+        header: 'Destination',
+        cell: (r: MasterRecord) => {
+          const section = r.document_section as string | undefined;
+          const kc = r.knowledge_category as { name_en?: string } | null | undefined;
+          const ct = r.communication_type as { name_en?: string } | null | undefined;
+          const parentName = section === 'notifications' ? ct?.name_en : kc?.name_en;
+          return (
+            <div className="flex items-center gap-1.5">
+              <Badge tone={section === 'notifications' ? 'info' : 'default'} dot>
+                {section === 'notifications' ? 'Notifications' : 'Publications'}
+              </Badge>
+              <span className="text-sm text-muted-foreground">{parentName ?? '—'}</span>
+            </div>
+          );
+        },
+      }] : []),
       ...(config.hasDisplayOrder !== false ? [{
         id: 'display_order',
         header: 'Order',
@@ -120,13 +174,13 @@ export function MasterList({ config }: MasterListProps) {
         isActionColumn: true,
         align: 'right',
         cell: (r) => {
-          const items: Array<{ label: string; onSelect: () => void }> = [];
+          const items: Array<{ label: string; onSelect: () => void; disabled?: boolean }> = [];
           if (config.editMode === 'full') {
             items.push({ label: 'Edit', onSelect: () => { setEditRecord(r); setDialogOpen(true); } });
           }
           items.push(
             r.is_active
-              ? { label: 'Deactivate', onSelect: () => void deactivate.mutateAsync(r.id) }
+              ? { label: 'Deactivate', disabled: categoryActionsDisabled, onSelect: () => void deactivate.mutateAsync(r.id) }
               : { label: 'Activate', onSelect: () => void activate.mutateAsync(r.id) },
           );
           return (
@@ -144,7 +198,7 @@ export function MasterList({ config }: MasterListProps) {
         },
       },
     ],
-    [config, isFy, isBlocks, activate, deactivate],
+    [config, categoryActionsDisabled, isFy, isBlocks, isEventTypes, isProcurementUpdateTypes, isDocumentTypes, activate, deactivate],
   );
 
   const openCreate = () => { setEditRecord(undefined); setDialogOpen(true); };
@@ -173,6 +227,74 @@ export function MasterList({ config }: MasterListProps) {
                 />
               </div>
             )}
+            {isEventTypes && (
+              <div className="flex items-center gap-1.5">
+                <Label htmlFor="master-category-filter" className="sr-only">Event category</Label>
+                <Select
+                  id="master-category-filter"
+                  value={filters.filters.event_category_id ?? ''}
+                  onChange={(e) => filters.setFilter('event_category_id', e.target.value || undefined)}
+                  options={[{ value: '', label: 'All categories' }, ...eventCategories.options]}
+                  className="w-52"
+                />
+              </div>
+            )}
+            {isProcurementUpdateTypes && (
+              <div className="flex items-center gap-1.5">
+                <Label htmlFor="master-procurement-category-filter" className="sr-only">Procurement update category</Label>
+                <Select
+                  id="master-procurement-category-filter"
+                  value={filters.filters.procurement_update_category_id ?? ''}
+                  onChange={(e) => filters.setFilter('procurement_update_category_id', e.target.value || undefined)}
+                  options={[{ value: '', label: 'All categories' }, ...procurementUpdateCategories.options]}
+                  className="w-52"
+                />
+              </div>
+            )}
+            {isDocumentTypes && (
+              <div className="flex items-center gap-1.5">
+                <Label htmlFor="master-section-filter" className="sr-only">Destination</Label>
+                <Select
+                  id="master-section-filter"
+                  value={documentSection}
+                  onChange={(e) => {
+                    filters.setFilter('document_section', e.target.value || undefined);
+                    filters.setFilter('knowledge_category_id', undefined);
+                    filters.setFilter('communication_type_id', undefined);
+                  }}
+                  options={[
+                    { value: '', label: 'All destinations' },
+                    { value: 'publications', label: 'Publications' },
+                    { value: 'notifications', label: 'Notifications' },
+                  ]}
+                  className="w-44"
+                />
+              </div>
+            )}
+            {isDocumentTypes && documentSection !== 'notifications' && (
+              <div className="flex items-center gap-1.5">
+                <Label htmlFor="master-kc-filter" className="sr-only">Knowledge category</Label>
+                <Select
+                  id="master-kc-filter"
+                  value={filters.filters.knowledge_category_id ?? ''}
+                  onChange={(e) => filters.setFilter('knowledge_category_id', e.target.value || undefined)}
+                  options={[{ value: '', label: 'All knowledge categories' }, ...knowledgeCategories.options]}
+                  className="w-52"
+                />
+              </div>
+            )}
+            {isDocumentTypes && documentSection === 'notifications' && (
+              <div className="flex items-center gap-1.5">
+                <Label htmlFor="master-ct-filter" className="sr-only">Communication type</Label>
+                <Select
+                  id="master-ct-filter"
+                  value={filters.filters.communication_type_id ?? ''}
+                  onChange={(e) => filters.setFilter('communication_type_id', e.target.value || undefined)}
+                  options={[{ value: '', label: 'All communication types' }, ...communicationTypes.options]}
+                  className="w-52"
+                />
+              </div>
+            )}
             {filters.isActive && (
               <button
                 type="button"
@@ -185,7 +307,7 @@ export function MasterList({ config }: MasterListProps) {
           </div>
           {config.editMode === 'full' ? (
             <Can permission="masters.create">
-              <Button variant="primary" size="sm" onClick={openCreate}>
+              <Button variant="primary" size="sm" onClick={openCreate} disabled={categoryActionsDisabled}>
                 <Plus className="mr-1.5 h-4 w-4" aria-hidden="true" />
                 Add record
               </Button>
@@ -226,7 +348,7 @@ export function MasterList({ config }: MasterListProps) {
                     </Button>
                   ) : config.editMode === 'full' ? (
                     <Can permission="masters.create">
-                      <Button variant="outline" size="sm" onClick={openCreate}>
+                      <Button variant="outline" size="sm" onClick={openCreate} disabled={categoryActionsDisabled}>
                         <Plus className="mr-1.5 h-4 w-4" aria-hidden="true" />
                         Add record
                       </Button>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Home, Library } from 'lucide-react';
+import { Home } from 'lucide-react';
 import type { ColumnDef } from '@/types/table';
+import { Badge } from '@/components/ui/badge';
 import { StatusBadge, HighlightBadge } from '@/components/ui/status-badge';
 import { formatDate, formatRelative } from '@/utils/date';
 import { ROUTES } from '@/constants/routes';
@@ -10,8 +11,10 @@ import type { DocumentSummary } from '../types';
  * Document list column definitions (reused by the DataTable). Pure presentation — sort fields map
  * to the backend ordering allow-list (documents.types.ts): `title_en`, `publication_date`,
  * `display_order`, `created_at`. The Actions column is rendered by the list page so it can wire
- * navigation. Columns surface exactly the contract: title, type, knowledge category, language,
- * state, highlight, homepage, updated.
+ * navigation. Columns surface exactly the contract: title, type (merged with the resolved parent
+ * — knowledge category or communication type — and a Publications/Notifications badge, since
+ * document type is now the sole classification authority), language, state, highlight, homepage,
+ * updated.
  */
 export function documentColumns(actions?: (row: DocumentSummary) => React.ReactNode): ColumnDef<DocumentSummary>[] {
   const cols: ColumnDef<DocumentSummary>[] = [
@@ -31,18 +34,24 @@ export function documentColumns(actions?: (row: DocumentSummary) => React.ReactN
         </div>
       ),
     },
-    { id: 'document_type', header: 'Type', cell: (d) => <span className="text-muted-foreground">{d.document_type.name_en}</span> },
     {
-      id: 'knowledge_category',
-      header: 'Knowledge category',
-      cell: (d) =>
-        d.show_in_knowledge_centre && d.knowledge_category ? (
-          <span className="inline-flex items-center gap-1 text-muted-foreground">
-            <Library className="h-3.5 w-3.5" aria-hidden="true" /> {d.knowledge_category.name_en}
-          </span>
-        ) : (
-          <span className="text-muted-foreground">—</span>
-        ),
+      id: 'document_type',
+      header: 'Type',
+      cell: (d) => {
+        const parentName =
+          d.document_section === 'notifications' ? d.communication_type?.name_en : d.knowledge_category?.name_en;
+        return (
+          <div className="flex flex-col gap-0.5">
+            <span className="text-foreground">{d.document_type.name_en}</span>
+            <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+              <Badge tone={d.document_section === 'notifications' ? 'info' : 'default'} dot>
+                {d.document_section === 'notifications' ? 'Notifications' : 'Publications'}
+              </Badge>
+              {parentName ?? '—'}
+            </span>
+          </div>
+        );
+      },
     },
     { id: 'language', header: 'Lang', align: 'center', cell: (d) => <span className="uppercase text-muted-foreground">{d.language}</span> },
     {

@@ -20,10 +20,11 @@ import { Can } from '@/components/auth';
 import { useFilters, useCrudList, useArchive, usePublish, useBulkAction } from '@/hooks/crud';
 import { useConfirmDialog } from '@/hooks/use-confirm-dialog';
 import { ROUTES } from '@/constants/routes';
-import { FAQS_RESOURCE, FAQ_PERMS } from './api';
+import { FAQS_RESOURCE, FAQ_PERMS, useFaqPageOptions } from './api';
 import type { FaqSummary } from './types';
 import { faqColumns } from './components/faq-columns';
 import { FaqFilters, FAQ_FILTER_KEYS } from './components/faq-filters';
+import { FaqPageOrderPanel } from './components/faq-page-order-panel';
 
 export function FaqListPage() {
   const filters = useFilters({ keys: FAQ_FILTER_KEYS });
@@ -54,6 +55,10 @@ export function FaqListPage() {
   const rows = list.data?.items ?? [];
   const pagination = list.data?.pagination;
   const selected = table.selectedRowIds;
+
+  const activePageKey = filters.filters.page_key;
+  const pageOptions = useFaqPageOptions();
+  const activePageLabel = pageOptions.data?.find((p) => p.page_key === activePageKey)?.label_en ?? activePageKey;
 
   return (
     <div className="space-y-6">
@@ -116,53 +121,59 @@ export function FaqListPage() {
         </BulkActions>
       ) : null}
 
-      <Card className="p-0">
-        <DataTable<FaqSummary>
-          columns={columns}
-          data={{
-            rows,
-            totalItems: pagination?.total_items ?? 0,
-            totalPages: pagination?.total_pages ?? 0,
-            isLoading: list.isLoading,
-            isError: list.isError,
-            error: list.error,
-          }}
-          getRowId={(row) => row.id}
-          sort={table.sort}
-          onSortChange={table.onSortChange}
-          selectable
-          selectedRowIds={selected}
-          onSelectionChange={table.setSelectedRowIds}
-          hiddenColumns={table.hiddenColumns}
-          onRetry={() => void list.refetch()}
-          emptyState={
-            <EmptyState
-              icon={HelpCircle}
-              title={filters.isActive ? 'No FAQs match your filters' : 'No FAQs yet'}
-              description={
-                filters.isActive
-                  ? 'Try adjusting or clearing the filters.'
-                  : 'Create the first FAQ to get started.'
-              }
-              action={
-                filters.isActive ? (
-                  <Button variant="outline" size="sm" onClick={filters.reset}>
-                    Clear filters
-                  </Button>
-                ) : (
-                  <Can permission={FAQ_PERMS.create}>
-                    <Button asChild size="sm">
-                      <Link href={`${ROUTES.faqs}/new`}>New FAQ</Link>
+      {activePageKey ? (
+        <Card>
+          <FaqPageOrderPanel pageKey={activePageKey} pageLabel={activePageLabel ?? activePageKey} rows={rows} />
+        </Card>
+      ) : (
+        <Card className="p-0">
+          <DataTable<FaqSummary>
+            columns={columns}
+            data={{
+              rows,
+              totalItems: pagination?.total_items ?? 0,
+              totalPages: pagination?.total_pages ?? 0,
+              isLoading: list.isLoading,
+              isError: list.isError,
+              error: list.error,
+            }}
+            getRowId={(row) => row.id}
+            sort={table.sort}
+            onSortChange={table.onSortChange}
+            selectable
+            selectedRowIds={selected}
+            onSelectionChange={table.setSelectedRowIds}
+            hiddenColumns={table.hiddenColumns}
+            onRetry={() => void list.refetch()}
+            emptyState={
+              <EmptyState
+                icon={HelpCircle}
+                title={filters.isActive ? 'No FAQs match your filters' : 'No FAQs yet'}
+                description={
+                  filters.isActive
+                    ? 'Try adjusting or clearing the filters.'
+                    : 'Create the first FAQ to get started.'
+                }
+                action={
+                  filters.isActive ? (
+                    <Button variant="outline" size="sm" onClick={filters.reset}>
+                      Clear filters
                     </Button>
-                  </Can>
-                )
-              }
-            />
-          }
-        />
-      </Card>
+                  ) : (
+                    <Can permission={FAQ_PERMS.create}>
+                      <Button asChild size="sm">
+                        <Link href={`${ROUTES.faqs}/new`}>New FAQ</Link>
+                      </Button>
+                    </Can>
+                  )
+                }
+              />
+            }
+          />
+        </Card>
+      )}
 
-      {pagination ? (
+      {pagination && !activePageKey ? (
         <Pagination
           page={pagination.page}
           pageSize={pagination.page_size}

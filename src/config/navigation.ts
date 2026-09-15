@@ -31,10 +31,9 @@ import {
   HelpCircle,
   AppWindow,
   Inbox,
-  BarChart3,
   Database,
-  Gauge,
-  Upload,
+  FileBarChart2,
+  Globe,
   Users,
   ShieldCheck,
   ScrollText,
@@ -120,11 +119,20 @@ export const NAVIGATION: NavSection[] = [
     key: 'dashboard-data',
     label: 'Dashboard Data',
     items: [
-      { key: 'dashboard-reports', label: 'Dashboard Reports', href: ROUTES.dashboardReports, icon: BarChart3 },
-      { key: 'dashboard-datasets', label: 'Datasets', href: ROUTES.dashboardDatasets, icon: Database },
-      { key: 'dashboard-metrics', label: 'Metrics', href: ROUTES.dashboardMetrics, icon: Gauge },
-      // Excel import writes dashboard data — affordance gated by the manage-data grant.
-      { key: 'dashboard-import', label: 'Excel Import', href: ROUTES.dashboardImport, icon: Upload, permission: 'dashboard.manage_data' },
+      {
+        key: 'dashboard-generate-reports',
+        label: 'Generate Reports',
+        href: ROUTES.dashboardGenerateReports,
+        icon: FileBarChart2,
+        permission: 'operational_reports.view',
+      },
+      {
+        key: 'dashboard-website-metrics',
+        label: 'Website Metrics',
+        href: ROUTES.dashboardWebsiteMetrics,
+        icon: Globe,
+        permission: 'website_metrics.view',
+      },
     ],
   },
   {

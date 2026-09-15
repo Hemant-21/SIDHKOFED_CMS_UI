@@ -1,13 +1,21 @@
 /**
  * FAQs module types — mirror of the backend DTOs and validators (faqs.dto.ts / faqs.validators.ts).
- * FAQs reuse the FAQ Category master (codex §4.13 / API spec §6). Publishable **P** content carrying
- * the publishing-workflow mixin, authorized with the shared `content.*` RBAC keys.
+ * FAQs may be assigned to zero or more registered main pages (faqs.pages.registry.ts on the
+ * backend), each with its own independent order; the FAQ's own `display_order` is only the central
+ * /faqs directory order. Publishable **P** content carrying the publishing-workflow mixin,
+ * authorized with the shared `content.*` RBAC keys.
  *
- * `faq_category_id` is optional (FAQs may be uncategorised). `question_en`/`answer_en` are required.
- * Server-managed fields (slug, state, *_by, published_at) are never produced by the client.
+ * `page_assignments` is optional on write (omit to leave existing assignments untouched on PATCH;
+ * send `[]` to clear them all). `question_en`/`answer_en` are required. Server-managed fields
+ * (slug, state, *_by, published_at) are never produced by the client.
  */
 
-import type { MasterRef, HighlightType, PublicationState } from '@/types/common';
+import type { HighlightType, PublicationState } from '@/types/common';
+
+export interface FaqPageAssignment {
+  page_key: string;
+  display_order: number;
+}
 
 /** Admin list summary. */
 export interface FaqSummary {
@@ -15,10 +23,9 @@ export interface FaqSummary {
   slug: string;
   question_en: string;
   question_hi: string | null;
-  faq_category: MasterRef | null;
+  page_assignments: FaqPageAssignment[];
   publication_state: PublicationState;
   public_visibility: boolean;
-  show_on_homepage: boolean;
   highlight_type: HighlightType | null;
   display_order: number | null;
   published_at: string | null;
@@ -40,10 +47,10 @@ export interface FaqDetail extends FaqSummary {
 
 /**
  * Write payload — model-backed fields + workflow fields the backend validator accepts
- * (faqs.validators.ts `baseShape` + `workflowShape`). Nothing else.
+ * (faqs.validators.ts `baseShape`). Nothing else.
  */
 export interface FaqWriteInput {
-  faq_category_id?: string | null;
+  page_assignments?: FaqPageAssignment[];
   question_en?: string;
   question_hi?: string | null;
   answer_en?: string;
@@ -55,5 +62,17 @@ export interface FaqWriteInput {
   highlight_start_at?: string | null;
   highlight_end_at?: string | null;
   display_order?: number | null;
-  show_on_homepage?: boolean;
+}
+
+/** A registered FAQ main page (GET /admin/faqs/pages). */
+export interface FaqPageOption {
+  page_key: string;
+  path: string;
+  label_en: string;
+  label_hi: string;
+}
+
+/** POST /admin/faqs/pages/:pageKey/reorder */
+export interface FaqPageReorderInput {
+  order: Array<{ id: string; display_order: number }>;
 }

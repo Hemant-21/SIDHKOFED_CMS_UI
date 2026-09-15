@@ -2,10 +2,15 @@
 
 /**
  * Document list filter bar. Exposes EXACTLY the backend's allow-listed document filters
- * (documents.query.ts): publication_state, document_type, knowledge_category, knowledge_centre,
- * commodity, district, financial_year, language, year, date_from, date_to. Filtering is
- * server-side via the shared `useFilters` controller — each control writes an allow-listed query
- * param and re-runs the backend query. No client-side filtering.
+ * (documents.query.ts): publication_state, document_type, document_section, knowledge_category,
+ * communication_type, commodity, district, financial_year, language, year, date_from, date_to.
+ * Filtering is server-side via the shared `useFilters` controller — each control writes an
+ * allow-listed query param and re-runs the backend query. No client-side filtering.
+ *
+ * `document_section` replaces the legacy `knowledge_centre=true` boolean (still accepted by the
+ * backend for compatibility, but the CMS now sends the new param exclusively); absent
+ * category/type filters broaden to "all docs in section", never the other way — these AND
+ * together with `document_section`.
  */
 
 import { Select } from '@/components/ui/select';
@@ -33,8 +38,9 @@ const LANGUAGES = [
 export const DOCUMENT_FILTER_KEYS = [
   'publication_state',
   'document_type',
+  'document_section',
   'knowledge_category',
-  'knowledge_centre',
+  'communication_type',
   'commodity',
   'district',
   'financial_year',
@@ -44,15 +50,22 @@ export const DOCUMENT_FILTER_KEYS = [
   'date_to',
 ];
 
+const DOCUMENT_SECTIONS = [
+  { value: 'publications', label: 'Publications' },
+  { value: 'notifications', label: 'Notifications' },
+];
+
 export function DocumentFilters({ filters }: { filters: FilterController }) {
   const f = filters;
   const documentTypes = useMasterOptions('document-types');
   const knowledgeCategories = useMasterOptions('knowledge-categories');
+  const communicationTypes = useMasterOptions('communication-types');
   const commodities = useMasterOptions('commodities');
   const districts = useMasterOptions('districts');
   const financialYears = useFinancialYearOptions();
 
   const sel = (key: string) => f.filters[key] ?? '';
+  const section = sel('document_section');
 
   return (
     <div className="space-y-3">
@@ -68,16 +81,22 @@ export function DocumentFilters({ filters }: { filters: FilterController }) {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         <FilterSelect label="State" value={sel('publication_state')} onChange={(v) => f.setFilter('publication_state', v)} options={PUBLICATION_STATES} />
         <FilterSelect label="Type" value={sel('document_type')} onChange={(v) => f.setFilter('document_type', v)} options={documentTypes.options} />
-        <FilterSelect label="Knowledge category" value={sel('knowledge_category')} onChange={(v) => f.setFilter('knowledge_category', v)} options={knowledgeCategories.options} />
         <FilterSelect
-          label="Knowledge Centre"
-          value={sel('knowledge_centre')}
-          onChange={(v) => f.setFilter('knowledge_centre', v)}
-          options={[
-            { value: 'true', label: 'In Knowledge Centre' },
-            { value: 'false', label: 'Not in Knowledge Centre' },
-          ]}
+          label="Section"
+          value={section}
+          onChange={(v) => {
+            f.setFilter('document_section', v);
+            f.setFilter('knowledge_category', undefined);
+            f.setFilter('communication_type', undefined);
+          }}
+          options={DOCUMENT_SECTIONS}
         />
+        {section !== 'notifications' && (
+          <FilterSelect label="Knowledge category" value={sel('knowledge_category')} onChange={(v) => f.setFilter('knowledge_category', v)} options={knowledgeCategories.options} />
+        )}
+        {section === 'notifications' && (
+          <FilterSelect label="Communication type" value={sel('communication_type')} onChange={(v) => f.setFilter('communication_type', v)} options={communicationTypes.options} />
+        )}
         <FilterSelect label="Commodity" value={sel('commodity')} onChange={(v) => f.setFilter('commodity', v)} options={commodities.options} />
         <FilterSelect label="District" value={sel('district')} onChange={(v) => f.setFilter('district', v)} options={districts.options} />
         <FilterSelect label="Financial year" value={sel('financial_year')} onChange={(v) => f.setFilter('financial_year', v)} options={financialYears.options} />

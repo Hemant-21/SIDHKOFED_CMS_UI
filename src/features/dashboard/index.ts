@@ -6,4 +6,3 @@
 
 export { DashboardPage } from './dashboard-page';
 export * from './components';
-export { useDashboardReports } from './hooks';

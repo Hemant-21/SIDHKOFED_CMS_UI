@@ -43,10 +43,23 @@ export function FaqDetailPage({ id }: { id: string }) {
 
       <div className="flex flex-wrap items-center gap-2">
         <StatusBadge state={faq.publication_state} />
-        {faq.faq_category ? <Badge tone="default">{faq.faq_category.name_en}</Badge> : null}
         {faq.highlight_type ? <HighlightBadge highlight={faq.highlight_type} /> : null}
-        {faq.show_on_homepage ? <Badge tone="info">Homepage</Badge> : null}
         {!faq.public_visibility ? <Badge tone="warning">Not public</Badge> : null}
+      </div>
+
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-sm text-muted-foreground">Main pages:</span>
+        {faq.page_assignments.length === 0 ? (
+          <span className="text-sm text-muted-foreground">Not assigned to any page</span>
+        ) : (
+          [...faq.page_assignments]
+            .sort((a, b) => a.display_order - b.display_order)
+            .map((a) => (
+              <Badge key={a.page_key} tone="default">
+                {a.page_key} (#{a.display_order})
+              </Badge>
+            ))
+        )}
       </div>
 
       <Card>

@@ -24,11 +24,9 @@ import { useAuth } from '@/hooks/use-auth';
 import { queryKeys } from '@/constants/query-keys';
 import {
   ContentKpiGrid,
-  HeadlineKpiGrid,
   QuickActions,
   RecentActivity,
   ContentStateSummary,
-  ReportStatus,
   SystemStatus,
   SearchShortcut,
 } from './components';
@@ -72,13 +70,6 @@ export function DashboardPage() {
           <ContentKpiGrid />
         </Section>
 
-        <Section
-          title="Headline figures"
-          description="Published public dashboard KPIs — resolved by the backend."
-        >
-          <HeadlineKpiGrid />
-        </Section>
-
         <Section title="Quick actions" description="Shortcuts you have permission to use.">
           <QuickActions />
         </Section>
@@ -94,7 +85,6 @@ export function DashboardPage() {
           right={
             <div className="space-y-6">
               <SystemStatus />
-              <ReportStatus />
             </div>
           }
         />

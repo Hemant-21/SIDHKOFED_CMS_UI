@@ -62,7 +62,6 @@ export function EventDetailPage({ id }: { id: string }) {
         <EventStatusBadge status={event.event_status} />
         <StatusBadge state={event.publication_state} />
         <Badge tone="default">{event.event_type.name_en}</Badge>
-        {event.training_type ? <Badge tone="default">{event.training_type.name_en}</Badge> : null}
         {event.highlight_type ? <HighlightBadge highlight={event.highlight_type} /> : null}
         {event.show_on_homepage ? <Badge tone="info">Homepage</Badge> : null}
       </div>

@@ -57,7 +57,6 @@ const schema = z
     end_date: z.string(),
     cover_media_id: z.string().nullable(),
     commodity_ids: z.array(z.string()),
-    permitted_training_type_ids: z.array(z.string()),
     public_visibility: z.boolean(),
     show_on_homepage: z.boolean(),
     highlight_type: z.string(),
@@ -93,7 +92,6 @@ export function ProgrammeForm({ programme }: ProgrammeFormProps) {
   const highlightType = form.watch('highlight_type');
 
   const commodities = useMasterOptions('commodities');
-  const trainingTypes = useMasterOptions('training-types');
 
   const createMutation = useCrudCreate<ReturnType<typeof buildProgrammePayload>, ProgrammeDetail>(PROGRAMMES_RESOURCE);
   const updateMutation = useCrudUpdate<ReturnType<typeof buildProgrammePayload>, ProgrammeDetail>(PROGRAMMES_RESOURCE);
@@ -149,13 +147,9 @@ export function ProgrammeForm({ programme }: ProgrammeFormProps) {
         <DateField<ProgrammeFormValues> name="end_date" label="End date" />
       </FormSection>
 
-      <FormSection title="Relationships" description="Linked commodities and the training types this programme permits." columns={2}>
+      <FormSection title="Relationships" description="Linked commodities." columns={2}>
         <MultiSelectField<ProgrammeFormValues> name="commodity_ids" label="Commodities" options={commodities.options} />
-        <MultiSelectField<ProgrammeFormValues>
-          name="permitted_training_type_ids"
-          label="Permitted training types"
-          options={trainingTypes.options}
-        />
+        
       </FormSection>
 
       <FormSection title="Cover image">

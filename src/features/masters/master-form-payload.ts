@@ -60,6 +60,46 @@ export function buildFinancialYearPayload(values: FinancialYearValues): {
   return { label: values.label, start_date: values.start_date, end_date: values.end_date };
 }
 
+// ── Event Type form (name / display_order / required event category) ─────────
+
+export const eventTypeMasterSchema = defaultMasterSchema.extend({
+  event_category_id: z.string().min(1, 'Event category is required.'),
+});
+export type EventTypeMasterValues = z.infer<typeof eventTypeMasterSchema>;
+
+export function emptyEventTypeMasterForm(): EventTypeMasterValues {
+  return { name_en: '', name_hi: '', display_order: '', event_category_id: '' };
+}
+
+export function buildEventTypeMasterPayload(values: EventTypeMasterValues): MasterPayload & {
+  event_category_id: string;
+} {
+  return {
+    ...buildDefaultMasterPayload(values),
+    event_category_id: values.event_category_id,
+  };
+}
+
+// ── Procurement Update Type form (name / display_order / required category) ──
+
+export const procurementUpdateTypeMasterSchema = defaultMasterSchema.extend({
+  procurement_update_category_id: z.string().min(1, 'Procurement update category is required.'),
+});
+export type ProcurementUpdateTypeMasterValues = z.infer<typeof procurementUpdateTypeMasterSchema>;
+
+export function emptyProcurementUpdateTypeMasterForm(): ProcurementUpdateTypeMasterValues {
+  return { name_en: '', name_hi: '', display_order: '', procurement_update_category_id: '' };
+}
+
+export function buildProcurementUpdateTypeMasterPayload(values: ProcurementUpdateTypeMasterValues): MasterPayload & {
+  procurement_update_category_id: string;
+} {
+  return {
+    ...buildDefaultMasterPayload(values),
+    procurement_update_category_id: values.procurement_update_category_id,
+  };
+}
+
 // ── Commodity form (name / description / category / icon) ────────────────────
 
 export const COMMODITY_CATEGORY_OPTIONS = ['Minor Forest Produce', 'Agriculture'] as const;
@@ -96,5 +136,41 @@ export function buildCommodityMasterPayload(values: CommodityMasterValues): Mast
     description_hi: values.description_hi?.trim() || null,
     category: values.category?.trim() || null,
     icon_media_id: values.icon_media_id ?? null,
+  };
+}
+
+// ── Document Type form (name / display_order / parent family) ────────────────
+//
+// A Document Type is the sole classification authority for Documents: it parents to
+// exactly one Knowledge Category (→ Publications) or Communication Type (→ Notifications)
+// (backend DB XOR constraint). The form captures a `document_family` radio choice plus a
+// dependent parent select, and the payload ALWAYS sends both `knowledge_category_id` and
+// `communication_type_id` — one populated, one explicit `null` — so a family switch always
+// resolves unambiguously per the API contract (an update touching either field must supply
+// both to avoid ambiguity).
+
+export const DOCUMENT_FAMILY_OPTIONS = ['knowledge_category', 'communication_type'] as const;
+export type DocumentFamily = (typeof DOCUMENT_FAMILY_OPTIONS)[number];
+
+export const documentTypeMasterSchema = defaultMasterSchema
+  .extend({
+    document_family: z.enum(DOCUMENT_FAMILY_OPTIONS, { errorMap: () => ({ message: 'Choose a destination.' }) }),
+    parent_id: z.string().min(1, 'A parent category is required.'),
+  });
+export type DocumentTypeMasterValues = z.infer<typeof documentTypeMasterSchema>;
+
+export function emptyDocumentTypeMasterForm(): DocumentTypeMasterValues {
+  return { name_en: '', name_hi: '', display_order: '', document_family: 'knowledge_category', parent_id: '' };
+}
+
+export function buildDocumentTypeMasterPayload(values: DocumentTypeMasterValues): MasterPayload & {
+  knowledge_category_id: string | null;
+  communication_type_id: string | null;
+} {
+  const isKnowledgeCategory = values.document_family === 'knowledge_category';
+  return {
+    ...buildDefaultMasterPayload(values),
+    knowledge_category_id: isKnowledgeCategory ? values.parent_id : null,
+    communication_type_id: isKnowledgeCategory ? null : values.parent_id,
   };
 }

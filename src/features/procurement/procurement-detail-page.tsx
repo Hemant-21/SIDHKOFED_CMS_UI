@@ -62,6 +62,9 @@ export function ProcurementDetailPage({ id }: { id: string }) {
 
       <div className="flex flex-wrap items-center gap-2">
         <StatusBadge state={procurement.publication_state} />
+        {procurement.procurement_update_category ? (
+          <Badge tone="default">{procurement.procurement_update_category.name_en}</Badge>
+        ) : null}
         {procurement.procurement_update_type ? (
           <Badge tone="default">{procurement.procurement_update_type.name_en}</Badge>
         ) : null}
@@ -86,6 +89,9 @@ export function ProcurementDetailPage({ id }: { id: string }) {
             <CardHeader title="Overview" />
             <CardContent>
               <dl className="grid gap-4 sm:grid-cols-2">
+                <Item label="Category">
+                  {procurement.procurement_update_category?.name_en ?? '—'}
+                </Item>
                 <Item label="Update type">
                   {procurement.procurement_update_type?.name_en ?? '—'}
                 </Item>

@@ -1,14 +1,15 @@
 'use client';
 
 /**
- * KPI sections (Phase 15.2). Two fixed, non-configurable KPI grids:
+ * KPI sections (Phase 15.2). `ContentKpiGrid` — per-module record totals. Each
+ * total is the BACKEND's `pagination.total_items` for that resource (the server's
+ * count, requested with page_size=1); the frontend never tallies records itself.
  *
- *  1. ContentKpiGrid  — per-module record totals. Each total is the BACKEND's
- *     `pagination.total_items` for that resource (the server's count, requested
- *     with page_size=1); the frontend never tallies records itself.
- *  2. HeadlineKpiGrid — the resolved public dashboard figures (`/public/dashboard/kpis`),
- *     the same homepage-safe metrics the website shows. Values come fully resolved
- *     from the backend.
+ * The `HeadlineKpiGrid` this file used to also export (the resolved public
+ * dashboard figures from `/public/dashboard/kpis`) was removed: the backend
+ * retired the fixed "Dashboard Reports" concept entirely, including every
+ * `/public/dashboard*` route. See the Dashboard Reports removal note in
+ * `../../dashboard-data`.
  */
 
 import {
@@ -19,14 +20,11 @@ import {
   Megaphone,
   Gavel,
   BadgeCheck,
-  BarChart3,
   type LucideIcon,
 } from 'lucide-react';
 import { GridLayout } from '@/components/layout';
-import { EmptyState } from '@/components/feedback/empty-state';
 import { formatNumber } from '@/utils/format';
-import type { DashboardPeriodFilters } from '@/types/dashboard';
-import { useContentCounts, useDashboardKpis, type ContentCountSpec } from '../hooks';
+import { useContentCounts, type ContentCountSpec } from '../hooks';
 import { StatCard } from './cards';
 
 /** Fixed per-module KPI descriptors. Each maps to one admin resource total. */
@@ -69,63 +67,6 @@ export function ContentKpiGrid() {
           />
         );
       })}
-    </GridLayout>
-  );
-}
-
-/** Headline figures from the public dashboard KPI subset (resolved by the backend). */
-export function HeadlineKpiGrid({ period }: { period?: DashboardPeriodFilters }) {
-  const { data, isLoading, error, refetch } = useDashboardKpis(period);
-
-  // Flatten every resolved metric across the homepage-flagged reports into KPI cards.
-  const metrics = (data?.kpis ?? []).flatMap((report) =>
-    report.metrics.map((m) => ({ report, metric: m })),
-  );
-
-  if (isLoading) {
-    return (
-      <GridLayout columns={3}>
-        {Array.from({ length: 3 }).map((_, i) => (
-          <StatCard key={i} icon={BarChart3} label="Loading" value="—" isLoading />
-        ))}
-      </GridLayout>
-    );
-  }
-
-  if (error) {
-    return (
-      <StatCard
-        icon={BarChart3}
-        label="Headline figures"
-        value="—"
-        error={error}
-        onRetry={() => refetch()}
-      />
-    );
-  }
-
-  if (metrics.length === 0) {
-    return (
-      <EmptyState
-        icon={BarChart3}
-        title="No published headline figures"
-        description="Headline KPIs appear here once dashboard reports are published with homepage metrics."
-      />
-    );
-  }
-
-  return (
-    <GridLayout columns={3}>
-      {metrics.map(({ report, metric }) => (
-        <StatCard
-          key={`${report.report_key}:${metric.metric_key}`}
-          icon={BarChart3}
-          label={metric.label_en}
-          value={metric.value_text ?? formatNumber(metric.value)}
-          unit={metric.unit}
-          hint={report.title_en}
-        />
-      ))}
     </GridLayout>
   );
 }

@@ -8,7 +8,6 @@
  * RBAC keys (programmes.routes.ts).
  *
  * IMPORTANT: the running backend's create/update validator is `.strict()` and the only relation
- * arrays it accepts are `commodity_ids` and `permitted_training_type_ids`. It does NOT accept
  * institution/document/gallery relations or a "programme type" — those are not part of the
  * Programme contract. We match the backend, not the broader spec prose.
  */
@@ -52,7 +51,6 @@ export interface ProgrammeDetail extends ProgrammeSummary {
   application_process_en: string | null;
   application_process_hi: string | null;
   commodities: MasterRef[];
-  permitted_training_types: MasterRef[];
   publish_start_at: string | null;
   highlight_start_at: string | null;
   highlight_end_at: string | null;
@@ -87,7 +85,6 @@ export interface ProgrammeWriteInput {
   end_date?: string | null;
   cover_media_id?: string | null;
   commodity_ids?: string[];
-  permitted_training_type_ids?: string[];
   // workflow
   public_visibility?: boolean;
   publish_start_at?: string | null;

@@ -27,6 +27,7 @@ const PUBLICATION_STATES = [
 export const EVENT_FILTER_KEYS = [
   'publication_state',
   'event_status',
+  'event_category',
   'event_type',
   'district',
   'block',
@@ -40,7 +41,10 @@ export const EVENT_FILTER_KEYS = [
 export function EventFilters({ filters }: { filters: FilterController }) {
   const f = filters;
   const districtFilter = f.filters.district;
-  const eventTypes = useMasterOptions('event-types');
+  const categoryFilter = f.filters.event_category;
+  const eventCategories = useMasterOptions('event-categories');
+  // Event types are scoped to the selected category once one is chosen; otherwise show all.
+  const eventTypes = useMasterOptions('event-types', { categoryId: categoryFilter || null, enabled: true });
   const districts = useMasterOptions('districts');
   // Blocks belong to a district — only offered once a district filter is chosen.
   const blocks = useMasterOptions('blocks', { districtId: districtFilter || null, enabled: Boolean(districtFilter) });
@@ -67,6 +71,15 @@ export function EventFilters({ filters }: { filters: FilterController }) {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         <FilterSelect label="State" value={sel('publication_state')} onChange={(v) => f.setFilter('publication_state', v)} options={PUBLICATION_STATES} />
         <FilterSelect label="Status" value={sel('event_status')} onChange={(v) => f.setFilter('event_status', v)} options={EVENT_STATUS_OPTIONS} />
+        <FilterSelect
+          label="Category"
+          value={sel('event_category')}
+          onChange={(v) => {
+            f.setFilter('event_category', v);
+            if (!v) f.setFilter('event_type', undefined); // clear dependent type when category cleared
+          }}
+          options={eventCategories.options}
+        />
         <FilterSelect label="Type" value={sel('event_type')} onChange={(v) => f.setFilter('event_type', v)} options={eventTypes.options} />
         <FilterSelect
           label="District"

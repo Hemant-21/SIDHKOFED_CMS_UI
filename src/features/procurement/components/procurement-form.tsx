@@ -9,7 +9,7 @@
  * backend's nullable schema. Block options are pre-filtered when district is selected.
  */
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 import { Form } from '@/components/form/form';
@@ -20,6 +20,7 @@ import { BilingualTabs } from '@/components/form/bilingual-tabs';
 import { useZodForm } from '@/components/form/use-zod-form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Select } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { useMasterOptions, RelationPicker, toRelationValue, type RelationOption } from '@/components/relationships';
 import { HIGHLIGHT_LABEL } from '@/constants/status';
@@ -117,8 +118,28 @@ export function ProcurementForm({ procurement }: ProcurementFormProps) {
 
   const highlightType = form.watch('highlight_type');
   const districtId = form.watch('district_id');
-  const procTypes = useMasterOptions('procurement-update-types');
+
+  // Category is a UI-only scoping control (never submitted — the payload still sends only
+  // procurement_update_type_id). Hydrate from the existing update's type's category on edit so
+  // the current type stays visible without forcing a re-pick.
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string>(
+    procurement?.procurement_update_category?.id ?? '',
+  );
+  const procurementCategories = useMasterOptions('procurement-update-categories');
+  const procurementCategoryOptions = [{ value: '', label: 'All categories' }, ...procurementCategories.options];
+  const procTypes = useMasterOptions('procurement-update-types', {
+    categoryId: selectedCategoryId || null,
+    categoryParam: 'procurement_update_category_id',
+    enabled: Boolean(selectedCategoryId),
+  });
   const procTypeOptions = [{ value: '', label: 'Select update type…' }, ...procTypes.options];
+
+  const onCategoryChange = (value: string) => {
+    setSelectedCategoryId(value);
+    // A category change invalidates the previously selected type — never let a stale
+    // cross-category type id be submitted.
+    form.setValue('procurement_update_type_id', '', { shouldDirty: true, shouldValidate: true });
+  };
 
   // Master data (commodity/district/block) comes from the Masters API — bounded reference lists
   // loaded eagerly as dropdowns (Phase 15.3 — NOT the server-side content RelationPicker). Blocks
@@ -175,10 +196,20 @@ export function ProcurementForm({ procurement }: ProcurementFormProps) {
           required
           className="sm:col-span-2"
         />
+        <div className="space-y-1">
+          <Label htmlFor="procurement-category">Category</Label>
+          <Select
+            id="procurement-category"
+            value={selectedCategoryId}
+            onChange={(e) => onCategoryChange(e.target.value)}
+            options={procurementCategoryOptions}
+          />
+        </div>
         <SelectField<ProcurementFormValues>
           name="procurement_update_type_id"
           label="Update type"
           required
+          disabled={!selectedCategoryId}
           options={procTypeOptions}
         />
         <SelectField<ProcurementFormValues>

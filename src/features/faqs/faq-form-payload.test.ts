@@ -2,12 +2,13 @@ import { describe, expect, it } from 'vitest';
 import { buildFaqPayload, emptyFaqForm, type FaqFormValues } from './faq-form-payload';
 
 /**
- * Payload regression (Phase 15.7). Must match the backend `faqCreateSchema` EXACTLY
- * (faqs.validators.ts): optional `faq_category_id`, required `question_en`/`answer_en`, bilingual
- * optional fields, workflow fields, and NO unknown keys (`.strict()`).
+ * Payload regression. Must match the backend `faqCreateSchema` EXACTLY (faqs.validators.ts):
+ * optional `page_assignments`, required `question_en`/`answer_en`, bilingual optional fields,
+ * workflow fields, and NO unknown keys (`.strict()`). `show_on_homepage` is gone — homepage
+ * placement is now an ordinary `page_key: 'home'` entry in `page_assignments`.
  */
 const BACKEND_KEYS = new Set([
-  'faq_category_id',
+  'page_assignments',
   'question_en',
   'question_hi',
   'answer_en',
@@ -19,7 +20,6 @@ const BACKEND_KEYS = new Set([
   'highlight_start_at',
   'highlight_end_at',
   'display_order',
-  'show_on_homepage',
 ]);
 
 function values(overrides: Partial<FaqFormValues> = {}): FaqFormValues {
@@ -34,9 +34,16 @@ describe('buildFaqPayload', () => {
     }
   });
 
-  it('sends faq_category_id as null when uncategorised', () => {
-    expect(buildFaqPayload(values({ faq_category_id: '' })).faq_category_id).toBeNull();
-    expect(buildFaqPayload(values({ faq_category_id: 'cat-1' })).faq_category_id).toBe('cat-1');
+  it('sends an empty page_assignments array when unassigned', () => {
+    expect(buildFaqPayload(values({ pageAssignments: [] })).page_assignments).toEqual([]);
+  });
+
+  it('round-trips a full page_assignments array, including a home assignment', () => {
+    const assignments = [
+      { page_key: 'home', display_order: 0 },
+      { page_key: 'membership', display_order: 2 },
+    ];
+    expect(buildFaqPayload(values({ pageAssignments: assignments })).page_assignments).toEqual(assignments);
   });
 
   it('keeps required question/answer trimmed and converts empty optionals to null', () => {
