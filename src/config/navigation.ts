@@ -33,7 +33,6 @@ import {
   Inbox,
   Database,
   FileBarChart2,
-  Globe,
   Users,
   ShieldCheck,
   ScrollText,
@@ -121,17 +120,10 @@ export const NAVIGATION: NavSection[] = [
     items: [
       {
         key: 'dashboard-generate-reports',
-        label: 'Generate Reports',
+        label: 'Reports',
         href: ROUTES.dashboardGenerateReports,
         icon: FileBarChart2,
         permission: 'operational_reports.view',
-      },
-      {
-        key: 'dashboard-website-metrics',
-        label: 'Website Metrics',
-        href: ROUTES.dashboardWebsiteMetrics,
-        icon: Globe,
-        permission: 'website_metrics.view',
       },
     ],
   },

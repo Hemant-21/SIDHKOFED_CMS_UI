@@ -31,17 +31,11 @@ export const ROUTES = {
   // `/dashboard/datasets`, `/dashboard/import`) and the `/dashboard-data` "Legacy Figures" route
   // were removed entirely too — the underlying data was dummy/test data, not real historical figures.
 
-  // Operational Reports (Phase 15.9 / Stage 4) — live-calculated reports computed straight from
-  // operational records. Formerly routed as a child of the fixed-catalogue `/dashboard/reports`
-  // above; now the only occupant of the `/dashboard/reports` subtree (still just the `generate`
-  // segment — see the routing note in
-  // `features/dashboard-data/operational-reports/generate-reports-page.tsx`).
+  // Reports — the single "Generate Reports" surface: Programme / District Activity Coverage /
+  // Commodity-wise, replacing the earlier six-report Operational Reports catalogue on this screen
+  // (`features/dashboard-data/reports/reports-page.tsx`). The old `/generate` segment is kept as
+  // the path so existing bookmarks/links still resolve.
   dashboardGenerateReports: '/dashboard/reports/generate',
-
-  // Website Metrics (Stage 2 backend / Stage 5 CMS) — admin-configured pointers at public-eligible
-  // Operational Report measures, previewed/published onto the public homepage or About Us page.
-  // Its own route tree, own backend resource, own lifecycle.
-  dashboardWebsiteMetrics: '/dashboard/website-metrics',
 
   // Error / status routes. Runtime errors are caught by error.tsx / global-error.tsx;
   // these are addressable status pages (e.g. for a reverse-proxy `error_page` map).
