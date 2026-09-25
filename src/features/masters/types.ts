@@ -49,7 +49,7 @@ export interface MasterTypeConfig {
   filterKeys?: string[];
 }
 
-/** All 18 master types defined in the CMS requirements (codex §6). */
+/** Current master types exposed by the CMS classification and reporting setup. */
 export const MASTER_TYPES: MasterTypeConfig[] = [
   {
     key: 'event-categories',

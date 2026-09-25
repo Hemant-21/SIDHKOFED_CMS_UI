@@ -274,8 +274,8 @@ describe('emptyDocumentTypeMasterForm', () => {
 // ── MASTER_TYPES config contract ──────────────────────────────────────────────
 
 describe('MASTER_TYPES configuration', () => {
-  it('has exactly 16 master types', () => {
-    expect(MASTER_TYPES).toHaveLength(16);
+  it('has exactly 15 master types', () => {
+    expect(MASTER_TYPES).toHaveLength(15);
   });
 
   it('event-types uses the event-type form variant and filters by category', () => {
