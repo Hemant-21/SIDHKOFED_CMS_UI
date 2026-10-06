@@ -2,9 +2,9 @@
 
 /**
  * Tender create/edit form. Reuses the shared form framework.
- * GeM URL is displayed exactly as provided by backend — never proxied or embedded.
+ * GeM URL is displayed exactly as provided by backend - never proxied or embedded.
  * External links open with target="_blank" rel="noopener noreferrer".
- * Frontend is INFORMATIONAL only — no bid submission, procurement, or BOQ logic.
+ * Frontend is INFORMATIONAL only - no bid submission, procurement, or BOQ logic.
  */
 
 import { useRouter } from 'next/navigation';
@@ -141,7 +141,7 @@ export function TenderForm({ tender }: TenderFormProps) {
         />
       </FormSection>
 
-      <FormSection title="Content" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Content" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={
             <TextareaField<TenderFormValues>
@@ -183,7 +183,7 @@ export function TenderForm({ tender }: TenderFormProps) {
 
       <FormSection
         title="GeM portal link"
-        description="Tenders are managed on GeM. The frontend displays this link as-is — it is never proxied or embedded."
+        description="Tenders are managed on GeM. The frontend displays this link as-is - it is never proxied or embedded."
       >
         <TextField<TenderFormValues>
           name="gem_url"

@@ -53,7 +53,7 @@ export function enquiryColumns(): ColumnDef<EnquirySummary>[] {
       id: 'organization',
       header: 'Organisation',
       defaultHidden: true,
-      cell: (e) => <span className="text-sm text-muted-foreground">{e.organization ?? '—'}</span>,
+      cell: (e) => <span className="text-sm text-muted-foreground">{e.organization ?? '-'}</span>,
     },
     {
       id: 'spam_state',

@@ -1,5 +1,5 @@
 /**
- * Auth service — the only place that calls the `/auth/*` endpoints. Wraps the
+ * Auth service - the only place that calls the `/auth/*` endpoints. Wraps the
  * backend contract (API spec §2) and keeps the in-memory token store in sync.
  * Consumed by the AuthProvider; never imported directly by feature components.
  */

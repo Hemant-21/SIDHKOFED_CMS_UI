@@ -1,5 +1,5 @@
 /**
- * `/official-communications` — Official Communications list (Phase 15.6).
+ * `/official-communications` - Official Communications list (Phase 15.6).
  */
 import { CommunicationListPage } from '@/features/communications';
 

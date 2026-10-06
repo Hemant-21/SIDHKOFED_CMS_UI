@@ -15,7 +15,7 @@ const TENDER_STATUS_TONE: Record<string, 'success' | 'warning' | 'danger' | 'mut
 };
 
 function TenderStatusBadge({ status }: { status: string | null }) {
-  if (!status) return <span className="text-muted-foreground">—</span>;
+  if (!status) return <span className="text-muted-foreground">-</span>;
   const tone = TENDER_STATUS_TONE[status] ?? 'default';
   return (
     <Badge tone={tone}>
@@ -49,7 +49,7 @@ export function tenderColumns(
     {
       id: 'tender_type',
       header: 'Type',
-      cell: (t) => <span className="text-muted-foreground">{t.tender_type?.name_en ?? '—'}</span>,
+      cell: (t) => <span className="text-muted-foreground">{t.tender_type?.name_en ?? '-'}</span>,
     },
     {
       id: 'submission_deadline',
@@ -76,7 +76,7 @@ export function tenderColumns(
         t.highlight_type ? (
           <HighlightBadge highlight={t.highlight_type} />
         ) : (
-          <span className="text-muted-foreground">—</span>
+          <span className="text-muted-foreground">-</span>
         ),
     },
     {

@@ -74,7 +74,7 @@ export function GalleryListPage() {
       <Alert tone="info" title="Homepage hero carousel">
         The public website homepage displays a CMS-powered image carousel when a gallery with the
         exact slug <strong>hero-slides</strong> is published here. Create that gallery, add your
-        field-work and community photos to it, then publish — the carousel will activate
+        field-work and community photos to it, then publish - the carousel will activate
         automatically. Until this gallery exists the homepage shows a static placeholder image.
       </Alert>
 

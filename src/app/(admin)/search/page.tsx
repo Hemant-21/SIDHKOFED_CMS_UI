@@ -1,5 +1,5 @@
 /**
- * `/search` — the dedicated Global Search results page (Phase 15.2). URL-driven and
+ * `/search` - the dedicated Global Search results page (Phase 15.2). URL-driven and
  * server-side. `SearchPage` reads the query string via `useSearchParams`, so it is
  * wrapped in a Suspense boundary per the Next.js App Router requirement.
  */

@@ -1,7 +1,7 @@
-# SIDHKOFED CMS — Admin Frontend Foundation (Phase 15.0)
+# SIDHKOFED CMS - Admin Frontend Foundation (Phase 15.0)
 
 > Reusable frontend **infrastructure only**. No module pages, no CRUD, no
-> business UI. Every later module is built by *composing* what is here — it should
+> business UI. Every later module is built by *composing* what is here - it should
 > never re-implement layout, auth, the API client, tables, forms, or dialogs.
 >
 > Source-of-truth precedence (frozen): `docs/sidhkofed-cms-codex-context.md` →
@@ -25,7 +25,7 @@ npm run build      # production build
 ```
 
 `NEXT_PUBLIC_API_BASE_URL` (default `/api/v1`) points at the backend. The browser
-holds **no secrets** — only `NEXT_PUBLIC_*` values exist client-side.
+holds **no secrets** - only `NEXT_PUBLIC_*` values exist client-side.
 
 ## 1. Folder structure (feature-based, not app/-only)
 
@@ -73,12 +73,12 @@ TanStack Query (useQuery/useMutation) ───────┘                  
 - **Envelope unwrapping** in `lib/api/http.ts`: callers get `data` /
   `{items, pagination}` directly (API spec §1.4).
 - **Providers** mounted once in `providers/app-providers.tsx`, order:
-  Theme → Query → Toast → Auth → Dialog → Loading. Providers only — no business logic.
+  Theme → Query → Toast → Auth → Dialog → Loading. Providers only - no business logic.
 
 ## 3. Authentication
 
 - Login / refresh / logout / `auth/me` via `services/auth.service.ts` (API spec §2).
-- **Access token in memory only** (`lib/api/token-store.ts`) — never
+- **Access token in memory only** (`lib/api/token-store.ts`) - never
   localStorage/sessionStorage. **Refresh token is the backend's Secure/HttpOnly
   cookie** (`withCredentials`). Session is **restored on boot** with one silent
   `/auth/refresh`.
@@ -88,13 +88,13 @@ TanStack Query (useQuery/useMutation) ───────┘                  
 
 ## 4. Authorization
 
-- **Backend is the only source of truth.** The frontend defines **no** authority —
-  it reads the flat `permissions`/`roles` arrays on `AuthUser` (codex §7).
+- **Backend is the only source of truth.** The frontend defines **no** authority -
+  it reads the flat `permissions`/`roles` arrays on `AuthUser`.
 - `usePermissions()` → `can / canAll / canAny / hasRole`; `<Can permission="events.publish">`
   for declarative rendering; `useCan('…')` for a single check.
 - Super Admin handled via the `*` wildcard. `constants/permissions.ts` only *builds*
-  `module.action` keys (e.g. `modulePermissions('events').publish`) — it grants nothing.
-- Sidebar visibility is permission/role-aware (affordance only — the API re-checks every action).
+  `module.action` keys (e.g. `modulePermissions('events').publish`) - it grants nothing.
+- Sidebar visibility is permission/role-aware (affordance only - the API re-checks every action).
 
 ## 5. API layer
 
@@ -117,7 +117,7 @@ helpers in `lib/query.ts`. Devtools in dev only.
   visibility, bulk selection, action column, loading/empty/error states, responsive.
 - **Forms** (`components/form`): RHF + Zod, server-validation mapping to inline
   errors, section layout, **bilingual tabs** (`*_en`/`*_hi`), draft persistence,
-  generic field components — no business fields.
+  generic field components - no business fields.
 - **Dialogs** (`providers/dialog-provider` + `hooks/use-confirm-dialog`): imperative
   `await confirm({…})` with delete/archive/restore/publish/unpublish presets.
 - **Toasts** (`providers/toast-provider` + `useToast`): success/error/info/warning + promise.
@@ -132,7 +132,7 @@ CSS-variable tokens (`globals.css`). Frontend display preference only.
 - Route groups: `(admin)` (protected) and `(auth)` (guest).
 - 404 → `app/not-found.tsx`; 403 → `/403` route + ForbiddenState; runtime/server
   errors → `app/error.tsx` (segment) and `app/global-error.tsx` (root).
-- **`/500` is intentionally avoided** — that App Router segment collides with Next's
+- **`/500` is intentionally avoided** - that App Router segment collides with Next's
   generated `500.html` at build time on Windows. The addressable 500 status page is
   `/server-error` (`ROUTES.serverError`); reverse proxies should map `error_page 500`
   there.
@@ -186,5 +186,5 @@ drawer) · ✔ Auth complete · ✔ Authorization complete · ✔ API layer comp
 ✔ Future modules need minimal boilerplate (add a folder under `(admin)/`, a nav
 entry, a service + query keys; reuse everything else).
 
-> **Phase 15.0 stops here.** Do not begin module/CRUD work (Phase 15.1+) — those
+> **Phase 15.0 stops here.** Do not begin module/CRUD work (Phase 15.1+) - those
 > compose this foundation.

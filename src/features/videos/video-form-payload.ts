@@ -1,7 +1,7 @@
 /**
  * Pure form ↔ API mapping for the video form (unit-testable; no React). Converts the flat,
  * string-friendly form state into the typed `VideoWriteInput` the backend accepts. The backend
- * validates/normalises the YouTube URL and extracts the id — the frontend only sends the raw URL.
+ * validates/normalises the YouTube URL and extracts the id - the frontend only sends the raw URL.
  * Server-managed fields (slug, youtube_id, thumbnail_url, state) are never produced.
  */
 

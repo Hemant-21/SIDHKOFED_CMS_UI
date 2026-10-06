@@ -6,13 +6,13 @@
  * dropdown loads them eagerly and maps to the shared {@link SelectOption} shape consumed by
  * `<SelectField>` / `<MultiSelectField>`.
  *
- * Masters use the authenticated admin master list which all CMS roles can view — codex §6:
+ * Masters use the authenticated admin master list which all CMS roles can view:
  * deactivated values are surfaced as DISABLED, never silently dropped, so an already-linked
  * historical value still renders while staying unselectable for new entries.
  *
  * Large CONTENT relations (programmes/institutions/galleries/documents/events) are NOT loaded
- * here — they use the paginated, server-side {@link RelationPicker} (relation-search.ts) so the
- * client never requests `PAGE_SIZE_MAX` (Phase 15.3 remediation — Finding 4).
+ * here - they use the paginated, server-side {@link RelationPicker} (relation-search.ts) so the
+ * client never requests `PAGE_SIZE_MAX` (Phase 15.3 remediation - Finding 4).
  */
 
 import { useQuery } from '@tanstack/react-query';
@@ -50,9 +50,9 @@ export interface MasterRecord {
 /**
  * Active-master options for a kebab-case master key (e.g. `event-types`, `commodities`).
  * Deactivated values are kept but disabled so historical links still display.
- * `districtId` filters blocks to a district (block list supports `district_id` — API spec §4).
+ * `districtId` filters blocks to a district (block list supports `district_id` - API spec §4).
  * `categoryId` filters a type master to its parent category, using `categoryParam` as the query
- * key (defaults to `event_category_id` — API spec §16; pass `procurement_update_category_id` to
+ * key (defaults to `event_category_id` - API spec §16; pass `procurement_update_category_id` to
  * scope `procurement-update-types` to a `procurement-update-categories` id).
  */
 export function useMasterOptions(
@@ -70,7 +70,7 @@ export function useMasterOptions(
         ...(categoryId ? { [categoryParam]: categoryId } : {}),
       }),
     enabled,
-    staleTime: 5 * 60_000, // masters change rarely — cache aggressively
+    staleTime: 5 * 60_000, // masters change rarely - cache aggressively
   });
 
   const options: SelectOption[] = (query.data?.items ?? []).map((m) => ({

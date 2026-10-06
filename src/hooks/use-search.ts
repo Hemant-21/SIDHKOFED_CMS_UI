@@ -15,7 +15,7 @@ export interface UseSearchApi {
 
 /**
  * Search-box state with built-in debounce. Keeps the input responsive while only
- * the debounced value drives network requests (lightweight payloads, codex §14).
+ * the debounced value drives network requests (lightweight payloads).
  */
 export function useSearch(initial = '', delay = DEBOUNCE_MS): UseSearchApi {
   const [query, setQuery] = useState(initial);

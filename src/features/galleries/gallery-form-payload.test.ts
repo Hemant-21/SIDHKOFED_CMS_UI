@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { buildGalleryPayload, emptyGalleryForm, type GalleryFormValues } from './gallery-form-payload';
 
 /**
- * Payload regression (Phase 15.7 remediation — Issue 1). Must match the backend `galleryCreateSchema`
+ * Payload regression (Phase 15.7 remediation - Issue 1). Must match the backend `galleryCreateSchema`
  * (gallery.validators.ts): title/description bilingual, nullable `cover_media_id`, optional int
  * `display_order`. The optional string fields are NOT nullable on the backend, so we send strings
  * (never null); display_order is OMITTED when blank (null would be rejected).

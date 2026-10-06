@@ -1,5 +1,5 @@
 /**
- * `/programmes/[id]` — programme detail / view (Phase 15.5).
+ * `/programmes/[id]` - programme detail / view (Phase 15.5).
  */
 import { ProgrammeDetailPage } from '@/features/programmes';
 

@@ -1,7 +1,7 @@
 import { PageContainer, ContentWrapper } from '@/components/layout';
 import { Skeleton, SkeletonText } from '@/components/feedback/skeleton';
 
-/** Suspense fallback for admin pages — keeps the shell visible while loading. */
+/** Suspense fallback for admin pages - keeps the shell visible while loading. */
 export default function AdminLoading() {
   return (
     <PageContainer>

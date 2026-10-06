@@ -1,5 +1,5 @@
 /**
- * `/galleries/new` — create a gallery (Phase 15.7 remediation).
+ * `/galleries/new` - create a gallery (Phase 15.7 remediation).
  */
 import { GalleryFormPage } from '@/features/galleries';
 

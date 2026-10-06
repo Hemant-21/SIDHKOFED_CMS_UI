@@ -3,7 +3,7 @@
 /**
  * Digital Service detail / view page. Read-only presentation plus lifecycle actions. The external
  * URL is surfaced as a safe link (target=_blank, rel=noopener noreferrer) with a clear external
- * indicator — the CMS never embeds or proxies the external system (codex §4.14).
+ * indicator - the CMS never embeds or proxies the external system.
  */
 
 import { ExternalLink, AppWindow } from 'lucide-react';
@@ -126,7 +126,7 @@ export function DigitalServiceDetailPage({ id }: { id: string }) {
 }
 
 function Block({ body }: { body: string | null }) {
-  if (!body) return <p className="text-sm text-muted-foreground">—</p>;
+  if (!body) return <p className="text-sm text-muted-foreground">-</p>;
   return <pre className="whitespace-pre-wrap font-sans text-sm text-foreground">{body}</pre>;
 }
 

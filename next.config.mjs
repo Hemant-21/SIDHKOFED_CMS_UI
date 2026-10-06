@@ -45,7 +45,7 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  // Enable standalone output for Docker — produces a self-contained server
+  // Enable standalone output for Docker - produces a self-contained server
   // bundle under .next/standalone that does not require node_modules at runtime.
   ...(basePath ? { basePath } : {}),
   output: 'standalone',

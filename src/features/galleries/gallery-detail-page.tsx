@@ -109,7 +109,7 @@ export function GalleryDetailPage({ id }: { id: string }) {
 }
 
 function Block({ body }: { body: string | null }) {
-  if (!body) return <p className="text-sm text-muted-foreground">—</p>;
+  if (!body) return <p className="text-sm text-muted-foreground">-</p>;
   return <pre className="whitespace-pre-wrap font-sans text-sm text-foreground">{body}</pre>;
 }
 

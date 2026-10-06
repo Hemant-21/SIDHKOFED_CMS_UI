@@ -1,5 +1,5 @@
 /**
- * `/events/[id]/edit` — edit an event (Phase 15.3). Permission-gated inside the feature page.
+ * `/events/[id]/edit` - edit an event (Phase 15.3). Permission-gated inside the feature page.
  */
 import { EventFormPage } from '@/features/events';
 

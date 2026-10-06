@@ -3,7 +3,7 @@
 /**
  * Events data layer. Standard list/detail/create/update/lifecycle come from the shared CRUD
  * hooks (`useCrudList`/`useCrudDetail`/`useCrudCreate`/`useCrudUpdate`/`useLifecycleActions`)
- * against the `events` resource — no bespoke fetch logic. This module only adds the
+ * against the `events` resource - no bespoke fetch logic. This module only adds the
  * event-SPECIFIC actions that aren't part of the generic "P" pattern: the controlled
  * field-definition lookup, complete, cancel, and publish-as-news.
  */
@@ -29,7 +29,7 @@ const eventPath = (id: string, action: string) => `${adminResource(EVENTS_RESOUR
 
 /**
  * Active controlled-field definitions for the chosen event type. Drives the dynamic-field
- * section of the form. Only active definitions are rendered (codex §4.1). Disabled until an
+ * section of the form. Only active definitions are rendered. Disabled until an
  * event type is selected.
  */
 export function useEventFieldDefinitions(eventTypeId: string | null | undefined) {

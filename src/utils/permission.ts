@@ -1,6 +1,6 @@
 /**
  * Pure permission-check helpers operating over the backend-provided permission
- * array. No authority is defined here — these only test membership of the keys
+ * array. No authority is defined here - these only test membership of the keys
  * the server granted. Super Admin is treated as all-access via the wildcard key
  * the backend may emit, but the array remains the source of truth.
  */

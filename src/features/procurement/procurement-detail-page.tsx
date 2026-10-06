@@ -1,8 +1,8 @@
 'use client';
 
 /**
- * Procurement Update detail / view page. Displays backend data only — no rate calculations,
- * no procurement logic, no ERP integration (codex §4.8 / non-goals). Rate and unit are
+ * Procurement Update detail / view page. Displays backend data only - no rate calculations,
+ * no procurement logic, no ERP integration. Rate and unit are
  * presented as-is from the backend.
  */
 
@@ -90,21 +90,21 @@ export function ProcurementDetailPage({ id }: { id: string }) {
             <CardContent>
               <dl className="grid gap-4 sm:grid-cols-2">
                 <Item label="Category">
-                  {procurement.procurement_update_category?.name_en ?? '—'}
+                  {procurement.procurement_update_category?.name_en ?? '-'}
                 </Item>
                 <Item label="Update type">
-                  {procurement.procurement_update_type?.name_en ?? '—'}
+                  {procurement.procurement_update_type?.name_en ?? '-'}
                 </Item>
-                <Item label="Commodity">{procurement.commodity?.name_en ?? '—'}</Item>
-                <Item label="Programme">{procurement.programme?.title_en ?? '—'}</Item>
-                <Item label="District">{procurement.district?.name_en ?? '—'}</Item>
-                <Item label="Block">{procurement.block?.name_en ?? '—'}</Item>
-                <Item label="Location">{procurement.location_text ?? '—'}</Item>
+                <Item label="Commodity">{procurement.commodity?.name_en ?? '-'}</Item>
+                <Item label="Programme">{procurement.programme?.title_en ?? '-'}</Item>
+                <Item label="District">{procurement.district?.name_en ?? '-'}</Item>
+                <Item label="Block">{procurement.block?.name_en ?? '-'}</Item>
+                <Item label="Location">{procurement.location_text ?? '-'}</Item>
                 <Item label="Effective date">{formatDate(procurement.effective_date)}</Item>
                 <Item label="Period">
                   {procurement.period_start || procurement.period_end
                     ? `${formatDate(procurement.period_start)} – ${formatDate(procurement.period_end)}`
-                    : '—'}
+                    : '-'}
                 </Item>
                 {procurement.rate != null ? (
                   <Item label="Rate (informational)">
@@ -194,7 +194,7 @@ function Item({ label, children }: { label: string; children: React.ReactNode })
 }
 
 function Block({ body }: { body: string | null }) {
-  if (!body) return <p className="text-sm text-muted-foreground">—</p>;
+  if (!body) return <p className="text-sm text-muted-foreground">-</p>;
   return <pre className="whitespace-pre-wrap font-sans text-sm text-foreground">{body}</pre>;
 }
 

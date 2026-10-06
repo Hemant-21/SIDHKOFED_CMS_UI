@@ -1,12 +1,12 @@
 'use client';
 
 /**
- * Membership bulk-upload dialog (codex §4.15 "Bulk Excel upload may be supported" / API spec §6).
+ * Membership bulk-upload dialog.
  *
  * The backend endpoint (`POST /admin/memberships/bulk-upload`) accepts a JSON `{ rows: [...] }`
  * payload and performs ALL validation server-side (required fields, reference existence, master
  * activation, duplicate detection) in ONE transaction, returning row-level errors. This dialog only
- * does the mechanical CSV-text → row-object transform; it runs NO business validation itself — the
+ * does the mechanical CSV-text → row-object transform; it runs NO business validation itself - the
  * backend remains the single source of truth, and its row errors are surfaced verbatim so the editor
  * can correct invalid rows and retry.
  *

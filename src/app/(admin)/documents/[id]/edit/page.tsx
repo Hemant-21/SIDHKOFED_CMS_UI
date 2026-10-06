@@ -1,5 +1,5 @@
 /**
- * `/documents/[id]/edit` — edit a document (Phase 15.4). Permission-gated inside the feature page.
+ * `/documents/[id]/edit` - edit a document (Phase 15.4). Permission-gated inside the feature page.
  */
 import { DocumentFormPage } from '@/features/documents';
 

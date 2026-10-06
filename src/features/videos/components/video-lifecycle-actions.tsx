@@ -3,7 +3,7 @@
 /**
  * Video lifecycle actions. Reuses the shared publishing hooks (useLifecycleActions) and the
  * confirmation dialogs; gating is permission aware via <Can> (backend still enforces, including
- * the ≤3 homepage-videos cap which returns 409 on publish — surfaced as an error toast).
+ * the ≤3 homepage-videos cap which returns 409 on publish - surfaced as an error toast).
  */
 
 import { Pencil } from 'lucide-react';

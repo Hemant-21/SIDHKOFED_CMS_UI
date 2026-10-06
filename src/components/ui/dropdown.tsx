@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Accessible dropdown menu. The trigger element itself becomes the toggle — its menu ARIA
+ * Accessible dropdown menu. The trigger element itself becomes the toggle - its menu ARIA
  * (aria-haspopup/expanded/controls) and click handler are merged onto it via {@link Slot},
  * so there is NO wrapper <button> around the trigger (avoids nested interactive elements).
  * Keyboard support (Escape closes), outside-click dismiss, and role=menu/menuitem are kept.
@@ -11,10 +11,10 @@
  * keyboard users can open the menu.
  *
  * Renders the menu into a `document.body` portal at a `position: fixed` coordinate computed
- * from the trigger's bounding rect, rather than as a CSS-relative sibling — a plain
+ * from the trigger's bounding rect, rather than as a CSS-relative sibling - a plain
  * absolutely-positioned sibling gets clipped whenever an ancestor sets any non-`visible`
  * overflow (e.g. DataTable's scrollable/rounded-corner wrapper), which silently clips or
- * squashes the menu instead of showing it — same root cause `Tooltip` already works around.
+ * squashes the menu instead of showing it - same root cause `Tooltip` already works around.
  */
 
 import {
@@ -30,7 +30,7 @@ import { cn } from '@/utils/cn';
 import { Slot } from './slot';
 
 interface DropdownItem {
-  /** Optional — omitted for `separator` items. */
+  /** Optional - omitted for `separator` items. */
   label?: ReactNode;
   onSelect?: () => void;
   icon?: ReactNode;

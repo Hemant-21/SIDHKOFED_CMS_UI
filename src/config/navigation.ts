@@ -1,11 +1,11 @@
 /**
- * Sidebar navigation configuration — DATA, not markup. The Sidebar renders from
+ * Sidebar navigation configuration - DATA, not markup. The Sidebar renders from
  * this; adding a future module's menu entry is a one-line edit here (task:
  * "menu configuration should NOT be hardcoded inside components"). Mirrors the
- * approved CMS sidebar (codex §3) and groups items into sections.
+ * approved CMS sidebar and groups items into sections.
  *
  * Visibility is permission/role aware: an item with `permission` shows only when
- * the user holds it; one with `roles` shows only for those roles (an affordance —
+ * the user holds it; one with `roles` shows only for those roles (an affordance -
  * the backend still enforces every action). Items with neither are always shown to
  * authenticated users. The module pages themselves are built in later phases; the
  * routes are reserved in ROUTES so entries resolve without magic strings.

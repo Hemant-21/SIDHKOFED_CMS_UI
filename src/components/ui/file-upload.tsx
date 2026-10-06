@@ -16,7 +16,7 @@ export interface FileUploadProps {
   onFiles: (files: File[]) => void;
   accept?: string;
   multiple?: boolean;
-  /** Max size per file (MB) — soft client check; server is authoritative. */
+  /** Max size per file (MB) - soft client check; server is authoritative. */
   maxSizeMb?: number;
   disabled?: boolean;
   label?: string;

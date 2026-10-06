@@ -1,5 +1,5 @@
 /**
- * `/tenders` — Tender Management list (Phase 15.6).
+ * `/tenders` - Tender Management list (Phase 15.6).
  */
 import { TenderListPage } from '@/features/tenders';
 

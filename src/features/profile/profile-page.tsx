@@ -2,7 +2,7 @@
 
 /**
  * Profile page. Reads the current user from the auth context (already populated on boot
- * via GET /auth/me — no extra network call). Renders `<ProfileForm>` and `<PasswordForm>`
+ * via GET /auth/me - no extra network call). Renders `<ProfileForm>` and `<PasswordForm>`
  * side by side. Full-page loader covers the brief session-restore window.
  */
 

@@ -1,5 +1,5 @@
 /**
- * Event timeline — a read-only summary of the record's lifecycle timestamps (created, last
+ * Event timeline - a read-only summary of the record's lifecycle timestamps (created, last
  * updated, published, archived) plus the current status/state. Built from fields already in the
  * event detail; no extra fetch. (Full per-action audit history lives in the Audit Log module.)
  */
@@ -17,8 +17,8 @@ export function EventTimeline({ event }: { event: EventDetail }) {
     { icon: Send, label: 'Publication', value: <StatusBadge state={event.publication_state} /> },
     { icon: CalendarPlus, label: 'Created', value: formatDateTime(event.created_at) },
     { icon: PencilLine, label: 'Last updated', value: formatDateTime(event.updated_at) },
-    { icon: Send, label: 'Published', value: event.published_at ? formatDateTime(event.published_at) : '—' },
-    { icon: Archive, label: 'Archived', value: event.archived_at ? formatDateTime(event.archived_at) : '—' },
+    { icon: Send, label: 'Published', value: event.published_at ? formatDateTime(event.published_at) : '-' },
+    { icon: Archive, label: 'Archived', value: event.archived_at ? formatDateTime(event.archived_at) : '-' },
   ];
 
   return (

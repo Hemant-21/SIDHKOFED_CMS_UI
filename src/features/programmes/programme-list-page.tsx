@@ -2,7 +2,7 @@
 
 /**
  * Programmes list page. Composes the shared DataTable + filter framework + pagination + bulk actions
- * against the `programmes` resource — server pagination, server search, server filters, sorting,
+ * against the `programmes` resource - server pagination, server search, server filters, sorting,
  * column selection, and loading/empty/error states all from shared infrastructure. Bulk publish/
  * archive reuse the lifecycle hooks and are gated on the module-specific `programmes.*` permissions.
  * No client-side filtering.

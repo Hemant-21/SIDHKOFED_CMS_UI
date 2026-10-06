@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * `<Form>` — the reusable form shell. Wraps RHF's FormProvider, runs the submit
+ * `<Form>` - the reusable form shell. Wraps RHF's FormProvider, runs the submit
  * handler, and maps server-side validation errors (the 422 `fields` map) back onto
  * the matching RHF fields (API field keys are snake_case). Surfaces a top-level
  * error banner for non-field errors and tracks the submit state for disabling.

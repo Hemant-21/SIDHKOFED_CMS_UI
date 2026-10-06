@@ -2,8 +2,7 @@
 
 /**
  * Grouped search results (Phase 15.2). Results arrive ranked from the backend; we
- * only GROUP them by entity type for scannability (codex §14: results grouped by
- * entity). No client-side filtering or re-ranking. Each group shows its icon,
+ * only GROUP them by entity type for scannability. No client-side filtering or re-ranking. Each group shows its icon,
  * label, and count, then the result cards.
  */
 

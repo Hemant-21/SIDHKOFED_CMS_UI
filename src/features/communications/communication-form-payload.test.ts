@@ -6,7 +6,7 @@ import {
 } from './communication-form-payload';
 
 /**
- * Payload regression (Phase 15.6 audit — Issue 2). The generated payload must match the backend
+ * Payload regression (Phase 15.6 audit - Issue 2). The generated payload must match the backend
  * `officialCommunicationCreateSchema` EXACTLY: bilingual `summary_*`/`body_*` (NOT the removed
  * `short_description_*`), `YYYY-MM-DD` dates, ISO timestamps for scheduling, and no unknown keys
  * (the backend uses `.strict()` and rejects extras).
@@ -49,7 +49,7 @@ describe('buildCommunicationPayload', () => {
     }
   });
 
-  it('uses backend summary_*/body_* fields — never the removed short_description_*', () => {
+  it('uses backend summary_*/body_* fields - never the removed short_description_*', () => {
     const p = buildCommunicationPayload(
       values({ summary_en: 'Sum', summary_hi: 'सार', body_en: 'Body', body_hi: 'विवरण' }),
     ) as Record<string, unknown>;

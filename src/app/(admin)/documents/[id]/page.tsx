@@ -1,5 +1,5 @@
 /**
- * `/documents/[id]` — document detail / view (Phase 15.4).
+ * `/documents/[id]` - document detail / view (Phase 15.4).
  */
 import { DocumentDetailPage } from '@/features/documents';
 

@@ -1,6 +1,6 @@
 /**
  * Admin Dashboard components (Phase 15.2). Fixed, non-configurable widgets composed
- * from the shared design system — reused by the dashboard page and available to any
+ * from the shared design system - reused by the dashboard page and available to any
  * future module needing a KPI/status/activity surface.
  */
 

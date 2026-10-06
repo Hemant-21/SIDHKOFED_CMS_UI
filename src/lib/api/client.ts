@@ -1,6 +1,6 @@
 /**
  * The single axios instance + interceptors for the whole app. No component or
- * service constructs its own fetch/axios — all traffic flows through here so auth,
+ * service constructs its own fetch/axios - all traffic flows through here so auth,
  * refresh, error normalization, and credentials are handled in exactly one place.
  *
  * Refresh flow (API spec §1.2/§2): on a 401 the response interceptor performs ONE
@@ -28,7 +28,7 @@ interface RetryConfig extends InternalAxiosRequestConfig {
   skipAuthRefresh?: boolean;
 }
 
-/** Main instance — credentialed so the HttpOnly refresh cookie travels with it. */
+/** Main instance - credentialed so the HttpOnly refresh cookie travels with it. */
 export const apiClient: AxiosInstance = axios.create({
   baseURL: env.apiBaseUrl,
   withCredentials: true,

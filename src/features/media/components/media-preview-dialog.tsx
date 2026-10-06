@@ -4,7 +4,7 @@
  * Media preview dialog. Safe preview by type (image / video / PDF, else metadata only), inline
  * descriptive-metadata editing, download, file replacement, relationship-usage list, and
  * archive/restore. All actions hit the backend media endpoints; usage references explain why a
- * linked asset cannot be hard-deleted (codex §5.1). Permission-aware via role gating.
+ * linked asset cannot be hard-deleted. Permission-aware via role gating.
  */
 
 import { useEffect, useState } from 'react';
@@ -104,9 +104,9 @@ export function MediaPreviewDialog({ asset, open, onClose }: MediaPreviewDialogP
             role={MEDIA_ROLES}
             fallback={
               <dl className="space-y-2 text-sm">
-                <Meta label="Title">{asset.title ?? '—'}</Meta>
-                <Meta label="Alt text">{asset.alt_text ?? '—'}</Meta>
-                <Meta label="Caption">{asset.caption ?? '—'}</Meta>
+                <Meta label="Title">{asset.title ?? '-'}</Meta>
+                <Meta label="Alt text">{asset.alt_text ?? '-'}</Meta>
+                <Meta label="Caption">{asset.caption ?? '-'}</Meta>
               </dl>
             }
           >
@@ -140,7 +140,7 @@ export function MediaPreviewDialog({ asset, open, onClose }: MediaPreviewDialogP
             {usages.isLoading ? (
               <p className="text-sm text-muted-foreground">Loading usages…</p>
             ) : (usages.data?.length ?? 0) === 0 ? (
-              <p className="text-sm text-muted-foreground">Not linked anywhere — can be archived safely.</p>
+              <p className="text-sm text-muted-foreground">Not linked anywhere - can be archived safely.</p>
             ) : (
               <ul className="flex flex-wrap gap-1.5">
                 {usages.data?.map((u, i) => (

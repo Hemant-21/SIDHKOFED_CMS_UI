@@ -1,10 +1,10 @@
 /**
  * Permission KEY helpers.
  *
- * IMPORTANT (codex §7 / task): the frontend defines **no** authority. The backend
+ * IMPORTANT: the frontend defines **no** authority. The backend
  * is the single source of truth; the user's effective permissions arrive as a flat
  * string array on `AuthUser.permissions` (e.g. `events.create`). These helpers only
- * BUILD the `module.action` strings we check against that array — they grant
+ * BUILD the `module.action` strings we check against that array - they grant
  * nothing. This keeps checks type-safe and DRY without re-defining permissions.
  */
 

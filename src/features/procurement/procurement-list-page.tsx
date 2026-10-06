@@ -2,7 +2,7 @@
 
 /**
  * Procurement Updates list page. Server pagination, search, filters, sorting, bulk actions.
- * Frontend NEVER calculates rates or performs procurement logic — display only (codex §4.8).
+ * Frontend NEVER calculates rates or performs procurement logic - display only.
  */
 
 import { useMemo } from 'react';

@@ -1,6 +1,6 @@
 /**
  * Reusable admin-resource service factory. Given a kebab-case resource name, it
- * returns a fully typed client for the standard "P" pattern (API spec §3) —
+ * returns a fully typed client for the standard "P" pattern (API spec §3) -
  * list/detail/create/update + the four lifecycle actions. This is the mechanism
  * that lets a future module's data layer be ~5 lines instead of a rewrite.
  *

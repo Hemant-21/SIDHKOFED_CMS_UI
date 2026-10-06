@@ -3,7 +3,7 @@
 /**
  * Document detail / view page. Read-only presentation of one document plus the lifecycle/version
  * actions. Bilingual content shows in tabs. The linked file is previewed safely (opens in a new
- * tab) with a separate download affordance (codex §4.5). Linked records use the compact references
+ * tab) with a separate download affordance. Linked records use the compact references
  * the backend returns. Loading/error states are the shared components.
  */
 
@@ -71,7 +71,7 @@ export function DocumentDetailPage({ id }: { id: string }) {
               <dl className="grid gap-4 sm:grid-cols-2">
                 <Item label="Document type">{document.document_type.name_en}</Item>
                 <Item label="Publication date">{formatDate(document.publication_date)}</Item>
-                <Item label="Financial year">{document.financial_year?.label ?? '—'}</Item>
+                <Item label="Financial year">{document.financial_year?.label ?? '-'}</Item>
                 <Item label="Language">{document.language.toUpperCase()}</Item>
               </dl>
             </CardContent>
@@ -106,7 +106,7 @@ export function DocumentDetailPage({ id }: { id: string }) {
 
         <div className="space-y-6">
           <Card>
-            <CardHeader title="Current file" description="Version management is backend-driven — replacing the file keeps this document's URL." />
+            <CardHeader title="Current file" description="Version management is backend-driven - replacing the file keeps this document's URL." />
             <CardContent className="space-y-3">
               <div className="flex items-start gap-3">
                 <FileText className="mt-0.5 h-8 w-8 shrink-0 text-primary" aria-hidden="true" />
@@ -163,7 +163,7 @@ function RefList({ label, items }: { label: string; items: string[] }) {
     <div>
       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</p>
       {items.length === 0 ? (
-        <p className="text-sm text-muted-foreground">—</p>
+        <p className="text-sm text-muted-foreground">-</p>
       ) : (
         <div className="mt-1 flex flex-wrap gap-1.5">
           {items.map((i) => (

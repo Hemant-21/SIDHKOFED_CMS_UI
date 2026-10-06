@@ -20,7 +20,7 @@ export const queryKeys = {
     detail: (id: string) => [resource, 'detail', id] as const,
   }),
 
-  /** Master-data lists (cached aggressively — they rarely change). */
+  /** Master-data lists (cached aggressively - they rarely change). */
   master: (key: string) => ['master', key] as const,
 
   /** Admin Dashboard (Phase 15.2). Each surface reads an existing backend endpoint. */
@@ -31,7 +31,7 @@ export const queryKeys = {
       ['dashboard', 'content-count', resource, filters ?? {}] as const,
   },
 
-  /** Recent administrative activity — audit log (Super Admin only). */
+  /** Recent administrative activity - audit log (Super Admin only). */
   audit: {
     all: ['audit'] as const,
     list: (query?: ListQuery) => ['audit', 'list', query ?? {}] as const,

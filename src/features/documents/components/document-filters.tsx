@@ -4,12 +4,12 @@
  * Document list filter bar. Exposes EXACTLY the backend's allow-listed document filters
  * (documents.query.ts): publication_state, document_type, document_section, knowledge_category,
  * communication_type, commodity, district, financial_year, language, year, date_from, date_to.
- * Filtering is server-side via the shared `useFilters` controller — each control writes an
+ * Filtering is server-side via the shared `useFilters` controller - each control writes an
  * allow-listed query param and re-runs the backend query. No client-side filtering.
  *
  * `document_section` replaces the legacy `knowledge_centre=true` boolean (still accepted by the
  * backend for compatibility, but the CMS now sends the new param exclusively); absent
- * category/type filters broaden to "all docs in section", never the other way — these AND
+ * category/type filters broaden to "all docs in section", never the other way - these AND
  * together with `document_section`.
  */
 

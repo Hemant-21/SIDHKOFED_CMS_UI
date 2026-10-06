@@ -5,7 +5,7 @@
  *
  * This is infrastructure: it exposes the shared **shapes** every module reuses
  * (the standard admin "P" resource pattern + masters). It does NOT enumerate
- * module endpoints as one-off strings — modules build their own paths from
+ * module endpoints as one-off strings - modules build their own paths from
  * `adminResource()` / `publicResource()` so there is no duplicated fetch logic.
  */
 
@@ -18,7 +18,7 @@ export const AUTH_ENDPOINTS = {
 
 /**
  * The shared admin "P" (publishable) resource pattern (API spec §3). Every
- * publishable module reuses these — that is the whole point of the foundation.
+ * publishable module reuses these - that is the whole point of the foundation.
  */
 export function adminResource(resource: string) {
   const base = `/admin/${resource}`;

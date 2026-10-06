@@ -1,5 +1,5 @@
 /**
- * FAQs module types — mirror of the backend DTOs and validators (faqs.dto.ts / faqs.validators.ts).
+ * FAQs module types - mirror of the backend DTOs and validators (faqs.dto.ts / faqs.validators.ts).
  * FAQs may be assigned to zero or more registered main pages (faqs.pages.registry.ts on the
  * backend), each with its own independent order; the FAQ's own `display_order` is only the central
  * /faqs directory order. Publishable **P** content carrying the publishing-workflow mixin,
@@ -34,7 +34,7 @@ export interface FaqSummary {
   updated_at: string;
 }
 
-/** Admin detail — all fields including the answer. */
+/** Admin detail - all fields including the answer. */
 export interface FaqDetail extends FaqSummary {
   answer_en: string;
   answer_hi: string | null;
@@ -46,7 +46,7 @@ export interface FaqDetail extends FaqSummary {
 }
 
 /**
- * Write payload — model-backed fields + workflow fields the backend validator accepts
+ * Write payload - model-backed fields + workflow fields the backend validator accepts
  * (faqs.validators.ts `baseShape`). Nothing else.
  */
 export interface FaqWriteInput {

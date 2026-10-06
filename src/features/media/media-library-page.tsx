@@ -66,7 +66,7 @@ export function MediaLibraryPage() {
     <div className="space-y-6">
       <PageHeader
         title="Media Library"
-        description="One reusable library for images, logos, icons, and documents — upload once, link everywhere."
+        description="One reusable library for images, logos, icons, and documents - upload once, link everywhere."
         actions={
           <Can role={MEDIA_ROLES}>
             <Button leftIcon={<UploadCloud className="h-4 w-4" />} onClick={() => setUploadOpen(true)}>

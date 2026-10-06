@@ -2,7 +2,7 @@
 
 /**
  * Toolkits list page. Composes the shared DataTable + filter framework + pagination + bulk actions
- * against the `toolkits` resource — server pagination, server search, server filters, sorting,
+ * against the `toolkits` resource - server pagination, server search, server filters, sorting,
  * column selection, and loading/empty/error states all from shared infrastructure. Bulk publish/
  * archive reuse the lifecycle hooks and are gated on the module-specific `toolkits.*` permissions.
  * No client-side filtering.
@@ -61,7 +61,7 @@ export function ToolkitListPage() {
     <div className="space-y-6">
       <PageHeader
         title="Toolkits"
-        description="Reusable toolkit definitions — a programme/scheme + commodity + ordered items. Per-event distribution figures roll up from the Events module."
+        description="Reusable toolkit definitions - a programme/scheme + commodity + ordered items. Per-event distribution figures roll up from the Events module."
         actions={
           <Can permission={TOOLKIT_PERMS.create}>
             <Button asChild leftIcon={<Plus className="h-4 w-4" />}>

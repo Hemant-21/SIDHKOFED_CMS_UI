@@ -2,8 +2,8 @@
 
 /**
  * Official Communication detail / view page. Read-only presentation of one communication plus
- * the lifecycle actions. Bilingual content in tabs. Expiry date is INFORMATIONAL — it never
- * automatically hides or unpublishes the record (codex §4.6 / §8).
+ * the lifecycle actions. Bilingual content in tabs. Expiry date is INFORMATIONAL - it never
+ * automatically hides or unpublishes the record.
  */
 
 import { ExternalLink, FileText } from 'lucide-react';
@@ -65,7 +65,7 @@ export function CommunicationDetailPage({ id }: { id: string }) {
         {communication.show_on_homepage ? <Badge tone="info">Homepage</Badge> : null}
         {!communication.public_visibility ? <Badge tone="warning">Not public</Badge> : null}
         {communication.expiry_date ? (
-          <Badge tone="muted" title="Informational — does not auto-unpublish">
+          <Badge tone="muted" title="Informational - does not auto-unpublish">
             Expires {formatDate(communication.expiry_date)}
           </Badge>
         ) : null}
@@ -77,16 +77,16 @@ export function CommunicationDetailPage({ id }: { id: string }) {
             <CardHeader title="Overview" />
             <CardContent>
               <dl className="grid gap-4 sm:grid-cols-2">
-                <Item label="Reference number">{communication.reference_number ?? '—'}</Item>
-                <Item label="Issuing authority">{communication.issuing_authority ?? '—'}</Item>
+                <Item label="Reference number">{communication.reference_number ?? '-'}</Item>
+                <Item label="Issuing authority">{communication.issuing_authority ?? '-'}</Item>
                 <Item label="Issue date">{formatDate(communication.issue_date)}</Item>
                 <Item label="Effective date">{formatDate(communication.effective_date)}</Item>
                 <Item label="Expiry date">
                   {communication.expiry_date
                     ? `${formatDate(communication.expiry_date)} (informational)`
-                    : '—'}
+                    : '-'}
                 </Item>
-                <Item label="Type">{communication.communication_type?.name_en ?? '—'}</Item>
+                <Item label="Type">{communication.communication_type?.name_en ?? '-'}</Item>
               </dl>
             </CardContent>
           </Card>
@@ -171,7 +171,7 @@ function Item({ label, children }: { label: string; children: React.ReactNode })
 }
 
 function Block({ body }: { body: string | null }) {
-  if (!body) return <p className="text-sm text-muted-foreground">—</p>;
+  if (!body) return <p className="text-sm text-muted-foreground">-</p>;
   return <pre className="whitespace-pre-wrap font-sans text-sm text-foreground">{body}</pre>;
 }
 

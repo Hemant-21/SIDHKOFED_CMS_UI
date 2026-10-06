@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Profile update form — `full_name` + `preferred_language`. Uses the shared form framework.
+ * Profile update form - `full_name` + `preferred_language`. Uses the shared form framework.
  * Backend validates the PATCH; the frontend only checks that the name is not empty.
  */
 

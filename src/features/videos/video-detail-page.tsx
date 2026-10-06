@@ -88,9 +88,9 @@ export function VideoDetailPage({ id }: { id: string }) {
                     Open on YouTube <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                   </a>
                 </Item>
-                <Item label="Display order">{video.display_order ?? '—'}</Item>
+                <Item label="Display order">{video.display_order ?? '-'}</Item>
                 <Item label="Created">{formatDate(video.created_at)}</Item>
-                <Item label="Published">{video.published_at ? formatDate(video.published_at) : '—'}</Item>
+                <Item label="Published">{video.published_at ? formatDate(video.published_at) : '-'}</Item>
               </dl>
             </CardContent>
           </Card>

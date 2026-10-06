@@ -1,5 +1,5 @@
 /**
- * `/events/[id]` — event detail / view (Phase 15.3).
+ * `/events/[id]` - event detail / view (Phase 15.3).
  */
 import { EventDetailPage } from '@/features/events';
 

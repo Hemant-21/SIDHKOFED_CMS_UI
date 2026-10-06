@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Enquiry list page (Engagement & Data; Publisher + Super Admin only — enquiries.routes.ts uses a
+ * Enquiry list page (Engagement & Data; Publisher + Super Admin only - enquiries.routes.ts uses a
  * role guard rather than a permission grant, so gating here checks the same roles directly; see
  * permissions.ts). Composes the shared DataTable + filter framework + pagination, exactly like
  * every other admin module. There is no create affordance: enquiries only arrive through the

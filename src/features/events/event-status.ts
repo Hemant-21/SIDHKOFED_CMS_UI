@@ -1,7 +1,7 @@
 /**
  * Event-status presentation map (pure → unit-testable). The backend DERIVES the status
- * (events.status.ts); the frontend only LABELS it and never recalculates. The codex uses
- * "Upcoming" as the public label for the stored `scheduled` enum (reconciliation C1).
+ * (events.status.ts); the frontend only LABELS it and never recalculates. The spec uses
+ * "Upcoming" as the public label for the stored `scheduled` enum.
  */
 
 import type { StatusTone } from '@/constants/status';

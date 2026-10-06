@@ -39,7 +39,7 @@ function computePosition(rect: DOMRect, side: NonNullable<TooltipProps['side']>)
  *
  * Renders the bubble into a `document.body` portal at a `position: fixed`
  * coordinate computed from the trigger's bounding rect, rather than as a
- * CSS-relative sibling — a plain absolutely-positioned sibling gets clipped
+ * CSS-relative sibling - a plain absolutely-positioned sibling gets clipped
  * whenever an ancestor sets any non-`visible` overflow (e.g. the sidebar's
  * scrollable nav list), which silently hides the tooltip instead of showing it.
  */

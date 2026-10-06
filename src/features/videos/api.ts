@@ -2,7 +2,7 @@
 
 /**
  * Videos data layer. Standard list/detail/create/update/lifecycle come from the shared CRUD hooks
- * against the `videos` resource — no bespoke fetch logic. This module only adds the video-SPECIFIC
+ * against the `videos` resource - no bespoke fetch logic. This module only adds the video-SPECIFIC
  * helper that isn't part of the generic "P" pattern: the stateless YouTube URL pre-check the form
  * calls for instant feedback (POST /admin/videos/validate-url).
  *

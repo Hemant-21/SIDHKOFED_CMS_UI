@@ -3,7 +3,7 @@
 /**
  * Publish-as-news dialog (API spec §6: POST /admin/events/{id}/publish-as-news). A completed event
  * may be manually published as a News record whose editorial fields can differ from the event
- * (codex §4.1). All fields are optional overrides — prefilled from the event. The body preview is
+ *. All fields are optional overrides - prefilled from the event. The body preview is
  * rendered as escaped text (never dangerouslySetInnerHTML of editor input) to prevent XSS.
  */
 
@@ -154,7 +154,7 @@ export function PublishAsNewsDialog({
   );
 }
 
-/** Escaped preview — body is shown as plain text (no HTML injection). */
+/** Escaped preview - body is shown as plain text (no HTML injection). */
 function NewsPreview({ values }: { values: NewsDraftValues }) {
   return (
     <article className="space-y-3">

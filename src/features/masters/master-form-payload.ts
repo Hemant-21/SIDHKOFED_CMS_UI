@@ -145,7 +145,7 @@ export function buildCommodityMasterPayload(values: CommodityMasterValues): Mast
 // exactly one Knowledge Category (→ Publications) or Communication Type (→ Notifications)
 // (backend DB XOR constraint). The form captures a `document_family` radio choice plus a
 // dependent parent select, and the payload ALWAYS sends both `knowledge_category_id` and
-// `communication_type_id` — one populated, one explicit `null` — so a family switch always
+// `communication_type_id` - one populated, one explicit `null` - so a family switch always
 // resolves unambiguously per the API contract (an update touching either field must supply
 // both to avoid ambiguity).
 

@@ -1,7 +1,7 @@
 /**
  * Permission keys for Toolkits. Like programmes, the backend authorizes toolkits with
  * MODULE-SPECIFIC keys (`toolkits.create`, `toolkits.publish`, …) and the nested catalogue items
- * with `toolkit_items.*` CRUD keys — see toolkits.routes.ts + auth.permissions.ts, which seed them
+ * with `toolkit_items.*` CRUD keys - see toolkits.routes.ts + auth.permissions.ts, which seed them
  * and grant them to Content Editor (view/create/update on toolkit + full item CRUD) and Publisher
  * (view/update + lifecycle on toolkit + full item CRUD).
  *

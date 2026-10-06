@@ -1,10 +1,10 @@
 'use client';
 
 /**
- * `useCrudList` — reusable server-driven list query. Drives every module list page:
+ * `useCrudList` - reusable server-driven list query. Drives every module list page:
  * pass a resource + a (filter/page/ordering) query and get back the paginated
  * result with caching, smooth pagination, and the standard retry policy. No
- * module-specific logic — the query object is built by the filter framework.
+ * module-specific logic - the query object is built by the filter framework.
  */
 
 import { keepPreviousData, useQuery } from '@tanstack/react-query';

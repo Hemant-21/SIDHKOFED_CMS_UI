@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * `useCrudUpdate` — reusable partial-update (PATCH) mutation. Invalidates both the
+ * `useCrudUpdate` - reusable partial-update (PATCH) mutation. Invalidates both the
  * lists and the affected detail entry on success. Like create, it does not toast
  * errors by default so the <Form> wrapper can map server validation onto fields.
  */

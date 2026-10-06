@@ -1,9 +1,9 @@
 'use client';
 
 /**
- * Tender detail / view page. GeM URL opens in a new tab — never proxied, embedded, or
+ * Tender detail / view page. GeM URL opens in a new tab - never proxied, embedded, or
  * processed. Frontend is INFORMATIONAL only. Expired tenders remain visible unless manually
- * unpublished/archived (codex §4.7).
+ * unpublished/archived.
  */
 
 import { ExternalLink } from 'lucide-react';
@@ -74,8 +74,8 @@ export function TenderDetailPage({ id }: { id: string }) {
             <CardHeader title="Tender details" />
             <CardContent>
               <dl className="grid gap-4 sm:grid-cols-2">
-                <Item label="Tender number">{tender.tender_number ?? '—'}</Item>
-                <Item label="Type">{tender.tender_type?.name_en ?? '—'}</Item>
+                <Item label="Tender number">{tender.tender_number ?? '-'}</Item>
+                <Item label="Type">{tender.tender_type?.name_en ?? '-'}</Item>
                 <Item label="Publish date">{formatDate(tender.publish_date)}</Item>
                 <Item label="Submission deadline">{formatDate(tender.submission_deadline)}</Item>
                 <Item label="Opening date">{formatDate(tender.opening_date)}</Item>
@@ -142,7 +142,7 @@ function Item({ label, children }: { label: string; children: React.ReactNode })
 }
 
 function Block({ body }: { body: string | null }) {
-  if (!body) return <p className="text-sm text-muted-foreground">—</p>;
+  if (!body) return <p className="text-sm text-muted-foreground">-</p>;
   return <pre className="whitespace-pre-wrap font-sans text-sm text-foreground">{body}</pre>;
 }
 

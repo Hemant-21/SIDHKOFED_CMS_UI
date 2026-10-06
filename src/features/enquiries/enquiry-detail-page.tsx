@@ -3,7 +3,7 @@
 /**
  * Enquiry detail page. Read-only presentation of the public submission (contact fields, message,
  * linked commodity/programme) plus the two admin-only affordances the backend actually supports:
- * annotate (internal_notes + spam_state) and archive (enquiries.routes.ts — idempotent, no
+ * annotate (internal_notes + spam_state) and archive (enquiries.routes.ts - idempotent, no
  * restore). Publisher + Super Admin only, matching the list page's role gate.
  */
 import Link from 'next/link';
@@ -100,8 +100,8 @@ export function EnquiryDetailPage({ id }: { id: string }) {
             <CardHeader title="Context" description="Linked master data the submitter selected, if any." />
             <CardContent>
               <dl className="grid gap-4 sm:grid-cols-2">
-                <Item label="Commodity">{enquiry.commodity?.name_en ?? '—'}</Item>
-                <Item label="Programme / scheme">{enquiry.programme_scheme?.title_en ?? '—'}</Item>
+                <Item label="Commodity">{enquiry.commodity?.name_en ?? '-'}</Item>
+                <Item label="Programme / scheme">{enquiry.programme_scheme?.title_en ?? '-'}</Item>
                 <Item label="Submitted">{formatDateTime(enquiry.submitted_at)}</Item>
                 <Item label="Last updated">{formatDateTime(enquiry.updated_at)}</Item>
               </dl>
@@ -109,7 +109,7 @@ export function EnquiryDetailPage({ id }: { id: string }) {
           </Card>
 
           <Card>
-            <CardHeader title="Annotation" description="Visible to Publishers/Super Admins only — never shown to the public." />
+            <CardHeader title="Annotation" description="Visible to Publishers/Super Admins only - never shown to the public." />
             <CardContent>
               <EnquiryAnnotatePanel enquiry={enquiry} />
             </CardContent>

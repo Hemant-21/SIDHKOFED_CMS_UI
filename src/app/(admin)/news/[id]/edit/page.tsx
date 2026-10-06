@@ -1,5 +1,5 @@
 /**
- * `/news/[id]/edit` — edit a news record (Phase 15.3). Permission-gated inside the feature page.
+ * `/news/[id]/edit` - edit a news record (Phase 15.3). Permission-gated inside the feature page.
  */
 import { NewsEditPage } from '@/features/news';
 

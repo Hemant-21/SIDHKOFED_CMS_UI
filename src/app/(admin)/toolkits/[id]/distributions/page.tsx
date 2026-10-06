@@ -1,5 +1,5 @@
 /**
- * `/toolkits/[id]/distributions` — read-only distribution summary for a toolkit (Phase 15.5).
+ * `/toolkits/[id]/distributions` - read-only distribution summary for a toolkit (Phase 15.5).
  * Displays the backend-calculated aggregate of per-event distribution figures. Per-event
  * distributions are authored from the Events module; this page is read-only.
  */

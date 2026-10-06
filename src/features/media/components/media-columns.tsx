@@ -8,8 +8,8 @@ import { isImage, type MediaAsset } from '../types';
 
 /**
  * Media list (table) column definitions. Media is not server-sortable (media list has no
- * `ordering` param — always newest first), so no `sortField` is set. Thumbnail, filename, type,
- * size, dimensions, and created date — the contract surface for the list view.
+ * `ordering` param - always newest first), so no `sortField` is set. Thumbnail, filename, type,
+ * size, dimensions, and created date - the contract surface for the list view.
  */
 export function mediaColumns(actions?: (row: MediaAsset) => React.ReactNode): ColumnDef<MediaAsset>[] {
   const cols: ColumnDef<MediaAsset>[] = [
@@ -41,7 +41,7 @@ export function mediaColumns(actions?: (row: MediaAsset) => React.ReactNode): Co
     {
       id: 'dimensions',
       header: 'Dimensions',
-      cell: (m) => (m.width && m.height ? `${m.width}×${m.height}` : <span className="text-muted-foreground">—</span>),
+      cell: (m) => (m.width && m.height ? `${m.width}×${m.height}` : <span className="text-muted-foreground">-</span>),
     },
     { id: 'file_size', header: 'Size', align: 'right', cell: (m) => formatFileSize(m.file_size) },
     {

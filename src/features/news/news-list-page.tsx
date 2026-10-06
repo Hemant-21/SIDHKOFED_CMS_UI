@@ -2,8 +2,8 @@
 
 /**
  * News list page. Composes the shared DataTable + filter framework + pagination against the `news`
- * resource. News is created by publishing a completed event as news (codex §4.1), so there is no
- * "New" button — the empty state explains the flow and links to Events.
+ * resource. News is created by publishing a completed event as news, so there is no
+ * "New" button - the empty state explains the flow and links to Events.
  */
 
 import { useMemo } from 'react';

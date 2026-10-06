@@ -86,7 +86,7 @@ export function documentToForm(d: DocumentDetail): DocumentFormValues {
 
 /**
  * Convert form values → the API write payload. Used for both create and PATCH.
- * `document_type_id` is the sole classification input — the backend derives
+ * `document_type_id` is the sole classification input - the backend derives
  * knowledge_category/communication_type/document_section/show_in_knowledge_centre from it, so
  * this payload deliberately never sends the deprecated `knowledge_category_id` /
  * `show_in_knowledge_centre` write fields.

@@ -9,7 +9,7 @@ import {
  * Payload regression (mirrors digital-services). Must match the backend `leadershipCreateSchema`
  * EXACTLY (leadership.validators.ts): three bilingual pairs (name/govt_role/sidhkofed_role),
  * optional `photo_media_id`, workflow fields, and NO unknown keys (`.strict()`). No `external_url`,
- * no `show_on_homepage` — those fields don't exist on this entity.
+ * no `show_on_homepage` - those fields don't exist on this entity.
  */
 const BACKEND_KEYS = new Set([
   'name_en',

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { buildTenderPayload, emptyTenderForm, type TenderFormValues } from './tender-form-payload';
 
 /**
- * Payload regression (Phase 15.6 audit — Issue 2). The generated payload must match the backend
+ * Payload regression (Phase 15.6 audit - Issue 2). The generated payload must match the backend
  * `tenderCreateSchema` EXACTLY: bilingual `summary_*` (NOT `short_description_*`), `publish_date` as
  * a calendar date, `submission_deadline`/`opening_date` as ISO-8601 timestamps (the validator uses
  * `isoTimestamp`, not `dateOnly`), and NO `issuing_authority`/`related_category_or_department`

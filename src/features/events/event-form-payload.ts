@@ -9,7 +9,7 @@ import type { HighlightType } from '@/types/common';
 import type { EventDetail, EventFieldDefinition, EventWriteInput, DateMode } from './types';
 
 export interface EventFormValues {
-  /** Form-only scoping field — not part of EventWriteInput; the event stores only event_type_id. */
+  /** Form-only scoping field - not part of EventWriteInput; the event stores only event_type_id. */
   event_category_id: string;
   event_type_id: string;
   title_en: string;

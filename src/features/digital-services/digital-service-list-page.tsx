@@ -59,7 +59,7 @@ export function DigitalServiceListPage() {
     <div className="space-y-6">
       <PageHeader
         title="Digital Services"
-        description="Controlled links to approved external systems — ERP, MIS, membership, beneficiary portals."
+        description="Controlled links to approved external systems - ERP, MIS, membership, beneficiary portals."
         actions={
           <Can permission={DIGITAL_SERVICE_PERMS.create}>
             <Button asChild leftIcon={<Plus className="h-4 w-4" />}>

@@ -1,5 +1,5 @@
 /**
- * `/tenders/[id]/edit` — edit a tender (Phase 15.6).
+ * `/tenders/[id]/edit` - edit a tender (Phase 15.6).
  */
 import { TenderFormPage } from '@/features/tenders';
 

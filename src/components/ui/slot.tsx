@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Minimal `Slot` — merges its props/className onto a single child element instead
+ * Minimal `Slot` - merges its props/className onto a single child element instead
  * of rendering its own DOM node. Lets components expose `asChild` (e.g. render a
  * Button as a Next.js <Link>) without pulling in a dependency.
  */

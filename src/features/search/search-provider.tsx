@@ -4,7 +4,7 @@
  * Global search provider (Phase 15.2). Owns the command-palette open state and the
  * Ctrl/Cmd+K shortcut, and mounts the modal once for the whole authenticated shell.
  * Any component opens search via `useGlobalSearch().open()` (the topbar button, the
- * dashboard shortcut, …). Mounted inside the authenticated AdminShell only — search
+ * dashboard shortcut, …). Mounted inside the authenticated AdminShell only - search
  * is an admin surface.
  */
 

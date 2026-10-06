@@ -1,7 +1,7 @@
 /**
  * Profile module types. The profile page reads from `GET /auth/me` (AuthUser) and writes
  * via `PATCH /admin/users/:id` (profile fields only) and a dedicated password change.
- * No separate "profile" endpoint exists — the CMS reuses the admin users endpoint.
+ * No separate "profile" endpoint exists - the CMS reuses the admin users endpoint.
  * Types mirror the backend user DTO exactly (API spec §6 / auth.dto.ts).
  */
 

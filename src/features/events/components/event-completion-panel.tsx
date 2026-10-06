@@ -2,8 +2,8 @@
 
 /**
  * Event completion panel. When the backend marks an event `completed`, post-event outcome fields
- * become editable (codex §4.1) and the event may be published as news. Completion is performed via
- * POST /admin/events/{id}/complete (useCompleteEvent) — the frontend never derives completion.
+ * become editable and the event may be published as news. Completion is performed via
+ * POST /admin/events/{id}/complete (useCompleteEvent) - the frontend never derives completion.
  * Outcome display is read-only; editing/marking-completed is role-gated (Super Admin + Publisher).
  */
 
@@ -108,9 +108,9 @@ export function EventCompletionPanel({ event }: { event: EventDetail }) {
         {isCompleted ? (
           <dl className="grid gap-4 sm:grid-cols-2">
             <Field label="Completed date" value={formatDate(event.completed_date)} />
-            <Field label="Final participants" value={event.final_participant_count != null ? String(event.final_participant_count) : '—'} />
-            <Field label="Outcome summary" value={event.outcome_summary_en ?? '—'} full />
-            <Field label="Key highlights" value={event.key_highlights ?? '—'} full />
+            <Field label="Final participants" value={event.final_participant_count != null ? String(event.final_participant_count) : '-'} />
+            <Field label="Outcome summary" value={event.outcome_summary_en ?? '-'} full />
+            <Field label="Key highlights" value={event.key_highlights ?? '-'} full />
             {alreadyNews ? (
               <Field
                 label="News"

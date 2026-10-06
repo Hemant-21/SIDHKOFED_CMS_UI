@@ -1,8 +1,8 @@
 'use client';
 
 /**
- * Reusable Media Picker (Phase 15.3 reference pattern). Two accessible tabs — browse the
- * existing media library or upload a new image — over the shared media endpoints. Any content
+ * Reusable Media Picker (Phase 15.3 reference pattern). Two accessible tabs - browse the
+ * existing media library or upload a new image - over the shared media endpoints. Any content
  * module that needs a cover/image composes this; there is no per-module upload UI.
  *
  * Selection returns a full {@link MediaItem} so the caller can both store the id and render a
@@ -125,7 +125,7 @@ export function MediaPickerDialog({ open, onClose, onSelect, title = 'Select ima
         <TabsContent value="upload">
           <div className="space-y-3">
             <p className="text-sm text-muted-foreground">
-              Upload reuses the central media library — the file becomes available to every module.
+              Upload reuses the central media library - the file becomes available to every module.
             </p>
             <ImageUpload onSelect={handleUpload} disabled={uploading} />
             {uploading ? <p className="text-sm text-muted-foreground">Uploading…</p> : null}

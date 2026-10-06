@@ -1,5 +1,5 @@
 /**
- * `/videos/[id]` — video detail / view (Phase 15.4).
+ * `/videos/[id]` - video detail / view (Phase 15.4).
  */
 import { VideoDetailPage } from '@/features/videos';
 

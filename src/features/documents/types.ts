@@ -1,11 +1,11 @@
 /**
- * Documents module types — a faithful mirror of the backend Document DTOs (documents.dto.ts)
+ * Documents module types - a faithful mirror of the backend Document DTOs (documents.dto.ts)
  * and request validators (documents.validators.ts). The frontend consumes these contracts
  * exactly; it never invents fields. `snake_case` matches the API transport (API spec §0).
  *
  * IMPORTANT: the running backend's create/update validator is `.strict()` and accepts only the
- * fields below — notably it does NOT accept `programme_ids`/`institution_ids` (those junctions
- * land with later module tiers — see documents.types.ts in the backend). We match the backend,
+ * fields below - notably it does NOT accept `programme_ids`/`institution_ids` (those junctions
+ * land with later module tiers - see documents.types.ts in the backend). We match the backend,
  * not the broader spec prose.
  */
 
@@ -76,15 +76,15 @@ export interface DocumentDetail extends DocumentSummary {
 }
 
 /**
- * Create/Update body — only the model-backed fields + relation arrays + workflow fields the
+ * Create/Update body - only the model-backed fields + relation arrays + workflow fields the
  * backend validator accepts (documents.validators.ts). Server-managed fields (slug, state,
  * *_by, published_at) are never produced.
  *
- * `document_type_id` is now the sole classification input — the backend derives
+ * `document_type_id` is now the sole classification input - the backend derives
  * `knowledge_category`/`communication_type`/`document_section`/`show_in_knowledge_centre` from
  * it. The legacy `knowledge_category_id`/`show_in_knowledge_centre` write fields are deprecated
  * (accepted only when they agree with what the type derives) and are deliberately NOT part of
- * this write shape — the CMS never sends them.
+ * this write shape - the CMS never sends them.
  */
 export interface DocumentWriteInput {
   title_en?: string;

@@ -3,7 +3,7 @@
 /**
  * Lifecycle-aware confirmation presets over the DialogProvider. These mirror the
  * CMS lifecycle actions (publish/unpublish/archive/restore/delete) so module pages
- * get consistent, accessible confirmations with one call — no bespoke modals.
+ * get consistent, accessible confirmations with one call - no bespoke modals.
  *
  *   const { confirmArchive } = useConfirmDialog();
  *   if (await confirmArchive('this event')) archive.mutate(id);

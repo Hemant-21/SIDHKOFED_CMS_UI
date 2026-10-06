@@ -1,11 +1,11 @@
 'use client';
 
 /**
- * Quick Actions (Phase 15.2) — fixed shortcuts to common create/manage flows.
+ * Quick Actions (Phase 15.2) - fixed shortcuts to common create/manage flows.
  * PERMISSION-AWARE: an action renders only when the user holds a permission that
  * would let them act (or, for read-only shortcuts, belongs to a CMS role). The
  * backend still enforces every action; this only hides affordances the user
- * cannot use (codex §7). Module pages are wired in later phases — the routes are
+ * cannot use. Module pages are wired in later phases - the routes are
  * already reserved, so these links resolve.
  */
 

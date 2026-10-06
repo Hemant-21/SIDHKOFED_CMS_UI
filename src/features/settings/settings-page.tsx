@@ -7,7 +7,7 @@
  * a `PUT /admin/settings/:key` on save. No bulk-save: each setting saves independently
  * so a network error on one key never silently discards another.
  *
- * Groups and their items are entirely backend-driven — the frontend renders whatever
+ * Groups and their items are entirely backend-driven - the frontend renders whatever
  * the API returns. The `SETTING_GROUP_ORDER` / `SETTING_GROUP_LABEL` constants only
  * influence display order and friendly labels; they do NOT define what settings exist.
  */

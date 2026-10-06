@@ -1,10 +1,10 @@
 /**
- * Leadership module types — mirror of the backend DTOs and validators
+ * Leadership module types - mirror of the backend DTOs and validators
  * (leadership.dto.ts / leadership.validators.ts). Publishable **P** content carrying the
  * publishing-workflow mixin, authorized with the shared `content.*` RBAC keys. Server-managed
  * fields (slug, state, *_by, published_at) are never produced.
  *
- * Unlike Digital Services, there is no `external_url` and no `show_on_homepage` — every
+ * Unlike Digital Services, there is no `external_url` and no `show_on_homepage` - every
  * leadership record is implicitly homepage content (there's no separate public listing page).
  */
 
@@ -31,7 +31,7 @@ export interface LeadershipSummary {
   updated_at: string;
 }
 
-/** Admin detail — all fields. */
+/** Admin detail - all fields. */
 export interface LeadershipDetail extends LeadershipSummary {
   publish_start_at: string | null;
   highlight_start_at: string | null;
@@ -41,7 +41,7 @@ export interface LeadershipDetail extends LeadershipSummary {
 }
 
 /**
- * Write payload — model-backed fields + workflow fields the backend validator accepts
+ * Write payload - model-backed fields + workflow fields the backend validator accepts
  * (leadership.validators.ts `createShape` + `workflowShape`).
  */
 export interface LeadershipWriteInput {

@@ -4,7 +4,7 @@
  * Enquiry list filter bar. Exposes EXACTLY the backend's allow-listed enquiry filters
  * (enquiries.query.ts → ADMIN_FILTER_KEYS): enquiry_type, spam_state, archived, date_from,
  * date_to, commodity, programme. Filtering is server-side via the shared `useFilters` controller;
- * `search` (name/email/subject/organization — enquiries.repository.ts buildWhere) is the common
+ * `search` (name/email/subject/organization - enquiries.repository.ts buildWhere) is the common
  * key every list already gets from the framework.
  */
 import { Select } from '@/components/ui/select';

@@ -2,7 +2,7 @@
 
 /**
  * Reports data layer. Consumes `/admin/dashboard/reports/*` (backend `reports.routes.ts`), guarded
- * by the same `operational_reports.view`/`.export` permissions the six-report catalogue used —
+ * by the same `operational_reports.view`/`.export` permissions the six-report catalogue used -
  * this replaces that catalogue's CMS screen, not the permission grant.
  */
 
@@ -29,7 +29,7 @@ export function useReportFilterOptions() {
 
 /**
  * Live-calculate a report (`POST /admin/dashboard/reports/:key/generate`). Disabled until filters
- * are applied — the caller's Apply button controls when `filters` actually changes.
+ * are applied - the caller's Apply button controls when `filters` actually changes.
  */
 export function useGenerateReport(reportKey: ReportKey, filters: ReportFilterInput | undefined) {
   return useQuery({
@@ -40,7 +40,7 @@ export function useGenerateReport(reportKey: ReportKey, filters: ReportFilterInp
   });
 }
 
-/** XLSX export — a one-shot mutation with a file-download side effect. */
+/** XLSX export - a one-shot mutation with a file-download side effect. */
 export function useExportReport(reportKey: ReportKey) {
   const toast = useToast();
   return useMutation({

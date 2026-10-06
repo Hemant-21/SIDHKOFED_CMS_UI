@@ -81,15 +81,15 @@ export function AuditDetailPage({ id }: { id: string }) {
                   {entry.record_id ? (
                     <code className="break-all text-xs">{entry.record_id}</code>
                   ) : (
-                    '—'
+                    '-'
                   )}
                 </Item>
                 <Item label="Previous state">
-                  {entry.previous_state ? humanize(entry.previous_state) : '—'}
+                  {entry.previous_state ? humanize(entry.previous_state) : '-'}
                 </Item>
-                <Item label="New state">{entry.new_state ? humanize(entry.new_state) : '—'}</Item>
+                <Item label="New state">{entry.new_state ? humanize(entry.new_state) : '-'}</Item>
                 <Item label="Change summary" full>
-                  {entry.change_summary ?? entry.event ?? '—'}
+                  {entry.change_summary ?? entry.event ?? '-'}
                 </Item>
               </dl>
             </CardContent>

@@ -2,8 +2,8 @@
 
 /**
  * Institutional Membership detail / view page. Read-only presentation of one membership plus the
- * lifecycle actions. Institution directory data only — no personal, voting, or dividend data
- * (codex §4.15). Internal notes are shown to admins but never appear on the public directory.
+ * lifecycle actions. Institution directory data only - no personal, voting, or dividend data
+ *. Internal notes are shown to admins but never appear on the public directory.
  */
 
 import { PageHeader } from '@/components/layout/page-header';
@@ -82,21 +82,21 @@ export function MembershipDetailPage({ id }: { id: string }) {
             <CardHeader title="Overview" />
             <CardContent>
               <dl className="grid gap-4 sm:grid-cols-2">
-                <Item label="Institution">{membership.institution?.name_en ?? '—'}</Item>
-                <Item label="Membership number">{membership.membership_number ?? '—'}</Item>
+                <Item label="Institution">{membership.institution?.name_en ?? '-'}</Item>
+                <Item label="Membership number">{membership.membership_number ?? '-'}</Item>
                 <Item label="Membership level">
                   {MEMBERSHIP_LEVEL_LABEL[membership.membership_level]}
                 </Item>
                 <Item label="Membership type">
                   {MEMBERSHIP_TYPE_LABEL[membership.membership_type]}
                 </Item>
-                <Item label="District">{membership.district?.name_en ?? '—'}</Item>
-                <Item label="District Union">{membership.district_union?.name_en ?? '—'}</Item>
-                <Item label="Reporting period">{membership.reporting_period?.name_en ?? '—'}</Item>
+                <Item label="District">{membership.district?.name_en ?? '-'}</Item>
+                <Item label="District Union">{membership.district_union?.name_en ?? '-'}</Item>
+                <Item label="Reporting period">{membership.reporting_period?.name_en ?? '-'}</Item>
                 <Item label="Join date">{formatDate(membership.join_date)}</Item>
                 <Item label="Status">{MEMBERSHIP_STATUS_LABEL[membership.status]}</Item>
                 <Item label="Display order">
-                  {membership.display_order != null ? membership.display_order : '—'}
+                  {membership.display_order != null ? membership.display_order : '-'}
                 </Item>
               </dl>
             </CardContent>
@@ -141,7 +141,7 @@ function Item({ label, children }: { label: string; children: React.ReactNode })
 }
 
 function Block({ body }: { body: string | null }) {
-  if (!body) return <p className="text-sm text-muted-foreground">—</p>;
+  if (!body) return <p className="text-sm text-muted-foreground">-</p>;
   return <pre className="whitespace-pre-wrap font-sans text-sm text-foreground">{body}</pre>;
 }
 

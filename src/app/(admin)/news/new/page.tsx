@@ -1,6 +1,6 @@
 /**
- * `/news/new` — News has NO standalone create (the backend exposes no news create endpoint).
- * News records are created by publishing a completed event as news (codex §4.1). This route is an
+ * `/news/new` - News has NO standalone create (the backend exposes no news create endpoint).
+ * News records are created by publishing a completed event as news. This route is an
  * honest guidance page that redirects the editor to the correct flow rather than faking an API.
  */
 import Link from 'next/link';

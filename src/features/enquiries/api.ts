@@ -3,9 +3,9 @@
 /**
  * Enquiries data layer. List/detail/annotate(PATCH)/archive all match the standard admin "P"
  * resource shape (enquiries.routes.ts), so the shared CRUD hooks (useCrudList/useCrudDetail/
- * useCrudUpdate/useArchive) drive them directly against the `enquiries` resource in the page —
+ * useCrudUpdate/useArchive) drive them directly against the `enquiries` resource in the page -
  * no bespoke fetch logic for those. Export is the one non-standard action (a synchronous XLSX
- * stream, not JSON — enquiries.controller.ts exportXlsx), so it gets its own helper built on the
+ * stream, not JSON - enquiries.controller.ts exportXlsx), so it gets its own helper built on the
  * shared `getBlob` + `downloadBlob` primitives (the same primitives documents/media use for
  * file downloads).
  */
@@ -21,7 +21,7 @@ export { ENQUIRIES_RESOURCE };
 export { ENQUIRY_ROLES } from './permissions';
 
 /**
- * GET /admin/enquiries/export?<filters> — streams the XLSX attachment and triggers a browser
+ * GET /admin/enquiries/export?<filters> - streams the XLSX attachment and triggers a browser
  * download. Accepts the same filter query as the list (pagination keys are harmlessly ignored by
  * the backend export handler, which reads only the allow-listed filter fields).
  */

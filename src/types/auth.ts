@@ -1,7 +1,7 @@
 /**
  * Authentication & authorization types. These mirror the backend `AuthUserDto`
  * (src/modules/auth/auth.dto.ts) and the `/auth/login|refresh|me` contracts
- * exactly. `roles`/`permissions` are flat string arrays — the backend is the
+ * exactly. `roles`/`permissions` are flat string arrays - the backend is the
  * single source of truth; the frontend never defines permissions itself.
  */
 

@@ -2,10 +2,10 @@
 
 /**
  * Page-scoped FAQ ordering. Shown on the FAQ list page instead of the DataTable whenever the
- * "Page" filter is active — `rows` already arrive in that page's own assignment order (the backend
+ * "Page" filter is active - `rows` already arrive in that page's own assignment order (the backend
  * switches ordering when `page_key` is present; see faqs.repository.ts `list()`), so this just
  * needs move-up/down buttons that persist via `POST /admin/faqs/pages/:pageKey/reorder`. Same
- * move-up/down convention as `GalleryImageManager` — reordering here never touches any other page's
+ * move-up/down convention as `GalleryImageManager` - reordering here never touches any other page's
  * assignments or the central /faqs directory order.
  */
 

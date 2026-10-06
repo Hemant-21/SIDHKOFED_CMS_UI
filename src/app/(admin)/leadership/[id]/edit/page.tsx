@@ -1,5 +1,5 @@
 /**
- * `/leadership/[id]/edit` — edit a leadership entry.
+ * `/leadership/[id]/edit` - edit a leadership entry.
  */
 import { LeadershipFormPage } from '@/features/leadership';
 

@@ -3,7 +3,7 @@
 /**
  * Event list filter bar. Exposes EXACTLY the backend's allow-listed event filters (events.query.ts):
  * publication_state, event_status, event_type, district, commodity, programme, institution,
- * show_on_homepage, year. Filtering is server-side via the shared `useFilters` controller — each
+ * show_on_homepage, year. Filtering is server-side via the shared `useFilters` controller - each
  * control writes an allow-listed query param and re-runs the backend query.
  */
 
@@ -46,7 +46,7 @@ export function EventFilters({ filters }: { filters: FilterController }) {
   // Event types are scoped to the selected category once one is chosen; otherwise show all.
   const eventTypes = useMasterOptions('event-types', { categoryId: categoryFilter || null, enabled: true });
   const districts = useMasterOptions('districts');
-  // Blocks belong to a district — only offered once a district filter is chosen.
+  // Blocks belong to a district - only offered once a district filter is chosen.
   const blocks = useMasterOptions('blocks', { districtId: districtFilter || null, enabled: Boolean(districtFilter) });
   const commodities = useMasterOptions('commodities');
 

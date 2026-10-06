@@ -1,7 +1,7 @@
 /**
  * Permission keys for the Dashboard Data module (dashboard.permissions.ts).
  *
- * The dashboard reuses the project's existing RBAC — no new authorization system.
+ * The dashboard reuses the project's existing RBAC - no new authorization system.
  *
  * `publish`/`unpublish`/`archive`/`restore` and `REPORT_DEFINITION_ROLES` used to gate the fixed
  * "Dashboard Reports" report-DEFINITION lifecycle (create/PATCH was Super-Admin-only via
@@ -12,7 +12,7 @@
  *
  * `manageData` (`dashboard.manage_data`) is kept even though nothing in this feature calls it
  * operationally any more (it previously gated the already-removed legacy Metrics/Datasets/Excel
- * Import UI) — `src/features/roles/types.ts`'s permission catalogue for the Roles management UI
+ * Import UI) - `src/features/roles/types.ts`'s permission catalogue for the Roles management UI
  * still lists `dashboard.manage_data` as an assignable backend permission, and that catalogue is a
  * legitimate reason to keep the string constant mirrored here even with no active CMS route using it.
  */

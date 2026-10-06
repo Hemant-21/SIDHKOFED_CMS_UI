@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Login form — the one concrete feature in the foundation, included to exercise
+ * Login form - the one concrete feature in the foundation, included to exercise
  * the whole stack end-to-end (Form + Zod + auth service + redirect). Future
  * modules follow this same shape under src/features/<module>/.
  */

@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * `<Can>` — declarative permission-aware rendering. Renders children only when the
+ * `<Can>` - declarative permission-aware rendering. Renders children only when the
  * current user holds the required permission(s); otherwise renders `fallback`
  * (default: nothing). Drives "Can Publish / Can Archive / Can Create …" affordances
  * straight from backend permissions.

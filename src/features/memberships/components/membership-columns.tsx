@@ -31,7 +31,7 @@ export function membershipColumns(
             href={`${ROUTES.memberships}/${m.id}`}
             className="font-medium text-foreground hover:text-primary hover:underline"
           >
-            {m.institution?.name_en ?? '—'}
+            {m.institution?.name_en ?? '-'}
           </Link>
           {m.membership_number ? (
             <p className="truncate text-xs text-muted-foreground">No. {m.membership_number}</p>
@@ -43,12 +43,12 @@ export function membershipColumns(
       id: 'membership_number',
       header: 'Membership No.',
       defaultHidden: true,
-      cell: (m) => <span className="text-muted-foreground">{m.membership_number ?? '—'}</span>,
+      cell: (m) => <span className="text-muted-foreground">{m.membership_number ?? '-'}</span>,
     },
     {
       id: 'district',
       header: 'District',
-      cell: (m) => <span className="text-muted-foreground">{m.district?.name_en ?? '—'}</span>,
+      cell: (m) => <span className="text-muted-foreground">{m.district?.name_en ?? '-'}</span>,
     },
     {
       id: 'membership_type',
@@ -70,7 +70,7 @@ export function membershipColumns(
       header: 'Reporting period',
       defaultHidden: true,
       cell: (m) => (
-        <span className="text-muted-foreground">{m.reporting_period?.name_en ?? '—'}</span>
+        <span className="text-muted-foreground">{m.reporting_period?.name_en ?? '-'}</span>
       ),
     },
     {

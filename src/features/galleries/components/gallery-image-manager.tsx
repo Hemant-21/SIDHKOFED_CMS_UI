@@ -214,7 +214,7 @@ function EditImageDialog({
   const saving = update.isPending || updateMeta.isPending;
 
   const onSave = async () => {
-    // Alt text lives on the reusable media asset — persist it via the media endpoint FIRST so the
+    // Alt text lives on the reusable media asset - persist it via the media endpoint FIRST so the
     // gallery-image update below returns a gallery DTO that already reflects the new alt text.
     if (altText.trim() !== (image.media.alt_text ?? '')) {
       await updateMeta.mutateAsync({ id: image.media.id, meta: { alt_text: altText.trim() } });

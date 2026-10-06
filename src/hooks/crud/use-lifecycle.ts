@@ -5,7 +5,7 @@
  * archive / restore. Each takes a record id, invalidates the resource lists + that
  * detail entry, and toasts the outcome (success and error by default, since these
  * are explicit user actions, not form submits). Permission gating is the caller's
- * job via <Can> / PermissionButton — the backend remains the security boundary.
+ * job via <Can> / PermissionButton - the backend remains the security boundary.
  */
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';

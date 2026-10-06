@@ -1,5 +1,5 @@
 /**
- * Reports module types — a faithful mirror of the backend's `reports.types.ts`
+ * Reports module types - a faithful mirror of the backend's `reports.types.ts`
  * (Sidhkofed-Website `src/modules/dashboard/reports/`). Replaces the six-report Operational
  * Reports catalogue on the "Generate Reports" screen with exactly three: Programme, District
  * Activity Coverage, Commodity-wise. Wire shape is camelCase end-to-end, same convention as the

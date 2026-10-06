@@ -1,7 +1,7 @@
 /**
  * Reusable Zod schema primitives shared across future module forms (bilingual
  * pairs, email, mobile, URL, UUID). Keeps client validation consistent with the
- * backend contract — but the server remains the authoritative validator (these are
+ * backend contract - but the server remains the authoritative validator (these are
  * UX pre-checks only).
  */
 

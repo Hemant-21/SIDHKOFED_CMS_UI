@@ -1,5 +1,5 @@
 /**
- * `/toolkits/[id]` — toolkit detail / view (Phase 15.5).
+ * `/toolkits/[id]` - toolkit detail / view (Phase 15.5).
  */
 import { ToolkitDetailPage } from '@/features/toolkits';
 

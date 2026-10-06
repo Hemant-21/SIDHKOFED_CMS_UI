@@ -5,9 +5,9 @@
  * components, BilingualTabs, FormSection), the master-option hooks (district), the Reporting Period
  * picker, and the server-side Institution / District Union relation pickers. It NEVER sets
  * publication state (that is the lifecycle actions). Server-side 422 errors map back onto fields via
- * the <Form> wrapper. The slug is shown read-only after creation (immutable; codex §11).
+ * the <Form> wrapper. The slug is shown read-only after creation (immutable).
  *
- * `district_union_id` is required only when `membership_level=district_union` — mirrored client-side
+ * `district_union_id` is required only when `membership_level=district_union` - mirrored client-side
  * (the backend enforces the same rule).
  */
 
@@ -133,7 +133,7 @@ export function MembershipForm({ membership }: MembershipFormProps) {
     <Form form={form} onSubmit={onSubmit} className="space-y-8">
       <FormSection
         title="Institution"
-        description="The institution this count record belongs to — a District Union or SIDHKOFED itself."
+        description="The institution this count record belongs to - a District Union or SIDHKOFED itself."
       >
         <FormField<MembershipFormValues>
           name="institution_id"
@@ -195,7 +195,7 @@ export function MembershipForm({ membership }: MembershipFormProps) {
         />
       </FormSection>
 
-      <FormSection title="Notes" description="Internal notes — never shown publicly (codex §10).">
+      <FormSection title="Notes" description="Internal notes - never shown publicly.">
         <BilingualTabs
           english={
             <TextareaField<MembershipFormValues> name="notes_en" label="Notes (English)" rows={3} />

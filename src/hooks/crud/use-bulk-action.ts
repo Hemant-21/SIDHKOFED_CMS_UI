@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * `useBulkAction` — reusable runner for table bulk actions (publish/archive/restore/
+ * `useBulkAction` - reusable runner for table bulk actions (publish/archive/restore/
  * delete a selection). It is action-agnostic: the caller supplies a per-id async
  * function (typically a CRUD/lifecycle mutation's `mutateAsync`), and the runner
  * fans out, settles every result, toasts an aggregated summary, and returns the

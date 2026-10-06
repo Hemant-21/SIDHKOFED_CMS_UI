@@ -1,5 +1,5 @@
 /**
- * `/leadership/new` — create a leadership entry.
+ * `/leadership/new` - create a leadership entry.
  */
 import { LeadershipFormPage } from '@/features/leadership';
 

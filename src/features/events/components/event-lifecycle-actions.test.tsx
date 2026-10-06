@@ -64,7 +64,7 @@ function renderAs(role: keyof typeof ROLE_FIXTURES, event: Partial<EventDetail> 
   );
 }
 
-describe('EventLifecycleActions — RBAC', () => {
+describe('EventLifecycleActions - RBAC', () => {
   it('Publisher sees edit, publish, archive, and the status (postpone/cancel) menu', () => {
     renderAs('publisher');
     expect(screen.getByRole('link', { name: /edit/i })).toBeInTheDocument();
@@ -73,7 +73,7 @@ describe('EventLifecycleActions — RBAC', () => {
     expect(screen.getByRole('button', { name: /more status actions/i })).toBeInTheDocument();
   });
 
-  it('Content Editor sees only edit — publish/archive/status actions are hidden', () => {
+  it('Content Editor sees only edit - publish/archive/status actions are hidden', () => {
     renderAs('content_editor');
     expect(screen.getByRole('link', { name: /edit/i })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Publish' })).not.toBeInTheDocument();

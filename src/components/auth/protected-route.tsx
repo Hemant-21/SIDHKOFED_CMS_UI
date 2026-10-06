@@ -4,7 +4,7 @@
  * Route guards. `ProtectedRoute` blocks unauthenticated access (redirect to
  * /login with a `next` param); `GuestRoute` keeps authenticated users out of
  * /login. These are the building blocks the (admin) layout and future module
- * pages compose — no page re-implements auth gating.
+ * pages compose - no page re-implements auth gating.
  */
 
 import { useEffect, type ReactNode } from 'react';

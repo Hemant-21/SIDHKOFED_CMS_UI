@@ -1,10 +1,10 @@
 /**
- * Video Library types — a faithful mirror of the backend Video DTO (video.dto.ts) and validators
- * (video.validators.ts). Videos are YouTube references (codex §5.3) — never hosted files. The
+ * Video Library types - a faithful mirror of the backend Video DTO (video.dto.ts) and validators
+ * (video.validators.ts). Videos are YouTube references - never hosted files. The
  * backend list and detail return the SAME shape (VideoDto), so summary === detail here.
  *
  * NOTE (match the backend, not the broader spec prose): the running backend has NO `language`,
- * `highlight_type`, `publish_start_at`, or `duration` on videos — the YouTube embed supplies
+ * `highlight_type`, `publish_start_at`, or `duration` on videos - the YouTube embed supplies
  * duration at play time. We model exactly what the API returns/accepts.
  */
 
@@ -32,7 +32,7 @@ export interface Video {
   updated_at: string;
 }
 
-/** Create/Update body — exactly the fields video.validators.ts accepts. */
+/** Create/Update body - exactly the fields video.validators.ts accepts. */
 export interface VideoWriteInput {
   title_en?: string;
   title_hi?: string;

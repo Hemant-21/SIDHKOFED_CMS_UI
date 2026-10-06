@@ -1,5 +1,5 @@
 /**
- * `/galleries` — Galleries list (Phase 15.7 remediation).
+ * `/galleries` - Galleries list (Phase 15.7 remediation).
  */
 import { GalleryListPage } from '@/features/galleries';
 

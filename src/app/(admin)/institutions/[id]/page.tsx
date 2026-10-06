@@ -1,5 +1,5 @@
 /**
- * `/institutions/[id]` — institution detail / view (Phase 15.5).
+ * `/institutions/[id]` - institution detail / view (Phase 15.5).
  */
 import { InstitutionDetailPage } from '@/features/institutions';
 

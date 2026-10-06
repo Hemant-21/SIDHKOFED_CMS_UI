@@ -5,7 +5,7 @@
  * BilingualTabs, FormSection), the master-option hooks (commodities, training types) and the shared
  * CoverMediaField. It NEVER sets publication state (that is the lifecycle actions). Server-side 422
  * errors map back onto fields via the <Form> wrapper. The slug is shown read-only after creation
- * (immutable; codex §11).
+ * (immutable).
  *
  * The relation arrays are bounded master lists (commodities / training types), so they use the
  * eager <MultiSelectField>; programmes carry no content-relation arrays (institutions/documents/
@@ -115,7 +115,7 @@ export function ProgrammeForm({ programme }: ProgrammeFormProps) {
         <TextField<ProgrammeFormValues> name="short_code" label="Short code" placeholder="e.g. MFP-2026" />
       </FormSection>
 
-      <FormSection title="Content" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Content" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={
             <>

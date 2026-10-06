@@ -2,7 +2,7 @@
  * In-memory access-token store.
  *
  * Security (task "never store JWT insecurely"): the short-lived ACCESS token lives
- * only in JS memory — never localStorage/sessionStorage — so it is not readable by
+ * only in JS memory - never localStorage/sessionStorage - so it is not readable by
  * persistent XSS payloads and vanishes on tab close. The long-lived REFRESH token
  * is a Secure/HttpOnly/SameSite cookie owned by the backend (API spec §1.2) and is
  * never visible to JS at all. Session is restored on boot via `/auth/refresh`.

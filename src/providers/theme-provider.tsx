@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * ThemeProvider — light/dark with `system` follow + persisted preference. This is
+ * ThemeProvider - light/dark with `system` follow + persisted preference. This is
  * a frontend display preference only (no backend dependency); it toggles the
  * `dark` class on <html> to flip the CSS-variable design tokens. Respects the OS
  * setting when preference is `system`.

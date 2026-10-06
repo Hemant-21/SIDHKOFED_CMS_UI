@@ -3,7 +3,7 @@
 /**
  * Convenience field components built on <FormField>. Each binds a UI control to an
  * RHF field with full a11y wiring, so a module form is just a list of these. They
- * are generic inputs — no business fields. Add module fields by composing these.
+ * are generic inputs - no business fields. Add module fields by composing these.
  */
 
 import type { ReactNode } from 'react';

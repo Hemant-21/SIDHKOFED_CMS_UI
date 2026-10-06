@@ -2,10 +2,10 @@
 
 /**
  * Documents data layer. Standard list/detail/create/update/lifecycle come from the shared CRUD
- * hooks against the `documents` resource — no bespoke fetch logic. This module only adds the
+ * hooks against the `documents` resource - no bespoke fetch logic. This module only adds the
  * document-SPECIFIC action that isn't part of the generic "P" pattern: replace-file (version
- * management — swap the underlying asset, preserving the document id/slug — backend is the source
- * of truth for versioning, codex §4.5).
+ * management - swap the underlying asset, preserving the document id/slug - backend is the source
+ * of truth for versioning).
  *
  * Documents are authorized with the shared `content.*` permission set (documents.routes.ts), so the
  * permission keys are reused from the events feature rather than redefined.
@@ -51,7 +51,7 @@ export function useReplaceDocumentFile() {
 
 /**
  * Financial-year options. The `financial-years` master serializes to `{ id, label }` (no
- * `name_en`), so the generic `useMasterOptions` cannot label it — this maps `label` instead.
+ * `name_en`), so the generic `useMasterOptions` cannot label it - this maps `label` instead.
  */
 export function useFinancialYearOptions(): { options: SelectOption[]; isLoading: boolean } {
   const query = useQuery({

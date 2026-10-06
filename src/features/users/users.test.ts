@@ -60,7 +60,7 @@ describe('CreateUserPayload type contract', () => {
 });
 
 describe('UpdateUserPayload type contract', () => {
-  it('all fields are optional — empty object is valid', () => {
+  it('all fields are optional - empty object is valid', () => {
     const payload: UpdateUserPayload = {};
     expect(Object.keys(payload).length).toBe(0);
   });

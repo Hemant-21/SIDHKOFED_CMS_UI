@@ -1,5 +1,5 @@
 /**
- * `/leadership` — Leadership list.
+ * `/leadership` - Leadership list.
  */
 import { LeadershipListPage } from '@/features/leadership';
 

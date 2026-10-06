@@ -7,7 +7,7 @@ export interface EmptyStateProps {
   title?: string;
   description?: string;
   icon?: LucideIcon;
-  /** Optional CTA (e.g. a "Create" button) — composed by the caller. */
+  /** Optional CTA (e.g. a "Create" button) - composed by the caller. */
   action?: ReactNode;
   className?: string;
 }

@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * `useCrudDetail` — reusable single-record query for edit/detail pages. The query
+ * `useCrudDetail` - reusable single-record query for edit/detail pages. The query
  * stays disabled until an `id` is present, so it is safe to call on a create route
  * (no id) without a spurious request.
  */

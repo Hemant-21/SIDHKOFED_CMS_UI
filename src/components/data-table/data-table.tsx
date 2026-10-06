@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Generic, server-driven DataTable. Reusable by every module's list page — it owns
+ * Generic, server-driven DataTable. Reusable by every module's list page - it owns
  * NO data-fetching or module fields. Supports: server sorting (maps to `ordering`),
  * bulk row selection, an action column, column visibility, and loading/empty/error
  * states. Responsive via horizontal scroll. Pagination is rendered by the caller

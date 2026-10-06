@@ -9,7 +9,7 @@ import { TenderLifecycleActions } from './tender-lifecycle-actions';
 import type { TenderDetail } from '../types';
 
 /**
- * RBAC regression (Phase 15.6 audit — Issue 3). Tenders are authorized with the SHARED `content.*`
+ * RBAC regression (Phase 15.6 audit - Issue 3). Tenders are authorized with the SHARED `content.*`
  * permission set (tenders.routes.ts); `tenders.*` keys are never seeded, so the affordances must
  * resolve against `content.publish`/`content.archive`/….
  */
@@ -65,7 +65,7 @@ function renderAs(role: keyof typeof ROLE_FIXTURES, tender: Partial<TenderDetail
   );
 }
 
-describe('TenderLifecycleActions — RBAC', () => {
+describe('TenderLifecycleActions - RBAC', () => {
   it('Publisher sees edit, publish, and archive (content.* keys resolve)', () => {
     renderAs('publisher');
     expect(screen.getByRole('link', { name: /edit/i })).toBeInTheDocument();
@@ -73,7 +73,7 @@ describe('TenderLifecycleActions — RBAC', () => {
     expect(screen.getByRole('button', { name: 'Archive' })).toBeInTheDocument();
   });
 
-  it('Content Editor sees only edit — publish/archive are hidden', () => {
+  it('Content Editor sees only edit - publish/archive are hidden', () => {
     renderAs('content_editor');
     expect(screen.getByRole('link', { name: /edit/i })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Publish' })).not.toBeInTheDocument();

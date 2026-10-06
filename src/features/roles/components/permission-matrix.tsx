@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Permission Matrix — read-only RBAC reference table.
+ * Permission Matrix - read-only RBAC reference table.
  *
  * Rows = permission keys grouped by module.
  * Columns = roles (Super Admin, Publisher, Content Editor).
@@ -93,7 +93,7 @@ export function PermissionMatrix() {
                             className="text-muted-foreground/30"
                             aria-label={`${role.name} does not have ${perm.key}`}
                           >
-                            —
+                            -
                           </span>
                         )}
                       </td>

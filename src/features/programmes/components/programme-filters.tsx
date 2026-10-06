@@ -3,7 +3,7 @@
 /**
  * Programme list filter bar. Exposes EXACTLY the backend's allow-listed programme filters
  * (programmes.query.ts): publication_state, commodity, show_on_homepage, year. Filtering is
- * server-side via the shared `useFilters` controller — each control writes an allow-listed query
+ * server-side via the shared `useFilters` controller - each control writes an allow-listed query
  * param and re-runs the backend query. No client-side filtering.
  */
 

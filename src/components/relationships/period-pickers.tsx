@@ -2,7 +2,7 @@
 
 /**
  * Reporting-period & financial-year option hooks (Phase 15.8). These are bounded reference
- * lists (codex §6 "Financial Year / Reporting Period" master), so — like {@link useMasterOptions} —
+ * lists, so - like {@link useMasterOptions} -
  * the dropdown loads them eagerly and maps to the shared {@link SelectOption} shape consumed by
  * `<SelectField>` and the list filter bars.
  *
@@ -17,7 +17,7 @@
  * Each hook orders by an allow-listed field and maps the correct label column, so the picker shows
  * meaningful options and the backend never rejects the request. Deactivated values are kept but
  * disabled so an already-linked historical value still renders while staying unselectable for new
- * entries (codex §6).
+ * entries.
  */
 
 import { useQuery } from '@tanstack/react-query';
@@ -91,7 +91,7 @@ export function useFinancialYearOptions(opts: { enabled?: boolean } = {}): Optio
 /**
  * Active reporting-period options. The label combines the period name and its granularity (and the
  * financial-year label when present) so an editor can tell two same-named periods apart, e.g.
- * "Q1 — Month · 2025-2026". Ordered by `name_en` (an allow-listed field). Deactivated periods are
+ * "Q1 - Month · 2025-2026". Ordered by `name_en` (an allow-listed field). Deactivated periods are
  * kept but disabled.
  */
 export function useReportingPeriodOptions(opts: { enabled?: boolean } = {}): OptionsResult {
@@ -113,7 +113,7 @@ export function useReportingPeriodOptions(opts: { enabled?: boolean } = {}): Opt
     else if (rp.calendar_year) parts.push(String(rp.calendar_year));
     return {
       value: rp.id,
-      label: `${rp.name_en} — ${parts.join(' · ')}`,
+      label: `${rp.name_en} - ${parts.join(' · ')}`,
       disabled: rp.is_active === false,
     };
   });

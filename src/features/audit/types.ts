@@ -1,11 +1,11 @@
 /**
- * Audit Log module types — a faithful mirror of the backend Audit DTO
+ * Audit Log module types - a faithful mirror of the backend Audit DTO
  * (src/modules/audit/audit.dto.ts → AuditLogDto). The frontend consumes this contract exactly and
  * never invents fields. `snake_case` matches the API transport (API spec §0).
  *
  * Audit is READ-ONLY (API spec §6 "Audit is read-only"): there is no create/update/delete shape.
  * The DTO does NOT expose an IP address (only an internal `ip_hash` is stored server-side and it is
- * deliberately omitted from the response), so there is no IP column — the task's "IP Address if
+ * deliberately omitted from the response), so there is no IP column - the task's "IP Address if
  * backend exposes" condition is not met.
  */
 
@@ -28,7 +28,7 @@ export const AUDIT_ACTIONS = [
 
 export type AuditAction = (typeof AUDIT_ACTIONS)[number];
 
-/** Human labels for the audit actions (UI only — transport stays lower-case). */
+/** Human labels for the audit actions (UI only - transport stays lower-case). */
 export const AUDIT_ACTION_LABEL: Record<AuditAction, string> = {
   create: 'Created',
   update: 'Updated',

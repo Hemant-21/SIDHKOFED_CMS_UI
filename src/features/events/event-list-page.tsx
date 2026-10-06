@@ -2,7 +2,7 @@
 
 /**
  * Events list page. Composes the shared DataTable + filter framework + pagination + bulk actions
- * against the `events` resource — server pagination, server search, server filters, sorting,
+ * against the `events` resource - server pagination, server search, server filters, sorting,
  * column selection, and loading/empty/error states all from shared infrastructure. Bulk publish/
  * archive reuse the lifecycle hooks and are permission-gated.
  */
@@ -62,7 +62,7 @@ export function EventListPage() {
     <div className="space-y-6">
       <PageHeader
         title="Events & News"
-        description="All institutional activities — training, workshops, meetings, MoUs, visits, and more."
+        description="All institutional activities - training, workshops, meetings, MoUs, visits, and more."
         actions={
           <Can permission={CONTENT_PERMS.create}>
             <Button asChild leftIcon={<Plus className="h-4 w-4" />}>

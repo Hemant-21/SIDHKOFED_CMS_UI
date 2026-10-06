@@ -1,5 +1,5 @@
 /**
- * `/enquiries/[id]` — enquiry detail: message, contact info, annotate, archive.
+ * `/enquiries/[id]` - enquiry detail: message, contact info, annotate, archive.
  */
 import { EnquiryDetailPage } from '@/features/enquiries';
 

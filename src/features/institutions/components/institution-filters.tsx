@@ -3,7 +3,7 @@
 /**
  * Institution list filter bar. Exposes EXACTLY the backend's allow-listed institution filters
  * (institutions.query.ts): publication_state, institution_type, district, show_on_homepage.
- * Filtering is server-side via the shared `useFilters` controller — each control writes an
+ * Filtering is server-side via the shared `useFilters` controller - each control writes an
  * allow-listed query param and re-runs the backend query. No client-side filtering.
  */
 

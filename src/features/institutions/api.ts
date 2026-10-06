@@ -2,12 +2,12 @@
 
 /**
  * Institutions data layer. Standard list/detail/create/update/lifecycle come from the shared CRUD
- * hooks against the `institutions` resource — no bespoke fetch logic. Institutions have no
+ * hooks against the `institutions` resource - no bespoke fetch logic. Institutions have no
  * module-specific actions beyond the generic "P" pattern, so this module only re-exports the
  * resource key and the shared content permission set.
  *
  * Institutions are authorized with the project's generic `content.*` RBAC (institutions.routes.ts),
- * exactly like documents/events — so the permission keys are reused from the events feature rather
+ * exactly like documents/events - so the permission keys are reused from the events feature rather
  * than redefined.
  */
 

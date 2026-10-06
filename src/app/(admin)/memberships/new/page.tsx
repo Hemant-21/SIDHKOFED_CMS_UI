@@ -1,5 +1,5 @@
 /**
- * `/memberships/new` — create a membership (Phase 15.8).
+ * `/memberships/new` - create a membership (Phase 15.8).
  */
 import { MembershipFormPage } from '@/features/memberships';
 

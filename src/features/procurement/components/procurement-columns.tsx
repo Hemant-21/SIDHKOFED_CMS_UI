@@ -14,7 +14,7 @@ const STATUS_TONE: Record<string, 'success' | 'muted' | 'warning' | 'default'> =
 };
 
 function ProcurementStatusBadge({ status }: { status: string | null }) {
-  if (!status) return <span className="text-muted-foreground">—</span>;
+  if (!status) return <span className="text-muted-foreground">-</span>;
   const tone = STATUS_TONE[status] ?? 'default';
   return (
     <Badge tone={tone}>
@@ -52,14 +52,14 @@ export function procurementColumns(
       header: 'Category',
       defaultHidden: true,
       cell: (p) => (
-        <span className="text-muted-foreground">{p.procurement_update_category?.name_en ?? '—'}</span>
+        <span className="text-muted-foreground">{p.procurement_update_category?.name_en ?? '-'}</span>
       ),
     },
     {
       id: 'commodity',
       header: 'Commodity',
       cell: (p) => (
-        <span className="text-muted-foreground">{p.commodity?.name_en ?? '—'}</span>
+        <span className="text-muted-foreground">{p.commodity?.name_en ?? '-'}</span>
       ),
     },
     {
@@ -67,7 +67,7 @@ export function procurementColumns(
       header: 'District',
       defaultHidden: true,
       cell: (p) => (
-        <span className="text-muted-foreground">{p.district?.name_en ?? '—'}</span>
+        <span className="text-muted-foreground">{p.district?.name_en ?? '-'}</span>
       ),
     },
     {
@@ -95,7 +95,7 @@ export function procurementColumns(
         p.highlight_type ? (
           <HighlightBadge highlight={p.highlight_type} />
         ) : (
-          <span className="text-muted-foreground">—</span>
+          <span className="text-muted-foreground">-</span>
         ),
     },
     {

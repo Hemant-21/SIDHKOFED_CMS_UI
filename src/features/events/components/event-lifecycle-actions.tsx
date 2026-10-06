@@ -4,7 +4,7 @@
  * Event lifecycle + status actions. Reuses the shared publishing hooks (useLifecycleActions) and
  * the confirmation dialogs; gating is permission/state aware via <Can> (backend still enforces).
  * Lifecycle endpoints: publish/unpublish/archive/restore. Status override: cancel (action) and
- * postpone (PATCH with status_override) — only postponed/cancelled may be set manually (codex §4.1).
+ * postpone (PATCH with status_override) - only postponed/cancelled may be set manually.
  */
 
 import { useState } from 'react';

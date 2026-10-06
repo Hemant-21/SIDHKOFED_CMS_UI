@@ -1,5 +1,5 @@
 /**
- * `/programmes` — Programmes & Schemes list (Phase 15.5).
+ * `/programmes` - Programmes & Schemes list (Phase 15.5).
  */
 import { ProgrammeListPage } from '@/features/programmes';
 

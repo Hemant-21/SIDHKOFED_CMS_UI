@@ -1,7 +1,7 @@
 /**
- * Dashboard data access (Phase 15.2). Thin fetchers over the shared `http` layer —
+ * Dashboard data access (Phase 15.2). Thin fetchers over the shared `http` layer -
  * they consume EXISTING backend endpoints only and never compute a KPI in the
- * frontend (codex §13: backend is the source of truth).
+ * frontend.
  *
  *  - `fetchRecentActivity`  → GET /admin/audit-logs (Super Admin only)
  *  - `fetchContentCount`    → GET /admin/{resource}?page_size=1 (reads backend `pagination.total_items`)
@@ -12,8 +12,8 @@
  *
  * `fetchKpis` (`/public/dashboard/kpis`) and `fetchReports` (`/admin/dashboard/reports`)
  * used to live here too. The backend retired the fixed "Dashboard Reports" concept
- * entirely — every `/public/dashboard*` route, the admin report-definition routes,
- * and the underlying rows are gone — so both fetchers were removed. See the
+ * entirely - every `/public/dashboard*` route, the admin report-definition routes,
+ * and the underlying rows are gone - so both fetchers were removed. See the
  * Dashboard Reports removal note in `../dashboard-data`.
  */
 

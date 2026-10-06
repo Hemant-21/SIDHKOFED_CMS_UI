@@ -3,7 +3,7 @@
 /**
  * News edit form. Reuses the shared form framework, the bilingual tabs, the cover-media picker, and
  * the CRUD update hook. The linked source event is shown read-only (the link is immutable). News is
- * never created here — only edited (creation is the event's publish-as-news action).
+ * never created here - only edited (creation is the event's publish-as-news action).
  */
 
 import { useRouter } from 'next/navigation';

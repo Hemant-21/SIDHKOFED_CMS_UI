@@ -2,7 +2,7 @@
 
 /**
  * Reusable Admin Dashboard card primitives (Phase 15.2). These are the fixed,
- * non-configurable widgets the dashboard is built from — Statistic, Status, List,
+ * non-configurable widgets the dashboard is built from - Statistic, Status, List,
  * Information, and Warning cards. They compose the shared layout/feedback
  * components (Card, Skeleton, ErrorState, Badge) so the dashboard adds no new
  * design system. Every one is accessible and renders loading/error gracefully.
@@ -19,7 +19,7 @@ import { cn } from '@/utils/cn';
 
 /**
  * Statistic (KPI) card: an icon, a label, a backend-provided value, and optional
- * unit/hint. The value is ALWAYS supplied by the backend — this card never
+ * unit/hint. The value is ALWAYS supplied by the backend - this card never
  * computes one. Handles its own loading/error so a KPI grid degrades per-card.
  */
 export interface StatCardProps {
@@ -50,7 +50,7 @@ export function StatCard({ icon: Icon, label, value, unit, hint, isLoading, erro
               onClick={onRetry}
               className="mt-1 text-sm text-danger underline-offset-2 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              Unavailable — retry
+              Unavailable - retry
             </button>
           ) : (
             <p className="mt-0.5 flex items-baseline gap-1">
@@ -68,7 +68,7 @@ export function StatCard({ icon: Icon, label, value, unit, hint, isLoading, erro
 }
 
 /**
- * Card with a titled header + body — the base for Status/List/Activity cards. The
+ * Card with a titled header + body - the base for Status/List/Activity cards. The
  * header carries optional actions (e.g. a manual Refresh button) and an inline
  * loading indicator.
  */
@@ -113,7 +113,7 @@ export function DashboardCard({
   );
 }
 
-/** A single labelled status row (e.g. "Published reports — 8"). Status conveyed by text + badge. */
+/** A single labelled status row (e.g. "Published reports - 8"). Status conveyed by text + badge. */
 export function StatusRow({
   label,
   value,
@@ -138,7 +138,7 @@ export function StatusRow({
   );
 }
 
-/** Informational note card — a neutral framing for context (not an error). */
+/** Informational note card - a neutral framing for context (not an error). */
 export function InfoCard({ title, children }: { title?: string; children: ReactNode }) {
   return (
     <div className="flex gap-3 rounded-lg border border-info/30 bg-info/5 px-4 py-3 text-sm">

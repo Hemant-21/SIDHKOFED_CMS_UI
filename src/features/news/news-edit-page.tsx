@@ -2,7 +2,7 @@
 
 /**
  * News edit page. Loads the news detail (shared useCrudDetail), gates on `content.update`, and
- * renders the edit form. News cannot be created here (no create endpoint) — only edited.
+ * renders the edit form. News cannot be created here (no create endpoint) - only edited.
  */
 
 import Link from 'next/link';

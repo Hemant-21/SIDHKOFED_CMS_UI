@@ -1,8 +1,8 @@
 /**
- * Videos feature (Phase 15.4). Full admin frontend for the YouTube video library — list,
- * create/edit (with live URL validation), detail (lazy embed preview), and lifecycle — built on
+ * Videos feature (Phase 15.4). Full admin frontend for the YouTube video library - list,
+ * create/edit (with live URL validation), detail (lazy embed preview), and lifecycle - built on
  * the shared infrastructure and the backend contracts. Videos stream from YouTube; files are never
- * hosted (codex §5.3).
+ * hosted.
  */
 export { VideoListPage } from './video-list-page';
 export { VideoFormPage } from './video-form-page';

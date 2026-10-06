@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * KPI sections (Phase 15.2). `ContentKpiGrid` — per-module record totals. Each
+ * KPI sections (Phase 15.2). `ContentKpiGrid` - per-module record totals. Each
  * total is the BACKEND's `pagination.total_items` for that resource (the server's
  * count, requested with page_size=1); the frontend never tallies records itself.
  *

@@ -4,7 +4,7 @@
  * User create / edit form. Role selection uses the three seeded role keys from
  * `ROLE_KEYS` as identifiers. The create payload sends `role_ids` per the API spec
  * (§6); when the backend exposes a `/admin/roles` listing endpoint the selector can
- * be populated dynamically — for now the three seeded roles are known and stable.
+ * be populated dynamically - for now the three seeded roles are known and stable.
  *
  * Password is required for create; optional for edit (omit means "unchanged").
  * Backend validates strength. No password hash is ever returned.

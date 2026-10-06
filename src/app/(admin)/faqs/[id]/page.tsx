@@ -1,5 +1,5 @@
 /**
- * `/faqs/[id]` — FAQ detail / view (Phase 15.7).
+ * `/faqs/[id]` - FAQ detail / view (Phase 15.7).
  */
 import { FaqDetailPage } from '@/features/faqs';
 

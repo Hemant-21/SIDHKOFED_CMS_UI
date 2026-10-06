@@ -8,11 +8,11 @@ import { ROUTES } from '@/constants/routes';
 import type { DocumentSummary } from '../types';
 
 /**
- * Document list column definitions (reused by the DataTable). Pure presentation — sort fields map
+ * Document list column definitions (reused by the DataTable). Pure presentation - sort fields map
  * to the backend ordering allow-list (documents.types.ts): `title_en`, `publication_date`,
  * `display_order`, `created_at`. The Actions column is rendered by the list page so it can wire
  * navigation. Columns surface exactly the contract: title, type (merged with the resolved parent
- * — knowledge category or communication type — and a Publications/Notifications badge, since
+ * - knowledge category or communication type - and a Publications/Notifications badge, since
  * document type is now the sole classification authority), language, state, highlight, homepage,
  * updated.
  */
@@ -47,7 +47,7 @@ export function documentColumns(actions?: (row: DocumentSummary) => React.ReactN
               <Badge tone={d.document_section === 'notifications' ? 'info' : 'default'} dot>
                 {d.document_section === 'notifications' ? 'Notifications' : 'Publications'}
               </Badge>
-              {parentName ?? '—'}
+              {parentName ?? '-'}
             </span>
           </div>
         );
@@ -67,7 +67,7 @@ export function documentColumns(actions?: (row: DocumentSummary) => React.ReactN
       align: 'center',
       defaultHidden: true,
       cell: (d) =>
-        d.highlight_type ? <HighlightBadge highlight={d.highlight_type} /> : <span className="text-muted-foreground">—</span>,
+        d.highlight_type ? <HighlightBadge highlight={d.highlight_type} /> : <span className="text-muted-foreground">-</span>,
     },
     {
       id: 'show_on_homepage',

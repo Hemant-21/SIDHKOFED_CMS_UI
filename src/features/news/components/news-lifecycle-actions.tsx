@@ -3,7 +3,7 @@
 /**
  * News lifecycle actions: publish / unpublish / archive / restore. Reuses the shared lifecycle
  * hooks + confirmation dialogs; permission-gated via <Can> (backend still enforces). News has no
- * create/complete/cancel — only the standard "P" lifecycle plus edit.
+ * create/complete/cancel - only the standard "P" lifecycle plus edit.
  */
 
 import { Pencil } from 'lucide-react';

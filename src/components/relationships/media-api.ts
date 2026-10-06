@@ -3,7 +3,7 @@
 /**
  * Media data layer for the reusable picker (API spec §6/§7). Reads the existing media
  * library (`GET /admin/media`) and uploads through the existing multipart endpoint
- * (`POST /admin/media`) — NO duplicate upload pipeline. The full Media Library module is a
+ * (`POST /admin/media`) - NO duplicate upload pipeline. The full Media Library module is a
  * separate phase; this is only the link/select surface content modules share.
  */
 
@@ -45,7 +45,7 @@ export function keepImagesOnly(items: MediaItem[]): MediaItem[] {
 
 /**
  * Recent, non-archived media for the picker grid. Server-side search by filename/title.
- * `imageOnly` (default false) restricts results to image assets — the shared image picker passes it
+ * `imageOnly` (default false) restricts results to image assets - the shared image picker passes it
  * so cover/icon/thumbnail/gallery selections never surface non-image assets.
  */
 export function useMediaList(opts: { search?: string; enabled?: boolean; imageOnly?: boolean } = {}) {

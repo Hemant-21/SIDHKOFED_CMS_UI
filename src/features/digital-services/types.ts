@@ -1,7 +1,7 @@
 /**
- * Digital Services module types — mirror of the backend DTOs and validators
+ * Digital Services module types - mirror of the backend DTOs and validators
  * (digital-services.dto.ts / digital-services.validators.ts). Controlled links to APPROVED external
- * systems only (ERP, MIS, membership, beneficiary portal) — codex §4.14 / API spec §6. The CMS never
+ * systems only (ERP, MIS, membership, beneficiary portal). The CMS never
  * simulates, proxies, or embeds those systems; clients open `external_url` in a NEW TAB.
  *
  * Publishable **P** content carrying the publishing-workflow mixin, authorized with the shared
@@ -29,7 +29,7 @@ export interface DigitalServiceSummary {
   updated_at: string;
 }
 
-/** Admin detail — all fields including bilingual description. */
+/** Admin detail - all fields including bilingual description. */
 export interface DigitalServiceDetail extends DigitalServiceSummary {
   description_en: string | null;
   description_hi: string | null;
@@ -41,7 +41,7 @@ export interface DigitalServiceDetail extends DigitalServiceSummary {
 }
 
 /**
- * Write payload — model-backed fields + workflow fields the backend validator accepts
+ * Write payload - model-backed fields + workflow fields the backend validator accepts
  * (digital-services.validators.ts `createShape` + `workflowShape`). `external_url` is required and
  * must be HTTPS (validated client-side and re-validated server-side).
  */

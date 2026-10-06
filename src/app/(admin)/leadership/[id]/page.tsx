@@ -1,5 +1,5 @@
 /**
- * `/leadership/[id]` — leadership entry detail / view.
+ * `/leadership/[id]` - leadership entry detail / view.
  */
 import { LeadershipDetailPage } from '@/features/leadership';
 

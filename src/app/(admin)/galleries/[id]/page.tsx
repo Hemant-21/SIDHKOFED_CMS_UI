@@ -1,5 +1,5 @@
 /**
- * `/galleries/[id]` — gallery detail / view + image management (Phase 15.7 remediation).
+ * `/galleries/[id]` - gallery detail / view + image management (Phase 15.7 remediation).
  */
 import { GalleryDetailPage } from '@/features/galleries';
 

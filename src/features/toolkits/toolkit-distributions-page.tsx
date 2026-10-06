@@ -3,7 +3,7 @@
 /**
  * Toolkit distribution summary page (`/toolkits/[id]/distributions`). It loads the toolkit (to
  * resolve the slug + publication state) and renders the read-only, backend-calculated aggregate
- * (DistributionSummaryPanel). Per-event distribution figures are AUTHORED in the Events module —
+ * (DistributionSummaryPanel). Per-event distribution figures are AUTHORED in the Events module -
  * this page only displays the toolkit-level rollup; totals are never computed in the frontend.
  */
 

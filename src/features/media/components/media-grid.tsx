@@ -2,7 +2,7 @@
 
 /**
  * Responsive media grid. Renders memoized {@link MediaCard} cells with lazy image loading. The
- * data is server-paginated (the page owns the query), so each page renders a bounded set — this
+ * data is server-paginated (the page owns the query), so each page renders a bounded set - this
  * keeps the DOM light without a windowing dependency, while lazy `loading="lazy"` images defer
  * off-screen network/decode work (performance).
  */

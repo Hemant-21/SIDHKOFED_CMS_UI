@@ -112,11 +112,11 @@ export function ToolkitDetailPage({ id }: { id: string }) {
             <CardContent className="space-y-3 text-sm">
               <div>
                 <p className="text-muted-foreground">Programme / scheme</p>
-                <p className="text-foreground">{toolkit.programme?.title_en ?? '—'}</p>
+                <p className="text-foreground">{toolkit.programme?.title_en ?? '-'}</p>
               </div>
               <div>
                 <p className="text-muted-foreground">Commodity</p>
-                <p className="text-foreground">{toolkit.commodity?.name_en ?? '—'}</p>
+                <p className="text-foreground">{toolkit.commodity?.name_en ?? '-'}</p>
               </div>
             </CardContent>
           </Card>

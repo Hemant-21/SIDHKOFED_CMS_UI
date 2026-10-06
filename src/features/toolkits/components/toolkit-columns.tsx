@@ -7,12 +7,12 @@ import { ROUTES } from '@/constants/routes';
 import type { ToolkitSummary } from '../types';
 
 /**
- * Toolkit list column definitions (reused by the DataTable). Pure presentation — sort fields map to
+ * Toolkit list column definitions (reused by the DataTable). Pure presentation - sort fields map to
  * the backend ordering allow-list (toolkits.types.ts): `title_en`, `display_order`, `published_at`,
  * `created_at`. The Actions column is rendered by the list page so it can wire navigation.
  *
  * NOTE: the admin toolkit LIST summary (toolkits.dto.ts → ToolkitSummaryDto) does not include item
- * counts or distribution figures — items live on the DETAIL payload and distribution totals are a
+ * counts or distribution figures - items live on the DETAIL payload and distribution totals are a
  * separate read-only aggregate. We surface only what the list contract returns.
  */
 export function toolkitColumns(actions?: (row: ToolkitSummary) => React.ReactNode): ColumnDef<ToolkitSummary>[] {
@@ -33,8 +33,8 @@ export function toolkitColumns(actions?: (row: ToolkitSummary) => React.ReactNod
         </div>
       ),
     },
-    { id: 'programme', header: 'Programme', cell: (t) => <span className="text-muted-foreground">{t.programme?.title_en ?? '—'}</span> },
-    { id: 'commodity', header: 'Commodity', cell: (t) => <span className="text-muted-foreground">{t.commodity?.name_en ?? '—'}</span> },
+    { id: 'programme', header: 'Programme', cell: (t) => <span className="text-muted-foreground">{t.programme?.title_en ?? '-'}</span> },
+    { id: 'commodity', header: 'Commodity', cell: (t) => <span className="text-muted-foreground">{t.commodity?.name_en ?? '-'}</span> },
     { id: 'publication_state', header: 'State', cell: (t) => <StatusBadge state={t.publication_state} /> },
     {
       id: 'highlight',
@@ -42,7 +42,7 @@ export function toolkitColumns(actions?: (row: ToolkitSummary) => React.ReactNod
       align: 'center',
       defaultHidden: true,
       cell: (t) =>
-        t.highlight_type ? <HighlightBadge highlight={t.highlight_type} /> : <span className="text-muted-foreground">—</span>,
+        t.highlight_type ? <HighlightBadge highlight={t.highlight_type} /> : <span className="text-muted-foreground">-</span>,
     },
     {
       id: 'show_on_homepage',

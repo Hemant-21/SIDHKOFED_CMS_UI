@@ -2,7 +2,7 @@
 
 /**
  * TanStack Query provider + a single shared QueryClient. Centralizes cache policy,
- * retry behavior (don't retry 4xx — they won't succeed on retry), and exposes
+ * retry behavior (don't retry 4xx - they won't succeed on retry), and exposes
  * cache-invalidation/prefetch helpers via `lib/query`. Devtools mount in dev only.
  */
 

@@ -1,5 +1,5 @@
 /**
- * `/faqs/new` — create an FAQ (Phase 15.7).
+ * `/faqs/new` - create an FAQ (Phase 15.7).
  */
 import { FaqFormPage } from '@/features/faqs';
 

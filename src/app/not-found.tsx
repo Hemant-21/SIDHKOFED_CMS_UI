@@ -3,7 +3,7 @@ import { Compass } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ROUTES } from '@/constants/routes';
 
-/** 404 — unknown route. (Reserved module routes resolve here until built.) */
+/** 404 - unknown route. (Reserved module routes resolve here until built.) */
 export default function NotFound() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-4 px-6 text-center">

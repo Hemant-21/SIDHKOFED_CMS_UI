@@ -1,5 +1,5 @@
 /**
- * `/toolkits` — Toolkits list (Phase 15.5).
+ * `/toolkits` - Toolkits list (Phase 15.5).
  */
 import { ToolkitListPage } from '@/features/toolkits';
 

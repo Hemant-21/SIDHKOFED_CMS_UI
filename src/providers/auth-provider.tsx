@@ -1,12 +1,12 @@
 'use client';
 
 /**
- * AuthProvider — owns the client session lifecycle.
+ * AuthProvider - owns the client session lifecycle.
  *
  * Boot: calls `/auth/refresh` once (cookie-based) to restore a session silently
  * (API spec §1.2). Subscribes to the API layer's `unauthorized` event so a failed
  * refresh anywhere clears the session and routes to /login. Exposes the user,
- * status, and login/logout actions via context — consumed through `useAuth`.
+ * status, and login/logout actions via context - consumed through `useAuth`.
  */
 
 import {

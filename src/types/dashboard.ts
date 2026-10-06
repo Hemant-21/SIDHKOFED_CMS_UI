@@ -4,8 +4,8 @@
  *
  * This file used to also carry the fixed "Dashboard Reports" DTOs (report/metric
  * summaries, the public KPI response, financial-year/reporting-period refs). The
- * backend retired that concept entirely — every `/public/dashboard*` route, the
- * admin report-definition routes, and the underlying rows are gone — so those
+ * backend retired that concept entirely - every `/public/dashboard*` route, the
+ * admin report-definition routes, and the underlying rows are gone - so those
  * types were removed along with the CMS pages that used them. See the Dashboard
  * Reports removal note in `src/features/dashboard-data`.
  */

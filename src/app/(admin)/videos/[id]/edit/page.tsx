@@ -1,5 +1,5 @@
 /**
- * `/videos/[id]/edit` — edit a video (Phase 15.4). Permission-gated inside the feature page.
+ * `/videos/[id]/edit` - edit a video (Phase 15.4). Permission-gated inside the feature page.
  */
 import { VideoFormPage } from '@/features/videos';
 

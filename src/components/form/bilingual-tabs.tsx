@@ -2,8 +2,8 @@
 
 /**
  * Bilingual field tabs (English / Hindi). The CMS stores `*_en` (primary) and
- * optional `*_hi` (codex §10). This wraps the two field groups in accessible tabs
- * so editors switch language without leaving the form. Generic — the caller passes
+ * optional `*_hi`. This wraps the two field groups in accessible tabs
+ * so editors switch language without leaving the form. Generic - the caller passes
  * the en/hi field nodes for whatever fields the module needs.
  */
 

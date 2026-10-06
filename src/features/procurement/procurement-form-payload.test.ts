@@ -6,7 +6,7 @@ import {
 } from './procurement-form-payload';
 
 /**
- * Payload regression (Phase 15.6 audit — Issue 2). The generated payload must match the backend
+ * Payload regression (Phase 15.6 audit - Issue 2). The generated payload must match the backend
  * `procurementUpdateCreateSchema` EXACTLY: bilingual `summary_*` + `description_*` (NOT the removed
  * `short_description_*`), `rate` as a JSON NUMBER (the validator is `z.number()`, not a string), and
  * empty master ids coerced to null (the validator expects uuid-or-null, never '').
@@ -62,7 +62,7 @@ describe('buildProcurementPayload', () => {
     }
   });
 
-  it('uses backend summary_*/description_* fields — never short_description_*', () => {
+  it('uses backend summary_*/description_* fields - never short_description_*', () => {
     const p = buildProcurementPayload(
       values({ summary_en: 'Sum', summary_hi: 'सार', description_en: 'Desc', description_hi: 'विवरण' }),
     ) as Record<string, unknown>;

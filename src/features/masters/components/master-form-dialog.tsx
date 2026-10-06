@@ -624,7 +624,7 @@ export function MasterFormDialog({ open, onClose, config, record }: MasterFormDi
         isFy
           ? 'Financial year periods are used for reporting and document classification.'
           : isDocumentType
-          ? 'Every document type belongs to exactly one destination — Publications (Knowledge Category) or Notifications (Communication Type).'
+          ? 'Every document type belongs to exactly one destination - Publications (Knowledge Category) or Notifications (Communication Type).'
           : 'Names are shown across the public site. Use English as the primary language.'
       }
     >

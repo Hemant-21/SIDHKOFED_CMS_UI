@@ -70,7 +70,7 @@ export function digitalServiceColumns(
         s.highlight_type ? (
           <HighlightBadge highlight={s.highlight_type} />
         ) : (
-          <span className="text-muted-foreground">—</span>
+          <span className="text-muted-foreground">-</span>
         ),
     },
     {
@@ -79,7 +79,7 @@ export function digitalServiceColumns(
       align: 'center',
       sortField: 'display_order',
       defaultHidden: true,
-      cell: (s) => <span className="text-muted-foreground">{s.display_order ?? '—'}</span>,
+      cell: (s) => <span className="text-muted-foreground">{s.display_order ?? '-'}</span>,
     },
     {
       id: 'show_on_homepage',

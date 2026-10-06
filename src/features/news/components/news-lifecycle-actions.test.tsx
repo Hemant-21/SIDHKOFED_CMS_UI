@@ -10,7 +10,7 @@ import type { NewsDetail } from '../types';
 
 /**
  * RBAC visibility for the news lifecycle bar. News reuses the SHARED `content.*` permission set
- * (news.routes.ts) — there is no `news.*` grant — so the affordances mirror events.
+ * (news.routes.ts) - there is no `news.*` grant - so the affordances mirror events.
  */
 
 const ROLE_FIXTURES = {
@@ -57,7 +57,7 @@ function renderAs(role: keyof typeof ROLE_FIXTURES, news: Partial<NewsDetail> = 
   );
 }
 
-describe('NewsLifecycleActions — RBAC', () => {
+describe('NewsLifecycleActions - RBAC', () => {
   it('Publisher sees edit, publish, and archive', () => {
     renderAs('publisher');
     expect(screen.getByRole('link', { name: /edit/i })).toBeInTheDocument();
@@ -65,7 +65,7 @@ describe('NewsLifecycleActions — RBAC', () => {
     expect(screen.getByRole('button', { name: 'Archive' })).toBeInTheDocument();
   });
 
-  it('Content Editor sees only edit — publish/archive are hidden', () => {
+  it('Content Editor sees only edit - publish/archive are hidden', () => {
     renderAs('content_editor');
     expect(screen.getByRole('link', { name: /edit/i })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Publish' })).not.toBeInTheDocument();

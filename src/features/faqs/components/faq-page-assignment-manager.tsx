@@ -1,13 +1,13 @@
 'use client';
 
 /**
- * Which main pages this FAQ is assigned to. Picking pages is all this control does — the
+ * Which main pages this FAQ is assigned to. Picking pages is all this control does - the
  * meaningful per-page ORDER (this FAQ's position among every other FAQ on that page) can't be set
  * here without knowing every other FAQ's position too, so a newly-added page starts at the end
  * (`display_order: 0` is a safe placeholder the reorder view immediately supersedes) and existing
  * assignments keep the order they loaded with. Actual reordering happens on the FAQ list page: pick
  * a "Page" filter there to see `FaqPageOrderPanel`, which reorders across ALL FAQs on that one page
- * (see `faq-list-page.tsx`) — the same move-up/down convention as `GalleryImageManager`.
+ * (see `faq-list-page.tsx`) - the same move-up/down convention as `GalleryImageManager`.
  */
 
 import { Label } from '@/components/ui/label';

@@ -131,7 +131,7 @@ function Field({ label, value }: { label: string; value: string | null }) {
   return (
     <div>
       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</p>
-      {value ? <p className="text-sm text-foreground">{value}</p> : <p className="text-sm text-muted-foreground">—</p>}
+      {value ? <p className="text-sm text-foreground">{value}</p> : <p className="text-sm text-muted-foreground">-</p>}
     </div>
   );
 }

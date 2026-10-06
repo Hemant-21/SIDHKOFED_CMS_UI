@@ -19,7 +19,7 @@ import { queryKeys } from '@/constants/query-keys';
 import type { ListQuery } from '@/types/api';
 import { fetchContentCount, fetchRecentActivity } from './api';
 
-/** Recent administrative activity (audit log; Super Admin only — gate the call with `enabled`). */
+/** Recent administrative activity (audit log; Super Admin only - gate the call with `enabled`). */
 export function useRecentActivity(query?: ListQuery, enabled = true) {
   return useQuery({
     queryKey: queryKeys.audit.list(query),

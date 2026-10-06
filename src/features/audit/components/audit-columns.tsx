@@ -12,7 +12,7 @@ import { AuditActionBadge } from './audit-action-badge';
  * sortable field is the backend ordering allow-list value `created_at` (audit.controller.ts
  * ORDERING_ALLOW). "Result" maps to the publication state transition the action produced
  * (previous → new); the audit DTO exposes no separate result field, so we render the real
- * `previous_state → new_state` transition rather than inventing one. No IP column — the DTO never
+ * `previous_state → new_state` transition rather than inventing one. No IP column - the DTO never
  * exposes an IP address.
  */
 export function auditColumns(
@@ -63,7 +63,7 @@ export function auditColumns(
             {a.record_id.slice(0, 8)}…
           </code>
         ) : (
-          <span className="text-muted-foreground">—</span>
+          <span className="text-muted-foreground">-</span>
         ),
     },
     {
@@ -80,7 +80,7 @@ export function auditColumns(
           </span>
         ) : (
           <span className="truncate text-sm text-muted-foreground" title={a.change_summary ?? undefined}>
-            {a.change_summary ?? a.event ?? '—'}
+            {a.change_summary ?? a.event ?? '-'}
           </span>
         ),
     },
@@ -90,7 +90,7 @@ export function auditColumns(
       defaultHidden: true,
       cell: (a) => (
         <span className="block max-w-xs truncate text-sm text-muted-foreground" title={a.change_summary ?? undefined}>
-          {a.change_summary ?? a.event ?? '—'}
+          {a.change_summary ?? a.event ?? '-'}
         </span>
       ),
     },

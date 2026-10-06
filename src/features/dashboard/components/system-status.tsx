@@ -1,15 +1,15 @@
 'use client';
 
 /**
- * System Status (Phase 15.2) — reports ONLY backend-supported status, never an
+ * System Status (Phase 15.2) - reports ONLY backend-supported status, never an
  * invented health check (task constraint). It shows:
  *   • Global search: enabled + the number of searchable content surfaces (the FTS
- *     contract — the exact surfaces the backend indexes).
+ *     contract - the exact surfaces the backend indexes).
  * Scheduler / background-job internals have no public status endpoint, so we say so
  * plainly rather than fabricate a green/red light.
  *
  * The fixed "Dashboard Reports" catalog this card used to summarize was retired
- * backend-side (its admin/public routes, services, and rows are gone) — see the
+ * backend-side (its admin/public routes, services, and rows are gone) - see the
  * Dashboard Reports removal note in `../../dashboard-data`. Only Operational
  * Reports and Website Metrics remain under the dashboard umbrella; neither has a
  * public status endpoint suited to this card, so the "reports" status row was

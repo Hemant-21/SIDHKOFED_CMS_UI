@@ -1,5 +1,5 @@
 /**
- * `/galleries/[id]/edit` — edit a gallery (Phase 15.7 remediation).
+ * `/galleries/[id]/edit` - edit a gallery (Phase 15.7 remediation).
  */
 import { GalleryFormPage } from '@/features/galleries';
 

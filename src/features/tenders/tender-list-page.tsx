@@ -2,7 +2,7 @@
 
 /**
  * Tender Management list page. Server pagination, search, filters, sorting, bulk actions.
- * Frontend is INFORMATIONAL only — no bid submission, procurement workflow, or GeM embedding.
+ * Frontend is INFORMATIONAL only - no bid submission, procurement workflow, or GeM embedding.
  */
 
 import { useMemo } from 'react';
@@ -58,7 +58,7 @@ export function TenderListPage() {
     <div className="space-y-6">
       <PageHeader
         title="Tenders"
-        description="Tender metadata and GeM portal links. No BOQ, corrigenda, or procurement transactions — those remain on GeM."
+        description="Tender metadata and GeM portal links. No BOQ, corrigenda, or procurement transactions - those remain on GeM."
         actions={
           <Can permission={TENDER_PERMS.create}>
             <Button asChild leftIcon={<Plus className="h-4 w-4" />}>

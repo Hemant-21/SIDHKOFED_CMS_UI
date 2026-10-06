@@ -1,5 +1,5 @@
 /**
- * `/memberships/[id]/edit` — edit a membership (Phase 15.8).
+ * `/memberships/[id]/edit` - edit a membership (Phase 15.8).
  */
 import { MembershipFormPage } from '@/features/memberships';
 

@@ -1,5 +1,5 @@
 /**
- * Events module types — a faithful mirror of the backend Event DTOs (events.dto.ts) and request
+ * Events module types - a faithful mirror of the backend Event DTOs (events.dto.ts) and request
  * validators (events.validators.ts). The frontend consumes these contracts exactly; it never
  * invents fields or derives status. `snake_case` matches the API transport (API spec §0).
  */
@@ -11,7 +11,7 @@ export type EventStatus = 'scheduled' | 'ongoing' | 'completed' | 'postponed' | 
 
 export type DateMode = 'single' | 'range' | 'multi_day';
 
-/** Backend dynamic-field data types (events.dynamic-fields.ts) — exactly these six. */
+/** Backend dynamic-field data types (events.dynamic-fields.ts) - exactly these six. */
 type FieldDataType = 'text' | 'textarea' | 'number' | 'date' | 'boolean' | 'select';
 
 /** One active controlled field for an event type (GET /admin/event-types/{id}/field-definitions). */
@@ -67,7 +67,7 @@ interface InstitutionRef {
   name_hi: string | null;
 }
 
-/** Admin list summary (lightweight — EventSummaryDto). */
+/** Admin list summary (lightweight - EventSummaryDto). */
 export interface EventSummary {
   id: string;
   slug: string;
@@ -94,7 +94,7 @@ export interface EventSummary {
   updated_at: string;
 }
 
-/** Admin detail (full — EventDetailDto). */
+/** Admin detail (full - EventDetailDto). */
 export interface EventDetail extends EventSummary {
   summary_hi: string | null;
   description_en: string | null;
@@ -130,7 +130,7 @@ export interface EventDetail extends EventSummary {
 }
 
 // ── Request payloads (events.validators.ts) ─────────────────────────────────────
-/** Create/Update body — only model-backed fields + relation arrays + workflow fields. */
+/** Create/Update body - only model-backed fields + relation arrays + workflow fields. */
 export interface EventWriteInput {
   event_type_id?: string;
   title_en?: string;
@@ -186,7 +186,7 @@ export interface EventCancelInput {
   revised_start_date?: string | null;
 }
 
-/** POST /admin/events/{id}/publish-as-news — all optional overrides. */
+/** POST /admin/events/{id}/publish-as-news - all optional overrides. */
 export interface PublishAsNewsInput {
   title_en?: string;
   title_hi?: string | null;

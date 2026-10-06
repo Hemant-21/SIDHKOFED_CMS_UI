@@ -1,5 +1,5 @@
 /**
- * `/documents` — Document Management Centre list (Phase 15.4).
+ * `/documents` - Document Management Centre list (Phase 15.4).
  */
 import { DocumentListPage } from '@/features/documents';
 

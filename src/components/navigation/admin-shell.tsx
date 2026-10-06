@@ -3,7 +3,7 @@
 /**
  * The admin application shell: sidebar (desktop, collapsible) + mobile drawer +
  * top navigation + scrollable content region. Collapse preference is persisted.
- * This is the single layout every CMS page renders inside — modules supply only
+ * This is the single layout every CMS page renders inside - modules supply only
  * page content. Includes a skip-link and a semantic <main> landmark (a11y).
  */
 

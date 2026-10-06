@@ -5,7 +5,7 @@
  * BilingualTabs, FormSection), the master-option hook (commodity), the shared server-side
  * RelationPicker (programme) and the CoverMediaField. It NEVER sets publication state (that is the
  * lifecycle actions). Server-side 422 errors map back onto fields via the <Form> wrapper. The slug
- * is shown read-only after creation (immutable; codex §11).
+ * is shown read-only after creation (immutable).
  *
  * Catalogue ITEMS are a nested resource that needs a saved toolkit id, so they are managed on the
  * detail page (ToolkitItemsManager), matching the backend model (API spec §6).
@@ -92,7 +92,7 @@ export function ToolkitForm({ toolkit }: ToolkitFormProps) {
 
   return (
     <Form form={form} onSubmit={onSubmit} className="space-y-8">
-      <FormSection title="Content" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Content" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={
             <>
@@ -111,7 +111,7 @@ export function ToolkitForm({ toolkit }: ToolkitFormProps) {
         />
       </FormSection>
 
-      <FormSection title="Linkage" description="A toolkit connects a programme/scheme and a commodity (codex §4.3)." columns={2}>
+      <FormSection title="Linkage" description="A toolkit connects a programme/scheme and a commodity." columns={2}>
         <FormField<ToolkitFormValues>
           name="programme_scheme_id"
           label="Programme / scheme"

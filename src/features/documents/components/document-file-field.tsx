@@ -3,8 +3,8 @@
 /**
  * Document attachment field. Binds an RHF `file_asset_id` to the shared media pipeline: it uploads
  * the chosen file to the central media library (`POST /admin/media` via the shared `uploadMedia`
- * helper) and stores the returned asset id — NO separate upload pipeline. Documents are uploaded
- * once and linked by reference (codex §4.5). Shows progress, the resolved file name, and a replace
+ * helper) and stores the returned asset id - NO separate upload pipeline. Documents are uploaded
+ * once and linked by reference. Shows progress, the resolved file name, and a replace
  * affordance; the file bytes are validated server-side (authoritative).
  */
 

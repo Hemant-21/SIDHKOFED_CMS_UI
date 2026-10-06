@@ -1,8 +1,8 @@
 'use client';
 
 /**
- * Knowledge Centre — a curated reader over Documents whose document type resolves to the
- * "publications" section (grouped by knowledge category — codex §4.5). It is NOT a separate
+ * Knowledge Centre - a curated reader over Documents whose document type resolves to the
+ * "publications" section (grouped by knowledge category). It is NOT a separate
  * backend entity: it reuses the `documents` resource with the `document_section=publications`
  * filter + `knowledge_category` navigation, the shared DataTable, the shared filter framework, and
  * the document columns. Categories and counts come from the backend (knowledge-categories master +
@@ -197,7 +197,7 @@ function CategoryButton({
   );
 }
 
-/** Backend-driven count: reads `pagination.total_items` of a 1-row list query (codex §15 — lightweight). */
+/** Backend-driven count: reads `pagination.total_items` of a 1-row list query. */
 function KnowledgeCount({ categoryId }: { categoryId: string | undefined }) {
   const { data } = useCrudList<DocumentSummary>(
     DOCUMENTS_RESOURCE,

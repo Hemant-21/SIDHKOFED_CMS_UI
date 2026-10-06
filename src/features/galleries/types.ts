@@ -1,11 +1,11 @@
 /**
- * Galleries module types — mirror of the backend DTOs and validators (gallery.dto.ts /
+ * Galleries module types - mirror of the backend DTOs and validators (gallery.dto.ts /
  * gallery.validators.ts). A photo gallery is a publishable **P** record that references reusable
- * Media Library assets (codex §5.2 / API spec §6); images are never copied. Authorized with the
+ * Media Library assets; images are never copied. Authorized with the
  * shared `content.*` RBAC keys (reads are role-based).
  *
  * NOTE the gallery contract is intentionally simpler than other content modules: it has NO highlight
- * fields and NO scheduled-publish field — only cover, visibility, homepage, and display order.
+ * fields and NO scheduled-publish field - only cover, visibility, homepage, and display order.
  * Server-managed fields (slug, state, *_by, published_at) are never produced by the client.
  */
 
@@ -20,7 +20,7 @@ export interface GalleryImage {
   caption_hi: string | null;
 }
 
-/** Admin list summary — lightweight: cover + image_count, no `images` array (gallery.dto.ts Issue 11). */
+/** Admin list summary - lightweight: cover + image_count, no `images` array (gallery.dto.ts Issue 11). */
 export interface GallerySummary {
   id: string;
   slug: string;
@@ -40,13 +40,13 @@ export interface GallerySummary {
   updated_at: string;
 }
 
-/** Admin detail — full record including the ordered `images` array. */
+/** Admin detail - full record including the ordered `images` array. */
 export interface GalleryDetail extends GallerySummary {
   images: GalleryImage[];
 }
 
 /**
- * Write payload — model-backed fields the backend validator accepts (gallery.validators.ts).
+ * Write payload - model-backed fields the backend validator accepts (gallery.validators.ts).
  * `title_hi`/`description_*` are optional-but-NOT-nullable on the backend, so the client sends a
  * (possibly empty) string rather than null; `cover_media_id` IS nullable; `display_order` is omitted
  * when blank (an optional int, not nullable).
@@ -77,7 +77,7 @@ export interface GalleryImageUpdateInput {
   caption_hi?: string | null;
 }
 
-/** Reorder payload (POST /admin/galleries/:id/images/reorder) — note the key is `order`. */
+/** Reorder payload (POST /admin/galleries/:id/images/reorder) - note the key is `order`. */
 export interface GalleryReorderInput {
   order: Array<{ id: string; display_order: number }>;
 }

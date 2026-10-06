@@ -1,5 +1,5 @@
 /**
- * `/news` — Event News list (Phase 15.3).
+ * `/news` - Event News list (Phase 15.3).
  */
 import { NewsListPage } from '@/features/news';
 

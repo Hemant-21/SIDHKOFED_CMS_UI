@@ -4,7 +4,7 @@
  * Galleries data layer. Standard list/detail/create/update/lifecycle use the shared CRUD hooks
  * against the `galleries` resource (the standard admin "P" pattern). The IMAGE sub-resource is
  * gallery-specific (add / update / remove / reorder), so those mutations are wired here over the
- * shared typed HTTP helpers — no duplicate fetch logic. Every image endpoint returns the full
+ * shared typed HTTP helpers - no duplicate fetch logic. Every image endpoint returns the full
  * updated gallery, so we seed the detail cache and invalidate lists (image_count changes).
  */
 

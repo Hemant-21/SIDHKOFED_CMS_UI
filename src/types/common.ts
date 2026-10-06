@@ -1,15 +1,15 @@
 /**
  * Shared domain primitives consumed by every future module. These mirror the
  * compact reference shapes in the API spec §1.4 and build-context §10.2. They are
- * intentionally generic — no module-specific fields live here.
+ * intentionally generic - no module-specific fields live here.
  */
 
 export type Language = 'en' | 'hi';
 
-/** Publication lifecycle states (codex §8 / schema). Stored lower-case. */
+/** Publication lifecycle states. Stored lower-case. */
 export type PublicationState = 'draft' | 'published' | 'unpublished' | 'archived';
 
-/** Common highlight set (codex §9 / reconciliation C6). */
+/** Common highlight set. */
 export type HighlightType = 'new' | 'latest' | 'important' | 'urgent' | 'featured';
 
 /** Compact master reference (API spec §1.4). */

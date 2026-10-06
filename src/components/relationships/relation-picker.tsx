@@ -1,15 +1,15 @@
 'use client';
 
 /**
- * Shared, server-side searchable relationship picker (Phase 15.3 remediation — Finding 4).
+ * Shared, server-side searchable relationship picker (Phase 15.3 remediation - Finding 4).
  *
  * ONE picker reused by every content relation (programmes/institutions/galleries/documents/
- * events) for both single- and multi-select. It composes the existing primitives — `SearchInput`,
- * `Badge`, the feedback states — over {@link useRelationSearch}, so search, pagination, debounce,
+ * events) for both single- and multi-select. It composes the existing primitives - `SearchInput`,
+ * `Badge`, the feedback states - over {@link useRelationSearch}, so search, pagination, debounce,
  * and archived exclusion are all server-side. There is deliberately no per-module picker.
  *
  * Selected ids keep their labels via a small cache seeded from `initialOptions` (the labelled
- * refs the detail endpoint already returns) and augmented as results load — so chips render
+ * refs the detail endpoint already returns) and augmented as results load - so chips render
  * correctly even before/without the matching result page being fetched.
  *
  * Accessibility: combobox button → listbox popover, `aria-selected` per option, `aria-multiselectable`
@@ -44,7 +44,7 @@ export interface RelationPickerProps {
   disabled?: boolean;
   invalid?: boolean;
   className?: string;
-  /** Publication scope forwarded to the backend (defaults to published — archived excluded). */
+  /** Publication scope forwarded to the backend (defaults to published - archived excluded). */
   publicationState?: PublicationState | 'all';
   /** Optional id for the trigger (a11y labelling from a <Label htmlFor>). */
   id?: string;
@@ -102,7 +102,7 @@ export function RelationPicker({
     return rows.map((r) => ({ value: r.id, label: relationLabel(r) }));
   }, [search.data]);
 
-  // Cache any labels we just learned from the server (effect — never mutate state in render).
+  // Cache any labels we just learned from the server (effect - never mutate state in render).
   useEffect(() => {
     if (results.length === 0) return;
     setLabels((prev) => {

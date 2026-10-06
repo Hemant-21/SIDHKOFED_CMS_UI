@@ -1,14 +1,14 @@
 /**
- * Programmes module types — a faithful mirror of the backend Programme DTOs (programmes.dto.ts)
+ * Programmes module types - a faithful mirror of the backend Programme DTOs (programmes.dto.ts)
  * and request validators (programmes.validators.ts). The frontend consumes these contracts
  * exactly; it never invents fields. `snake_case` matches the API transport (API spec §0).
  *
- * One reusable ProgrammeScheme master-operation (codex §4.2 / API spec §5). Publishable **P**
+ * One reusable ProgrammeScheme master-operation. Publishable **P**
  * content carrying the publishing-workflow mixin, with its own module-specific `programmes.*`
  * RBAC keys (programmes.routes.ts).
  *
  * IMPORTANT: the running backend's create/update validator is `.strict()` and the only relation
- * institution/document/gallery relations or a "programme type" — those are not part of the
+ * institution/document/gallery relations or a "programme type" - those are not part of the
  * Programme contract. We match the backend, not the broader spec prose.
  */
 
@@ -60,7 +60,7 @@ export interface ProgrammeDetail extends ProgrammeSummary {
 }
 
 /**
- * Create/Update body — only the model-backed fields + relation arrays + workflow fields the backend
+ * Create/Update body - only the model-backed fields + relation arrays + workflow fields the backend
  * validator accepts (programmes.validators.ts, `.strict()`). Server-managed fields (slug, state,
  * *_by, published_at) are never produced.
  */

@@ -1,7 +1,7 @@
 /**
  * Reusable CRUD hook layer (Phase 15.1). These compose the API client factory,
  * the query-key namespace, cache helpers, and toast/dialog providers into the
- * standard data-access hooks every future module page reuses — so a module's data
+ * standard data-access hooks every future module page reuses - so a module's data
  * layer is a few lines, not a rewrite.
  */
 

@@ -1,13 +1,13 @@
 /**
  * Reusable relationship pickers (Phase 15.3). The shared "link surface" every content
- * module composes — bounded master-data options, the server-side searchable relation
+ * module composes - bounded master-data options, the server-side searchable relation
  * picker, the media picker dialog, and the RHF-bound cover-image field. Built once here
  * so no module duplicates link logic.
  *
  * `useMasterOptions` loads bounded reference lists (event-types, districts, commodities…)
- * eagerly — correct for small dropdowns. Large CONTENT relations
+ * eagerly - correct for small dropdowns. Large CONTENT relations
  * (programmes/institutions/galleries/documents/events) use the paginated, server-side
- * {@link RelationPicker} instead of loading every row (Phase 15.3 remediation — Finding 4).
+ * {@link RelationPicker} instead of loading every row (Phase 15.3 remediation - Finding 4).
  */
 export { useMasterOptions } from './use-options';
 export { useFinancialYearOptions, useReportingPeriodOptions } from './period-pickers';

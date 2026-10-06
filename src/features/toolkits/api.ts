@@ -2,9 +2,9 @@
 
 /**
  * Toolkits data layer. Standard list/detail/create/update/lifecycle come from the shared CRUD hooks
- * against the `toolkits` resource — no bespoke fetch logic. This module adds the toolkit-SPECIFIC
+ * against the `toolkits` resource - no bespoke fetch logic. This module adds the toolkit-SPECIFIC
  * sub-resources that aren't part of the generic "P" pattern:
- *   - nested catalogue ITEM mutations (`/admin/toolkits/{id}/items` — toolkit_items.* CRUD), and
+ *   - nested catalogue ITEM mutations (`/admin/toolkits/{id}/items` - toolkit_items.* CRUD), and
  *   - the read-only public DISTRIBUTION SUMMARY aggregate (`/public/toolkits/{slug}/distribution-
  *     summary`) whose totals are calculated by the backend (never in the frontend).
  *

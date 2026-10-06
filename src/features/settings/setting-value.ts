@@ -1,7 +1,7 @@
 /**
  * Pure helpers for the settings form (unit-testable; no React). The grouped settings API does not
  * expose each key's declared kind, so the editor infers the control from the value's runtime type
- * and coerces the edited string back to the original type before `PUT` — the backend's typed
+ * and coerces the edited string back to the original type before `PUT` - the backend's typed
  * catalog is the validation authority and rejects a bad value with 422.
  */
 

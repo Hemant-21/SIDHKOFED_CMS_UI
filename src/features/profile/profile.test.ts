@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { UpdateProfilePayload, ChangePasswordPayload } from './types';
 
 describe('UpdateProfilePayload type contract', () => {
-  it('all fields are optional — empty object is valid', () => {
+  it('all fields are optional - empty object is valid', () => {
     const payload: UpdateProfilePayload = {};
     expect(Object.keys(payload).length).toBe(0);
   });
@@ -27,7 +27,7 @@ describe('ChangePasswordPayload type contract', () => {
     expect(typeof payload.password).toBe('string');
   });
 
-  it('rejects empty string at the TypeScript level — runtime guard', () => {
+  it('rejects empty string at the TypeScript level - runtime guard', () => {
     const payload: ChangePasswordPayload = { password: '' };
     // Runtime validation (min 8 chars) is enforced by the form; here we just confirm
     // the type accepts any string and that the field is present.

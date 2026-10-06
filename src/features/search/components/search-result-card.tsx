@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * One search result (Phase 15.2). Renders ONLY fields the backend returns —
+ * One search result (Phase 15.2). Renders ONLY fields the backend returns -
  * entity icon, bilingual title, summary, content-type badge, and publication date.
  * It does not invent a publication state or highlight text the backend didn't
  * provide. The whole card is a keyboard-focusable link to the corresponding admin

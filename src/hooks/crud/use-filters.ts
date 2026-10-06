@@ -1,10 +1,10 @@
 'use client';
 
 /**
- * `useFilters` — reusable, URL-synced filter framework for list pages. It owns the
+ * `useFilters` - reusable, URL-synced filter framework for list pages. It owns the
  * single mapping between list state (search, ordering, page, and an allow-listed
  * set of filters) and the URL query string, and composes a backend-ready
- * `ListQuery`. Server-side filtering only — keys must match the backend allow-list
+ * `ListQuery`. Server-side filtering only - keys must match the backend allow-list
  * (API spec §1.4), and unknown keys are ignored rather than sent.
  *
  *   const f = useFilters({ keys: ['event_type', 'district', 'event_status'] });

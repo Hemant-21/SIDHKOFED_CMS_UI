@@ -7,13 +7,13 @@ import { ROUTES } from '@/constants/routes';
 import type { ProgrammeSummary } from '../types';
 
 /**
- * Programme list column definitions (reused by the DataTable). Pure presentation — sort fields map
+ * Programme list column definitions (reused by the DataTable). Pure presentation - sort fields map
  * to the backend ordering allow-list (programmes.types.ts): `title_en`, `start_date`,
  * `display_order`, `published_at`, `created_at`. The Actions column is rendered by the list page so
  * it can wire navigation.
  *
  * NOTE: the admin programme LIST summary (programmes.dto.ts → ProgrammeSummaryDto) does not include
- * commodity/training-type counts — those linked masters live on the DETAIL payload. We surface only
+ * commodity/training-type counts - those linked masters live on the DETAIL payload. We surface only
  * what the list contract returns; counts appear on the detail page.
  */
 export function programmeColumns(actions?: (row: ProgrammeSummary) => React.ReactNode): ColumnDef<ProgrammeSummary>[] {
@@ -34,7 +34,7 @@ export function programmeColumns(actions?: (row: ProgrammeSummary) => React.Reac
         </div>
       ),
     },
-    { id: 'funding_source', header: 'Funding source', cell: (p) => <span className="text-muted-foreground">{p.funding_source ?? '—'}</span> },
+    { id: 'funding_source', header: 'Funding source', cell: (p) => <span className="text-muted-foreground">{p.funding_source ?? '-'}</span> },
     {
       id: 'start_date',
       header: 'Start',
@@ -49,7 +49,7 @@ export function programmeColumns(actions?: (row: ProgrammeSummary) => React.Reac
       align: 'center',
       defaultHidden: true,
       cell: (p) =>
-        p.highlight_type ? <HighlightBadge highlight={p.highlight_type} /> : <span className="text-muted-foreground">—</span>,
+        p.highlight_type ? <HighlightBadge highlight={p.highlight_type} /> : <span className="text-muted-foreground">-</span>,
     },
     {
       id: 'show_on_homepage',

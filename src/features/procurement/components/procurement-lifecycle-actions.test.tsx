@@ -9,7 +9,7 @@ import { ProcurementLifecycleActions } from './procurement-lifecycle-actions';
 import type { ProcurementDetail } from '../types';
 
 /**
- * RBAC regression (Phase 15.6 audit — Issue 3). Procurement Updates are authorized with the SHARED
+ * RBAC regression (Phase 15.6 audit - Issue 3). Procurement Updates are authorized with the SHARED
  * `content.*` permission set (procurement-updates.routes.ts); `procurement-updates.*` keys are never
  * seeded, so affordances must resolve against `content.publish`/`content.archive`/….
  */
@@ -65,7 +65,7 @@ function renderAs(role: keyof typeof ROLE_FIXTURES, proc: Partial<ProcurementDet
   );
 }
 
-describe('ProcurementLifecycleActions — RBAC', () => {
+describe('ProcurementLifecycleActions - RBAC', () => {
   it('Publisher sees edit, publish, and archive (content.* keys resolve)', () => {
     renderAs('publisher');
     expect(screen.getByRole('link', { name: /edit/i })).toBeInTheDocument();
@@ -73,7 +73,7 @@ describe('ProcurementLifecycleActions — RBAC', () => {
     expect(screen.getByRole('button', { name: 'Archive' })).toBeInTheDocument();
   });
 
-  it('Content Editor sees only edit — publish/archive are hidden', () => {
+  it('Content Editor sees only edit - publish/archive are hidden', () => {
     renderAs('content_editor');
     expect(screen.getByRole('link', { name: /edit/i })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Publish' })).not.toBeInTheDocument();

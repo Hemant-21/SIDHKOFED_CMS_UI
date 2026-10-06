@@ -2,7 +2,7 @@
 
 /**
  * Search filters (Phase 15.2). Exposes EXACTLY the backend's allow-listed,
- * non-relation search filters — content type (multi-select) and publication year.
+ * non-relation search filters - content type (multi-select) and publication year.
  * (commodity/district/programme are backend relation filters; they plug in here
  * via the shared master selector when those master lists are wired in a module
  * phase.) Filtering is server-side: changing a control re-runs the backend query.

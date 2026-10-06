@@ -24,13 +24,13 @@ function toDate(value: string | number | Date | null | undefined): Date | null {
 }
 
 /** `2026-06-26` → `26 Jun 2026`. Returns `fallback` for invalid/empty input. */
-export function formatDate(value: string | Date | null | undefined, fallback = '—'): string {
+export function formatDate(value: string | Date | null | undefined, fallback = '-'): string {
   const d = toDate(value);
   return d ? DISPLAY_DATE.format(d) : fallback;
 }
 
 /** ISO timestamp → `26 Jun 2026, 14:30`. */
-export function formatDateTime(value: string | Date | null | undefined, fallback = '—'): string {
+export function formatDateTime(value: string | Date | null | undefined, fallback = '-'): string {
   const d = toDate(value);
   return d ? DISPLAY_DATETIME.format(d) : fallback;
 }
@@ -38,7 +38,7 @@ export function formatDateTime(value: string | Date | null | undefined, fallback
 /** Compact relative time (e.g. "3 days ago"); falls back to absolute date. */
 export function formatRelative(value: string | Date | null | undefined): string {
   const d = toDate(value);
-  if (!d) return '—';
+  if (!d) return '-';
   const diffMs = d.getTime() - Date.now();
   const diffSec = Math.round(diffMs / 1000);
   const abs = Math.abs(diffSec);

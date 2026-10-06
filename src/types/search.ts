@@ -1,14 +1,14 @@
 /**
  * Global Search DTOs (Phase 15.2). Mirrors the backend search contract EXACTLY
  * (src/modules/search/search.types.ts + search.dto.ts). Search is server-side
- * only: the backend owns the query, ranking, visibility, and result payload — the
- * frontend never indexes or filters results client-side (codex §14).
+ * only: the backend owns the query, ranking, visibility, and result payload - the
+ * frontend never indexes or filters results client-side.
  */
 
 import type { MediaRef } from './common';
 
 /**
- * The searchable content surfaces — EXACTLY the tables carrying a metadata
+ * The searchable content surfaces - EXACTLY the tables carrying a metadata
  * `search_vector` (the FTS migration). Adding a surface is a backend change first.
  */
 export const CONTENT_TYPES = [
@@ -30,7 +30,7 @@ export function isContentType(value: string): value is ContentType {
 /** Query-length bounds enforced by the backend (API spec §1.5: 2–120 chars). */
 export const MIN_QUERY_LENGTH = 2;
 
-/** One lightweight search result (reference object only — never a full entity). */
+/** One lightweight search result (reference object only - never a full entity). */
 export interface SearchResult {
   content_type: ContentType;
   id: string;

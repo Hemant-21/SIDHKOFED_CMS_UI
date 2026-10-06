@@ -7,7 +7,7 @@ import { ROUTES } from '@/constants/routes';
 import type { Video } from '../types';
 
 /**
- * Video list column definitions. The video list is NOT server-sortable (no `ordering` param —
+ * Video list column definitions. The video list is NOT server-sortable (no `ordering` param -
  * video.controller.ts), so no `sortField` is set. Surfaces the contract: thumbnail, title,
  * publication state, homepage, updated. (Duration/highlight are not stored by the backend.)
  */

@@ -4,7 +4,7 @@
  * Document lifecycle + version actions. Reuses the shared publishing hooks (useLifecycleActions)
  * and the confirmation dialogs; gating is permission aware via <Can> (backend still enforces).
  * Lifecycle: publish/unpublish/archive/restore. Version management: replace-file swaps the
- * underlying asset while preserving the document id/slug (codex §4.5) — the new file is uploaded
+ * underlying asset while preserving the document id/slug - the new file is uploaded
  * through the shared media pipeline, then `useReplaceDocumentFile` points the document at it.
  */
 

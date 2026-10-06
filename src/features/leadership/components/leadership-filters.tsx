@@ -2,7 +2,7 @@
 
 /**
  * Leadership list filter bar. Exposes exactly the backend's allow-listed admin filters
- * (leadership.query.ts): publication_state, plus search. No `show_on_homepage` filter — that
+ * (leadership.query.ts): publication_state, plus search. No `show_on_homepage` filter - that
  * field doesn't exist on this entity. Server-side only.
  */
 

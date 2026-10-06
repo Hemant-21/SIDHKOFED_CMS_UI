@@ -2,8 +2,8 @@
 
 /**
  * Read-only toolkit distribution summary. Renders the backend-computed AGGREGATE returned by
- * `GET /public/toolkits/{slug}/distribution-summary` (totals calculated server-side — never in the
- * frontend; codex §4.3). Per-event distribution figures are authored under the Events module; this
+ * `GET /public/toolkits/{slug}/distribution-summary` (totals calculated server-side - never in the
+ * frontend). Per-event distribution figures are authored under the Events module; this
  * surface only displays the published toolkit-level rollup: participants covered, distribution-model
  * breakdown, and per-item totals.
  *
@@ -20,7 +20,7 @@ import { ApiError } from '@/lib/api/errors';
 import { formatNumber } from '@/utils/format';
 import { useToolkitDistributionSummary } from '../api';
 
-/** A 404 from the public aggregate just means "nothing distributed yet" — not a hard error. */
+/** A 404 from the public aggregate just means "nothing distributed yet" - not a hard error. */
 const isNotFound = (error: unknown): boolean =>
   error instanceof ApiError && (error.status === 404 || error.code === 'not_found');
 
@@ -61,7 +61,7 @@ export function DistributionSummaryPanel({
   }
 
   // A published toolkit with no recorded distributions yields a 404 on the aggregate endpoint, or an
-  // empty rollup — both are an honest "nothing distributed yet" state, not an error to retry.
+  // empty rollup - both are an honest "nothing distributed yet" state, not an error to retry.
   if (query.isError && !isNotFound(query.error)) {
     return (
       <Card>
@@ -132,10 +132,10 @@ export function DistributionSummaryPanel({
                 {data.items.map((item) => (
                   <tr key={item.id}>
                     <td className="py-2 pr-3 text-foreground">{item.name_en}</td>
-                    <td className="py-2 pr-3 text-muted-foreground">{item.unit ?? '—'}</td>
+                    <td className="py-2 pr-3 text-muted-foreground">{item.unit ?? '-'}</td>
                     <td className="py-2 pr-3 text-muted-foreground">{item.distribution_basis}</td>
                     <td className="py-2 text-right tabular-nums text-foreground">
-                      {item.total_quantity != null ? formatNumber(item.total_quantity) : '—'}
+                      {item.total_quantity != null ? formatNumber(item.total_quantity) : '-'}
                     </td>
                   </tr>
                 ))}

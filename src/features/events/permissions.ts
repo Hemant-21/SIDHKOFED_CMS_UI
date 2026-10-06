@@ -1,6 +1,6 @@
 /**
  * Permission keys for Events & News. The backend authorizes these modules with the SHARED
- * `content.*` permission set (events.routes.ts / news.routes.ts) — NOT `events.*`. complete /
+ * `content.*` permission set (events.routes.ts / news.routes.ts) - NOT `events.*`. complete /
  * cancel are publisher-level role actions; publish-as-news requires `content.publish`.
  *
  * These keys only mirror the backend seed (auth.permissions.ts); the backend remains the

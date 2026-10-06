@@ -1,11 +1,11 @@
 'use client';
 
 /**
- * Content-by-State summary (Phase 15.2) — satisfies the Draft Summary + Published
+ * Content-by-State summary (Phase 15.2) - satisfies the Draft Summary + Published
  * Summary requirements in one efficient widget. For a fixed set of content
  * modules it shows the BACKEND total in each publication state (draft / published
  * / archived). Every number is the server's `pagination.total_items` for that
- * resource+state filter — never a client-side tally.
+ * resource+state filter - never a client-side tally.
  */
 
 import { Layers } from 'lucide-react';
@@ -51,7 +51,7 @@ export function ContentStateSummary() {
   return (
     <DashboardCard
       title="Content by State"
-      description="Backend totals per module — drafts pending publication, published, and archived"
+      description="Backend totals per module - drafts pending publication, published, and archived"
       icon={Layers}
     >
       <div className="overflow-x-auto">

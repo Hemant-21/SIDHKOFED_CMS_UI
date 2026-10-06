@@ -16,7 +16,7 @@ interface PublicUrlLinkProps {
   label?: string;
 }
 
-/** The "Public URL" label + external link, without a Card wrapper — for embedding inside an existing card. */
+/** The "Public URL" label + external link, without a Card wrapper - for embedding inside an existing card. */
 export function PublicUrlLink({ path, label = 'Public URL' }: PublicUrlLinkProps) {
   const href = toPublicSiteUrl(path);
   return (

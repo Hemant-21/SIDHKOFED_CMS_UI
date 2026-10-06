@@ -1,13 +1,13 @@
 'use client';
 
 /**
- * Media Library data layer (API spec §6/§7). Media is NOT a publishable "P" resource — it has a
+ * Media Library data layer (API spec §6/§7). Media is NOT a publishable "P" resource - it has a
  * multipart upload pipeline, descriptive-metadata PATCH, archive/restore, replace-file, and usage
  * lookup. List/detail/archive/restore reuse the shared CRUD hooks (the generic admin endpoints
  * match: GET /admin/media, GET/POST /admin/media/:id/(archive|restore)); the upload/replace/usages
  * actions are media-specific and wired here. There is NO duplicate fetch logic.
  *
- * Authorization is ROLE-based on the backend (media.routes.ts) — all three CMS roles may manage
+ * Authorization is ROLE-based on the backend (media.routes.ts) - all three CMS roles may manage
  * media; there is no seeded `media.*` permission. `MEDIA_ROLES` drives permission-aware affordances.
  */
 
@@ -59,7 +59,7 @@ export function useUpdateMediaMeta() {
   });
 }
 
-/** Replace the file bytes — creates a new asset and chains the old one (POST /admin/media/:id/replace-file). */
+/** Replace the file bytes - creates a new asset and chains the old one (POST /admin/media/:id/replace-file). */
 export function useReplaceMediaFile() {
   const queryClient = useQueryClient();
   const toast = useToast();

@@ -1,13 +1,13 @@
 'use client';
 
 /**
- * Server-side relationship search (Phase 15.3 remediation — Finding 4).
+ * Server-side relationship search (Phase 15.3 remediation - Finding 4).
  *
  * The original `useRelationOptions` loaded ONE max-size page (`page_size=PAGE_SIZE_MAX`) and
  * filtered archived records in the browser. That does not scale: a programme/institution/
  * gallery/document list can exceed one page, so options silently went missing and every
  * keystroke filtered a stale client-side slice. This hook instead pushes search, pagination,
- * and archived exclusion to the backend — the same admin list endpoints the modules already
+ * and archived exclusion to the backend - the same admin list endpoints the modules already
  * own (programmes/institutions/galleries/documents/events), which all accept
  * `page`, `page_size`, `search`, and `publication_state` (see each module's `*.query.ts`).
  *
@@ -18,7 +18,7 @@
  * different scope pass `publicationState` explicitly (`'all'` sends none).
  *
  * Reuses the shared `getList` transport and React Query's `useInfiniteQuery` for cursor-free
- * page accumulation — no bespoke fetch logic, no `PAGE_SIZE_MAX`.
+ * page accumulation - no bespoke fetch logic, no `PAGE_SIZE_MAX`.
  */
 
 import { useInfiniteQuery } from '@tanstack/react-query';
@@ -26,7 +26,7 @@ import { adminResource } from '@/constants/api-endpoints';
 import { getList, type PaginatedResult } from '@/lib/api/http';
 import type { PublicationState } from '@/types/common';
 
-/** Page size for picker results — small, paginated, never `PAGE_SIZE_MAX`. */
+/** Page size for picker results - small, paginated, never `PAGE_SIZE_MAX`. */
 export const RELATION_PAGE_SIZE = 20;
 
 /** Minimal shape returned by the admin content lists we link against. */

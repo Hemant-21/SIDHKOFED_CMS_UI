@@ -34,7 +34,7 @@ export function faqColumns(actions?: (row: FaqSummary) => React.ReactNode): Colu
       header: 'Pages',
       cell: (f) =>
         f.page_assignments.length === 0 ? (
-          <span className="text-muted-foreground">—</span>
+          <span className="text-muted-foreground">-</span>
         ) : (
           <div className="flex flex-wrap gap-1">
             {f.page_assignments.map((a) => (
@@ -59,7 +59,7 @@ export function faqColumns(actions?: (row: FaqSummary) => React.ReactNode): Colu
         f.highlight_type ? (
           <HighlightBadge highlight={f.highlight_type} />
         ) : (
-          <span className="text-muted-foreground">—</span>
+          <span className="text-muted-foreground">-</span>
         ),
     },
     {
@@ -68,7 +68,7 @@ export function faqColumns(actions?: (row: FaqSummary) => React.ReactNode): Colu
       align: 'center',
       sortField: 'display_order',
       defaultHidden: true,
-      cell: (f) => <span className="text-muted-foreground">{f.display_order ?? '—'}</span>,
+      cell: (f) => <span className="text-muted-foreground">{f.display_order ?? '-'}</span>,
     },
     {
       id: 'updated_at',

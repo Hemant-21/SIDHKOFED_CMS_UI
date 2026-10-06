@@ -1,8 +1,7 @@
 /**
  * Generic CRUD-framework types. These describe the *reusable* surfaces every
- * future module composes — resource config, relationship selectors, declarative
- * filters, and bulk actions. No module-specific fields live here (codex: reuse
- * over duplication). They sit on top of the api/common primitives.
+ * future module composes - resource config, relationship selectors, declarative
+ * filters, and bulk actions. No module-specific fields live here. They sit on top of the api/common primitives.
  */
 
 import type { ListQuery } from './api';

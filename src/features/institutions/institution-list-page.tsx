@@ -2,7 +2,7 @@
 
 /**
  * Institutions list page. Composes the shared DataTable + filter framework + pagination + bulk
- * actions against the `institutions` resource — server pagination, server search, server filters,
+ * actions against the `institutions` resource - server pagination, server search, server filters,
  * sorting, column selection, and loading/empty/error states all from shared infrastructure. Bulk
  * publish/archive reuse the lifecycle hooks and are permission-gated. No client-side filtering.
  */
@@ -60,7 +60,7 @@ export function InstitutionListPage() {
     <div className="space-y-6">
       <PageHeader
         title="Partners & Institutions"
-        description="One reusable record for every partner organisation — departments, training institutions, universities, NGOs, buyers, and cooperative bodies."
+        description="One reusable record for every partner organisation - departments, training institutions, universities, NGOs, buyers, and cooperative bodies."
         actions={
           <Can permission={CONTENT_PERMS.create}>
             <Button asChild leftIcon={<Plus className="h-4 w-4" />}>

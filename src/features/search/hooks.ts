@@ -3,7 +3,7 @@
 /**
  * Global Search hooks (Phase 15.2). `useSearchResults` runs the server-side admin
  * search with the standard caching/keepPrevious policy, and only fires once the
- * (debounced) query meets the backend's minimum length — so we never send a
+ * (debounced) query meets the backend's minimum length - so we never send a
  * request the backend would reject, and an empty box shows recent/empty UI instead.
  */
 

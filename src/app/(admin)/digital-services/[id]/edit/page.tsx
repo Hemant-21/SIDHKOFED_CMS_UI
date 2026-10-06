@@ -1,5 +1,5 @@
 /**
- * `/digital-services/[id]/edit` — edit a digital service (Phase 15.7).
+ * `/digital-services/[id]/edit` - edit a digital service (Phase 15.7).
  */
 import { DigitalServiceFormPage } from '@/features/digital-services';
 

@@ -3,7 +3,7 @@
 /**
  * Lazy YouTube embed. Renders the thumbnail first and only mounts the privacy-enhanced
  * (youtube-nocookie) iframe on play, so the heavy player isn't loaded until the editor asks
- * (lazy video preview — performance). Safe: only the backend-derived `youtube_id` is used to
+ * (lazy video preview - performance). Safe: only the backend-derived `youtube_id` is used to
  * build the embed URL; no arbitrary HTML is injected.
  */
 

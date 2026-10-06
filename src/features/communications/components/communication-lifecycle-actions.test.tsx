@@ -9,8 +9,8 @@ import { CommunicationLifecycleActions } from './communication-lifecycle-actions
 import type { CommunicationDetail } from '../types';
 
 /**
- * RBAC regression (Phase 15.6 audit — Issue 3). Official Communications are authorized with the
- * SHARED `content.*` permission set (official-communications.routes.ts) — the module-specific
+ * RBAC regression (Phase 15.6 audit - Issue 3). Official Communications are authorized with the
+ * SHARED `content.*` permission set (official-communications.routes.ts) - the module-specific
  * `official-communications.*` keys are NEVER seeded. These affordances must therefore resolve
  * against `content.publish`/`content.archive`/… exactly like documents/events.
  */
@@ -66,7 +66,7 @@ function renderAs(role: keyof typeof ROLE_FIXTURES, comm: Partial<CommunicationD
   );
 }
 
-describe('CommunicationLifecycleActions — RBAC', () => {
+describe('CommunicationLifecycleActions - RBAC', () => {
   it('Publisher sees edit, publish, and archive (content.* keys resolve)', () => {
     renderAs('publisher');
     expect(screen.getByRole('link', { name: /edit/i })).toBeInTheDocument();
@@ -74,7 +74,7 @@ describe('CommunicationLifecycleActions — RBAC', () => {
     expect(screen.getByRole('button', { name: 'Archive' })).toBeInTheDocument();
   });
 
-  it('Content Editor sees only edit — publish/archive are hidden', () => {
+  it('Content Editor sees only edit - publish/archive are hidden', () => {
     renderAs('content_editor');
     expect(screen.getByRole('link', { name: /edit/i })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Publish' })).not.toBeInTheDocument();

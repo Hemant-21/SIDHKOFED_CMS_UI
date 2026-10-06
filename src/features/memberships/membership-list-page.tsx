@@ -3,8 +3,8 @@
 /**
  * Institutional Membership list page. Composes the shared DataTable + filter framework + pagination
  * + bulk actions. Server pagination, server search, server filters, sorting, column selection, and
- * loading/empty/error states all come from the shared infrastructure — there is no client-side
- * filtering. Adds a permission-aware bulk-import action (codex §4.15).
+ * loading/empty/error states all come from the shared infrastructure - there is no client-side
+ * filtering. Adds a permission-aware bulk-import action.
  */
 
 import { useMemo, useState } from 'react';
@@ -66,7 +66,7 @@ export function MembershipListPage() {
     <div className="space-y-6">
       <PageHeader
         title="Institutional Membership"
-        description="Institution-wise membership records — SIDHKOFED / District Union × Primary / Nominal."
+        description="Institution-wise membership records - SIDHKOFED / District Union × Primary / Nominal."
         actions={
           <div className="flex flex-wrap items-center gap-2">
             <Can permission={MEMBERSHIP_PERMS.create}>

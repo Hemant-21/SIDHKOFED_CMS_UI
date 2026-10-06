@@ -4,12 +4,12 @@
  * Form/filter bindings for the shared {@link RelationPicker} (Phase 15.3 remediation).
  *
  * - `RelationMultiSelectField` binds the picker (multi) to a React Hook Form array field, with
- *   full label/description/error wiring via the shared `<FormField>` — drop-in for the old
+ *   full label/description/error wiring via the shared `<FormField>` - drop-in for the old
  *   `<MultiSelectField>` that loaded every option up front.
  * - `RelationSelect` is the controlled single-select used by list filter bars (which are not
  *   RHF-driven): it adapts the picker's array contract to a single id string.
  *
- * Both reuse the one picker — no duplicate select logic.
+ * Both reuse the one picker - no duplicate select logic.
  */
 
 import type { FieldValues, Path } from 'react-hook-form';
@@ -24,7 +24,7 @@ import type { RelationOption } from './relation-search';
  *
  * `<FormField>`'s render prop types `field.value` as the union of every form field's value (it is
  * keyed by the whole `Path<TValues>` union), so a single-select id field surfaces as `string | …`.
- * This narrows it safely to an id array — no casts — for `<RelationPicker value={…}>`.
+ * This narrows it safely to an id array - no casts - for `<RelationPicker value={…}>`.
  */
 export function toRelationValue(value: unknown): string[] {
   return typeof value === 'string' && value !== '' ? [value] : [];

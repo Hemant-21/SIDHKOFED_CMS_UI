@@ -1,5 +1,5 @@
 /**
- * `/official-communications/[id]/edit` — edit a communication (Phase 15.6).
+ * `/official-communications/[id]/edit` - edit a communication (Phase 15.6).
  */
 import { CommunicationFormPage } from '@/features/communications';
 

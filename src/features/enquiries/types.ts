@@ -1,6 +1,6 @@
 /**
- * Enquiries module types — mirror of the backend admin DTOs (enquiries.dto.ts). Enquiries are NOT
- * publishable content (no publication_state/slug/highlight/homepage — enquiries.types.ts). The
+ * Enquiries module types - mirror of the backend admin DTOs (enquiries.dto.ts). Enquiries are NOT
+ * publishable content (no publication_state/slug/highlight/homepage - enquiries.types.ts). The
  * admin surface reads, annotates (internal_notes + spam_state), archives, and exports; it never
  * creates or edits the public-submitted contact fields.
  */
@@ -39,7 +39,7 @@ export interface EnquirySummary {
   created_at: string;
 }
 
-/** Detail shape (EnquiryDetailDto) — adds the message body and internal-only fields. */
+/** Detail shape (EnquiryDetailDto) - adds the message body and internal-only fields. */
 export interface EnquiryDetail extends EnquirySummary {
   message: string;
   commodity: MasterRef | null;
@@ -48,7 +48,7 @@ export interface EnquiryDetail extends EnquirySummary {
   updated_at: string;
 }
 
-/** Admin PATCH payload — the backend accepts ONLY these two fields (enquiries.validators.ts). */
+/** Admin PATCH payload - the backend accepts ONLY these two fields (enquiries.validators.ts). */
 export interface EnquiryAnnotateInput {
   internal_notes?: string | null;
   spam_state?: SpamState;

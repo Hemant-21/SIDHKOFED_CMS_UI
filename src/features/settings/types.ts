@@ -1,11 +1,11 @@
 /**
- * System Settings module types — mirror the backend Settings API (src/modules/settings/*).
+ * System Settings module types - mirror the backend Settings API (src/modules/settings/*).
  *
  * `GET /admin/settings` returns settings grouped by category:
  *   { groups: { [group]: Array<{ key, value, description }> } }
  * `GET|PUT /admin/settings/:key` exchange a single `{ key, group, value, description }` record; PUT
  * accepts `{ value }` and validates it against the backend's typed catalog (unknown keys → 404,
- * invalid values → 422). The frontend NEVER defines settings — it renders whatever the backend
+ * invalid values → 422). The frontend NEVER defines settings - it renders whatever the backend
  * returns and submits values back for the backend to validate (API spec §6). Super Admin only.
  *
  * The list response does NOT carry each value's declared type, so the editor control is inferred

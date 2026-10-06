@@ -1,7 +1,7 @@
 /**
  * Tiny, dependency-free CSV helpers (RFC-4180-lite) shared by the bulk-import surfaces
  * (membership bulk upload, dashboard manual dataset). These do ONLY the mechanical text → records
- * transform — never any business validation. Every imported row is validated server-side, which
+ * transform - never any business validation. Every imported row is validated server-side, which
  * remains the single source of truth.
  */
 

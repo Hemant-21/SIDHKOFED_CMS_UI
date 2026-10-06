@@ -5,7 +5,7 @@
  * BilingualTabs, FormSection), the master-option hooks (institution type, district) and the shared
  * CoverMediaField for the logo (media is reused by reference, never re-uploaded ad-hoc). It NEVER
  * sets publication state (that is the lifecycle actions). Server-side 422 errors map back onto
- * fields via the <Form> wrapper. The slug is shown read-only after creation (immutable; codex §11).
+ * fields via the <Form> wrapper. The slug is shown read-only after creation (immutable).
  */
 
 import { useRouter } from 'next/navigation';
@@ -114,7 +114,7 @@ export function InstitutionForm({ institution }: InstitutionFormProps) {
         />
       </FormSection>
 
-      <FormSection title="Content" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Content" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={
             <>
@@ -144,7 +144,7 @@ export function InstitutionForm({ institution }: InstitutionFormProps) {
         />
       </FormSection>
 
-      <FormSection title="Logo" description="Pick from the Media Library or upload once and reuse by reference (codex §5.1).">
+      <FormSection title="Logo" description="Pick from the Media Library or upload once and reuse by reference.">
         <CoverMediaField<InstitutionFormValues>
           name="logo_media_id"
           label="Institution logo"

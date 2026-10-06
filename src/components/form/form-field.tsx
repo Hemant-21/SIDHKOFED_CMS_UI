@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * `<FormField>` — connects an RHF field to a labelled, accessible control row:
+ * `<FormField>` - connects an RHF field to a labelled, accessible control row:
  * Label (with required marker), the control (render prop), an optional helper
  * description, and an inline error linked via aria-describedby + aria-invalid.
  * This is the accessibility contract every form input flows through.

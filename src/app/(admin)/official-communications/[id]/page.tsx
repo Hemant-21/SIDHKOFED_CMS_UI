@@ -1,5 +1,5 @@
 /**
- * `/official-communications/[id]` — communication detail / view (Phase 15.6).
+ * `/official-communications/[id]` - communication detail / view (Phase 15.6).
  */
 import { CommunicationDetailPage } from '@/features/communications';
 

@@ -3,7 +3,7 @@
 /**
  * Thin wrapper around React Hook Form wired to a Zod schema. Standardizes the
  * resolver + sensible defaults so every form is validated the same way. The form
- * SYSTEM is generic — no module schemas live here; callers pass their own schema.
+ * SYSTEM is generic - no module schemas live here; callers pass their own schema.
  */
 
 import { useForm, type UseFormProps, type UseFormReturn, type FieldValues } from 'react-hook-form';

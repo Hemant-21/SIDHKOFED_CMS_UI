@@ -2,7 +2,7 @@
 
 /**
  * Audit Log data hooks. The audit log is a standard admin list/detail resource at
- * `/admin/audit-logs`, so it reuses the shared CRUD hooks against the `audit-logs` resource — there
+ * `/admin/audit-logs`, so it reuses the shared CRUD hooks against the `audit-logs` resource - there
  * is NO bespoke fetch logic. Audit has no create/update/lifecycle, so only the read hooks are used.
  *
  * Every call is gated by `enabled` because the endpoint is Super Admin only (API spec §8); other

@@ -1,5 +1,5 @@
 /**
- * `/tenders/[id]` — tender detail / view (Phase 15.6).
+ * `/tenders/[id]` - tender detail / view (Phase 15.6).
  */
 import { TenderDetailPage } from '@/features/tenders';
 

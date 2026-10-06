@@ -3,7 +3,7 @@
 /**
  * Audit Log list page. Composes the shared DataTable + filter framework + pagination. Server
  * pagination, server filters, server sorting, and loading/empty/error states all come from the
- * shared 15.0/15.1 infrastructure — there is no client-side filtering. The audit log is READ-ONLY
+ * shared 15.0/15.1 infrastructure - there is no client-side filtering. The audit log is READ-ONLY
  * (no create/edit/bulk actions) and Super Admin only (API spec §8), so the whole page is gated with
  * a role check that renders an honest forbidden state for other roles instead of firing a 403.
  */
@@ -63,7 +63,7 @@ export function AuditListPage() {
     <div className="space-y-6">
       <PageHeader
         title="Audit Log"
-        description="A read-only, append-only record of every administrative action — create, edit, publish, archive, restore, file replacement, master and settings changes, and sign-ins."
+        description="A read-only, append-only record of every administrative action - create, edit, publish, archive, restore, file replacement, master and settings changes, and sign-ins."
       />
 
       <Card className="space-y-4 p-4">

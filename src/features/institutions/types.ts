@@ -1,10 +1,10 @@
 /**
- * Institutions module types — a faithful mirror of the backend Institution DTOs (institutions.dto.ts)
+ * Institutions module types - a faithful mirror of the backend Institution DTOs (institutions.dto.ts)
  * and request validators (institutions.validators.ts). The frontend consumes these contracts
  * exactly; it never invents fields. `snake_case` matches the API transport (API spec §0).
  *
- * One reusable Institution operation for all organisations — partners, departments, universities,
- * NGOs, cooperative bodies, etc. (codex §4.4 / API spec §5). Publishable **P** content carrying the
+ * One reusable Institution operation for all organisations - partners, departments, universities,
+ * NGOs, cooperative bodies, etc.. Publishable **P** content carrying the
  * shared publishing-workflow mixin. Authorized with the generic `content.*` RBAC set
  * (institutions.routes.ts), so permission keys are reused from the events feature.
  */
@@ -49,7 +49,7 @@ export interface InstitutionDetail extends InstitutionSummary {
 }
 
 /**
- * Create/Update body — only the model-backed fields + allowed workflow fields the backend validator
+ * Create/Update body - only the model-backed fields + allowed workflow fields the backend validator
  * accepts (institutions.validators.ts, `.strict()`). Server-managed fields (slug, state, *_by,
  * published_at) are never produced.
  */

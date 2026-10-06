@@ -1,5 +1,5 @@
 /**
- * Media Library types — a faithful mirror of the backend Media DTO (media.dto.ts) and the
+ * Media Library types - a faithful mirror of the backend Media DTO (media.dto.ts) and the
  * usages/bulk-upload shapes (media.service.ts). The frontend consumes these contracts exactly;
  * it never exposes `storage_key` (API spec §7). `snake_case` matches the API transport.
  */

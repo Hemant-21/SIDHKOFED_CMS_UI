@@ -1,7 +1,7 @@
 /**
  * Settings API client. Calls `GET /admin/settings` (all groups) and `PUT /admin/settings/:key`
  * (single setting). The backend returns `{ groups: { [group]: SettingItem[] } }` from the
- * settings catalog; there is no POST/DELETE (API spec §6). The frontend never defines settings —
+ * settings catalog; there is no POST/DELETE (API spec §6). The frontend never defines settings -
  * it renders whatever the backend returns and posts values back for server-side validation.
  */
 
@@ -15,7 +15,7 @@ export async function fetchSettings(): Promise<SettingsGroupsResponse> {
   return get<SettingsGroupsResponse>(BASE);
 }
 
-/** Update a setting value. Body `{ value }` — backend validates. */
+/** Update a setting value. Body `{ value }` - backend validates. */
 export async function updateSetting(key: string, value: unknown): Promise<SettingRecord> {
   return put<SettingRecord, { value: unknown }>(`${BASE}/${encodeURIComponent(key)}`, { value });
 }

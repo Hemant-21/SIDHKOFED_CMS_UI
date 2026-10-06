@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Filters panel for one report tab — each report's own multiselect filters, dependent block
+ * Filters panel for one report tab - each report's own multiselect filters, dependent block
  * options (only blocks within selected districts), and explicit Apply/Reset. The financial year
  * itself is a page-level shared selector (see `reports-page.tsx`), not owned by this component;
  * `financialYearId` is threaded through only so Apply can attach it to the outgoing filter set.

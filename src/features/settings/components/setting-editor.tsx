@@ -1,10 +1,10 @@
 'use client';
 
 /**
- * `<SettingEditor>` — renders the appropriate input affordance for a single setting based on
+ * `<SettingEditor>` - renders the appropriate input affordance for a single setting based on
  * the inferred `SettingKind`. The editor is UNCONTROLLED to the feature (it holds its own draft
  * state) but reports save/reset events to the parent. The backend is the authority; inference
- * is UX-only and a wrong guess just produces a less convenient input — the backend still
+ * is UX-only and a wrong guess just produces a less convenient input - the backend still
  * validates on PUT.
  *
  * Dirty tracking: the editor compares the current draft to the original persisted value so the

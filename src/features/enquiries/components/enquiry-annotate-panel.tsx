@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Enquiry annotate panel — the ONLY editable surface on an enquiry (enquiries.validators.ts →
+ * Enquiry annotate panel - the ONLY editable surface on an enquiry (enquiries.validators.ts →
  * enquiryAdminPatchSchema accepts just `internal_notes` + `spam_state`; public contact fields are
  * immutable from the admin side). Dirty-tracked against the persisted detail, same pattern as
  * `<SettingEditor>` (features/settings): the Save button only appears once the draft differs.

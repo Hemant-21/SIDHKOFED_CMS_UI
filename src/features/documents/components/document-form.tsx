@@ -5,7 +5,7 @@
  * BilingualTabs, FormSection), the relationship pickers (master/option hooks), and the document
  * attachment field (shared media pipeline). It NEVER sets publication state (that is the lifecycle
  * actions). Server-side 422 errors map back onto fields via the <Form> wrapper. The slug is shown
- * read-only after creation (immutable; codex §11).
+ * read-only after creation (immutable).
  */
 
 import { useRouter } from 'next/navigation';
@@ -99,7 +99,7 @@ export function DocumentForm({ document }: DocumentFormProps) {
 
   return (
     <Form form={form} onSubmit={onSubmit} className="space-y-8">
-      <FormSection title="Content" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Content" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={
             <>
@@ -134,7 +134,7 @@ export function DocumentForm({ document }: DocumentFormProps) {
         />
       </FormSection>
 
-      <FormSection title="Attachment" description="Upload the file once; link it by reference (codex §4.5).">
+      <FormSection title="Attachment" description="Upload the file once; link it by reference.">
         <DocumentFileField<DocumentFormValues>
           name="file_asset_id"
           label="Document file"
@@ -145,7 +145,7 @@ export function DocumentForm({ document }: DocumentFormProps) {
 
       <FormSection
         title="Destination"
-        description="Determined entirely by the selected document type — pick the document type above to change it."
+        description="Determined entirely by the selected document type - pick the document type above to change it."
       >
         {selectedDocumentType ? (
           <div className="flex items-center gap-2">
@@ -155,7 +155,7 @@ export function DocumentForm({ document }: DocumentFormProps) {
             <span className="text-sm text-muted-foreground">
               {(selectedDocumentType.document_section === 'notifications'
                 ? selectedDocumentType.communication_type?.name_en
-                : selectedDocumentType.knowledge_category?.name_en) ?? '—'}
+                : selectedDocumentType.knowledge_category?.name_en) ?? '-'}
             </span>
           </div>
         ) : (

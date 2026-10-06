@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Image-upload WRAPPER — FileUpload + a local preview. Upload wiring is the
+ * Image-upload WRAPPER - FileUpload + a local preview. Upload wiring is the
  * caller's concern (media endpoints). Object URLs are revoked on replace to avoid
  * leaks. Restricts to images by default.
  */

@@ -2,7 +2,7 @@
 
 /**
  * Procurement Update create/edit form. NEVER calculates rates, totals, or performs any
- * procurement logic — those are ERP concerns (codex §4.8 / non-goals). The frontend passes
+ * procurement logic - those are ERP concerns. The frontend passes
  * rate and unit as plain strings entered by the user; all computation stays on the backend.
  *
  * Conditional fields (rate/unit, dates, location) are all shown but optional, matching the
@@ -119,7 +119,7 @@ export function ProcurementForm({ procurement }: ProcurementFormProps) {
   const highlightType = form.watch('highlight_type');
   const districtId = form.watch('district_id');
 
-  // Category is a UI-only scoping control (never submitted — the payload still sends only
+  // Category is a UI-only scoping control (never submitted - the payload still sends only
   // procurement_update_type_id). Hydrate from the existing update's type's category on edit so
   // the current type stays visible without forcing a re-pick.
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>(
@@ -136,13 +136,13 @@ export function ProcurementForm({ procurement }: ProcurementFormProps) {
 
   const onCategoryChange = (value: string) => {
     setSelectedCategoryId(value);
-    // A category change invalidates the previously selected type — never let a stale
+    // A category change invalidates the previously selected type - never let a stale
     // cross-category type id be submitted.
     form.setValue('procurement_update_type_id', '', { shouldDirty: true, shouldValidate: true });
   };
 
-  // Master data (commodity/district/block) comes from the Masters API — bounded reference lists
-  // loaded eagerly as dropdowns (Phase 15.3 — NOT the server-side content RelationPicker). Blocks
+  // Master data (commodity/district/block) comes from the Masters API - bounded reference lists
+  // loaded eagerly as dropdowns (Phase 15.3 - NOT the server-side content RelationPicker). Blocks
   // are filtered to the selected district.
   const commodities = useMasterOptions('commodities');
   const districts = useMasterOptions('districts');
@@ -152,7 +152,7 @@ export function ProcurementForm({ procurement }: ProcurementFormProps) {
   const districtOptions = [{ value: '', label: 'None' }, ...districts.options];
   const blockOptions = [{ value: '', label: 'None' }, ...blocks.options];
 
-  // Programme/scheme and document are CONTENT records — they keep the server-side RelationPicker.
+  // Programme/scheme and document are CONTENT records - they keep the server-side RelationPicker.
   const programmeInitial = useMemo<RelationOption[]>(
     () =>
       procurement?.programme
@@ -219,7 +219,7 @@ export function ProcurementForm({ procurement }: ProcurementFormProps) {
         />
       </FormSection>
 
-      <FormSection title="Content" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Content" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={
             <>
@@ -268,7 +268,7 @@ export function ProcurementForm({ procurement }: ProcurementFormProps) {
           name="unit"
           label="Rate unit"
           placeholder="KG"
-          description="Pre-filled KG — change only if needed."
+          description="Pre-filled KG - change only if needed."
         />
         <TextField<ProcurementFormValues>
           name="quantity"

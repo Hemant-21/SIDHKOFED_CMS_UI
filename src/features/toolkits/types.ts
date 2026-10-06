@@ -1,10 +1,10 @@
 /**
- * Toolkits module types — a faithful mirror of the backend Toolkit + ToolkitItem + distribution
+ * Toolkits module types - a faithful mirror of the backend Toolkit + ToolkitItem + distribution
  * DTOs (toolkits.dto.ts, items/items.dto.ts, toolkit-distributions.dto.ts) and request validators.
  * The frontend consumes these contracts exactly; it never invents fields. `snake_case` matches the
  * API transport (API spec §0).
  *
- * A Toolkit links a Programme/Scheme + Commodity + ordered ToolkitItems (codex §4.3 / API spec §5).
+ * A Toolkit links a Programme/Scheme + Commodity + ordered ToolkitItems.
  * Publishable **P** content with its own module-specific `toolkits.*` RBAC; nested items carry
  * `toolkit_items.*` CRUD. Per-event distribution figures are recorded under Events; the toolkit-level
  * distribution summary is a read-only public AGGREGATE (totals are calculated by the backend).
@@ -63,7 +63,7 @@ export interface ToolkitSummary {
   updated_at: string;
 }
 
-/** Admin detail (ToolkitDetailDto) — includes the ordered catalogue items. */
+/** Admin detail (ToolkitDetailDto) - includes the ordered catalogue items. */
 export interface ToolkitDetail extends ToolkitSummary {
   summary_hi: string | null;
   description_en: string | null;
@@ -78,7 +78,7 @@ export interface ToolkitDetail extends ToolkitSummary {
 }
 
 /**
- * Create/Update body — only the model-backed fields + relation IDs + workflow fields the backend
+ * Create/Update body - only the model-backed fields + relation IDs + workflow fields the backend
  * validator accepts (toolkits.validators.ts, `.strict()`). Server-managed fields (slug, state,
  * *_by, published_at) are never produced.
  */
@@ -122,7 +122,7 @@ export interface ToolkitItemWriteInput {
 
 // ── Public distribution aggregate (read-only; backend-calculated totals) ───────────
 // `GET /public/toolkits/{slug}/distribution-summary` (toolkit-distributions.dto.ts →
-// PublicDistributionSummaryDto). Summary figures only — never beneficiary-level data.
+// PublicDistributionSummaryDto). Summary figures only - never beneficiary-level data.
 
 interface PublicDistributionItemSummary {
   id: string; // toolkit_item_id

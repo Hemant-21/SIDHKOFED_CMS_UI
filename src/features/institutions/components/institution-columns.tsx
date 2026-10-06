@@ -8,7 +8,7 @@ import { ROUTES } from '@/constants/routes';
 import type { InstitutionSummary } from '../types';
 
 /**
- * Institution list column definitions (reused by the DataTable). Pure presentation — sort fields
+ * Institution list column definitions (reused by the DataTable). Pure presentation - sort fields
  * map to the backend ordering allow-list (institutions.types.ts): `name_en`, `display_order`,
  * `published_at`, `created_at`. The Actions column is rendered by the list page so it can wire
  * navigation. Columns surface exactly the contract: name, type, district, homepage, state, updated.
@@ -41,7 +41,7 @@ export function institutionColumns(actions?: (row: InstitutionSummary) => React.
       ),
     },
     { id: 'institution_type', header: 'Type', cell: (i) => <span className="text-muted-foreground">{i.institution_type.name_en}</span> },
-    { id: 'district', header: 'District', cell: (i) => <span className="text-muted-foreground">{i.district?.name_en ?? '—'}</span> },
+    { id: 'district', header: 'District', cell: (i) => <span className="text-muted-foreground">{i.district?.name_en ?? '-'}</span> },
     { id: 'publication_state', header: 'State', cell: (i) => <StatusBadge state={i.publication_state} /> },
     {
       id: 'highlight',
@@ -49,7 +49,7 @@ export function institutionColumns(actions?: (row: InstitutionSummary) => React.
       align: 'center',
       defaultHidden: true,
       cell: (i) =>
-        i.highlight_type ? <HighlightBadge highlight={i.highlight_type} /> : <span className="text-muted-foreground">—</span>,
+        i.highlight_type ? <HighlightBadge highlight={i.highlight_type} /> : <span className="text-muted-foreground">-</span>,
     },
     {
       id: 'show_on_homepage',
@@ -68,7 +68,7 @@ export function institutionColumns(actions?: (row: InstitutionSummary) => React.
       align: 'center',
       sortField: 'display_order',
       defaultHidden: true,
-      cell: (i) => <span className="text-muted-foreground">{i.display_order ?? '—'}</span>,
+      cell: (i) => <span className="text-muted-foreground">{i.display_order ?? '-'}</span>,
     },
     {
       id: 'updated_at',

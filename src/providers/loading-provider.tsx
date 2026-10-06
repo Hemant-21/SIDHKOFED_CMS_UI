@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * LoadingProvider — a global, ref-counted busy indicator for app-wide blocking
+ * LoadingProvider - a global, ref-counted busy indicator for app-wide blocking
  * operations (e.g. a multi-step action outside React Query). Most loading should
  * use React Query's own states + Skeletons; this is the escape hatch for true
  * full-screen waits. Ref-counting means concurrent callers compose correctly.

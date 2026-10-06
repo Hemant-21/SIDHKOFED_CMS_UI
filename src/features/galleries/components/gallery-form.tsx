@@ -71,7 +71,7 @@ export function GalleryForm({ gallery }: GalleryFormProps) {
         <TextField<GalleryFormValues> name="title_en" label="Title (English)" required />
       </FormSection>
 
-      <FormSection title="Content" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Content" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={
             <TextareaField<GalleryFormValues>

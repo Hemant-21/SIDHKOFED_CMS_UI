@@ -1,10 +1,10 @@
 # =============================================================================
-# SIDHKOFED CMS — Admin CMS  (Next.js 14, multi-stage production build)
+# SIDHKOFED CMS - Admin CMS  (Next.js 14, multi-stage production build)
 # =============================================================================
 # Requires next.config.mjs `output: 'standalone'` (already set).
-# Stage 1 (deps)    — install ALL deps for the Next.js build
-# Stage 2 (builder) — next build → .next/standalone
-# Stage 3 (runner)  — minimal runtime; standalone + static assets only
+# Stage 1 (deps)    - install ALL deps for the Next.js build
+# Stage 2 (builder) - next build -> .next/standalone
+# Stage 3 (runner)  - minimal runtime; standalone + static assets only
 # =============================================================================
 
 # ── Stage 1: dependencies ─────────────────────────────────────────────────────

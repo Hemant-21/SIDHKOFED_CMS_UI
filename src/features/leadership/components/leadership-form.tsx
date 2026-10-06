@@ -88,7 +88,7 @@ export function LeadershipForm({ leader }: LeadershipFormProps) {
 
   return (
     <Form form={form} onSubmit={onSubmit} className="space-y-8">
-      <FormSection title="Name" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Name" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={<TextField<LeadershipFormValues> name="name_en" label="Name (English)" required />}
           hindi={<TextField<LeadershipFormValues> name="name_hi" label="नाम (Hindi)" />}

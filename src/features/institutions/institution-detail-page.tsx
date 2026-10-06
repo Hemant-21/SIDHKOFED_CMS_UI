@@ -2,8 +2,7 @@
 
 /**
  * Institution detail / view page. Read-only presentation of one institution plus the lifecycle
- * actions. Bilingual content shows in tabs. The external website opens safely in a new tab (codex
- * §4.4). Linked records use the compact references the backend returns. Loading/error states are
+ * actions. Bilingual content shows in tabs. The external website opens safely in a new tab. Linked records use the compact references the backend returns. Loading/error states are
  * the shared components.
  */
 
@@ -84,17 +83,17 @@ export function InstitutionDetailPage({ id }: { id: string }) {
                     {institution.contact_email}
                   </a>
                 ) : (
-                  '—'
+                  '-'
                 )}
               </Line>
               <Line icon={Phone} label="Phone">
-                {institution.contact_phone ?? '—'}
+                {institution.contact_phone ?? '-'}
               </Line>
               <Line icon={MapPin} label="Address">
                 {institution.address_en ? (
                   <span className="whitespace-pre-wrap">{institution.address_en}</span>
                 ) : (
-                  '—'
+                  '-'
                 )}
               </Line>
             </CardContent>

@@ -59,8 +59,8 @@ export function ProgrammeDetailPage({ id }: { id: string }) {
             <CardHeader title="Overview" />
             <CardContent>
               <dl className="grid gap-4 sm:grid-cols-2">
-                <Item label="Funding source">{programme.funding_source ?? '—'}</Item>
-                <Item label="Short code">{programme.short_code ?? '—'}</Item>
+                <Item label="Funding source">{programme.funding_source ?? '-'}</Item>
+                <Item label="Short code">{programme.short_code ?? '-'}</Item>
                 <Item label="Start date">{formatDate(programme.start_date)}</Item>
                 <Item label="End date">{formatDate(programme.end_date)}</Item>
               </dl>
@@ -149,7 +149,7 @@ function RefList({ label, items }: { label: string; items: string[] }) {
     <div>
       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</p>
       {items.length === 0 ? (
-        <p className="text-sm text-muted-foreground">—</p>
+        <p className="text-sm text-muted-foreground">-</p>
       ) : (
         <div className="mt-1 flex flex-wrap gap-1.5">
           {items.map((i) => (

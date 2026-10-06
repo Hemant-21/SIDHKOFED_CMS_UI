@@ -1,9 +1,9 @@
 'use client';
 
 /**
- * Roles & Permissions page — read-only RBAC reference.
+ * Roles & Permissions page - read-only RBAC reference.
  * No API calls: roles and permissions are static (seeded by backend, no listing endpoint).
- * Accessible to all authenticated users — no Super Admin gate needed (it's reference info).
+ * Accessible to all authenticated users - no Super Admin gate needed (it's reference info).
  */
 
 import { PageHeader } from '@/components/layout/page-header';
@@ -30,7 +30,7 @@ export function RolesPage() {
             />
             <CardContent>
               {role.isWildcard ? (
-                <Badge tone="success">Wildcard — all permissions</Badge>
+                <Badge tone="success">Wildcard - all permissions</Badge>
               ) : (
                 <Badge tone="default">Scoped permissions</Badge>
               )}

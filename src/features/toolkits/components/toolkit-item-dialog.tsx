@@ -3,7 +3,7 @@
 /**
  * Add/edit dialog for a toolkit catalogue item. Reuses the shared <Form> + Field components and the
  * item create/update mutations. Validation mirrors the backend (items.validators.ts): a `group`
- * basis requires a positive group size; quantities are non-negative. The backend owns any totals —
+ * basis requires a positive group size; quantities are non-negative. The backend owns any totals -
  * this only captures catalogue defaults. Server 422s map back onto fields via <Form>.
  */
 

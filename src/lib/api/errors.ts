@@ -1,6 +1,6 @@
 /**
- * Normalized API error. Every failure — server envelope, network drop, timeout,
- * offline — is converted into one `ApiError` so UI/error boundaries handle a
+ * Normalized API error. Every failure - server envelope, network drop, timeout,
+ * offline - is converted into one `ApiError` so UI/error boundaries handle a
  * single shape. Sensitive details are never surfaced (security: "sensitive error
  * exposure"); only the backend's safe `message` + `code` reach the user.
  */

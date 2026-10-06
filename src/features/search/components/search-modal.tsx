@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Global search modal (Phase 15.2) — the Ctrl/Cmd+K command palette. A purpose-
+ * Global search modal (Phase 15.2) - the Ctrl/Cmd+K command palette. A purpose-
  * built modal (the generic confirm-Dialog's fixed header doesn't suit a palette)
  * that REUSES the shared `useFocusTrap` hook for WCAG-compliant focus management,
  * plus ESC-to-close, scroll-lock, overlay dismiss, restored focus, and an

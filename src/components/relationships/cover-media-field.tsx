@@ -95,7 +95,7 @@ export function CoverMediaField<T extends FieldValues>({
                 ) : null}
               </div>
             ) : field.value ? (
-              // Has an id but no resolvable preview (e.g. created elsewhere) — show a chip.
+              // Has an id but no resolvable preview (e.g. created elsewhere) - show a chip.
               <div className="flex items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm text-muted-foreground">
                   <ImageIcon className="h-4 w-4" aria-hidden="true" /> Image selected

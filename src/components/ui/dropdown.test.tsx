@@ -5,7 +5,7 @@ import { Dropdown } from './dropdown';
 import { Button } from './button';
 
 /**
- * Accessibility regression (Phase 15.6 audit — Issue 5). The Dropdown must NOT wrap its trigger in
+ * Accessibility regression (Phase 15.6 audit - Issue 5). The Dropdown must NOT wrap its trigger in
  * a second <button> (no nested interactive elements). The toggle ARIA + click are merged onto the
  * single trigger element via Slot, and keyboard/screen-reader behaviour is preserved.
  */

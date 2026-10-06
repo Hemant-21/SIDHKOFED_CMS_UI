@@ -85,7 +85,7 @@ export function VideoForm({ video }: VideoFormProps) {
 
   return (
     <Form form={form} onSubmit={onSubmit} className="space-y-8">
-      <FormSection title="YouTube source" description="Videos stream from YouTube — files are never hosted (codex §5.3).">
+      <FormSection title="YouTube source" description="Videos stream from YouTube - files are never hosted.">
         <div className="space-y-2">
           <div className="flex items-end gap-2">
             <div className="flex-1">
@@ -100,14 +100,14 @@ export function VideoForm({ video }: VideoFormProps) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={preview.thumbnail_url} alt="" className="h-16 w-28 rounded object-cover" />
               <p className="inline-flex items-center gap-1.5 text-sm text-success">
-                <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Valid — video id <code className="text-foreground">{preview.youtube_id}</code>
+                <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Valid - video id <code className="text-foreground">{preview.youtube_id}</code>
               </p>
             </div>
           ) : null}
         </div>
       </FormSection>
 
-      <FormSection title="Content" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Content" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={
             <>

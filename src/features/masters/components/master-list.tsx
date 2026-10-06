@@ -91,7 +91,7 @@ export function MasterList({ config }: MasterListProps) {
         : {
             id: 'name_hi',
             header: 'नाम (Hindi)',
-            cell: (r) => <span className="text-sm text-muted-foreground">{r.name_hi ?? '—'}</span>,
+            cell: (r) => <span className="text-sm text-muted-foreground">{r.name_hi ?? '-'}</span>,
           },
       ...(isFy
         ? [{
@@ -113,7 +113,7 @@ export function MasterList({ config }: MasterListProps) {
         sortField: 'district_id',
         cell: (r: MasterRecord) => {
           const d = r.district as { name_en?: string } | undefined;
-          return <span className="text-sm text-muted-foreground">{d?.name_en ?? '—'}</span>;
+          return <span className="text-sm text-muted-foreground">{d?.name_en ?? '-'}</span>;
         },
       }] : []),
       ...(isEventTypes ? [{
@@ -122,7 +122,7 @@ export function MasterList({ config }: MasterListProps) {
         sortField: 'event_category_id',
         cell: (r: MasterRecord) => {
           const c = r.event_category as { name_en?: string } | undefined;
-          return <span className="text-sm text-muted-foreground">{c?.name_en ?? '—'}</span>;
+          return <span className="text-sm text-muted-foreground">{c?.name_en ?? '-'}</span>;
         },
       }] : []),
       ...(isProcurementUpdateTypes ? [{
@@ -131,7 +131,7 @@ export function MasterList({ config }: MasterListProps) {
         sortField: 'procurement_update_category_id',
         cell: (r: MasterRecord) => {
           const c = r.procurement_update_category as { name_en?: string } | undefined;
-          return <span className="text-sm text-muted-foreground">{c?.name_en ?? '—'}</span>;
+          return <span className="text-sm text-muted-foreground">{c?.name_en ?? '-'}</span>;
         },
       }] : []),
       ...(isDocumentTypes ? [{
@@ -147,7 +147,7 @@ export function MasterList({ config }: MasterListProps) {
               <Badge tone={section === 'notifications' ? 'info' : 'default'} dot>
                 {section === 'notifications' ? 'Notifications' : 'Publications'}
               </Badge>
-              <span className="text-sm text-muted-foreground">{parentName ?? '—'}</span>
+              <span className="text-sm text-muted-foreground">{parentName ?? '-'}</span>
             </div>
           );
         },
@@ -156,7 +156,7 @@ export function MasterList({ config }: MasterListProps) {
         id: 'display_order',
         header: 'Order',
         sortField: 'display_order',
-        cell: (r: MasterRecord) => <span className="text-sm text-muted-foreground">{r.display_order ?? '—'}</span>,
+        cell: (r: MasterRecord) => <span className="text-sm text-muted-foreground">{r.display_order ?? '-'}</span>,
       }] : []),
       {
         id: 'is_active',

@@ -12,11 +12,11 @@ export interface ProcurementFormValues {
   title_en: string;
   title_hi: string;
   procurement_update_type_id: string;
-  // Master-data ids (bounded dropdowns) — empty string means "none".
+  // Master-data ids (bounded dropdowns) - empty string means "none".
   commodity_id: string;
   district_id: string;
   block_id: string;
-  // Content relation (server-side picker) — null means "none".
+  // Content relation (server-side picker) - null means "none".
   programme_scheme_id: string | null;
   location_text: string;
   rate: string;

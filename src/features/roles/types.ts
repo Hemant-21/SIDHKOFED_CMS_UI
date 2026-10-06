@@ -1,5 +1,5 @@
 /**
- * Roles & Permissions types — static RBAC reference mirroring the backend seeder
+ * Roles & Permissions types - static RBAC reference mirroring the backend seeder
  * (auth.permissions.ts). No API endpoint exists for roles; these constants are
  * derived directly from the backend source of truth and kept in sync manually.
  *

@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * `useCrudCreate` — reusable create mutation. Invalidates the resource's lists on
+ * `useCrudCreate` - reusable create mutation. Invalidates the resource's lists on
  * success and (optionally) toasts. Errors are NOT toasted by default so the
  * reusable <Form> wrapper can map 422 field errors onto inputs; use `mutateAsync`
  * inside the form's submit handler and let it surface validation.

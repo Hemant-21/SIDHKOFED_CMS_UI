@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { toRelationValue } from './relation-fields';
 
 /**
- * Regression (Phase 15.6 audit — Issue 1). `<FormField>` surfaces a single-select id as the broad
+ * Regression (Phase 15.6 audit - Issue 1). `<FormField>` surfaces a single-select id as the broad
  * union of every form field's value, so the RelationPicker `value` was inferring `(string | true)[]`.
  * `toRelationValue` narrows it safely (no casts) to the picker's `string[]` contract.
  */

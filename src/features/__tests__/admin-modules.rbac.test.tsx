@@ -1,6 +1,6 @@
 /**
  * Page-level RBAC tests for the Super-Admin-only administration pages. Each page renders the shared
- * ForbiddenState for a non-Super-Admin user and renders its real heading for a Super Admin — proving
+ * ForbiddenState for a non-Super-Admin user and renders its real heading for a Super Admin - proving
  * the affordance is gated (the backend remains the security boundary). Data hooks are mocked so the
  * assertions are deterministic and network-free.
  */

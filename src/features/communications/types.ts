@@ -1,7 +1,7 @@
 /**
- * Official Communications module types — mirror of the backend DTOs and validators.
+ * Official Communications module types - mirror of the backend DTOs and validators.
  * One operation for notices, circulars, office orders, notifications, advisories, and
- * public announcements (codex §4.6 / API spec §6). Publishable **P** content carrying
+ * public announcements. Publishable **P** content carrying
  * the publishing-workflow mixin with `communications.*` RBAC keys.
  *
  * Canonical spellings follow the architecture-validation reconciliations (foundation 01):
@@ -34,7 +34,7 @@ export interface CommunicationSummary {
   updated_at: string;
 }
 
-/** Admin detail — all fields plus linked document. */
+/** Admin detail - all fields plus linked document. */
 export interface CommunicationDetail extends CommunicationSummary {
   summary_hi: string | null;
   body_en: string | null;
@@ -49,7 +49,7 @@ export interface CommunicationDetail extends CommunicationSummary {
 }
 
 /**
- * Write payload — model-backed fields + workflow fields the backend validator accepts.
+ * Write payload - model-backed fields + workflow fields the backend validator accepts.
  * Server-managed fields (slug, state, *_by, published_at) are never produced by the client.
  */
 export interface CommunicationWriteInput {

@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * DialogProvider — imperative confirmation system. Any component can `await
+ * DialogProvider - imperative confirmation system. Any component can `await
  * confirm({...})` and get a boolean, without rendering its own modal. Specialized
  * intents (delete/archive/restore/publish/unpublish) are thin presets over the
  * same primitive (consumed via `useConfirmDialog`). Built on the accessible Dialog.

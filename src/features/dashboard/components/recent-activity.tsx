@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Recent Activity (Phase 15.2) — the latest administrative actions from the audit
+ * Recent Activity (Phase 15.2) - the latest administrative actions from the audit
  * log (`GET /admin/audit-logs`). The audit log is Super Admin only (API spec §8),
  * so for other roles this renders an honest "restricted" note instead of calling
  * the endpoint and surfacing a 403. Activity is never invented: every row is a

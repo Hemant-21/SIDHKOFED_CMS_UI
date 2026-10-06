@@ -2,7 +2,7 @@
 
 /**
  * Dynamic (controlled) event fields. Renders the ACTIVE `event_field_definitions` for the chosen
- * event type into RHF fields keyed `dynamic_values.{field_key}`. This is NOT a form builder — the
+ * event type into RHF fields keyed `dynamic_values.{field_key}`. This is NOT a form builder - the
  * field set is defined server-side and validated server-side (events.dynamic-fields.ts); the
  * frontend only renders the declared types and surfaces backend validation. Supported data types
  * are exactly the backend's six: text, textarea, number, date, boolean, select.

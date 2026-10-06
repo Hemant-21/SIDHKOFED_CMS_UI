@@ -1,5 +1,5 @@
 /**
- * Unit tests — master form payload builders and schemas.
+ * Unit tests - master form payload builders and schemas.
  * Covers the default master form (name_en/name_hi/display_order) and the
  * specialised Financial Year form (label/start_date/end_date). DB-free.
  */

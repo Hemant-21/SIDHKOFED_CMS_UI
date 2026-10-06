@@ -2,7 +2,7 @@
 
 /**
  * Authorization hooks. All checks read the backend-provided `permissions`/`roles`
- * arrays on the current user — the frontend grants nothing (codex §7). Use these
+ * arrays on the current user - the frontend grants nothing. Use these
  * to drive permission-aware rendering: `const { can } = usePermissions();
  * can('events.publish')`.
  */
@@ -26,7 +26,7 @@ export interface PermissionsApi {
   canAll: (permissions: Permission[]) => boolean;
   /** Hold at least one listed permission. */
   canAny: (permissions: Permission[]) => boolean;
-  /** Belong to a role (display/affordance only — never the security boundary). */
+  /** Belong to a role (display/affordance only - never the security boundary). */
   hasRole: (role: string | string[]) => boolean;
 }
 

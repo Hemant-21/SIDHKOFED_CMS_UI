@@ -1,9 +1,9 @@
 'use client';
 
 /**
- * FY snapshot publication panel — Generate preview -> Review -> Approve & publish, for the three
+ * FY snapshot publication panel - Generate preview -> Review -> Approve & publish, for the three
  * reports together. Shown once per FY selection (not per tab) since a publication always covers
- * all three reports at once. Publication always covers the FULL FY dataset — this panel never
+ * all three reports at once. Publication always covers the FULL FY dataset - this panel never
  * reads or sends the CMS's temporary tab filters.
  */
 import { useState } from 'react';
@@ -70,8 +70,8 @@ export function PublicationPanel({
           title="Publication"
           description={
             isAllYearsAggregate
-              ? `${financialYearLabel} — publishes all three reports, aggregated across every financial year, together for the public website.`
-              : `FY ${financialYearLabel} — publishes all three reports together for the public website.`
+              ? `${financialYearLabel} - publishes all three reports, aggregated across every financial year, together for the public website.`
+              : `FY ${financialYearLabel} - publishes all three reports together for the public website.`
           }
           actions={
             <div className="flex items-center gap-2">
@@ -129,7 +129,7 @@ export function PublicationPanel({
               {isAllYearsAggregate
                 ? `All financial years combined, no filters applied`
                 : `Full FY ${financialYearLabel} (${preview.fyStartDate} to ${preview.fyEndDate}), no filters applied`}
-              {' '}— this is exactly what will be published. Generated {formatIst(preview.generatedAt)}.
+              {' '}- this is exactly what will be published. Generated {formatIst(preview.generatedAt)}.
             </p>
             <ul className="space-y-1">
               <li>Programme report: <strong>{preview.programmeReport.rows.length}</strong> programme(s)</li>
@@ -140,14 +140,14 @@ export function PublicationPanel({
               <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0" />
               <p>
                 Approving publishes exactly this reviewed data. If source records change before you approve, generate a new
-                preview — approval never silently recalculates.
+                preview - approval never silently recalculates.
               </p>
             </div>
           </div>
         ) : null}
       </Dialog>
 
-      <Dialog open={historyOpen} onClose={() => setHistoryOpen(false)} title={`Publication history — FY ${financialYearLabel}`} size="md">
+      <Dialog open={historyOpen} onClose={() => setHistoryOpen(false)} title={`Publication history - FY ${financialYearLabel}`} size="md">
         {history.isLoading ? (
           <SkeletonText lines={3} />
         ) : !history.data || history.data.length === 0 ? (
@@ -156,7 +156,7 @@ export function PublicationPanel({
           <ul className="space-y-2 text-sm">
             {history.data.map((h, i) => (
               <li key={h.id} className="flex items-center justify-between border-b border-border/60 py-1.5 last:border-0">
-                <span>{formatIst(h.publishedAt)} — {h.publishedByName}</span>
+                <span>{formatIst(h.publishedAt)} - {h.publishedByName}</span>
                 {i === 0 ? <Badge tone="success">Current</Badge> : null}
               </li>
             ))}

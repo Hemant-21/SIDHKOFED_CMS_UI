@@ -3,7 +3,7 @@
 /**
  * Admin Dashboard (Phase 15.2). A fixed, role-aware overview composed entirely from
  * shared infrastructure + existing backend APIs. It is NOT analytics/BI/a report
- * builder — fixed KPIs, fixed cards, fixed reports. Every figure is backend-
+ * builder - fixed KPIs, fixed cards, fixed reports. Every figure is backend-
  * resolved; the frontend computes no KPI. The whole surface refreshes via one
  * manual control (React Query) and degrades per-card on error.
  */
@@ -46,7 +46,7 @@ export function DashboardPage() {
       <ContentWrapper>
         <PageHeader
           title={`Welcome${user ? `, ${user.full_name.split(' ')[0]}` : ''}`}
-          description="SIDHKOFED CMS — your administration overview."
+          description="SIDHKOFED CMS - your administration overview."
           breadcrumbs={[{ label: 'Dashboard' }]}
           actions={
             <Button

@@ -1,7 +1,7 @@
-# `features/` — module vertical slices
+# `features/` - module vertical slices
 
 Each future CMS module gets one folder here (e.g. `features/events/`,
-`features/documents/`). A feature composes the **foundation** — it never
+`features/documents/`). A feature composes the **foundation** - it never
 re-implements layout, auth, API, tables, forms, or dialogs.
 
 Recommended shape:

@@ -1,5 +1,5 @@
 /**
- * `/procurement-updates` — Procurement Updates list (Phase 15.6).
+ * `/procurement-updates` - Procurement Updates list (Phase 15.6).
  */
 import { ProcurementListPage } from '@/features/procurement';
 

@@ -2,7 +2,7 @@
 
 /**
  * Galleries list filter bar. Exposes exactly the backend's allow-listed filters (gallery.controller
- * list): publication_state, plus search. Server-side only — no client-side filtering.
+ * list): publication_state, plus search. Server-side only - no client-side filtering.
  */
 
 import { Select } from '@/components/ui/select';

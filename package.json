@@ -2,7 +2,7 @@
   "name": "sidhkofed-cms-admin",
   "version": "0.1.0",
   "private": true,
-  "description": "SIDHKOFED CMS — Admin frontend foundation (Phase 15.0). Reusable shell, providers, API layer, auth, authorization, design system. No module/CRUD pages.",
+  "description": "SIDHKOFED CMS - Admin frontend foundation (Phase 15.0). Reusable shell, providers, API layer, auth, authorization, design system. No module/CRUD pages.",
   "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev -p 3001",

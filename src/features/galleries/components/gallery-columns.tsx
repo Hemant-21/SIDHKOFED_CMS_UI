@@ -9,7 +9,7 @@ import type { GallerySummary } from '../types';
 
 /**
  * Galleries list columns. The backend gallery list has no `ordering` allow-list (only
- * publication_state + search), so columns are intentionally NOT sortable — we never send a no-op
+ * publication_state + search), so columns are intentionally NOT sortable - we never send a no-op
  * ordering param.
  */
 export function galleryColumns(
@@ -56,7 +56,7 @@ export function galleryColumns(
       header: 'Order',
       align: 'center',
       defaultHidden: true,
-      cell: (g) => <span className="text-muted-foreground">{g.display_order ?? '—'}</span>,
+      cell: (g) => <span className="text-muted-foreground">{g.display_order ?? '-'}</span>,
     },
     {
       id: 'show_on_homepage',

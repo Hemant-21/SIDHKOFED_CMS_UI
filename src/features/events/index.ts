@@ -1,6 +1,6 @@
 /**
- * Events feature (Phase 15.3). Full admin frontend for the single Events operation —
- * list, create/edit, detail, lifecycle, dynamic fields, completion, and publish-as-news —
+ * Events feature (Phase 15.3). Full admin frontend for the single Events operation -
+ * list, create/edit, detail, lifecycle, dynamic fields, completion, and publish-as-news -
  * built entirely on the shared 15.0/15.1 infrastructure and the backend contracts.
  */
 export { EventListPage } from './event-list-page';

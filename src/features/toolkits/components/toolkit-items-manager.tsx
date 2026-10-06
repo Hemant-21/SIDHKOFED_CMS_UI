@@ -3,9 +3,9 @@
 /**
  * Toolkit catalogue items manager (shown on the toolkit detail). Lists the ordered items the
  * backend returns (toolkit.items, already sorted by display_order), and provides add / edit /
- * delete / reorder — every operation a backend call (toolkit_items.* CRUD). Reordering swaps the
+ * delete / reorder - every operation a backend call (toolkit_items.* CRUD). Reordering swaps the
  * two neighbours' `display_order` values via the update endpoint; the frontend never invents an
- * ordering. No totals are computed here — items carry catalogue defaults only.
+ * ordering. No totals are computed here - items carry catalogue defaults only.
  *
  * Affordances are permission-aware (TOOLKIT_ITEM_PERMS); the backend remains the security boundary
  * and additionally restricts a Content Editor to draft-parent toolkits.

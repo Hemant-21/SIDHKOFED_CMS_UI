@@ -6,7 +6,7 @@ import { useState, type ComponentProps, type ReactNode } from 'react';
 /**
  * UI behaviour of the shared {@link RelationPicker}. The data hook ({@link useRelationSearch}) is
  * mocked here so the rendering states (loading / results / empty / error / pagination) are driven
- * deterministically — the hook's own server-side contract (search, pagination, archived scope) is
+ * deterministically - the hook's own server-side contract (search, pagination, archived scope) is
  * verified separately in relation-search.test.ts against a mocked `getList`.
  */
 

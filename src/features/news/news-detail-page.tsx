@@ -106,7 +106,7 @@ export function NewsDetailPage({ id }: { id: string }) {
             <CardContent className="space-y-2 text-sm">
               <Row label="Created" value={formatDateTime(news.created_at)} />
               <Row label="Updated" value={formatDateTime(news.updated_at)} />
-              <Row label="Published" value={news.published_at ? formatDateTime(news.published_at) : '—'} />
+              <Row label="Published" value={news.published_at ? formatDateTime(news.published_at) : '-'} />
               <PublicUrlLink path={news.public_url} />
             </CardContent>
           </Card>

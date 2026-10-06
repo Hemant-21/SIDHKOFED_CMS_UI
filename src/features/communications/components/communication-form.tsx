@@ -6,7 +6,7 @@
  * Never sets publication state (lifecycle actions handle that). Server-side 422 errors map back
  * onto fields via the <Form> wrapper. Slug is shown read-only after creation.
  *
- * Expiry date is INFORMATIONAL — it never automatically unpublishes content (codex §4.6 / §8).
+ * Expiry date is INFORMATIONAL - it never automatically unpublishes content.
  */
 
 import { useMemo } from 'react';
@@ -152,7 +152,7 @@ export function CommunicationForm({ communication }: CommunicationFormProps) {
         />
       </FormSection>
 
-      <FormSection title="Content" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Content" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={
             <>
@@ -192,7 +192,7 @@ export function CommunicationForm({ communication }: CommunicationFormProps) {
         <DateField<CommunicationFormValues>
           name="expiry_date"
           label="Expiry date"
-          description="Informational only — does not automatically unpublish."
+          description="Informational only - does not automatically unpublish."
         />
         <TextField<CommunicationFormValues>
           name="issuing_authority"

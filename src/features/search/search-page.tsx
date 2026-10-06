@@ -76,7 +76,7 @@ export function SearchPage() {
       <ContentWrapper>
         <PageHeader
           title="Search"
-          description="Search across published and draft content — events, news, documents, communications, tenders, procurement updates, programmes, and pages."
+          description="Search across published and draft content - events, news, documents, communications, tenders, procurement updates, programmes, and pages."
           breadcrumbs={[{ label: 'Dashboard', href: ROUTES.dashboard }, { label: 'Search' }]}
         />
 

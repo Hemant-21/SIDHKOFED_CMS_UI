@@ -1,5 +1,5 @@
 /**
- * `/faqs/[id]/edit` — edit an FAQ (Phase 15.7).
+ * `/faqs/[id]/edit` - edit an FAQ (Phase 15.7).
  */
 import { FaqFormPage } from '@/features/faqs';
 

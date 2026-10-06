@@ -1,5 +1,5 @@
 /**
- * `/digital-services/[id]` — digital service detail / view (Phase 15.7).
+ * `/digital-services/[id]` - digital service detail / view (Phase 15.7).
  */
 import { DigitalServiceDetailPage } from '@/features/digital-services';
 

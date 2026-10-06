@@ -4,7 +4,7 @@ import { buildFaqPayload, emptyFaqForm, type FaqFormValues } from './faq-form-pa
 /**
  * Payload regression. Must match the backend `faqCreateSchema` EXACTLY (faqs.validators.ts):
  * optional `page_assignments`, required `question_en`/`answer_en`, bilingual optional fields,
- * workflow fields, and NO unknown keys (`.strict()`). `show_on_homepage` is gone — homepage
+ * workflow fields, and NO unknown keys (`.strict()`). `show_on_homepage` is gone - homepage
  * placement is now an ordinary `page_key: 'home'` entry in `page_assignments`.
  */
 const BACKEND_KEYS = new Set([

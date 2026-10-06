@@ -1,6 +1,6 @@
 /**
  * Generic, server-driven DataTable types. Reusable by every future module's list
- * page — no module-specific columns live here. Pagination/sorting/filtering all
+ * page - no module-specific columns live here. Pagination/sorting/filtering all
  * map to the backend list-query contract (page, page_size, ordering, filters).
  */
 

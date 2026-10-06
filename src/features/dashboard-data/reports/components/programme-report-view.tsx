@@ -12,30 +12,33 @@ function DistrictDrilldown({ programmeName, rows }: { programmeName: string; row
   }
 
   return (
-    <div className="ml-6 space-y-3 border-l border-border pl-4 py-3">
-      <h4 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">District breakdown</h4>
-      <div className="overflow-x-auto">
+    <div className="ml-6 space-y-3 rounded-md border border-primary/20 border-l-4 border-l-primary bg-muted/60 p-4 shadow-sm">
+      <h4 className="text-xs font-bold uppercase tracking-wide text-primary">District breakdown</h4>
+      <div className="overflow-x-auto rounded border border-border bg-background">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-border text-left text-xs text-muted-foreground">
-              <th className="py-1.5 pr-3">District</th>
-              <th className="py-1.5 pr-3">Blocks reached</th>
-              <th className="py-1.5 pr-3">Completed events</th>
-              <th className="py-1.5 pr-3">Recorded participants</th>
-              <th className="py-1.5 pr-3">Toolkit</th>
+            <tr className="border-b-2 border-primary/30 bg-primary/10 text-left text-xs font-bold text-primary">
+              <th className="py-1.5 px-3">District</th>
+              <th className="py-1.5 px-3">Blocks reached</th>
+              <th className="py-1.5 px-3">Completed events</th>
+              <th className="py-1.5 px-3">Recorded participants</th>
+              <th className="py-1.5 px-3">Toolkit</th>
             </tr>
           </thead>
           <tbody>
-            {rows.map((d) => (
-              <tr key={d.districtId ?? 'not-recorded'} className="border-b border-border/60 last:border-0">
-                <td className="py-1.5 pr-3">{d.districtNameEn}</td>
-                <td className="py-1.5 pr-3">{d.blocksReached}</td>
-                <td className="py-1.5 pr-3">{d.completedEvents}</td>
-                <td className="py-1.5 pr-3">
+            {rows.map((d, i) => (
+              <tr
+                key={d.districtId ?? 'not-recorded'}
+                className={`border-b border-border last:border-0 hover:bg-primary/5 ${i % 2 === 1 ? 'bg-muted/50' : ''}`}
+              >
+                <td className="py-1.5 px-3 font-medium text-foreground">{d.districtNameEn}</td>
+                <td className="py-1.5 px-3">{d.blocksReached}</td>
+                <td className="py-1.5 px-3">{d.completedEvents}</td>
+                <td className="py-1.5 px-3">
                   <ParticipantsCell value={d.recordedParticipants} missingAttendance={d.missing.missingAttendance} />
                 </td>
-                <td className="py-1.5 pr-3">
-                  <ToolkitInfoButton title={`${programmeName} — ${d.districtNameEn}`} toolkit={d.toolkit} />
+                <td className="py-1.5 px-3">
+                  <ToolkitInfoButton title={`${programmeName} - ${d.districtNameEn}`} toolkit={d.toolkit} />
                 </td>
               </tr>
             ))}
@@ -46,16 +49,20 @@ function DistrictDrilldown({ programmeName, rows }: { programmeName: string; row
   );
 }
 
-function ProgrammeRow({ row }: { row: ProgrammeReportRow }) {
+function ProgrammeRow({ row, index }: { row: ProgrammeReportRow; index: number }) {
   const [expanded, setExpanded] = useState(false);
   return (
     <>
-      <tr className="border-b border-border">
+      <tr
+        className={`border-b border-border hover:bg-primary/10 ${
+          expanded ? 'border-l-4 border-l-primary bg-primary/10' : index % 2 === 1 ? 'bg-muted/50' : ''
+        }`}
+      >
         <td className="py-2.5 pr-3 align-top">
           <ExpandToggle expanded={expanded} onToggle={() => setExpanded((v) => !v)} label={row.programmeNameEn} />
         </td>
         <td className="py-2.5 pr-3 align-top text-muted-foreground">
-          {row.targetCommoditiesEn.length > 0 ? row.targetCommoditiesEn.join(', ') : '—'}
+          {row.targetCommoditiesEn.length > 0 ? row.targetCommoditiesEn.join(', ') : '-'}
         </td>
         <td className="py-2.5 pr-3 align-top">{row.districtsReached}</td>
         <td className="py-2.5 pr-3 align-top">{row.completedEvents}</td>
@@ -68,7 +75,7 @@ function ProgrammeRow({ row }: { row: ProgrammeReportRow }) {
       </tr>
       {expanded ? (
         <tr>
-          <td colSpan={6} className="bg-muted/30 py-0">
+          <td colSpan={6} className="bg-muted/30 py-3">
             <DistrictDrilldown programmeName={row.programmeNameEn} rows={row.districtDrilldown} />
           </td>
         </tr>
@@ -85,7 +92,7 @@ export function ProgrammeReportTable({ rows }: { rows: ProgrammeReportRow[] }) {
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-border text-left text-xs text-muted-foreground">
+          <tr className="border-b-2 border-primary/30 bg-primary/10 text-left text-xs font-bold text-primary">
             <th className="py-2 pr-3">Programme</th>
             <th className="py-2 pr-3">Target commodities</th>
             <th className="py-2 pr-3">Districts reached</th>
@@ -95,8 +102,8 @@ export function ProgrammeReportTable({ rows }: { rows: ProgrammeReportRow[] }) {
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => (
-            <ProgrammeRow key={row.programmeSchemeId} row={row} />
+          {rows.map((row, index) => (
+            <ProgrammeRow key={row.programmeSchemeId} row={row} index={index} />
           ))}
         </tbody>
       </table>

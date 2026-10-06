@@ -1,5 +1,5 @@
 /**
- * Event News types — faithful mirror of the backend News DTOs (news.dto.ts) and validators
+ * Event News types - faithful mirror of the backend News DTOs (news.dto.ts) and validators
  * (news.validators.ts). News is a DERIVED record: it is created only via the event's
  * publish-as-news action and stays linked to its source event (the link is immutable). The admin
  * surface here manages the news record's own editorial fields + lifecycle.
@@ -49,7 +49,7 @@ export interface NewsDetail extends NewsSummary {
   public_url: string;
 }
 
-/** PATCH /admin/news/{id} — editable editorial + workflow fields (event_id is never client-set). */
+/** PATCH /admin/news/{id} - editable editorial + workflow fields (event_id is never client-set). */
 export interface NewsUpdateInput {
   title_en?: string;
   title_hi?: string | null;

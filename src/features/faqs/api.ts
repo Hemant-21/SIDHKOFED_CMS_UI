@@ -24,7 +24,7 @@ const base = adminResource(FAQS_RESOURCE);
 const pagesPath = `${base.list}/pages`;
 const pageReorderPath = (pageKey: string) => `${pagesPath}/${encodeURIComponent(pageKey)}/reorder`;
 
-/** The registered main pages an FAQ can be assigned to (small, slowly-changing — loaded eagerly). */
+/** The registered main pages an FAQ can be assigned to (small, slowly-changing - loaded eagerly). */
 export function useFaqPageOptions() {
   return useQuery({
     queryKey: ['faqs', 'pages'],

@@ -2,10 +2,10 @@
 
 /**
  * News list filters. Exposes the backend's allow-listed news filters (news.query.ts):
- * publication_state, show_on_homepage, year, event, and search — all server-side. The `event`
+ * publication_state, show_on_homepage, year, event, and search - all server-side. The `event`
  * filter is backed by the source-event relation (`parseNewsFilters` reads `q.event`); it reuses
  * the shared, paginated {@link RelationSelect} so a large event catalogue stays searchable
- * (Phase 15.3 remediation — Finding 5).
+ * (Phase 15.3 remediation - Finding 5).
  */
 
 import { Select } from '@/components/ui/select';

@@ -36,14 +36,14 @@ export function communicationColumns(
       id: 'communication_type',
       header: 'Type',
       cell: (c) => (
-        <span className="text-muted-foreground">{c.communication_type?.name_en ?? '—'}</span>
+        <span className="text-muted-foreground">{c.communication_type?.name_en ?? '-'}</span>
       ),
     },
     {
       id: 'issuing_authority',
       header: 'Authority',
       defaultHidden: true,
-      cell: (c) => <span className="text-muted-foreground">{c.issuing_authority ?? '—'}</span>,
+      cell: (c) => <span className="text-muted-foreground">{c.issuing_authority ?? '-'}</span>,
     },
     {
       id: 'issue_date',
@@ -65,7 +65,7 @@ export function communicationColumns(
         c.expiry_date ? (
           <span className="text-muted-foreground">{formatDate(c.expiry_date)}</span>
         ) : (
-          <span className="text-muted-foreground">—</span>
+          <span className="text-muted-foreground">-</span>
         ),
     },
     {
@@ -82,7 +82,7 @@ export function communicationColumns(
         c.highlight_type ? (
           <HighlightBadge highlight={c.highlight_type} />
         ) : (
-          <span className="text-muted-foreground">—</span>
+          <span className="text-muted-foreground">-</span>
         ),
     },
     {

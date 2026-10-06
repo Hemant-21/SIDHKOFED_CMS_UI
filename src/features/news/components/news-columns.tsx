@@ -39,7 +39,7 @@ export function newsColumns(actions?: (row: NewsSummary) => React.ReactNode): Co
       header: 'Highlight',
       align: 'center',
       defaultHidden: true,
-      cell: (n) => (n.highlight_type ? <HighlightBadge highlight={n.highlight_type} /> : <span className="text-muted-foreground">—</span>),
+      cell: (n) => (n.highlight_type ? <HighlightBadge highlight={n.highlight_type} /> : <span className="text-muted-foreground">-</span>),
     },
     {
       id: 'show_on_homepage',

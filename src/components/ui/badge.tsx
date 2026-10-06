@@ -4,7 +4,7 @@ import { TONE_CLASSES, type StatusTone } from '@/constants/status';
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   tone?: StatusTone;
-  /** Show a leading dot (status indicator — not color-only thanks to the label). */
+  /** Show a leading dot (status indicator - not color-only thanks to the label). */
   dot?: boolean;
 }
 

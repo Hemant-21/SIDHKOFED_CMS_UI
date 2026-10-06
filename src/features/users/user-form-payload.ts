@@ -1,6 +1,6 @@
 /**
  * Pure form ↔ API mapping for the user form (unit-testable; no React). Create sends the full body
- * (incl. password); edit sends only identity + roles (never the password — that is the dedicated
+ * (incl. password); edit sends only identity + roles (never the password - that is the dedicated
  * reset endpoint). Server-managed fields are never produced.
  */
 

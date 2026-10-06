@@ -4,7 +4,7 @@
  * null, highlights only sent when active, ISO timestamps from calendar dates. Server-managed fields
  * (slug, state, *_by, published_at) are never produced.
  *
- * `page_assignments` replaces `faq_category_id`/`show_on_homepage` — the form always knows its
+ * `page_assignments` replaces `faq_category_id`/`show_on_homepage` - the form always knows its
  * full current set of page assignments (managed by `FaqPageAssignmentManager`), so it always sends
  * the complete array on save; the backend's "omit to leave untouched" PATCH semantics matter for
  * non-form API callers, not this always-full-state form.

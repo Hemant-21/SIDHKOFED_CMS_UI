@@ -1,6 +1,6 @@
 /**
  * Pure form ↔ API mapping for a toolkit catalogue item (unit-testable; no React). The backend owns
- * any distribution totals — this only carries the catalogue DEFAULTS (basis, default quantity/group
+ * any distribution totals - this only carries the catalogue DEFAULTS (basis, default quantity/group
  * size, unit). Numeric strings coerce to numbers (or null); a `group` basis requires a group size
  * (mirrored in the form schema and enforced by the backend).
  */

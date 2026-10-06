@@ -1,5 +1,5 @@
 /**
- * `/memberships/[id]` — membership detail / view (Phase 15.8).
+ * `/memberships/[id]` - membership detail / view (Phase 15.8).
  */
 import { MembershipDetailPage } from '@/features/memberships';
 

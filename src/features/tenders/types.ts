@@ -1,10 +1,10 @@
 /**
- * Tender Management module types — mirror of the backend DTOs and validators.
- * Tender Management stores only lightweight structured information plus a GeM link (codex §4.7).
- * Frontend is INFORMATIONAL only — no bid submission, no procurement workflow, no GeM embedding.
+ * Tender Management module types - mirror of the backend DTOs and validators.
+ * Tender Management stores only lightweight structured information plus a GeM link.
+ * Frontend is INFORMATIONAL only - no bid submission, no procurement workflow, no GeM embedding.
  * External GeM links open securely with target="_blank" rel="noopener noreferrer".
  *
- * Canonical spelling: `publish_date` (not `publishing_date` — arch-val reconciliation C5).
+ * Canonical spelling: `publish_date` (not `publishing_date` - arch-val reconciliation C5).
  * Tender status: `open | closed | cancelled | awarded` (API spec §6, backend enum).
  */
 
@@ -50,7 +50,7 @@ export interface TenderDetail extends TenderSummary {
 }
 
 /**
- * Write payload — model-backed fields + workflow fields. Server-managed fields never produced.
+ * Write payload - model-backed fields + workflow fields. Server-managed fields never produced.
  * GeM URL must be a valid HTTPS URL (backend validates). Do not proxy or embed the GeM site.
  */
 export interface TenderWriteInput {

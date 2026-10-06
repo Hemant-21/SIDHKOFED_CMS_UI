@@ -1,5 +1,5 @@
 /**
- * `/institutions` — Partners & Institutions list (Phase 15.5).
+ * `/institutions` - Partners & Institutions list (Phase 15.5).
  */
 import { InstitutionListPage } from '@/features/institutions';
 

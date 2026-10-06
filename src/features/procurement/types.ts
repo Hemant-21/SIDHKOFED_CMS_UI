@@ -1,13 +1,13 @@
 /**
- * Procurement Updates module types — mirror of the backend DTOs and validators.
+ * Procurement Updates module types - mirror of the backend DTOs and validators.
  * One operation for procurement rate, announcement, schedule, centre update, and trade
- * opportunity (codex §4.8). Frontend NEVER calculates rates, totals, or performs procurement
- * logic — it displays backend data only. No ERP, inventory, or warehouse logic.
+ * opportunity. Frontend NEVER calculates rates, totals, or performs procurement
+ * logic - it displays backend data only. No ERP, inventory, or warehouse logic.
  */
 
 import type { MasterRef, DocumentRef, HighlightType, PublicationState } from '@/types/common';
 
-/** Compact programme/scheme reference (content record — title-based; backend ProgrammeRef). */
+/** Compact programme/scheme reference (content record - title-based; backend ProgrammeRef). */
 interface ProgrammeRef {
   id: string;
   slug: string;
@@ -63,8 +63,8 @@ export interface ProcurementDetail extends ProcurementSummary {
 }
 
 /**
- * Write payload. `rate` is a JSON number (DECIMAL(14,2) in the DB — the backend validator
- * accepts a number, not a string). Frontend NEVER calculates rates — it only passes what the
+ * Write payload. `rate` is a JSON number (DECIMAL(14,2) in the DB - the backend validator
+ * accepts a number, not a string). Frontend NEVER calculates rates - it only passes what the
  * user enters, parsed to a number.
  */
 export interface ProcurementWriteInput {

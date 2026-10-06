@@ -143,11 +143,11 @@ function AuditDetail({ entry }: { entry: AuditLog }) {
       </Row>
       <Row label="Module">{entry.module}</Row>
       <Row label="User">{entry.user ? `${entry.user.full_name} (${entry.user.email})` : 'System'}</Row>
-      <Row label="Record">{entry.record_id ?? '—'}</Row>
+      <Row label="Record">{entry.record_id ?? '-'}</Row>
       <Row label="State">
-        {entry.previous_state || entry.new_state ? `${entry.previous_state ?? '—'} → ${entry.new_state ?? '—'}` : '—'}
+        {entry.previous_state || entry.new_state ? `${entry.previous_state ?? '-'} → ${entry.new_state ?? '-'}` : '-'}
       </Row>
-      <Row label="Summary">{entry.change_summary ?? '—'}</Row>
+      <Row label="Summary">{entry.change_summary ?? '-'}</Row>
       <div className="col-span-3">
         <dt className="mb-1 font-medium text-muted-foreground">Metadata</dt>
         <dd>

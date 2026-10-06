@@ -3,7 +3,7 @@ import type { Config } from 'tailwindcss';
 /**
  * Design-system tokens. Colors are CSS variables (see globals.css) so the same
  * Tailwind classes resolve to the active theme (light/dark). Never hardcode
- * hex values in components — consume these semantic tokens.
+ * hex values in components - consume these semantic tokens.
  */
 const config: Config = {
   darkMode: 'class',

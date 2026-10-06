@@ -1,5 +1,5 @@
 /**
- * `/knowledge-centre` — Knowledge Centre reader over tagged documents (Phase 15.4).
+ * `/knowledge-centre` - Knowledge Centre reader over tagged documents (Phase 15.4).
  */
 import { KnowledgeCentrePage } from '@/features/knowledge-centre';
 

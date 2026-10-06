@@ -74,9 +74,9 @@ export function EventDetailPage({ id }: { id: string }) {
             <CardContent>
               <dl className="grid gap-4 sm:grid-cols-2">
                 <Item label="Dates">{dateLabel} <span className="text-muted-foreground">({DATE_MODE_LABEL[event.date_mode]})</span></Item>
-                <Item label="Location">{event.location_text ?? '—'}</Item>
-                <Item label="District">{event.district?.name_en ?? '—'}</Item>
-                <Item label="Block">{event.block?.name_en ?? '—'}</Item>
+                <Item label="Location">{event.location_text ?? '-'}</Item>
+                <Item label="District">{event.district?.name_en ?? '-'}</Item>
+                <Item label="Block">{event.block?.name_en ?? '-'}</Item>
               </dl>
             </CardContent>
           </Card>
@@ -194,7 +194,7 @@ function RefList({ label, items }: { label: string; items: string[] }) {
     <div>
       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</p>
       {items.length === 0 ? (
-        <p className="text-sm text-muted-foreground">—</p>
+        <p className="text-sm text-muted-foreground">-</p>
       ) : (
         <div className="mt-1 flex flex-wrap gap-1.5">
           {items.map((i) => (
@@ -221,7 +221,7 @@ function LinkList({
     <div>
       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</p>
       {items.length === 0 ? (
-        <p className="text-sm text-muted-foreground">—</p>
+        <p className="text-sm text-muted-foreground">-</p>
       ) : (
         <ul className="mt-1 space-y-1">
           {items.map((i) =>

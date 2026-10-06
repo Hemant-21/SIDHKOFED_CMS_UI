@@ -1,6 +1,6 @@
 /**
  * User Management API client (`GET|POST /admin/users`, `GET|PATCH /admin/users/{id}`).
- * API spec §6: Super Admin only. No delete endpoint — deactivate instead.
+ * API spec §6: Super Admin only. No delete endpoint - deactivate instead.
  */
 
 import { get, getList, patch, post } from '@/lib/api/http';

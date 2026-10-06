@@ -8,7 +8,7 @@ import type { EventSummary } from '../types';
 import { EventStatusBadge } from './event-status-badge';
 
 /**
- * Event list column definitions (reused by the DataTable). Pure presentation — sort fields map
+ * Event list column definitions (reused by the DataTable). Pure presentation - sort fields map
  * to the backend ordering allow-list (`start_date`, `display_order`, `-published_at`,
  * `created_at`). The Actions column is rendered by the list page so it can wire navigation.
  */
@@ -38,7 +38,7 @@ export function eventColumns(actions?: (row: EventSummary) => React.ReactNode): 
     {
       id: 'district',
       header: 'District',
-      cell: (e) => e.district?.name_en ?? <span className="text-muted-foreground">—</span>,
+      cell: (e) => e.district?.name_en ?? <span className="text-muted-foreground">-</span>,
     },
     {
       id: 'publication_state',
@@ -50,7 +50,7 @@ export function eventColumns(actions?: (row: EventSummary) => React.ReactNode): 
       header: 'Highlight',
       align: 'center',
       defaultHidden: true,
-      cell: (e) => (e.highlight_type ? <HighlightBadge highlight={e.highlight_type} /> : <span className="text-muted-foreground">—</span>),
+      cell: (e) => (e.highlight_type ? <HighlightBadge highlight={e.highlight_type} /> : <span className="text-muted-foreground">-</span>),
     },
     {
       id: 'show_on_homepage',

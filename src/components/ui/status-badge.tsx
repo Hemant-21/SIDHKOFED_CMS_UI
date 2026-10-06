@@ -9,7 +9,7 @@ import { Badge } from './badge';
 
 /**
  * Publication-state badge. Status is conveyed by both color AND text (WCAG: never
- * color alone). Reused by every module list/detail — no module redefines states.
+ * color alone). Reused by every module list/detail - no module redefines states.
  */
 export function StatusBadge({ state }: { state: PublicationState }) {
   return (

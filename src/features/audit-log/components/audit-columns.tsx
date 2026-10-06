@@ -53,7 +53,7 @@ export function auditColumns(onView: (row: AuditLog) => void): ColumnDef<AuditLo
       id: 'summary',
       header: 'Summary',
       defaultHidden: true,
-      cell: (a) => <span className="text-muted-foreground">{a.change_summary ?? '—'}</span>,
+      cell: (a) => <span className="text-muted-foreground">{a.change_summary ?? '-'}</span>,
     },
     {
       id: 'actions',

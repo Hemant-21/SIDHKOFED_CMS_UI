@@ -2,7 +2,7 @@
 
 /**
  * Root-level error boundary (Next.js). Catches errors thrown by the ROOT layout
- * itself — the one place `error.tsx` cannot reach — and therefore must render its
+ * itself - the one place `error.tsx` cannot reach - and therefore must render its
  * own <html>/<body>. Segment/page errors are handled by `app/error.tsx`; this is
  * the last-resort 500 surface. Never exposes the raw error to the user.
  */

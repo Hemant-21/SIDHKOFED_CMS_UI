@@ -4,7 +4,7 @@
 
 /** Human-readable byte size: 1536 → "1.5 KB". */
 export function formatFileSize(bytes: number | null | undefined): string {
-  if (bytes === null || bytes === undefined || Number.isNaN(bytes)) return '—';
+  if (bytes === null || bytes === undefined || Number.isNaN(bytes)) return '-';
   if (bytes === 0) return '0 B';
   const units = ['B', 'KB', 'MB', 'GB', 'TB'];
   const i = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1);
@@ -14,7 +14,7 @@ export function formatFileSize(bytes: number | null | undefined): string {
 
 /** Locale-grouped integer/decimal: 1234567 → "12,34,567" (en-IN). */
 export function formatNumber(value: number | null | undefined): string {
-  if (value === null || value === undefined || Number.isNaN(value)) return '—';
+  if (value === null || value === undefined || Number.isNaN(value)) return '-';
   return new Intl.NumberFormat('en-IN').format(value);
 }
 

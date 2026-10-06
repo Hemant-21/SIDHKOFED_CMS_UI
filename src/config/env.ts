@@ -14,12 +14,12 @@ export const env = {
   apiBaseUrl: readPublic(process.env.NEXT_PUBLIC_API_BASE_URL, '/api/v1'),
   /** Optional deployment base path, for hosting the CMS below a single-domain prefix. */
   basePath: readPublic(process.env.NEXT_PUBLIC_BASE_PATH, ''),
-  /** Default UI language. English primary, Hindi optional (codex §10). */
+  /** Default UI language. English primary, Hindi optional. */
   defaultLanguage: readPublic(process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE, 'en') as 'en' | 'hi',
   /**
    * Public website origin (no trailing slash). The admin console and the public site are
    * separate apps on separate origins, but the backend returns `public_url` as a site-relative
-   * path (e.g. `/events/slug`) — resolve it against this origin, not the admin's own.
+   * path (e.g. `/events/slug`) - resolve it against this origin, not the admin's own.
    */
   websiteUrl: readPublic(process.env.NEXT_PUBLIC_WEBSITE_URL, 'http://localhost:3002'),
 } as const;

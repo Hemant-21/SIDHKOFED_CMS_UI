@@ -1,5 +1,5 @@
 /**
- * `/news/[id]` — news detail / view (Phase 15.3).
+ * `/news/[id]` - news detail / view (Phase 15.3).
  */
 import { NewsDetailPage } from '@/features/news';
 

@@ -1,6 +1,6 @@
 /**
- * The single API envelope (API spec §1.4). Every backend response — public,
- * admin, auth — uses exactly one of these shapes. The frontend mirrors them so
+ * The single API envelope (API spec §1.4). Every backend response - public,
+ * admin, auth - uses exactly one of these shapes. The frontend mirrors them so
  * the whole app speaks one contract.
  */
 
@@ -19,14 +19,14 @@ export interface Pagination {
   total_pages: number;
 }
 
-/** Success — single resource. */
+/** Success - single resource. */
 export interface ApiSingleResponse<T> {
   success: true;
   data: T;
   meta: ResponseMeta;
 }
 
-/** Success — paginated list. */
+/** Success - paginated list. */
 export interface ApiListResponse<T> {
   success: true;
   data: T[];

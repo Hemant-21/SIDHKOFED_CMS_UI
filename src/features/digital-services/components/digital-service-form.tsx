@@ -2,8 +2,8 @@
 
 /**
  * Digital Service create/edit form. Reuses the shared form framework, bilingual tabs, and the shared
- * Media picker (CoverMediaField → `icon_media_id`). `external_url` must be a valid HTTPS URL — the
- * client opens it in a new tab; the CMS never proxies/embeds the external system (codex §4.14). Never
+ * Media picker (CoverMediaField → `icon_media_id`). `external_url` must be a valid HTTPS URL - the
+ * client opens it in a new tab; the CMS never proxies/embeds the external system. Never
  * sets publication state. Server-side 422 errors map back onto fields via the <Form> wrapper.
  */
 
@@ -111,7 +111,7 @@ export function DigitalServiceForm({ service }: DigitalServiceFormProps) {
         />
       </FormSection>
 
-      <FormSection title="Description" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Description" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={
             <TextareaField<DigitalServiceFormValues>

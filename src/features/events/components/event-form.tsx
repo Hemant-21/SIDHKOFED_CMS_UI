@@ -5,7 +5,7 @@
  * BilingualTabs, FormSection), the relationship pickers (master/relation option hooks +
  * CoverMediaField), and the dynamic-field renderer. It NEVER sets publication state (that is the
  * lifecycle actions) and NEVER computes event status. Server-side 422 errors map back onto fields
- * via the <Form> wrapper. The slug is shown read-only after creation (immutable; codex §11).
+ * via the <Form> wrapper. The slug is shown read-only after creation (immutable).
  */
 
 import { useMemo } from 'react';
@@ -190,7 +190,7 @@ export function EventForm({ event }: EventFormProps) {
       </FormSection>
 
       {/* Bilingual content */}
-      <FormSection title="Content" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Content" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={
             <>

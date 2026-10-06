@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Reports — replaces the six-report "Generate Reports" screen with exactly three: Programme,
+ * Reports - replaces the six-report "Generate Reports" screen with exactly three: Programme,
  * District Activity Coverage, Commodity-wise. A shared single-select FY (default current FY) lives
  * at the page level, retained across tabs and surviving each tab's Reset; each tab keeps its own
  * applied multiselect filters independently.

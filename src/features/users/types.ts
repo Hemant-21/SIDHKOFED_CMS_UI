@@ -1,5 +1,5 @@
 /**
- * User Management types — mirror the backend user DTO (API spec §6).
+ * User Management types - mirror the backend user DTO (API spec §6).
  * `GET|POST /admin/users`, `GET|PATCH /admin/users/{id}`. Super Admin only.
  * No password hash is ever returned. Deactivate, never delete users with history.
  */

@@ -1,5 +1,5 @@
 /**
- * Audit Log module types — mirror of the backend read-only DTO (audit.dto.ts). The log is
+ * Audit Log module types - mirror of the backend read-only DTO (audit.dto.ts). The log is
  * append-only: the admin surface lists and inspects entries; it never mutates them.
  */
 

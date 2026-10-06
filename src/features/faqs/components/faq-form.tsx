@@ -2,7 +2,7 @@
 
 /**
  * FAQ create/edit form. Reuses the shared form framework and bilingual tabs. Main-page assignment
- * replaces the old category select + "Show on homepage" switch — see `FaqPageAssignmentManager`.
+ * replaces the old category select + "Show on homepage" switch - see `FaqPageAssignmentManager`.
  * Never sets publication state (lifecycle actions handle that). Server-side 422 errors map back
  * onto fields via the <Form> wrapper.
  */
@@ -77,7 +77,7 @@ export function FaqForm({ faq }: FaqFormProps) {
 
   return (
     <Form form={form} onSubmit={onSubmit} className="space-y-8">
-      <FormSection title="Question & answer" description="English is required; Hindi is optional (codex §10).">
+      <FormSection title="Question & answer" description="English is required; Hindi is optional.">
         <BilingualTabs
           english={
             <>

@@ -1,11 +1,11 @@
 /**
- * Institutional Membership module types — a faithful mirror of the backend Membership DTOs
+ * Institutional Membership module types - a faithful mirror of the backend Membership DTOs
  * (memberships.dto.ts) and request validators (memberships.validators.ts). The frontend consumes
  * these contracts exactly; it never invents fields. `snake_case` matches the API transport
  * (API spec §0).
  *
- * Institution-wise membership ONLY (codex §4.15 / API spec §5/§6). Two orthogonal axes —
- * `membership_level` (sidhkofed | district_union) × `membership_type` (primary | nominal) — feed
+ * Institution-wise membership ONLY. Two orthogonal axes -
+ * `membership_level` (sidhkofed | district_union) × `membership_type` (primary | nominal) - feed
  * dashboard reports #10–#13. This is a publishable **P** resource carrying the shared
  * publishing-workflow mixin; it is authorized with the generic `content.*` RBAC set
  * (memberships.routes.ts), so permission keys are reused from the events feature.
@@ -13,7 +13,7 @@
  * NOTE (backend fidelity): the membership entity has NO `financial_year_id`. Financial-year
  * reporting for memberships is expressed through `reporting_period_id` (a reporting period itself
  * references a financial year). The form therefore exposes a Reporting Period picker, never an FY
- * picker — consuming the backend contract exactly.
+ * picker - consuming the backend contract exactly.
  */
 
 import type { MasterRef, HighlightType, PublicationState } from '@/types/common';
@@ -35,7 +35,7 @@ export type MembershipLevel = (typeof MEMBERSHIP_LEVELS)[number];
 export type MembershipType = (typeof MEMBERSHIP_TYPES)[number];
 export type MembershipStatus = (typeof MEMBERSHIP_STATUSES)[number];
 
-/** Display labels for the membership enums (UI only — transport stays lower-case). */
+/** Display labels for the membership enums (UI only - transport stays lower-case). */
 export const MEMBERSHIP_LEVEL_LABEL: Record<MembershipLevel, string> = {
   sidhkofed: 'SIDHKOFED',
   district_union: 'District Union',
@@ -75,7 +75,7 @@ export interface MembershipSummary {
   updated_at: string;
 }
 
-/** Admin detail (MembershipDetailDto) — adds internal notes + scheduling + authorship. */
+/** Admin detail (MembershipDetailDto) - adds internal notes + scheduling + authorship. */
 export interface MembershipDetail extends MembershipSummary {
   notes_en: string | null;
   notes_hi: string | null;
@@ -87,7 +87,7 @@ export interface MembershipDetail extends MembershipSummary {
 }
 
 /**
- * Create/Update body — only the model-backed fields + allowed workflow fields the backend validator
+ * Create/Update body - only the model-backed fields + allowed workflow fields the backend validator
  * accepts (memberships.validators.ts, `.strict()`). Server-managed fields (slug, state, *_by,
  * published_at) are never produced.
  */

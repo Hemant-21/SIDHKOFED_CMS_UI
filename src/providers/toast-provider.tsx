@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * ToastProvider — accessible, dependency-free notification system. Holds the toast
+ * ToastProvider - accessible, dependency-free notification system. Holds the toast
  * queue + renders the live-region viewport. Exposes imperative helpers
  * (success/error/info/warning/promise) via context, surfaced through `useToast`.
  * Also registers a global handler so the API/error layers can raise toasts.

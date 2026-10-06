@@ -4,7 +4,7 @@
  * Single composition of every global provider, mounted once at the root layout.
  * Order matters: Theme (display) → Query (data) → Toast (notifications, used by
  * everything) → Auth (session) → Dialog (confirmations) → Loading (overlay).
- * Providers only — no business logic lives here.
+ * Providers only - no business logic lives here.
  */
 
 import type { ReactNode } from 'react';

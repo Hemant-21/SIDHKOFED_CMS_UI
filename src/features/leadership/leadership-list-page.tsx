@@ -59,7 +59,7 @@ export function LeadershipListPage() {
     <div className="space-y-6">
       <PageHeader
         title="Leadership"
-        description="Leadership profiles shown on the public site — government role and SIDHKOFED role."
+        description="Leadership profiles shown on the public site - government role and SIDHKOFED role."
         actions={
           <Can permission={LEADERSHIP_PERMS.create}>
             <Button asChild leftIcon={<Plus className="h-4 w-4" />}>
